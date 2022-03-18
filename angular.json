@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "instagram": "apps/instagram",
+    "instagram-e2e": "apps/instagram-e2e"
+  }
+}
