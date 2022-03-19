@@ -11,6 +11,9 @@
     "i18n:extract": "ng extract-i18n --output-path apps/instagram/src/locale"
   },
   "private": true,
+  "eslintIgnore": [
+    "index.html"
+  ],
   "dependencies": {
     "@angular/animations": "~13.2.0",
     "@angular/common": "~13.2.0",
@@ -24,6 +27,11 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "@ngneat/falso": "^3.0.0",
+    "@ngrx/component-store": "^13.0.2",
+    "@ngrx/effects": "^13.0.2",
+    "@ngrx/store": "^13.0.2",
+    "@ngrx/store-devtools": "^13.0.2",
     "@nrwl/angular": "13.9.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
@@ -57,6 +65,7 @@
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-ngrx": "^2.0.4",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "27.2.3",
     "jest-preset-angular": "11.1.1",

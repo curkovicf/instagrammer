@@ -29,7 +29,8 @@
       "extends": [
         "plugin:@nrwl/nx/typescript",
         "plugin:@nrwl/nx/angular",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:ngrx/recommended"
       ],
       "rules": {}
     },
