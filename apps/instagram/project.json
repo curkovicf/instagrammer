@@ -3,6 +3,12 @@
   "root": "apps/instagram",
   "sourceRoot": "apps/instagram/src",
   "prefix": "instagrammer",
+  "i18n": {
+    "locales": {
+      "hr": "apps/instagram/src/locale/messages.hr.xlf",
+      "en": "apps/instagram/src/locale/messages.en.xlf"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -19,7 +25,9 @@
           "apps/instagram/src/assets"
         ],
         "styles": ["apps/instagram/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "i18nMissingTranslation": "warning",
+        "localize": ["hr", "en"]
       },
       "configurations": {
         "production": {
@@ -43,6 +51,12 @@
           ],
           "outputHashing": "all"
         },
+        "en": {
+          "localize": ["en"]
+        },
+        "hr": {
+          "localize": ["hr"]
+        },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
@@ -62,6 +76,12 @@
         },
         "development": {
           "browserTarget": "instagram:build:development"
+        },
+        "hr": {
+          "browserTarget": "instagram:build:hr"
+        },
+        "en": {
+          "browserTarget": "instagram:build:en"
         }
       },
       "defaultConfiguration": "development",

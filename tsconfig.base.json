@@ -12,9 +12,6 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "strictBindCallApply": true,
-    "angularCompilerOptions": {
-      "fullTemplateTypeCheck": true
-    },
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
