@@ -65,6 +65,7 @@
     "@nrwl/nest": "13.9.3",
     "@nrwl/node": "13.9.3",
     "@nrwl/workspace": "13.9.3",
+    "@nxrocks/nx-flutter": "^3.0.2",
     "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.10.0",

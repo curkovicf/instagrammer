@@ -3,7 +3,7 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
-    "instagram": "apps/instagram",
-    "instagram-e2e": "apps/instagram-e2e"
+    "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
+    "web-angular-instagrammer": "apps/web/angular-instagrammer"
   }
 }

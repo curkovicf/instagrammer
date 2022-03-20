@@ -45,5 +45,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "instagram"
+  "defaultProject": "web-angular-instagrammer",
+  "plugins": ["@nxrocks/nx-flutter"]
 }
