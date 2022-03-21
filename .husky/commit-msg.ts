@@ -1,9 +1,13 @@
 const regex = new RegExp(/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g);
-const commitMsg = process.argv.pop();
+const commitMsg: string | undefined = process.argv.pop();
+
+if (!commitMsg) {
+  throw new Error();
+}
 
 // console.log('COMIT MSG AA ', process.argv);
 // console.log('COMIT MSG ', commitMsg.pop());
-console.log('REGEX ', regex);
+// console.log('REGEX ', regex);
 // console.log('REGEX ', regex);
 console.log(regex?.test(commitMsg));
 // if (!regex.test(commitMsg)) {
