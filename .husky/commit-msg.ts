@@ -2,6 +2,7 @@ const regex = new RegExp(/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))
 const commitMsg: string | undefined = process.argv.pop();
 
 if (!commitMsg) {
+  process.exitCode = 9;
   throw new Error();
 }
 
