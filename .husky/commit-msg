@@ -17,13 +17,36 @@ B_WHITE=$(tput setab 7)
 # Reset terminal colors
 RESET_TERMINAL_COLORS=$(tput sgr0)
 
-if ! head -1 "$1" | sed "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g"; then
-    echo "${B_WHITE}${F_RED}Aborting commit. Your commit message is invalid.${RESET_TERMINAL_COLORS}" >&2
-    echo "${B_WHITE}${F_BLUE}Correct example:${RESET_TERMINAL_COLORS} ${F_GREEN}feat(scope): #issue_num <commit_msg>${RESET_TERMINAL_COLORS}"
-    exit 1
-fi
+#echo "$1"
+#less "$1"
+#VAR_RES=(head -1 "$1")
+#v=$(cat "$1")
+#echo "BEFORE V"
+#echo $v
+#echo "AFTER V"
+#less "$1"
+#b=$(grep -qE "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g" "$1")
 
-if ! head -1 "$1" | sed "^.{1,88}$"; then
-    echo "${F_RED}Aborting commit. Your commit message is too long.${RESET_TERMINAL_COLORS}" >&2
-    exit 1
-fi
+#revNumber=$(less "$1" | grep -E "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g")
+
+#echo less "$1" | tr ' ' '\n' | grep init
+#cat ".husky/text.txt" | sed -e '/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g';
+#echo "BEFORE IDK"
+#idk=$("$v" | grep -E "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g")
+#echo "$idk"
+#echo "BEFORE B"
+#echo "$b"
+#echo "AFTER B"
+
+#grep -qE "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g" "$1"
+
+#if ! head -1 "$1" | grep -oE "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g"; then
+#    echo "${B_WHITE}${F_RED}Aborting commit. Your commit message is invalid.${RESET_TERMINAL_COLORS}" >&2
+#    echo "${B_WHITE}${F_BLUE}Correct example:${RESET_TERMINAL_COLORS} ${F_GREEN}feat(scope): #issue_num <commit_msg>${RESET_TERMINAL_COLORS}"
+#    exit 1
+#fi
+#
+#if ! head -1 "$1" | grep -qE "^.{1,88}$"; then
+#    echo "${F_RED}Aborting commit. Your commit message is too long.${RESET_TERMINAL_COLORS}" >&2
+#    exit 1
+#fi

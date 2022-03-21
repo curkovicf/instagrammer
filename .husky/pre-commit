@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "HUSKY - Executing linter"
-
-nx lint --fix
+#echo "HUSKY - Executing linter"
+#
+#nx lint --fix

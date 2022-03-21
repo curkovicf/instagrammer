@@ -11,6 +11,12 @@
     "i18n:extract": "ng extract-i18n --output-path apps/instagram/src/locale",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "nx lint --fix",
+      "commit-msg": "npx ts-node .husky/commit-msg.ts"
+    }
+  },
   "private": true,
   "eslintIgnore": [
     "index.html"
@@ -84,6 +90,7 @@
     "nx": "13.9.3",
     "prettier": "^2.5.1",
     "ts-jest": "27.0.5",
+    "ts-node": "^10.7.0",
     "typescript": "~4.5.2"
   }
 }
