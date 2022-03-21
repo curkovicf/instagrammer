@@ -2,7 +2,7 @@
 const commitMsg = process.argv;
 
 // console.log('COMIT MSG AA ', process.argv);
-// console.log('COMIT MSG ', commitMsg);
+console.log('COMIT MSG ', commitMsg.pop());
 
 // if (!(/^(feat|fix|docs|init|test|refactor|ci|revert)((.+?))?: (#[1-9]d*) [sS]*/g.test(commitMsg))) {
 //   console.error('Invalid commit message format. Correct format: "feat(scope): #issue_num <commit_msg>"');
