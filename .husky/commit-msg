@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx ts-node .husky/commit-msg.ts
+COMMIT_MSG=$(less $1);
+
+npx ts-node .husky/commit-msg.ts less "$COMMIT_MSG"
