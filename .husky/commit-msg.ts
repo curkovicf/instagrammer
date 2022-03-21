@@ -1,5 +1,5 @@
 // const pattern = '/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g';
-const commitMsg = process.argv.pop();
+const commitMsg = process.argv;
 
 console.log('COMIT MSG AA ', process.argv);
 console.log('COMIT MSG ', commitMsg);
