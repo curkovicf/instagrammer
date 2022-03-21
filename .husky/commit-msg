@@ -17,15 +17,13 @@ B_WHITE=$(tput setab 7)
 # Reset terminal colors
 RESET_TERMINAL_COLORS=$(tput sgr0)
 
-if ! head -1 "$1" | grep -qE "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) .{1,}$/g"; then
-    echo "${B_WHITE}************************************************${RESET_TERMINAL_COLORS}"
+if ! head -1 "$1" | sed "/^(feat|fix|docs|init|test|refactor|ci|revert)(\(.+?\))?: (#[1-9]\d*) [\s\S]*/g"; then
     echo "${B_WHITE}${F_RED}Aborting commit. Your commit message is invalid.${RESET_TERMINAL_COLORS}" >&2
-    echo "${B_WHITE}************************************************${RESET_TERMINAL_COLORS}"
     echo "${B_WHITE}${F_BLUE}Correct example:${RESET_TERMINAL_COLORS} ${F_GREEN}feat(scope): #issue_num <commit_msg>${RESET_TERMINAL_COLORS}"
     exit 1
 fi
 
-if ! head -1 "$1" | grep -qE "^.{1,88}$"; then
+if ! head -1 "$1" | sed "^.{1,88}$"; then
     echo "${F_RED}Aborting commit. Your commit message is too long.${RESET_TERMINAL_COLORS}" >&2
     exit 1
 fi
