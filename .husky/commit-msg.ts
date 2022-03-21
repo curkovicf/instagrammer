@@ -3,9 +3,11 @@ const commitMsg = process.argv.pop();
 
 // console.log('COMIT MSG AA ', process.argv);
 // console.log('COMIT MSG ', commitMsg.pop());
-
-if (!regex.test(commitMsg)) {
-  console.error('Invalid commit message format. Correct format: "feat(scope): #issue_num <commit_msg>"');
-  // process.exitCode = 9;
-}
+console.log('REGEX ', regex);
+// console.log('REGEX ', regex);
+console.log(commitMsg?.match(regex));
+// if (!regex.test(commitMsg)) {
+//   console.error('Invalid commit message format. Correct format: "feat(scope): #issue_num <commit_msg>"');
+//   // process.exitCode = 9;
+// }
 

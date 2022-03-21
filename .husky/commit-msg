@@ -3,4 +3,4 @@
 
 COMMIT_MSG=$(cat "$1");
 
-npx ts-node .husky/commit-msg.ts less "$COMMIT_MSG"
+ts-node .husky/commit-msg.ts less "$COMMIT_MSG"
