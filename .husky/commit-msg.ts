@@ -6,9 +6,7 @@ if (!commitMsg) {
   throw new Error();
 }
 
-console.log(regex?.test(commitMsg));
-// if (!regex.test(commitMsg)) {
-//   console.error('Invalid commit message format. Correct format: "feat(scope): #issue_num <commit_msg>"');
-//   // process.exitCode = 9;
-// }
-
+if (!regex?.test(commitMsg)) {
+  console.error('Invalid commit message format. Correct format: "feat(scope): #issue_num <commit_msg>"');
+  process.exitCode = 9;
+}
