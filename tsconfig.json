@@ -1,0 +1,10 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "alwaysStrict": true,
+    "baseUrl": "./"
+  },
+  "include": ["apps", "libs", ".husky", "scripts"]
+}
