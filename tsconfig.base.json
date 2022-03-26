@@ -20,7 +20,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@instagrammer/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@instagrammer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@instagrammer/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
+      "@instagrammer/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
+      "@instagrammer/api/auth/util": ["libs/api/auth/util/src/index.ts"],
+      "@instagrammer/api/core/feature": ["libs/api/core/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

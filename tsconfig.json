@@ -1,10 +1,14 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "allowJs": false,
     "allowUnreachableCode": false,
-    "alwaysStrict": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "target": "ES2015",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["apps", "libs", ".husky", "scripts"]
 }

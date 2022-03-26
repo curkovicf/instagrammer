@@ -2,6 +2,9 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "api-auth-data-access": "libs/api/auth/data-access",
+    "api-auth-feature": "libs/api/auth/feature",
+    "api-auth-util": "libs/api/auth/util",
     "api-interfaces": "libs/api-interfaces",
     "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
     "web-angular-instagrammer": "apps/web/angular-instagrammer"
