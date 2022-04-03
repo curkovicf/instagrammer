@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start:web": "nx serve --project web-angular-instagrammer",
-    "start:api": "docker-compose up && nx serve --project api",
+    "start:ng-client": "nx serve --project web-angular-instagrammer",
+    "start:api": "docker-compose up -d && nx serve --project api",
     "build": "nx build",
     "test": "nx test",
     "i18n:extract": "ng extract-i18n --output-path apps/instagram/src/locale",
@@ -38,6 +38,8 @@
     "@ngrx/store": "^13.0.2",
     "@ngrx/store-devtools": "^13.0.2",
     "@nrwl/angular": "13.9.3",
+    "@types/passport-jwt": "^3.0.6",
+    "bcrypt": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "passport": "^0.5.2",
@@ -46,7 +48,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
-    "typeorm": "^0.3.0",
+    "typeorm": "^0.2.45",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -68,6 +70,7 @@
     "@nrwl/node": "13.9.3",
     "@nrwl/workspace": "13.9.3",
     "@nxrocks/nx-flutter": "^3.0.2",
+    "@types/bcrypt": "^5.0.0",
     "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.10.0",

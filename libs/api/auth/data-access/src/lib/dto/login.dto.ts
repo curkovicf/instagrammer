@@ -4,7 +4,7 @@ import { IsFieldDefined } from '@instagrammer/api/auth/util';
 export class LoginDto {
   @IsString()
   @IsFieldDefined('email')
-  username?: string;
+  username!: string;
 
   @IsString()
   @IsEmail()
