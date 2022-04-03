@@ -7,7 +7,7 @@ import { QueryFailedError } from 'typeorm';
 
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { JwtPayload } from '../jwt/jwt-payload.interface';
+import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
 
 @Injectable()
 export class AuthService {

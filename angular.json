@@ -5,9 +5,8 @@
     "api-auth-data-access": "libs/api/auth/data-access",
     "api-auth-feature": "libs/api/auth/feature",
     "api-auth-util": "libs/api/auth/util",
-    "api-interfaces": "libs/api-interfaces",
-    "api-shared-api-entities": "libs/api/shared/api-entities",
-    "api-shared-app-config": "libs/api/shared/app-config",
+    "api-core": "libs/api/core",
+    "api-shared-data-access-interfaces": "libs/api/shared/data-access/interfaces",
     "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
     "web-angular-instagrammer": "apps/web/angular-instagrammer"
   }

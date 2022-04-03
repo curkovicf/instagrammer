@@ -2,7 +2,7 @@ import { EntityRepository, Repository } from 'typeorm';
 import { RegisterDto } from '../dto/register.dto';
 
 import * as bcrypt from 'bcrypt';
-import { UserEntity } from '@instagrammer/api/shared/api-entities';
+import { UserEntity } from '../entity/user.entity';
 
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
