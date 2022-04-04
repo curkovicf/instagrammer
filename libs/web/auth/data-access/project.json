@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/data-access",
+  "sourceRoot": "libs/web/auth/data-access/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/data-access"],
+      "options": {
+        "jestConfig": "libs/web/auth/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/auth/data-access/src/**/*.ts", "libs/web/auth/data-access/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

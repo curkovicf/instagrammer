@@ -9,6 +9,11 @@
     "api-shared-data-access-interfaces": "libs/api/shared/data-access/interfaces",
     "api-shell": "libs/api/shell",
     "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
-    "web-angular-instagrammer": "apps/web/angular-instagrammer"
+    "web-auth-data-access": "libs/web/auth/data-access",
+    "web-auth-feature-shell": "libs/web/auth/feature/shell",
+    "web-auth-ui": "libs/web/auth/ui",
+    "web-ng-instagrammer": "apps/web/ng-instagrammer",
+    "web-shell-feature": "libs/web/shell/feature",
+    "web-shell-ui": "libs/web/shell/ui"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shell/ui",
+  "sourceRoot": "libs/web/shell/ui/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shell/ui"],
+      "options": {
+        "jestConfig": "libs/web/shell/ui/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/shell/ui/src/**/*.ts", "libs/web/shell/ui/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

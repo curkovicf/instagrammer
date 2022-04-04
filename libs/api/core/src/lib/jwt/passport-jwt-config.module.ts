@@ -3,6 +3,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategyService } from './strategy/jwt-strategy.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { UserRepository } from '@instagrammer/api/auth/data-access';
 
 @Module({
