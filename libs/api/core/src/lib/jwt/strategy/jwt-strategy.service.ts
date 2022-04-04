@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { UserEntity, UserRepository } from '@instagrammer/api/auth/data-access';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
 

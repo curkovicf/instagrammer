@@ -29,7 +29,8 @@
       "@instagrammer/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@instagrammer/api/shared/api-repositories": ["libs/api/shared/api-repositories/src/index.ts"],
       "@instagrammer/api/shared/app-config": ["libs/api/shared/app-config/src/index.ts"],
-      "@instagrammer/api/shared/data-access/interfaces": ["libs/api/shared/data-access/interfaces/src/index.ts"]
+      "@instagrammer/api/shared/data-access/interfaces": ["libs/api/shared/data-access/interfaces/src/index.ts"],
+      "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

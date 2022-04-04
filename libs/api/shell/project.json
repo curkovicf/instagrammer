@@ -1,22 +1,22 @@
 {
-  "root": "libs/api/core",
-  "sourceRoot": "libs/api/core/src",
+  "root": "libs/api/shell",
+  "sourceRoot": "libs/api/shell/src",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api/core/**/*.ts"]
+        "lintFilePatterns": ["libs/api/shell/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/core"],
+      "outputs": ["coverage/libs/api/shell"],
       "options": {
-        "jestConfig": "libs/api/core/jest.config.js",
+        "jestConfig": "libs/api/shell/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["scope:api-core", "type:core"]
+  "tags": ["scope:api-shell", "type:shell"]
 }

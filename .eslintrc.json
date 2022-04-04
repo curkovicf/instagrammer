@@ -16,8 +16,44 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "type:api-app",
+                "onlyDependOnLibsWithTags": ["scope:api-shell"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "scope:api-shell",
+                "onlyDependOnLibsWithTags": ["scope:api-core", "type:feature"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "scope:api-core",
+                "onlyDependOnLibsWithTags": ["scope:api-auth", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "scope:api-shared",
+                "onlyDependOnLibsWithTags": ["scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "scope:api-auth",
+                "onlyDependOnLibsWithTags": ["scope:api-auth", "scope:api-core", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": ["type:data-access"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
               }
             ]
           }

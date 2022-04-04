@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ApiAuthFeatureModule } from '@instagrammer/api/auth/feature';
-import { ApiCoreModule } from '@instagrammer/api/core';
+import { ApiShellModule } from '@instagrammer/api/shell';
 
 @Module({
-  imports: [ApiCoreModule, ApiAuthFeatureModule],
+  imports: [ApiShellModule],
 })
 export class AppModule {}

@@ -7,6 +7,7 @@
     "api-auth-util": "libs/api/auth/util",
     "api-core": "libs/api/core",
     "api-shared-data-access-interfaces": "libs/api/shared/data-access/interfaces",
+    "api-shell": "libs/api/shell",
     "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
     "web-angular-instagrammer": "apps/web/angular-instagrammer"
   }
