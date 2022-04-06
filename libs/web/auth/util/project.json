@@ -1,21 +1,21 @@
 {
   "projectType": "library",
-  "root": "libs/web/shell/ui",
-  "sourceRoot": "libs/web/shell/ui/src",
+  "root": "libs/web/auth/util",
+  "sourceRoot": "libs/web/auth/util/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shell/ui"],
+      "outputs": ["coverage/libs/web/auth/util"],
       "options": {
-        "jestConfig": "libs/web/shell/ui/jest.config.js",
+        "jestConfig": "libs/web/auth/util/jest.config.js",
         "passWithNoTests": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shell/ui/src/**/*.ts", "libs/web/shell/ui/src/**/*.html"]
+        "lintFilePatterns": ["libs/web/auth/util/src/**/*.ts", "libs/web/auth/util/src/**/*.html"]
       }
     }
   },

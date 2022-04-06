@@ -35,9 +35,11 @@
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
       "@instagrammer/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
+      "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
-      "@instagrammer/web/shell/ui": ["libs/web/shell/ui/src/index.ts"]
+      "@instagrammer/web/shell/ui/not-found": ["libs/web/shell/ui/not-found/src/index.ts"],
+      "@instagrammer/web/shell/util": ["libs/web/shell/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

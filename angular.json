@@ -12,8 +12,10 @@
     "web-auth-data-access": "libs/web/auth/data-access",
     "web-auth-feature-shell": "libs/web/auth/feature/shell",
     "web-auth-ui": "libs/web/auth/ui",
+    "web-auth-util": "libs/web/auth/util",
     "web-ng-instagrammer": "apps/web/ng-instagrammer",
     "web-shell-feature": "libs/web/shell/feature",
-    "web-shell-ui": "libs/web/shell/ui"
+    "web-shell-ui-not-found": "libs/web/shell/ui/not-found",
+    "web-shell-util": "libs/web/shell/util"
   }
 }
