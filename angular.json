@@ -14,6 +14,7 @@
     "web-auth-feature-register": "libs/web/auth/feature/register",
     "web-auth-feature-shell": "libs/web/auth/feature/shell",
     "web-auth-util": "libs/web/auth/util",
+    "web-dummy-home": "libs/web/dummy-home",
     "web-ng-instagrammer": "apps/web/ng-instagrammer",
     "web-shell-feature": "libs/web/shell/feature",
     "web-shell-ui-not-found": "libs/web/shell/ui/not-found",
