@@ -33,6 +33,8 @@
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
       "@instagrammer/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
+      "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
+      "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
       "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
       "@instagrammer/web/auth/ui/login": ["libs/web/auth/ui/login/src/index.ts"],
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
