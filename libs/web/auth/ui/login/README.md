@@ -1,7 +1,7 @@
-# web-auth-ui
+# web-auth-ui-login
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test web-auth-ui` to execute the unit tests.
+Run `nx test web-auth-ui-login` to execute the unit tests.

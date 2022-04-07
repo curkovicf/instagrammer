@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'web-auth-ui',
-  preset: '../../../../jest.preset.js',
+  displayName: 'web-auth-ui-register',
+  preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/web/auth/ui',
+  coverageDirectory: '../../../../../coverage/libs/web/auth/ui/register',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
