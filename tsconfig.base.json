@@ -40,6 +40,7 @@
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@instagrammer/web/dummy-home": ["libs/web/dummy-home/src/index.ts"],
+      "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
       "@instagrammer/web/shell/ui/not-found": ["libs/web/shell/ui/not-found/src/index.ts"],
