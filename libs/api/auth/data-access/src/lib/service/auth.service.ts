@@ -38,10 +38,12 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
+    const expireDuration = 3600;
     const payload: JwtPayload = { username };
-    const accessToken: string = this.jwtService.sign(payload);
+    const jwtToken: string = this.jwtService.sign(payload);
+    const currentDate = new Date().getTime();
 
     //  TODO: convert expires to injection token
-    return { accessToken, expires: 3600 };
+    return { jwtToken, loggedInAt: currentDate, expiresAt: currentDate + expireDuration };
   }
 }
