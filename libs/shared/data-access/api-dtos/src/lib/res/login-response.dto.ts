@@ -1,4 +1,5 @@
 export interface LoginResponseDto {
-  accessToken: string;
-  expires: number;
+  jwtToken: string;
+  loggedInAt: number;
+  expiresAt: number;
 }
