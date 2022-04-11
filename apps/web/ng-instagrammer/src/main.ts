@@ -2,9 +2,10 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { environmentDev } from '@instagrammer/web/shared/app-configs';
 
-if (environment.production) {
+//  TODO: Reimpl with file replacements
+if (environmentDev.production) {
   enableProdMode();
 }
 

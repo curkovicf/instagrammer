@@ -2,7 +2,9 @@ import { Inject, Injectable } from '@angular/core';
 import { ENVIRONMENT_TOKEN } from './environment.token';
 import { IEnvironment } from './environment.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class EnvironmentService {
   constructor(@Inject(ENVIRONMENT_TOKEN) private readonly environment: IEnvironment) {}
 

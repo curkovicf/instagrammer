@@ -5,7 +5,7 @@
 import { IEnvironment } from './environment.interface';
 
 export const environmentDev: IEnvironment = {
-  baseUrl: '',
+  baseUrl: 'http://localhost:3333/api',
   production: false,
 };
 

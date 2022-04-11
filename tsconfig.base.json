@@ -31,6 +31,7 @@
       "@instagrammer/api/shared/app-config": ["libs/api/shared/app-config/src/index.ts"],
       "@instagrammer/api/shared/data-access/interfaces": ["libs/api/shared/data-access/interfaces/src/index.ts"],
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
+      "@instagrammer/shared/data-access/api-dtos": ["libs/shared/data-access/api-dtos/src/index.ts"],
       "@instagrammer/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],

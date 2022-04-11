@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/data-access/api-dtos",
+  "sourceRoot": "libs/shared/data-access/api-dtos/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/data-access/api-dtos"],
+      "options": {
+        "jestConfig": "libs/shared/data-access/api-dtos/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/data-access/api-dtos/src/**/*.ts",
+          "libs/shared/data-access/api-dtos/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

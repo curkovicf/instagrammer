@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService, RegisterDto, LoginDto } from '@instagrammer/api/auth/data-access';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Controller('auth')
 export class AuthController {
@@ -11,7 +12,7 @@ export class AuthController {
   }
 
   @Post('/login')
-  public async login(@Body() loginDto: LoginDto): Promise<{ accessToken: string }> {
+  public async login(@Body() loginDto: LoginDto): Promise<LoginResponseDto> {
     return await this.authService.login(loginDto);
   }
 }

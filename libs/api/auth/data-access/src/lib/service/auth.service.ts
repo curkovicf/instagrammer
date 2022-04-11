@@ -8,6 +8,7 @@ import { QueryFailedError } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable()
 export class AuthService {
@@ -28,7 +29,7 @@ export class AuthService {
     }
   }
 
-  public async login(loginDto: LoginDto): Promise<{ accessToken: string }> {
+  public async login(loginDto: LoginDto): Promise<LoginResponseDto> {
     const { username, password, email } = loginDto;
 
     const user = await this.userRepository.findOne({ username });
@@ -40,6 +41,7 @@ export class AuthService {
     const payload: JwtPayload = { username };
     const accessToken: string = this.jwtService.sign(payload);
 
-    return { accessToken };
+    //  TODO: convert expires to injection token
+    return { accessToken, expires: 3600 };
   }
 }
