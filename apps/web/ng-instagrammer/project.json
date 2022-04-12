@@ -14,8 +14,16 @@
         "polyfills": "apps/web/ng-instagrammer/src/polyfills.ts",
         "tsConfig": "apps/web/ng-instagrammer/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/web/ng-instagrammer/src/favicon.ico", "apps/web/ng-instagrammer/src/assets"],
+        "assets": [
+          "apps/web/ng-instagrammer/src/favicon.ico",
+          "apps/web/ng-instagrammer/src/assets"
+        ],
         "styles": ["apps/web/ng-instagrammer/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/web/shared/ui/styles/src/lib"
+          ]
+        },
         "scripts": []
       },
       "configurations": {
@@ -72,7 +80,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/web/ng-instagrammer/src/**/*.ts", "apps/web/ng-instagrammer/src/**/*.html"]
+        "lintFilePatterns": [
+          "apps/web/ng-instagrammer/src/**/*.ts",
+          "apps/web/ng-instagrammer/src/**/*.html"
+        ]
       }
     },
     "test": {

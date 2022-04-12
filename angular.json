@@ -18,6 +18,7 @@
     "web-dummy-home": "libs/web/dummy-home",
     "web-ng-instagrammer": "apps/web/ng-instagrammer",
     "web-shared-app-configs": "libs/web/shared/app-configs",
+    "web-shared-ui-styles": "libs/web/shared/ui/styles",
     "web-shell-feature": "libs/web/shell/feature",
     "web-shell-ui-not-found": "libs/web/shell/ui/not-found",
     "web-shell-util": "libs/web/shell/util"
