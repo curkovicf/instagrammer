@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import * as AuthActions from './auth.actions';
 
-export const AUTH_FEATURE_KEY = 'AUTH_FEATURE_KEY';
+export const AUTH_FEATURE_KEY = 'AUTH_FEATURE';
 
 const initialAuthState: AuthState = {
   jwtToken: null,
@@ -13,7 +13,12 @@ const initialAuthState: AuthState = {
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(AuthActions.updateAuthStateAction, (state, { loginResponseDto }) => ({
+  on(AuthActions.loginAction, (state, { loginResponseDto }) => ({
     ...loginResponseDto,
+  })),
+  on(AuthActions.logoutAction, state => ({
+    jwtToken: null,
+    expiresAt: null,
+    loggedInAt: null,
   })),
 );

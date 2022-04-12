@@ -16,6 +16,10 @@ export class AuthFacadeService {
   constructor(private readonly store: Store) {}
 
   public updateAuthState(loginResponseDto: LoginResponseDto): void {
-    this.store.dispatch(AuthActions.updateAuthStateAction({ loginResponseDto }));
+    this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
+  }
+
+  public logout(): void {
+    this.store.dispatch(AuthActions.logoutAction());
   }
 }
