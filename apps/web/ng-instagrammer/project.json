@@ -20,9 +20,7 @@
         ],
         "styles": ["apps/web/ng-instagrammer/src/styles.scss"],
         "stylePreprocessorOptions": {
-          "includePaths": [
-            "libs/web/shared/ui/styles/src/lib"
-          ]
+          "includePaths": ["libs/web/shared/ui/styles/src/lib"]
         },
         "scripts": []
       },

@@ -1,0 +1,26 @@
+@import "ng-instagrammer-colors";
+@import "ng-instagrammer-fonts";
+@import "ng-instagrammer-mixins";
+
+:host {
+  @include box(100%, 80%);
+  @include center-flex-Y();
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  & > .footer-row {
+    @include center-flex-X();
+    height: 1.6rem;
+
+    & > .footer-item {
+      color: $color--font-footer;
+      margin: 0 0.6rem;
+      font-weight: 400;
+      font-size: 12px;
+      text-decoration: none;
+    }
+  }
+
+  & > .footer-row:last-child {
+    margin-top: 0.5rem;
+  }
+}

@@ -9,11 +9,10 @@
 
   & > main {
     background-color: purple;
-    @include box(100%, 75%);
+    @include box(100%, 80%);
   }
 
   & > footer {
-    background-color: palegoldenrod;
-    @include box(100%, 25%);
+    @include box(100%, 20%);
   }
 }

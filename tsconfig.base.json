@@ -53,6 +53,7 @@
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
+      "@instagrammer/web/shell/ui/footer": ["libs/web/shell/ui/footer/src/index.ts"],
       "@instagrammer/web/shell/ui/not-found": ["libs/web/shell/ui/not-found/src/index.ts"],
       "@instagrammer/web/shell/util": ["libs/web/shell/util/src/index.ts"]
     }

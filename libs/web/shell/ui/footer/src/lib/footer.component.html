@@ -1,0 +1,19 @@
+<div class="footer-row">
+  <a
+    *ngFor="let item of itemsFirstRow"
+    class="footer-item"
+    [href]="item.url"
+    target="_blank"
+    >{{ item.title }}</a>
+</div>
+<div class="footer-row">
+  <a
+    *ngFor="let item of itemsSecondRow"
+    class="footer-item"
+    [href]="item.url"
+    target="_blank"
+    >{{ item.title }}</a>
+</div>
+<div class="footer-row">
+  <p *ngFor="let item of itemsThirdRow" class="footer-item">{{ item.title }}</p>
+</div>

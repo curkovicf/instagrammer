@@ -20,6 +20,7 @@
     "web-shared-app-configs": "libs/web/shared/app-configs",
     "web-shared-ui-styles": "libs/web/shared/ui/styles",
     "web-shell-feature": "libs/web/shell/feature",
+    "web-shell-ui-footer": "libs/web/shell/ui/footer",
     "web-shell-ui-not-found": "libs/web/shell/ui/not-found",
     "web-shell-util": "libs/web/shell/util"
   }
