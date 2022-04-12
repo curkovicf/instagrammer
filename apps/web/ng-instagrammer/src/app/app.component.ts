@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'instagrammer-root',
-  templateUrl: './app.component.html',
+  template: `<ng-inst-layout></ng-inst-layout>`,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {

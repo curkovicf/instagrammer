@@ -1,0 +1,19 @@
+@import "ng-instagrammer-colors";
+@import "ng-instagrammer-fonts";
+@import "ng-instagrammer-mixins";
+
+:host {
+  display: block;
+  height: 100vh;
+  overflow-y: auto;
+
+  & > main {
+    background-color: purple;
+    @include box(100%, 75%);
+  }
+
+  & > footer {
+    background-color: palegoldenrod;
+    @include box(100%, 25%);
+  }
+}
