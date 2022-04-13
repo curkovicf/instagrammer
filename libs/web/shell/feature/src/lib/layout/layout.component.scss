@@ -8,8 +8,8 @@
   overflow-y: auto;
 
   & > main {
-    background-color: purple;
-    @include box(100%, 80%);
+    width: 100%;
+    min-height: 80%;
   }
 
   & > footer {

@@ -41,15 +41,14 @@
       "@instagrammer/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
-      "@instagrammer/web/auth/feature/register": [
-        "libs/web/auth/feature/register/src/index.ts"
-      ],
+      "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
       "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
       "@instagrammer/web/auth/ui/login": ["libs/web/auth/ui/login/src/index.ts"],
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@instagrammer/web/dummy-home": ["libs/web/dummy-home/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
+      "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],

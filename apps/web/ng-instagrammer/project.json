@@ -16,7 +16,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/web/ng-instagrammer/src/favicon.ico",
-          "apps/web/ng-instagrammer/src/assets"
+          "apps/web/ng-instagrammer/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/web/shared/ui/assets/src/lib",
+            "output": "assets"
+          }
         ],
         "styles": ["apps/web/ng-instagrammer/src/styles.scss"],
         "stylePreprocessorOptions": {

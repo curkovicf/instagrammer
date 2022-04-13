@@ -1,6 +1,32 @@
 @import "ng-instagrammer-colors";
+@import "ng-instagrammer-fonts";
+@import "ng-instagrammer-mixins";
 
 :host {
-  display: block;
-  background-color: $color--font-link;
+  @include center-flex-X();
+  @include box-max();
+  min-height: 80vh;
+
+  & > .wrapper {
+    @include box(50%, 38rem);
+    @include center-flex-X();
+    justify-content: space-around;
+    background-color: yellowgreen;
+
+    & > .phone-wrapper {
+      @include box(45%, 100%);
+      background-position: -46px 0;
+      background-size: 468.32px 634.15px;
+      flex-basis: 380.32px;
+      height: 581.15px;
+      margin-bottom: 12px;
+      margin-right: 32px;
+      background-image: url("/assets/images/home_phone.png");
+    }
+
+    & > .login-form-wrapper {
+      @include box(45%, 100%);
+      background-color: blueviolet;
+    }
+  }
 }
