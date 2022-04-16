@@ -11,17 +11,32 @@
     @include box(50%, 38rem);
     @include center-flex-X();
     justify-content: space-around;
-    background-color: yellowgreen;
 
     & > .phone-wrapper {
-      @include box(45%, 100%);
+      position: relative;
       background-position: -46px 0;
       background-size: 468.32px 634.15px;
       flex-basis: 380.32px;
       height: 581.15px;
+      width: 100%;
       margin-bottom: 12px;
       margin-right: 32px;
       background-image: url("/assets/images/home_phone.png");
+
+      & > .login-img {
+        height: 538.84px;
+        left: 7rem;
+        position: absolute;
+        top: 1.5rem;
+        width: 250px;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      & > .active-login-img {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+      }
     }
 
     & > .login-form-wrapper {
@@ -29,4 +44,17 @@
       background-color: blueviolet;
     }
   }
+}
+
+.new-img {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: opacity 2s ease-in !important;
+  z-index: 5;
+}
+
+.current-image {
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 1;
 }
