@@ -1,16 +1,16 @@
-<label [class.input-focused]="isInputFocused">
+<label [class.focus-input]="isInputFocused">
   <span
     class="placeholder"
-    [class.placeholder-small]="inputElement.value && inputElement.value.length > 0"
+    [class.shrink-placeholder]="inputElement.value && inputElement.value.length > 0"
     >{{ placeholder }}</span
   >
 
   <input
     #inputElement
+    [class.shrink-input]="inputElement.value && inputElement.value.length > 0"
     [type]="inputType"
     [value]="value"
     [disabled]="disabled"
-    [class.input-has-text]="inputElement.value && inputElement.value.length > 0"
     (input)="onInputChange($event)"
     (blur)="onTouched()"
     (focusin)="onFocusIn()"

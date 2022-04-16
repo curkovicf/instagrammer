@@ -40,15 +40,15 @@
   }
 }
 
-.input-focused {
+.focus-input {
   border: 1px solid #a8a8a8 !important;
 }
 
-.placeholder-small {
+.shrink-placeholder {
   transform: scale(.83333) translate(-22px, -10px);
 }
 
-.input-has-text {
+.shrink-input {
   height: 2rem !important;
   font-size: 12px !important;
   margin-top: 10px;
