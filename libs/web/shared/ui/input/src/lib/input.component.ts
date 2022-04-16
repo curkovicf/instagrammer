@@ -37,6 +37,8 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
 
   value = '';
 
+  public isInputFocused = false;
+
   constructor(
     // Retrieve the dependency only from the local injector,
     // not from parent or ancestors.
@@ -101,5 +103,13 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange($event.target.value);
+  }
+
+  public onFocusIn(): void {
+    this.isInputFocused = true;
+  }
+
+  public onFocusOut(): void {
+    this.isInputFocused = false;
   }
 }

@@ -8,10 +8,15 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   & > label {
+    display: block;
+    border-radius: 4px;
     position: relative;
+    border: 1px solid #dbdbdb;
+    height: 2.5rem;
+    background-color: $color--background-main;
 
     & > .placeholder {
-      @include position(absolute, 0.1rem, null, null, 0.8rem);
+      @include position(absolute, 0.7rem, null, null, 0.8rem);
       font-size: 12px;
       color: #a8a8a8;
       pointer-events: none;
@@ -23,15 +28,20 @@
       border-radius: 3px;
       height: 2.5rem;
       color: #262626;
-      border: 1px solid #dbdbdb;
-      background-color: $color--background-main;
+      border: none;
+      outline: none;
+      background-color: transparent;
       font-size: 16px;
       line-height: 18px;
       letter-spacing: normal;
       font-weight: 400;
-      @include input-focus(default);
+      @include on-input-focus(default);
     }
   }
+}
+
+.input-focused {
+  border: 1px solid #a8a8a8 !important;
 }
 
 .placeholder-small {
@@ -39,5 +49,7 @@
 }
 
 .input-has-text {
+  height: 2rem !important;
   font-size: 12px !important;
+  margin-top: 10px;
 }
