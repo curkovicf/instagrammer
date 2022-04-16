@@ -6,11 +6,12 @@
   @include center-flex-X();
   @include box-max();
   min-height: 80vh;
+  padding-top: 2rem;
 
   & > .wrapper {
     @include box(50%, 38rem);
     @include center-flex-X();
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     & > .phone-wrapper {
       position: relative;
@@ -41,7 +42,7 @@
 
     & > .login-form-wrapper {
       @include box(45%, 100%);
-      background-color: blueviolet;
+      border: 1px solid red;
     }
   }
 }
