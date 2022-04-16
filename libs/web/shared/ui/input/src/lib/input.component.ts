@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Input,
+  Input, OnInit,
   Optional,
   Output,
   Self,
@@ -16,7 +16,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements ControlValueAccessor, AfterViewInit {
+export class InputComponent implements ControlValueAccessor, OnInit, AfterViewInit {
   @ViewChild('inputElement')
   inputElement: ElementRef | undefined;
 
@@ -30,7 +30,7 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   placeholder: string | null = null;
 
   @Input()
-  inputType: 'text' | 'number' = 'text';
+  inputType: 'text' | 'number' | 'password' = 'text';
 
   @Output()
   onchange: EventEmitter<boolean> = new EventEmitter();
@@ -38,6 +38,8 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
   value = '';
 
   public isInputFocused = false;
+  public isPasswordHidden = true;
+  public isPasswordType = false;
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -53,7 +55,15 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
+  public ngOnInit(): void {
+    if (this.inputType !== 'password') {
+      return;
+    }
+
+    this.isPasswordType = true;
+  }
+
+  public ngAfterViewInit(): void {
     if (!this.initialValue) {
       return;
     }
@@ -111,5 +121,17 @@ export class InputComponent implements ControlValueAccessor, AfterViewInit {
 
   public onFocusOut(): void {
     this.isInputFocused = false;
+  }
+
+  public onShowOrHidePassword(): void {
+    this.isPasswordHidden = !this.isPasswordHidden;
+
+    if (this.inputType === 'password') {
+      this.inputType = 'text';
+
+      return;
+    }
+
+    this.inputType = 'password';
   }
 }

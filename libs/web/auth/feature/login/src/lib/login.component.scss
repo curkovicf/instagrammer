@@ -66,6 +66,10 @@
         & > .form-content {
           width: 80%;
           flex: 1;
+
+          & > ng-insta-input {
+            margin-bottom: 0.5rem;
+          }
         }
       }
 

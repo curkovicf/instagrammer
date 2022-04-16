@@ -16,4 +16,8 @@
     (focusin)="onFocusIn()"
     (focusout)="onFocusOut()"
   />
+
+  <div *ngIf="isPasswordType" class="show-hide-password" (click)="onShowOrHidePassword()">
+    <button>{{ isPasswordHidden ? 'Show' : 'Hide' }}</button>
+  </div>
 </label>
