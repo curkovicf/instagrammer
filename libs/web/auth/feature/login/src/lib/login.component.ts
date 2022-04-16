@@ -19,7 +19,10 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
   private previousScreenshotIndex = 0;
   private activeScreenshotIndex = 1;
 
-  @ViewChild('screenshot_container') screenShotContainer: ElementRef | undefined;
+  @ViewChild('screenshot_container')
+  screenShotContainer: ElementRef | undefined;
+
+  public isSpinnerActive = false;
 
   constructor(private readonly authService: AuthService, private readonly renderer2: Renderer2) {}
 
@@ -76,5 +79,9 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
 
     this.renderer2.addClass(currentActiveScreenshot, 'current-image');
     this.renderer2.addClass(newActiveScreenshot, 'new-img');
+  }
+
+  public onLogInClick(): void {
+    this.isSpinnerActive = !this.isSpinnerActive;
   }
 }

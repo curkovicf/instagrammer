@@ -18,10 +18,9 @@
           placeholder="Phone number, username, or email"
         ></ng-insta-input>
 
-        <ng-insta-input
-          inputType="password"
-          placeholder="Password"
-        ></ng-insta-input>
+        <ng-insta-input inputType="password" placeholder="Password"></ng-insta-input>
+
+        <ng-inst-cta-button title="Log In" [isSpinnerActive]='isSpinnerActive' (ctaclick)="onLogInClick()"></ng-inst-cta-button>
       </div>
     </div>
 

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shared/ui/cta-button",
+  "sourceRoot": "libs/web/shared/ui/cta-button/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shared/ui/cta-button"],
+      "options": {
+        "jestConfig": "libs/web/shared/ui/cta-button/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared/ui/cta-button/src/**/*.ts",
+          "libs/web/shared/ui/cta-button/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

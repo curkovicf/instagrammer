@@ -1,0 +1,4 @@
+<button (click)="ctaclick.emit()">
+  <p *ngIf="!isSpinnerActive">{{ title }}</p>
+  <ng-insta-apple-spinner *ngIf='isSpinnerActive'></ng-insta-apple-spinner>
+</button>

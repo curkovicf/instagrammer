@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shared/ui/apple-spinner",
+  "sourceRoot": "libs/web/shared/ui/apple-spinner/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shared/ui/apple-spinner"],
+      "options": {
+        "jestConfig": "libs/web/shared/ui/apple-spinner/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared/ui/apple-spinner/src/**/*.ts",
+          "libs/web/shared/ui/apple-spinner/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

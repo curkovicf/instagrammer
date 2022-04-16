@@ -1,0 +1,66 @@
+$spinner-size: 25px !default;
+$spinner-color: #fff !default;
+$overlay-color: black !default;
+
+:host {
+  display: block;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -3px;
+  bottom: 0;
+  margin: auto;
+}
+
+.overlay {
+  @include absolute-center;
+}
+
+.spinner {
+  font-size: $spinner-size;
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  &.center {
+    @include absolute-center;
+  }
+}
+
+.spinner-blade {
+  position: absolute;
+  left: .4629em;
+  bottom: 0;
+  width: .074em;
+  height: .1777em;
+  border-radius: .5em;
+  background-color: transparent;
+  transform-origin: center -.2222em;
+  animation: spinner-fade 1s infinite linear;
+
+  $animation-delay: 0s;
+  $blade-rotation: 0deg;
+
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: $animation-delay;
+      transform: rotate($blade-rotation);
+      $blade-rotation: $blade-rotation + 30;
+      $animation-delay: $animation-delay + .083;
+    }
+  }
+}
+
+@keyframes spinner-fade {
+  0% {
+    background-color: $spinner-color;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
