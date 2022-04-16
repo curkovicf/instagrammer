@@ -49,6 +49,8 @@
       "@instagrammer/web/dummy-home": ["libs/web/dummy-home/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
+      "@instagrammer/web/shared/ui/input": ["libs/web/shared/ui/input/src/index.ts"],
+      "@instagrammer/web/shared/ui/insta-input": ["libs/web/shared/ui/insta-input/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],

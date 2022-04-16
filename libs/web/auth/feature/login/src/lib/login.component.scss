@@ -42,7 +42,44 @@
 
     & > .login-form-wrapper {
       @include box(45%, 100%);
+      @include center-flex-Y();
+      justify-content: space-evenly;
+      //background-color: $color--background-main;
+      //background-color: #262626;
       border: 1px solid red;
+      padding: 1rem 0;
+
+      & > .main-form {
+        @include center-flex-Y();
+        background-color: $color--background-card;
+        height: 66%;
+        width: 80%;
+        border: 1px solid #dbdbdb;
+        justify-content: space-evenly;
+        padding-bottom: 1rem;
+
+        & > .instagram-logo {
+          height: 8rem;
+          @include center-flex-X();
+        }
+
+        & > .form-content {
+          width: 80%;
+          flex: 1;
+        }
+      }
+
+      & > .sign-up-prompt {
+        height: 10%;
+        background-color: orangered;
+        width: 100%;
+      }
+
+      & > .mobile-downloads {
+        height: 15%;
+        background-color: blueviolet;
+        width: 100%;
+      }
     }
   }
 }

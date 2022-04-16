@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shared/ui/input",
+  "sourceRoot": "libs/web/shared/ui/input/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shared/ui/input"],
+      "options": {
+        "jestConfig": "libs/web/shared/ui/input/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared/ui/input/src/**/*.ts",
+          "libs/web/shared/ui/input/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

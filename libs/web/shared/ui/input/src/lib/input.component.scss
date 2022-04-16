@@ -1,0 +1,43 @@
+@import "ng-instagrammer-colors";
+@import "ng-instagrammer-fonts";
+@import "ng-instagrammer-mixins";
+
+:host {
+  display: block;
+  max-height: 2.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  & > label {
+    position: relative;
+
+    & > .placeholder {
+      @include position(absolute, 0.1rem, null, null, 0.8rem);
+      font-size: 12px;
+      color: #a8a8a8;
+      pointer-events: none;
+      transition: transform ease-out .1s;
+    }
+
+    & > input {
+      width: 100%;
+      border-radius: 3px;
+      height: 2.5rem;
+      color: #262626;
+      border: 1px solid #dbdbdb;
+      background-color: $color--background-main;
+      font-size: 16px;
+      line-height: 18px;
+      letter-spacing: normal;
+      font-weight: 400;
+      @include input-focus(default);
+    }
+  }
+}
+
+.placeholder-small {
+  transform: scale(.83333) translate(-22px, -10px);
+}
+
+.input-has-text {
+  font-size: 12px !important;
+}

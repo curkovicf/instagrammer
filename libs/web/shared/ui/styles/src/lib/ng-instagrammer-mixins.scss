@@ -83,7 +83,7 @@
   border-radius: 4px;
 }
 
-@mixin separator_top($width) {
+@mixin separator-top($width) {
   @if ($width) {
     width: $width;
   } @else {
@@ -93,7 +93,7 @@
   height: 1px;
 }
 
-@mixin separator_bot($width) {
+@mixin separator-bot($width) {
   @if ($width) {
     width: $width;
   } @else {
@@ -103,7 +103,7 @@
   height: 1px;
 }
 
-@mixin default_border($location) {
+@mixin default-border($location) {
   @if($location == top) {
     border-top: 1px solid #e1e4e8;
   } @else if($location == right) {
@@ -117,18 +117,13 @@
   }
 }
 
-@mixin input_focus($focus) {
+@mixin input-focus($focus) {
   padding: 0.1rem 0.7em;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
 
   &:focus {
     @if ($focus == default) {
-      color: #495057;
-      background-color: #fff;
-      border-color: #80bdff;
+      border: 1px solid #a8a8a8;
       outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
     } @else {
       color: #495057;
       background-color: #fff;
