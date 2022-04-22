@@ -6,8 +6,9 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { take } from 'rxjs';
+import { take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data-access';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ng-inst-login',
@@ -15,6 +16,7 @@ import { AuthService } from '@instagrammer/web/auth/data-access';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy, AfterViewInit {
+  private isAlive = true;
   private intervalId: NodeJS.Timer | undefined;
   private previousScreenshotIndex = 0;
   private activeScreenshotIndex = 1;
@@ -23,8 +25,27 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
   screenShotContainer: ElementRef | undefined;
 
   public isSpinnerActive = false;
+  public isFormValid = false;
 
-  constructor(private readonly authService: AuthService, private readonly renderer2: Renderer2) {}
+  public formGroup: FormGroup;
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly renderer2: Renderer2,
+    private readonly formBuilder: FormBuilder,
+  ) {
+    this.formGroup = this.formBuilder.group({
+      phoneOrUsernameOrEmail: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+
+    this.formGroup.valueChanges
+      .pipe(
+        takeWhile(() => this.isAlive),
+        tap(values => this.validateForm(values)),
+      )
+      .subscribe();
+  }
 
   public login(username: string, password: string): void {
     this.authService
@@ -38,6 +59,8 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
   }
 
   public ngOnDestroy(): void {
+    this.isAlive = true;
+
     if (!this.intervalId) {
       return;
     }
@@ -67,8 +90,6 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
 
     const { children } = this.screenShotContainer.nativeElement;
 
-    console.log(children[this.previousScreenshotIndex]);
-
     const currentActiveScreenshot = children[this.previousScreenshotIndex];
     const newActiveScreenshot = children[this.activeScreenshotIndex];
 
@@ -82,6 +103,41 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
   }
 
   public onLogInClick(): void {
+    if (!this.isFormValid) {
+      return;
+    }
+
     this.isSpinnerActive = !this.isSpinnerActive;
+
+    const phoneOrUsernameOrEmail = this.formGroup.get('phoneOrUsernameOrEmail')?.value;
+    const password = this.formGroup.get('password')?.value;
+
+    setTimeout(() => {
+      this.authService
+        .login({ username: phoneOrUsernameOrEmail, password })
+        .pipe(
+          take(1),
+          tap(() => (this.isSpinnerActive = !this.isSpinnerActive)),
+        )
+        .subscribe();
+    }, 2000);
+  }
+
+  private validateForm(values: { phoneOrUsernameOrEmail: string; password: string }): void {
+    const { phoneOrUsernameOrEmail, password } = values;
+
+    if (!password || !phoneOrUsernameOrEmail) {
+      this.isFormValid = false;
+
+      return;
+    }
+
+    if (password.length < 6 || phoneOrUsernameOrEmail.length < 3) {
+      this.isFormValid = false;
+
+      return;
+    }
+
+    this.isFormValid = true;
   }
 }

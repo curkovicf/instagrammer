@@ -69,8 +69,10 @@
             width: 80%;
             flex: 1;
 
-            & > ng-insta-input {
-              margin-bottom: 0.5rem;
+            & > form {
+              & > ng-insta-input {
+                margin-bottom: 0.5rem;
+              }
             }
 
             & > .or-block {

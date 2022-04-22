@@ -14,16 +14,26 @@
         </div>
 
         <div class="form-content">
-          <ng-insta-input
-            inputType="text"
-            placeholder="Phone number, username, or email"
-          ></ng-insta-input>
+          <form [formGroup]="formGroup">
+            <ng-insta-input
+              #phoneOrUsernameOrEmail
+              formControlName="phoneOrUsernameOrEmail"
+              inputType="text"
+              placeholder="Phone number, username, or email"
+            ></ng-insta-input>
 
-          <ng-insta-input inputType="password" placeholder="Password"></ng-insta-input>
+            <ng-insta-input
+              #password
+              formControlName="password"
+              inputType="password"
+              placeholder="Password"
+            ></ng-insta-input>
+          </form>
 
           <ng-inst-cta-button
             title="Log In"
             [isSpinnerActive]="isSpinnerActive"
+            [isDisabled]="isSpinnerActive || !isFormValid"
             (ctaclick)="onLogInClick()"
           ></ng-inst-cta-button>
 

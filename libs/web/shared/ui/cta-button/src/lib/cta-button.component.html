@@ -1,4 +1,4 @@
-<button (click)="ctaclick.emit()">
+<button [class.disabled]="isDisabled" (click)="ctaclick.emit()">
   <p *ngIf="!isSpinnerActive">{{ title }}</p>
-  <ng-insta-apple-spinner *ngIf='isSpinnerActive'></ng-insta-apple-spinner>
+  <ng-insta-apple-spinner *ngIf="isSpinnerActive"></ng-insta-apple-spinner>
 </button>

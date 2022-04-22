@@ -25,4 +25,10 @@
       background-color: rgba(0,149,246,.7) !important;
     }
   }
+
+  & > .disabled {
+    background-color: rgba(0, 149, 246, .3);
+    opacity: 1;
+    pointer-events: none;
+  }
 }
