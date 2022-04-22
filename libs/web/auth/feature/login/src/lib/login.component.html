@@ -20,7 +20,28 @@
 
         <ng-insta-input inputType="password" placeholder="Password"></ng-insta-input>
 
-        <ng-inst-cta-button title="Log In" [isSpinnerActive]='isSpinnerActive' (ctaclick)="onLogInClick()"></ng-inst-cta-button>
+        <ng-inst-cta-button
+          title="Log In"
+          [isSpinnerActive]="isSpinnerActive"
+          (ctaclick)="onLogInClick()"
+        ></ng-inst-cta-button>
+
+        <div class="or-block">
+          <div class="horizontal-line"></div>
+          <p class="text">or</p>
+          <div class="horizontal-line"></div>
+        </div>
+
+        <div class="log-in-with-facebook">
+          <button>
+            <img src="/assets/images/icons8-facebook.svg" alt="Facebook logo" />
+            <span>Log in with Facebook</span>
+          </button>
+        </div>
+
+        <div class="forgot-password">
+          <p>Forgot password?</p>
+        </div>
       </div>
     </div>
 

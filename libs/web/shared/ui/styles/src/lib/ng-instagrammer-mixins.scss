@@ -132,3 +132,10 @@
     }
   }
 }
+
+@mixin remove-default-btn-styles() {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
