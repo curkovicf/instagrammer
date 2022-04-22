@@ -1,52 +1,70 @@
 <article class="wrapper">
-  <div #screenshot_container class="phone-wrapper">
+  <div #screenshot_container class="phones">
     <img class="login-img current-image" src="/assets/images/screenshot_1.png" alt="" />
     <img class="login-img new-img" src="/assets/images/screenshot_2.png" alt="" />
     <img class="login-img" src="/assets/images/screenshot_3.png" alt="" />
     <img class="login-img" src="/assets/images/screenshot_4.png" alt="" />
   </div>
 
-  <div class="login-form-wrapper">
-    <div class="main-form">
-      <div class="instagram-logo">
-        <img src="/assets/images/logo.png" alt="" />
-      </div>
-
-      <div class="form-content">
-        <ng-insta-input
-          inputType="text"
-          placeholder="Phone number, username, or email"
-        ></ng-insta-input>
-
-        <ng-insta-input inputType="password" placeholder="Password"></ng-insta-input>
-
-        <ng-inst-cta-button
-          title="Log In"
-          [isSpinnerActive]="isSpinnerActive"
-          (ctaclick)="onLogInClick()"
-        ></ng-inst-cta-button>
-
-        <div class="or-block">
-          <div class="horizontal-line"></div>
-          <p class="text">or</p>
-          <div class="horizontal-line"></div>
+  <div class="login-form">
+    <div class="wrapper">
+      <section class="main-form">
+        <div class="instagram-logo">
+          <img src="/assets/images/logo.png" alt="" />
         </div>
 
-        <div class="log-in-with-facebook">
-          <button>
-            <img src="/assets/images/icons8-facebook.svg" alt="Facebook logo" />
-            <span>Log in with Facebook</span>
-          </button>
-        </div>
+        <div class="form-content">
+          <ng-insta-input
+            inputType="text"
+            placeholder="Phone number, username, or email"
+          ></ng-insta-input>
 
-        <div class="forgot-password">
-          <p>Forgot password?</p>
+          <ng-insta-input inputType="password" placeholder="Password"></ng-insta-input>
+
+          <ng-inst-cta-button
+            title="Log In"
+            [isSpinnerActive]="isSpinnerActive"
+            (ctaclick)="onLogInClick()"
+          ></ng-inst-cta-button>
+
+          <div class="or-block">
+            <div class="horizontal-line"></div>
+            <p class="text">or</p>
+            <div class="horizontal-line"></div>
+          </div>
+
+          <div class="log-in-with-facebook">
+            <button>
+              <img src="/assets/images/icons8-facebook.svg" alt="Facebook logo" />
+              <span>Log in with Facebook</span>
+            </button>
+          </div>
+
+          <div class="forgot-password">
+            <p>Forgot password?</p>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section class="sign-up-prompt">
+        <div class="text-wrapper">
+          <p class="regular-text">Don't have an account?</p>
+          <a href="">Sign up</a>
+        </div>
+      </section>
+
+      <section class="get-app">
+        <p>Get the app.</p>
+      </section>
+
+      <section class="mobile-downloads">
+        <img class="ios-image" src="/assets/images/download_ios.png" alt="download ios image" />
+        <img
+          class="android-image"
+          src="/assets/images/download_android.png"
+          alt="download android image"
+        />
+      </section>
     </div>
-
-    <div class="sign-up-prompt"></div>
-
-    <div class="mobile-downloads"></div>
   </div>
 </article>

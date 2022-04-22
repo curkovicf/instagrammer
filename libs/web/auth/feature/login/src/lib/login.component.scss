@@ -9,11 +9,11 @@
   padding-top: 2rem;
 
   & > .wrapper {
-    @include box(50%, 38rem);
+    @include box(51%, 36rem);
     @include center-flex-X();
-    justify-content: space-evenly;
+    align-items: flex-start;
 
-    & > .phone-wrapper {
+    & > .phones {
       position: relative;
       background-position: -46px 0;
       background-size: 468.32px 634.15px;
@@ -21,7 +21,6 @@
       height: 581.15px;
       width: 100%;
       margin-bottom: 12px;
-      margin-right: 32px;
       background-image: url("/assets/images/home_phone.png");
 
       & > .login-img {
@@ -40,98 +39,143 @@
       }
     }
 
-    & > .login-form-wrapper {
+    & > .login-form {
       @include box(45%, 100%);
-      @include center-flex-Y();
-      justify-content: space-evenly;
-      //background-color: $color--background-main;
-      //background-color: #262626;
-      border: 1px solid red;
-      padding: 1rem 0;
+      display: flex;
+      justify-content: flex-start;
 
-      & > .main-form {
+      & > .wrapper {
+        @include box(100%, 100%);
         @include center-flex-Y();
-        background-color: $color--background-card;
-        height: 66%;
-        width: 80%;
-        border: 1px solid #dbdbdb;
         justify-content: space-evenly;
-        padding-bottom: 1rem;
 
-        & > .instagram-logo {
-          height: 8rem;
-          @include center-flex-X();
-        }
-
-        & > .form-content {
+        & > .main-form {
+          @include center-flex-Y();
+          background-color: $color--background-card;
+          height: 66%;
           width: 80%;
-          flex: 1;
+          border: 1px solid #dbdbdb;
+          justify-content: space-evenly;
+          padding-bottom: 1rem;
 
-          & > ng-insta-input {
-            margin-bottom: 0.5rem;
+          & > .instagram-logo {
+            height: 6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            @include center-flex-X();
           }
 
-          & > .or-block {
-            margin: 1.1rem 0;
-            @include center-flex-X();
+          & > .form-content {
+            width: 80%;
+            flex: 1;
 
-             & > .horizontal-line {
-               height: 1px;
-               flex-grow: 1;
-               background-color: #dbdbdb;
-             }
-
-            & > .text {
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-              margin: 0 1.1rem;
-              font-size: 0.8rem;
-              font-weight: 600;
-              text-transform: uppercase;
-              color: #8e8e8e;
+            & > ng-insta-input {
+              margin-bottom: 0.5rem;
             }
-          }
 
-          & > .log-in-with-facebook {
-            @include center-flex-X();
-
-            & > button {
+            & > .or-block {
+              margin: 1.1rem 0;
               @include center-flex-X();
-              @include remove-default-btn-styles();
 
-              & > img {
-                @include box(1.4rem, 1.4rem);
-                margin-right: 0.4rem;
+              & > .horizontal-line {
+                height: 1px;
+                flex-grow: 1;
+                background-color: #dbdbdb;
               }
 
-              & > span {
-                font-size: 0.9rem;
-                color: #385185;
+              & > .text {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                margin: 0 1.1rem;
+                font-size: 0.8rem;
                 font-weight: 600;
+                text-transform: uppercase;
+                color: #8e8e8e;
               }
             }
-          }
 
-          & > .forgot-password {
-            margin: 1.2rem 0 0.4rem 0;
-            color: #00376b;
-            font-size: 12px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            text-align: center;
+            & > .log-in-with-facebook {
+              @include center-flex-X();
+
+              & > button {
+                @include center-flex-X();
+                @include remove-default-btn-styles();
+
+                & > img {
+                  @include box(1.4rem, 1.4rem);
+                  margin-right: 0.4rem;
+                }
+
+                & > span {
+                  font-size: 0.9rem;
+                  color: #385185;
+                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                  font-weight: 600;
+                }
+              }
+            }
+
+            & > .forgot-password {
+              margin: 1.2rem 0 0.4rem 0;
+              color: #00376b;
+              font-size: 12px;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+              text-align: center;
+            }
           }
         }
-      }
 
-      & > .sign-up-prompt {
-        height: 10%;
-        background-color: orangered;
-        width: 100%;
-      }
+        & > .sign-up-prompt {
+          @include box(80%, 10%);
+          @include center-flex-X();
+          background-color: $color--background-card;
+          border: 1px solid #dbdbdb;
 
-      & > .mobile-downloads {
-        height: 15%;
-        background-color: blueviolet;
-        width: 100%;
+          &  > .text-wrapper {
+            @include center-flex-X();
+            font-size: 0.8rem;
+
+            & > p {
+              margin-right: 0.35rem;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            }
+
+            & > a {
+              color: #0095f6;
+              font-weight: 600;
+              text-decoration: none;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            }
+          }
+        }
+
+        & > .get-app {
+          @include box(80%, 5%);
+          @include center-flex-X();
+          margin: 0.5rem 0 0 0;
+          font-size: 0.9rem;
+
+          & > p {
+            color: #262626;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          }
+        }
+
+        & > .mobile-downloads {
+          @include box(80%, 10%);
+          @include center-flex-X();
+
+          & > img {
+            margin: 0 0.3rem;
+          }
+
+          & > .ios-image {
+            @include box(8.5rem, 2.5rem);
+          }
+
+          & > .android-image {
+            @include box(8.5rem, 2.5rem);
+          }
+        }
       }
     }
   }
