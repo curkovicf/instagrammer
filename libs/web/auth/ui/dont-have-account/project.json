@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/ui/dont-have-account",
+  "sourceRoot": "libs/web/auth/ui/dont-have-account/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/ui/dont-have-account"],
+      "options": {
+        "jestConfig": "libs/web/auth/ui/dont-have-account/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/ui/dont-have-account/src/**/*.ts",
+          "libs/web/auth/ui/dont-have-account/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

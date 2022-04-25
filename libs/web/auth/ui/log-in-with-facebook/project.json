@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/ui/log-in-with-facebook",
+  "sourceRoot": "libs/web/auth/ui/log-in-with-facebook/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/ui/log-in-with-facebook"],
+      "options": {
+        "jestConfig": "libs/web/auth/ui/log-in-with-facebook/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/ui/log-in-with-facebook/src/**/*.ts",
+          "libs/web/auth/ui/log-in-with-facebook/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

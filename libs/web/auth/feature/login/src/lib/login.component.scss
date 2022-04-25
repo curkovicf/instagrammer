@@ -75,47 +75,6 @@
               }
             }
 
-            & > .or-block {
-              margin: 1.1rem 0;
-              @include center-flex-X();
-
-              & > .horizontal-line {
-                height: 1px;
-                flex-grow: 1;
-                background-color: #dbdbdb;
-              }
-
-              & > .text {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                margin: 0 1.1rem;
-                font-size: 0.8rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                color: #8e8e8e;
-              }
-            }
-
-            & > .log-in-with-facebook {
-              @include center-flex-X();
-
-              & > button {
-                @include center-flex-X();
-                @include remove-default-btn-styles();
-
-                & > img {
-                  @include box(1.4rem, 1.4rem);
-                  margin-right: 0.4rem;
-                }
-
-                & > span {
-                  font-size: 0.9rem;
-                  color: #385185;
-                  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                  font-weight: 600;
-                }
-              }
-            }
-
             & > .forgot-password {
               margin: 1.2rem 0 0.4rem 0;
               color: #00376b;
@@ -126,57 +85,12 @@
           }
         }
 
-        & > .sign-up-prompt {
+        & > ng-insta-dont-have-account {
           @include box(80%, 10%);
-          @include center-flex-X();
-          background-color: $color--background-card;
-          border: 1px solid #dbdbdb;
-
-          &  > .text-wrapper {
-            @include center-flex-X();
-            font-size: 0.8rem;
-
-            & > p {
-              margin-right: 0.35rem;
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            }
-
-            & > a {
-              color: #0095f6;
-              font-weight: 600;
-              text-decoration: none;
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            }
-          }
         }
 
-        & > .get-app {
-          @include box(80%, 5%);
-          @include center-flex-X();
-          margin: 0.5rem 0 0 0;
-          font-size: 0.9rem;
-
-          & > p {
-            color: #262626;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-          }
-        }
-
-        & > .mobile-downloads {
-          @include box(80%, 10%);
-          @include center-flex-X();
-
-          & > img {
-            margin: 0 0.3rem;
-          }
-
-          & > .ios-image {
-            @include box(8.5rem, 2.5rem);
-          }
-
-          & > .android-image {
-            @include box(8.5rem, 2.5rem);
-          }
+        & > ng-insta-phone-get-app {
+          height: 15%;
         }
       }
     }

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/ui/or-block",
+  "sourceRoot": "libs/web/auth/ui/or-block/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/ui/or-block"],
+      "options": {
+        "jestConfig": "libs/web/auth/ui/or-block/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/ui/or-block/src/**/*.ts",
+          "libs/web/auth/ui/or-block/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -6,9 +6,14 @@ import { loginRoutes } from './login.routes';
 import { InputModule } from '@instagrammer/web/shared/ui/input';
 import { CtaButtonModule } from '@instagrammer/web/shared/ui/cta-button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrBlockModule } from '@instagrammer/web/auth/ui/or-block';
+import { PhoneGetAppModule } from '@instagrammer/web/auth/ui/phone-get-app';
+import { CardModule } from '@instagrammer/web/shared/ui/card';
+import { DontHaveAccountModule } from '@instagrammer/web/auth/ui/dont-have-account';
+import { LogInWithFacebookModule } from '@instagrammer/web/auth/ui/log-in-with-facebook';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule, OrBlockModule, PhoneGetAppModule, CardModule, DontHaveAccountModule, LogInWithFacebookModule],
   declarations: [LoginComponent],
   exports: [LoginComponent],
 })

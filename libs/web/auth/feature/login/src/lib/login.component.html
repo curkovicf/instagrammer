@@ -16,14 +16,12 @@
         <div class="form-content">
           <form [formGroup]="formGroup">
             <ng-insta-input
-              #phoneOrUsernameOrEmail
               formControlName="phoneOrUsernameOrEmail"
               inputType="text"
               placeholder="Phone number, username, or email"
             ></ng-insta-input>
 
             <ng-insta-input
-              #password
               formControlName="password"
               inputType="password"
               placeholder="Password"
@@ -37,18 +35,9 @@
             (ctaclick)="onLogInClick()"
           ></ng-inst-cta-button>
 
-          <div class="or-block">
-            <div class="horizontal-line"></div>
-            <p class="text">or</p>
-            <div class="horizontal-line"></div>
-          </div>
+          <ng-insta-or-block></ng-insta-or-block>
 
-          <div class="log-in-with-facebook">
-            <button>
-              <img src="/assets/images/icons8-facebook.svg" alt="Facebook logo" />
-              <span>Log in with Facebook</span>
-            </button>
-          </div>
+          <ng-insta-log-in-with-facebook></ng-insta-log-in-with-facebook>
 
           <div class="forgot-password">
             <p>Forgot password?</p>
@@ -56,25 +45,9 @@
         </div>
       </section>
 
-      <section class="sign-up-prompt">
-        <div class="text-wrapper">
-          <p class="regular-text">Don't have an account?</p>
-          <a href="">Sign up</a>
-        </div>
-      </section>
+      <ng-insta-dont-have-account></ng-insta-dont-have-account>
 
-      <section class="get-app">
-        <p>Get the app.</p>
-      </section>
-
-      <section class="mobile-downloads">
-        <img class="ios-image" src="/assets/images/download_ios.png" alt="download ios image" />
-        <img
-          class="android-image"
-          src="/assets/images/download_android.png"
-          alt="download android image"
-        />
-      </section>
+      <ng-insta-phone-get-app></ng-insta-phone-get-app>
     </div>
   </div>
 </article>
