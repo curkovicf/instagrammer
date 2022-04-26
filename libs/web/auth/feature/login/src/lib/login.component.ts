@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data-access';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -15,15 +8,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnDestroy, AfterViewInit {
+export class LoginComponent implements OnDestroy {
   private isAlive = true;
-  private intervalId: NodeJS.Timer | undefined;
-  private previousScreenshotIndex = 0;
-  private activeScreenshotIndex = 1;
-
-  @ViewChild('screenshot_container')
-  screenShotContainer: ElementRef | undefined;
-
   public isSpinnerActive = false;
   public isFormValid = false;
 
@@ -31,7 +17,6 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly renderer2: Renderer2,
     private readonly formBuilder: FormBuilder,
   ) {
     this.formGroup = this.formBuilder.group({
@@ -54,52 +39,8 @@ export class LoginComponent implements OnDestroy, AfterViewInit {
       .subscribe(result => console.log('Result ', result));
   }
 
-  public ngAfterViewInit(): void {
-    this.intervalId = setInterval(() => this.animateScreenshots(), 6000);
-  }
-
   public ngOnDestroy(): void {
-    this.isAlive = true;
-
-    if (!this.intervalId) {
-      return;
-    }
-
-    clearInterval(this.intervalId);
-  }
-
-  private animateScreenshots(): void {
-    this.activeScreenshotIndex = this.stepIndex(this.activeScreenshotIndex);
-    this.previousScreenshotIndex = this.stepIndex(this.previousScreenshotIndex);
-
-    this.applyStyles();
-  }
-
-  private stepIndex(currIndex: number): number {
-    if (currIndex === 3) {
-      return 0;
-    }
-
-    return ++currIndex;
-  }
-
-  private applyStyles(): void {
-    if (!this.screenShotContainer) {
-      throw new Error('Screenshot container undefined.');
-    }
-
-    const { children } = this.screenShotContainer.nativeElement;
-
-    const currentActiveScreenshot = children[this.previousScreenshotIndex];
-    const newActiveScreenshot = children[this.activeScreenshotIndex];
-
-    for (const childImg of children) {
-      this.renderer2.removeClass(childImg, 'current-image');
-      this.renderer2.removeClass(childImg, 'new-img');
-    }
-
-    this.renderer2.addClass(currentActiveScreenshot, 'current-image');
-    this.renderer2.addClass(newActiveScreenshot, 'new-img');
+    this.isAlive = false;
   }
 
   public onLogInClick(): void {

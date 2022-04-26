@@ -18,6 +18,7 @@
     "web-auth-ui-log-in-with-facebook": "libs/web/auth/ui/log-in-with-facebook",
     "web-auth-ui-or-block": "libs/web/auth/ui/or-block",
     "web-auth-ui-phone-get-app": "libs/web/auth/ui/phone-get-app",
+    "web-auth-ui-rotating-phones": "libs/web/auth/ui/rotating-phones",
     "web-auth-util": "libs/web/auth/util",
     "web-dummy-home": "libs/web/dummy-home",
     "web-ng-instagrammer": "apps/web/ng-instagrammer",

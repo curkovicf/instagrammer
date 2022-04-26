@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/ui/rotating-phones",
+  "sourceRoot": "libs/web/auth/ui/rotating-phones/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/ui/rotating-phones"],
+      "options": {
+        "jestConfig": "libs/web/auth/ui/rotating-phones/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/ui/rotating-phones/src/**/*.ts",
+          "libs/web/auth/ui/rotating-phones/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
