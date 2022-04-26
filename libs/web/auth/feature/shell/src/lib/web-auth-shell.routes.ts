@@ -4,7 +4,9 @@ import { LayoutComponent } from './layout/layout.component';
 export const authRoutes: Routes = [
   {
     path: '',
+    component: LayoutComponent,
     redirectTo: '/auth/login',
+    pathMatch: 'full',
   },
   {
     path: 'login',
@@ -14,6 +16,7 @@ export const authRoutes: Routes = [
   {
     path: 'register',
     // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-    loadChildren: async () => (await import('@instagrammer/web/auth/feature/register')).RegisterModule,
+    loadChildren: async () =>
+      (await import('@instagrammer/web/auth/feature/register')).RegisterModule,
   },
 ];

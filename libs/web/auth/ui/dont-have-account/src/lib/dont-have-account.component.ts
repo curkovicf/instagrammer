@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <ng-insta-card>
       <div class="card-content text-wrapper">
         <p class="regular-text">Don't have an account?</p>
-        <a href="">Sign up</a>
+        <a [routerLink]="['/auth/register']">Sign up</a>
       </div>
     </ng-insta-card>
   `,
