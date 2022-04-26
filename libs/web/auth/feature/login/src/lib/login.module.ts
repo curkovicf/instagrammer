@@ -12,9 +12,10 @@ import { CardModule } from '@instagrammer/web/shared/ui/card';
 import { DontHaveAccountModule } from '@instagrammer/web/auth/ui/dont-have-account';
 import { LogInWithFacebookModule } from '@instagrammer/web/auth/ui/log-in-with-facebook';
 import { RotatingPhonesModule } from '@instagrammer/web/auth/ui/rotating-phones';
+import { LogoModule } from '@instagrammer/web/auth/ui/logo';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule, OrBlockModule, PhoneGetAppModule, CardModule, DontHaveAccountModule, LogInWithFacebookModule, RotatingPhonesModule],
+  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule, OrBlockModule, PhoneGetAppModule, CardModule, DontHaveAccountModule, LogInWithFacebookModule, RotatingPhonesModule, LogoModule],
   declarations: [LoginComponent],
   exports: [LoginComponent],
 })
