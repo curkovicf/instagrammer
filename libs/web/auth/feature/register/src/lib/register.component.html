@@ -1,6 +1,55 @@
-<h1>Register</h1>
+<ng-insta-card>
+  <div class="card-content">
+    <ng-insta-logo></ng-insta-logo>
 
-<form>
-  <input placeholder="Username" type="text" />
-  <input placeholder="Password" type="text" />
-</form>
+    <h2>Sign up to see photos and videos from your friends.</h2>
+
+    <ng-inst-cta-button title="Log in with Facebook"></ng-inst-cta-button>
+
+    <ng-insta-or-block></ng-insta-or-block>
+    <form>
+      <ng-insta-input
+        formControlName="phoneOrEmail"
+        inputType="text"
+        placeholder="Mobile number or Email"
+      ></ng-insta-input>
+
+      <ng-insta-input
+        formControlName="fullName"
+        inputType="text"
+        placeholder="Full Name"
+      ></ng-insta-input>
+
+      <ng-insta-input
+        formControlName="username"
+        inputType="text"
+        placeholder="Username"
+      ></ng-insta-input>
+
+      <ng-insta-input
+        formControlName="password"
+        inputType="password"
+        placeholder="Password"
+      ></ng-insta-input>
+    </form>
+
+    <ng-inst-cta-button title="Next"></ng-inst-cta-button>
+
+    <p>
+      By signing up, you agree to our
+      <a href="https://help.instagram.com/581066165581870" class="terms-keyword">Terms</a> . Learn
+      how we collect, use and share your data in our
+      <a href="https://help.instagram.com/519522125107875" class="terms-keyword">Data Policy</a> and
+      how we use cookies and similar technology in our
+      <a href="https://www.instagram.com/legal/cookies/" class="terms-keyword">Cookies Policy</a> .
+    </p>
+  </div>
+</ng-insta-card>
+
+<ng-insta-text-with-link-in-card
+  [text]="'Have an account?'"
+  [url]="'/auth/login'"
+  [urlText]="'Log in'"
+></ng-insta-text-with-link-in-card>
+
+<ng-insta-phone-get-app></ng-insta-phone-get-app>

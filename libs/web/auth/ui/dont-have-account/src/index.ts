@@ -1,2 +1,2 @@
-export * from './lib/dont-have-account.module';
-export * from './lib/dont-have-account.component';
+export * from './lib/text-with-link-in-card.module';
+export * from './lib/text-with-link-in-card.component';

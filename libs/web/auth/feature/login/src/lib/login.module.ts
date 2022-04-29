@@ -9,13 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrBlockModule } from '@instagrammer/web/auth/ui/or-block';
 import { PhoneGetAppModule } from '@instagrammer/web/auth/ui/phone-get-app';
 import { CardModule } from '@instagrammer/web/shared/ui/card';
-import { DontHaveAccountModule } from '@instagrammer/web/auth/ui/dont-have-account';
+import { TextWithLinkInCardModule } from '@instagrammer/web/auth/ui/dont-have-account';
 import { LogInWithFacebookModule } from '@instagrammer/web/auth/ui/log-in-with-facebook';
 import { RotatingPhonesModule } from '@instagrammer/web/auth/ui/rotating-phones';
 import { LogoModule } from '@instagrammer/web/auth/ui/logo';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule, OrBlockModule, PhoneGetAppModule, CardModule, DontHaveAccountModule, LogInWithFacebookModule, RotatingPhonesModule, LogoModule],
+  imports: [CommonModule, RouterModule.forChild(loginRoutes), InputModule, CtaButtonModule, ReactiveFormsModule, OrBlockModule, PhoneGetAppModule, CardModule, TextWithLinkInCardModule, LogInWithFacebookModule, RotatingPhonesModule, LogoModule],
   declarations: [LoginComponent],
   exports: [LoginComponent],
 })
