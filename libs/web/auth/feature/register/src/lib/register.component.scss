@@ -21,25 +21,35 @@
         font-size: 17px;
         font-weight: 600;
         line-height: 20px;
-        margin: 0 40px 10px;
+        margin: 0 0 1rem 0;
         text-align: center;
         color: #8e8e8e;
       }
 
-       & > p {
-         color: #8e8e8e;
-         font-size: 12px;
-         line-height: 16px;
-         margin: 10px 0;
-         text-align: center;
-         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      & > form {
+        & > ng-insta-input {
+          margin: 0.4rem 0;
+        }
+      }
 
-         & > .terms-keyword {
-           text-decoration: none;
-           color: #8e8e8e;
-           font-weight: 600;
-         }
-       }
+      & > .cta-next {
+        margin: 1rem 0 1.3rem 0;
+      }
+
+      & > .terms-text {
+        color: #8e8e8e;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0.4rem 0 3rem 0;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+        & > .terms-keyword {
+          text-decoration: none;
+          color: #8e8e8e;
+          font-weight: 600;
+        }
+      }
     }
   }
 

@@ -18,8 +18,8 @@ import { Component } from '@angular/core';
 
         & > .instagram-logo {
           height: 6rem;
-          margin-top: 2.5rem;
-          margin-bottom: 1.5rem;
+          margin-top: 2.1rem;
+          margin-bottom: 0.8rem;
           @include center-flex-X();
         }
       }

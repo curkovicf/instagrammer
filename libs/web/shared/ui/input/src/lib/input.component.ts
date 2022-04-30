@@ -124,7 +124,9 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     this.isInputFocused = false;
   }
 
-  public onShowOrHidePassword(): void {
+  public onShowOrHidePassword(mouseEvent: MouseEvent): void {
+    mouseEvent.preventDefault();
+
     this.isPasswordHidden = !this.isPasswordHidden;
 
     if (this.inputType === 'password') {

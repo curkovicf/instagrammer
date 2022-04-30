@@ -4,9 +4,7 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": [
-        "plugin:@nrwl/nx/angular"
-      ],
+      "extends": ["plugin:@nrwl/nx/angular"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",

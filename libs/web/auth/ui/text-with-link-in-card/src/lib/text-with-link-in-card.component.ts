@@ -23,9 +23,6 @@ export class TextWithLinkInCardComponent implements OnInit {
   urlText!: string;
 
   public ngOnInit(): void {
-    console.log(this.text);
-    console.log(this.url);
-    console.log(this.urlText);
     if (!this.text || !this.url || !this.urlText) {
       throw new Error('One of the inputs is missing !');
     }

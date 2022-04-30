@@ -17,7 +17,7 @@
     (focusout)="onFocusOut()"
   />
 
-  <div *ngIf="isPasswordType" class="show-hide-password" (click)="onShowOrHidePassword()">
+  <div *ngIf="isPasswordType && inputElement.value.length > 0" class="show-hide-password" (click)="onShowOrHidePassword($event)">
     <button>{{ isPasswordHidden ? 'Show' : 'Hide' }}</button>
   </div>
 </label>

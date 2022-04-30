@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'web-auth-ui-dont-have-account',
+  displayName: 'web-auth-ui-text-with-link-in-card',
   preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../../coverage/libs/web/auth/ui/dont-have-account',
+  coverageDirectory: '../../../../../coverage/libs/web/auth/ui/text-with-link-in-card',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

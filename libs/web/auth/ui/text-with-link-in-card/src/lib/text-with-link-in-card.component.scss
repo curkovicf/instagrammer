@@ -1,0 +1,28 @@
+@import 'ng-instagrammer-colors';
+@import 'ng-instagrammer-fonts';
+@import 'ng-instagrammer-mixins';
+
+:host {
+  display: block;
+
+  & > ng-insta-card {
+    & > .text-wrapper {
+      @include center-flex-X();
+      font-size: 14px;
+
+      & > p {
+        margin-right: 0.35rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+          sans-serif;
+      }
+
+      & > a {
+        color: #0095f6;
+        font-weight: 600;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+          sans-serif;
+      }
+    }
+  }
+}
