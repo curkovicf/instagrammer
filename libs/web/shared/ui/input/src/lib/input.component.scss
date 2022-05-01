@@ -46,19 +46,32 @@
       @include on-input-focus(default);
     }
 
-    & > .show-hide-password {
-      width: 3rem;
+    & > .response-wrapper {
+      @include center-flex-X();
 
-      & > button {
-        appearance: none;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        cursor: pointer;
-        color: #262626;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        font-weight: 600;
+      & > .error-icon {
+        margin-right: 0.4rem;
+        @include center-flex-X();
+
+        & > .svg-icon {
+          @include box(1.6rem, 1.6rem);
+        }
+      }
+
+      & > .show-hide-password {
+        width: 3rem;
+
+        & > button {
+          appearance: none;
+          background-color: transparent;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          color: #262626;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+        }
       }
     }
   }
@@ -76,4 +89,8 @@
   height: 2rem !important;
   font-size: 12px !important;
   margin-top: 10px;
+}
+
+:host.ng-invalid {
+
 }

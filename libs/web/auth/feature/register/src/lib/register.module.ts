@@ -10,6 +10,7 @@ import { InputModule } from '@instagrammer/web/shared/ui/input';
 import { CtaButtonModule } from '@instagrammer/web/shared/ui/cta-button';
 import { PhoneGetAppModule } from '@instagrammer/web/auth/ui/phone-get-app';
 import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-link-in-card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-li
     CtaButtonModule,
     PhoneGetAppModule,
     TextWithLinkInCardModule,
+    ReactiveFormsModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

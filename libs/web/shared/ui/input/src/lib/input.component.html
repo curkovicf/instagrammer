@@ -17,7 +17,17 @@
     (focusout)="onFocusOut()"
   />
 
-  <div *ngIf="isPasswordType && inputElement.value.length > 0" class="show-hide-password" (click)="onShowOrHidePassword($event)">
-    <button>{{ isPasswordHidden ? 'Show' : 'Hide' }}</button>
+  <div class="response-wrapper">
+    <div class="error-icon">
+      <img class="svg-icon" src="/assets/icons/close-circle-outline-svgrepo-com.svg" alt="" />
+    </div>
+
+    <div
+      *ngIf="isPasswordType && inputElement.value.length > 0"
+      class="show-hide-password"
+      (click)="onShowOrHidePassword($event)"
+    >
+      <button>{{ isPasswordHidden ? 'Show' : 'Hide' }}</button>
+    </div>
   </div>
 </label>
