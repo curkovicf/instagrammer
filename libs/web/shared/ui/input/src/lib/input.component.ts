@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -16,6 +17,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   selector: 'ng-insta-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements ControlValueAccessor, OnInit, AfterViewInit {
   @ViewChild('inputElement')
@@ -41,6 +43,8 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
   public isInputFocused = false;
   public isPasswordHidden = true;
   public isPasswordType = false;
+  public isValid = false;
+  public isTouched = false;
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -50,6 +54,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     // so we mark the dependency as optional.
     @Optional()
     private ngControl: NgControl,
+    private elementRef: ElementRef,
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -65,6 +70,8 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
   }
 
   public ngAfterViewInit(): void {
+    this.checkIfValid();
+
     if (!this.initialValue) {
       return;
     }
@@ -111,17 +118,22 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
   public onTouched() {}
 
   onInputChange($event: Event) {
+    this.checkIfValid();
+
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange($event.target.value);
   }
 
   public onFocusIn(): void {
+    this.isTouched = true;
     this.isInputFocused = true;
   }
 
   public onFocusOut(): void {
     this.isInputFocused = false;
+
+    this.checkIfValid();
   }
 
   public onShowOrHidePassword(mouseEvent: MouseEvent): void {
@@ -136,5 +148,17 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     }
 
     this.inputType = 'password';
+  }
+
+  private checkIfValid(): void {
+    const invalid = this.elementRef.nativeElement.classList.contains('ng-invalid');
+
+    if (invalid) {
+      this.isValid = false;
+
+      return;
+    }
+
+    this.isValid = true;
   }
 }

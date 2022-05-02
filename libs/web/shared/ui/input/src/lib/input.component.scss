@@ -49,11 +49,15 @@
     & > .response-wrapper {
       @include center-flex-X();
 
-      & > .error-icon {
+      & > .icon-wrapper {
         margin-right: 0.4rem;
         @include center-flex-X();
 
-        & > .svg-icon {
+        & > .valid-icon {
+          @include box(1.4rem, 1.4rem);
+        }
+
+        & > .invalid-icon {
           @include box(1.6rem, 1.6rem);
         }
       }
@@ -89,8 +93,4 @@
   height: 2rem !important;
   font-size: 12px !important;
   margin-top: 10px;
-}
-
-:host.ng-invalid {
-
 }

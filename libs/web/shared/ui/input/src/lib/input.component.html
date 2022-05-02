@@ -18,8 +18,12 @@
   />
 
   <div class="response-wrapper">
-    <div class="error-icon">
-      <img class="svg-icon" src="/assets/icons/close-circle-outline-svgrepo-com.svg" alt="" />
+    <div *ngIf="isValid && !isInputFocused && isTouched" class="icon-wrapper">
+      <img class="valid-icon" src="/assets/icons/ok-circle-svgrepo-com.svg" alt="" />
+    </div>
+
+    <div *ngIf="!isValid && !isInputFocused && isTouched" class="icon-wrapper">
+      <img class="invalid-icon" src="/assets/icons/close-circle-outline-svgrepo-com.svg" alt="" />
     </div>
 
     <div
