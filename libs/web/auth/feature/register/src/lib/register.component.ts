@@ -1,20 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RegisterViewModel } from '@instagrammer/web/auth/data-access';
 
 @Component({
   selector: 'ng-inst-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [RegisterViewModel],
 })
 export class RegisterComponent {
-  public readonly registerForm: FormGroup;
-
-  constructor(private readonly formBuilder: FormBuilder) {
-    this.registerForm = this.formBuilder.group({
-      phoneOrEmail: new FormControl('', [Validators.required]),
-      fullName: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-    });
-  }
+  constructor(public readonly registerViewModel: RegisterViewModel) {}
 }
