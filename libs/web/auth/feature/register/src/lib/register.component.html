@@ -8,44 +8,46 @@
 
     <ng-insta-or-block></ng-insta-or-block>
 
-    <ng-container *ngIf="registerViewModel.vm$ | async as vm">
-      <ng-container *ngIf="vm.activeView === 'baseInfo'">
-        <form [formGroup]="vm.baseInfoForm">
-          <ng-insta-input
-            formControlName="phoneOrEmail"
-            inputType="text"
-            placeholder="Mobile number or Email"
-          ></ng-insta-input>
+<!--    <ng-container *ngIf="registerViewModel.vm$ | async as vm">-->
+<!--      <ng-container *ngIf="vm.activeView === 'baseInfo'">-->
+<!--        <form [formGroup]="vm.baseInfoForm">-->
+<!--          <ng-insta-input-->
+<!--            formControlName="phoneOrEmail"-->
+<!--            inputType="text"-->
+<!--            placeholder="Mobile number or Email"-->
+<!--          ></ng-insta-input>-->
 
-          <ng-insta-input
-            formControlName="fullName"
-            inputType="text"
-            placeholder="Full Name"
-          ></ng-insta-input>
+<!--          <ng-insta-input-->
+<!--            formControlName="fullName"-->
+<!--            inputType="text"-->
+<!--            placeholder="Full Name"-->
+<!--          ></ng-insta-input>-->
 
-          <ng-insta-input
-            formControlName="username"
-            inputType="text"
-            placeholder="Username"
-          ></ng-insta-input>
+<!--          <ng-insta-input-->
+<!--            formControlName="username"-->
+<!--            inputType="text"-->
+<!--            placeholder="Username"-->
+<!--          ></ng-insta-input>-->
 
-          <ng-insta-input
-            formControlName="password"
-            inputType="password"
-            placeholder="Password"
-          ></ng-insta-input>
-        </form>
+<!--          <ng-insta-input-->
+<!--            formControlName="password"-->
+<!--            inputType="password"-->
+<!--            placeholder="Password"-->
+<!--          ></ng-insta-input>-->
+<!--        </form>-->
 
-        <ng-inst-cta-button
-          class="cta-next"
-          title="Next"
-          [isDisabled]="vm.baseInfoForm.invalid"
-          (ctaclick)="registerViewModel.stepToDob()"
-        ></ng-inst-cta-button>
-      </ng-container>
+<!--        <ng-inst-cta-button-->
+<!--          class="cta-next"-->
+<!--          title="Next"-->
+<!--          [isDisabled]="vm.baseInfoForm.invalid"-->
+<!--          (ctaclick)="registerViewModel.stepToDob()"-->
+<!--        ></ng-inst-cta-button>-->
+<!--      </ng-container>-->
 
-      <ng-container></ng-container>
-    </ng-container>
+<!--      <ng-container></ng-container>-->
+<!--    </ng-container>-->
+
+    <ng-insta-dob-register-step></ng-insta-dob-register-step>
 
     <p class="terms-text">
       By signing up, you agree to our

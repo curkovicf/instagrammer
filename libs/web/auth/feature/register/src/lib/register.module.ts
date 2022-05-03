@@ -11,6 +11,7 @@ import { CtaButtonModule } from '@instagrammer/web/shared/ui/cta-button';
 import { PhoneGetAppModule } from '@instagrammer/web/auth/ui/phone-get-app';
 import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-link-in-card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DobRegisterStepModule } from '@instagrammer/web/auth/ui/dob-register-step';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PhoneGetAppModule,
     TextWithLinkInCardModule,
     ReactiveFormsModule,
+    DobRegisterStepModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

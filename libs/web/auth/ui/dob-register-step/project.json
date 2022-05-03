@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/ui/dob-register-step",
+  "sourceRoot": "libs/web/auth/ui/dob-register-step/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/ui/dob-register-step"],
+      "options": {
+        "jestConfig": "libs/web/auth/ui/dob-register-step/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/ui/dob-register-step/src/**/*.ts",
+          "libs/web/auth/ui/dob-register-step/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

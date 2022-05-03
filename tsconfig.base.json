@@ -46,6 +46,12 @@
       "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
       "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
       "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
+      "@instagrammer/web/auth/ui/base-info-register-step": [
+        "libs/web/auth/ui/base-info-register-step/src/index.ts"
+      ],
+      "@instagrammer/web/auth/ui/dob-register-step": [
+        "libs/web/auth/ui/dob-register-step/src/index.ts"
+      ],
       "@instagrammer/web/auth/ui/log-in-with-facebook": [
         "libs/web/auth/ui/log-in-with-facebook/src/index.ts"
       ],
