@@ -12,6 +12,7 @@ import { PhoneGetAppModule } from '@instagrammer/web/auth/ui/phone-get-app';
 import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-link-in-card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DobRegisterStepModule } from '@instagrammer/web/auth/ui/dob-register-step';
+import { BaseInfoRegisterStepModule } from '@instagrammer/web/auth/ui/base-info-register-step';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { DobRegisterStepModule } from '@instagrammer/web/auth/ui/dob-register-st
     TextWithLinkInCardModule,
     ReactiveFormsModule,
     DobRegisterStepModule,
+    BaseInfoRegisterStepModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterDto } from '@instagrammer/api/auth/data-access';
 
 export enum ActiveView {
   baseInfo = 'baseInfo',
@@ -9,35 +9,25 @@ export enum ActiveView {
 
 export interface RegisterState {
   activeView: ActiveView;
-  baseInfoForm: FormGroup;
-  dobForm: FormGroup;
+  registerDto: RegisterDto | null;
 }
 
 @Injectable()
 export class RegisterViewModel extends ComponentStore<RegisterState> {
-  public vm$ = this.select(s => ({
-    activeView: s.activeView,
-    baseInfoForm: s.baseInfoForm,
-    dobForm: s.dobForm,
-  }));
+  public vm$ = this.select(state => ({ activeVIew: state.activeView }));
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor() {
     super({
       activeView: ActiveView.baseInfo,
-      baseInfoForm: formBuilder.group({
-        phoneOrEmail: new FormControl('', [Validators.required]),
-        fullName: new FormControl('', [Validators.required]),
-        username: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
-      }),
-      dobForm: formBuilder.group({
-        dob: new FormControl('', [Validators.required]),
-      }),
+      registerDto: null,
     });
   }
 
-  public stepToDob(): void {
-    this.patchState({ activeView: ActiveView.dob });
+  public stepToDob(registerDto: RegisterDto): void {
+    this.patchState({
+      activeView: ActiveView.dob,
+      registerDto,
+    });
   }
 
   public stepBackFromDob(): void {
