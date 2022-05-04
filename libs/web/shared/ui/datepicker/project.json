@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/shared/ui/datepicker",
+  "sourceRoot": "libs/web/shared/ui/datepicker/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/shared/ui/datepicker"],
+      "options": {
+        "jestConfig": "libs/web/shared/ui/datepicker/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/shared/ui/datepicker/src/**/*.ts",
+          "libs/web/shared/ui/datepicker/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

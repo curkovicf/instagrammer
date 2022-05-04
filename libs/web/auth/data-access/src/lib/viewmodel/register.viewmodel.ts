@@ -10,6 +10,7 @@ export enum ActiveView {
 export interface RegisterState {
   activeView: ActiveView;
   registerDto: RegisterDto | null;
+  dob: Date | null;
 }
 
 @Injectable()
@@ -20,6 +21,7 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
     super({
       activeView: ActiveView.baseInfo,
       registerDto: null,
+      dob: null,
     });
   }
 
@@ -31,6 +33,10 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
   }
 
   public stepBackFromDob(): void {
-    this.patchState({ activeView: ActiveView.baseInfo });
+    this.patchState({ activeView: ActiveView.baseInfo, dob: null });
+  }
+
+  public submitForm(dob: Date): void {
+    this.patchState({ dob });
   }
 }

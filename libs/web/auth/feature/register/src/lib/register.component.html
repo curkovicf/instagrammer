@@ -1,9 +1,21 @@
-<ng-container *ngIf="registerViewModel.vm$ | async as vm">
-  <ng-insta-base-info-register-step
-    *ngIf="vm.activeVIew === 'baseInfo'"
-    (next)="registerViewModel.stepToDob($event)"
-  ></ng-insta-base-info-register-step>
-</ng-container>
+<!--<ng-container *ngIf="registerViewModel.vm$ | async as vm">-->
+<!--  <ng-insta-base-info-register-step-->
+<!--    *ngIf="vm.activeVIew === 'baseInfo'"-->
+<!--    (next)="registerViewModel.stepToDob($event)"-->
+<!--  ></ng-insta-base-info-register-step>-->
+
+<!--  <ng-insta-dob-register-step-->
+<!--    *ngIf="vm.activeVIew === 'dob'"-->
+<!--    (next)="registerViewModel.submitForm($event)"-->
+<!--    (stepback)="registerViewModel.stepBackFromDob()"-->
+<!--  ></ng-insta-dob-register-step>-->
+<!--</ng-container>-->
+
+<ng-insta-card>
+  <div class="card-content">
+    <ng-insta-datepicker></ng-insta-datepicker>
+  </div>
+</ng-insta-card>
 
 <ng-insta-text-with-link-in-card
   [text]="'Have an account?'"

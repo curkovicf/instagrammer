@@ -30,6 +30,7 @@
     "web-shared-ui-assets": "libs/web/shared/ui/assets",
     "web-shared-ui-card": "libs/web/shared/ui/card",
     "web-shared-ui-cta-button": "libs/web/shared/ui/cta-button",
+    "web-shared-ui-datepicker": "libs/web/shared/ui/datepicker",
     "web-shared-ui-input": "libs/web/shared/ui/input",
     "web-shared-ui-styles": "libs/web/shared/ui/styles",
     "web-shell-feature": "libs/web/shell/feature",

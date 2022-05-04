@@ -13,6 +13,7 @@ import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-li
 import { ReactiveFormsModule } from '@angular/forms';
 import { DobRegisterStepModule } from '@instagrammer/web/auth/ui/dob-register-step';
 import { BaseInfoRegisterStepModule } from '@instagrammer/web/auth/ui/base-info-register-step';
+import { DatepickerModule } from '@instagrammer/web/shared/ui/datepicker';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { BaseInfoRegisterStepModule } from '@instagrammer/web/auth/ui/base-info-
     ReactiveFormsModule,
     DobRegisterStepModule,
     BaseInfoRegisterStepModule,
+    DatepickerModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

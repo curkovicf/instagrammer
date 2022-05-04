@@ -8,6 +8,15 @@
   min-height: 80vh;
   padding-top: 2rem;
 
+  //  TODO: Delete this stuff
+  & > ng-insta-card {
+    width: 22rem;
+    height: 20rem;
+    margin-bottom: 2rem;
+
+    & > .card-content {}
+  }
+
   & > ng-insta-base-info-register-step {
     width: 22rem;
     margin-bottom: 1rem;
