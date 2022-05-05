@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'ng-insta-datepicker',
@@ -7,14 +7,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatepickerComponent {
+  @Output()
+  datechange: EventEmitter<Date> = new EventEmitter();
+
   public months: string[] = [];
   public days: number[] = [];
   public years: number[] = [];
 
-  public selectedMonth: string;
-  public selectedMonthIndex: number;
-  public selectedDay: number;
-  public selectedYear: number;
+  private selectedMonth: string;
+  private selectedMonthIndex: number;
+  private selectedDay: number;
+  private selectedYear: number;
 
   constructor() {
     const today = new Date();
@@ -63,16 +66,26 @@ export class DatepickerComponent {
 
   public onUpdateDays(dayIndex: number): void {
     this.selectedDay = ++dayIndex;
+
+    this.datechange.emit(this.getCurrentDob());
   }
 
   public onUpdateMonths(monthIndex: number): void {
     this.selectedMonthIndex = monthIndex;
     this.selectedMonth = this.months[monthIndex];
     this.initDays();
+
+    this.datechange.emit(this.getCurrentDob());
   }
 
   public onUpdateYears(year: string): void {
     this.selectedYear = +year;
     this.initDays();
+
+    this.datechange.emit(this.getCurrentDob());
+  }
+
+  public getCurrentDob(): Date {
+    return new Date(this.selectedYear, this.selectedMonthIndex, this.selectedDay);
   }
 }

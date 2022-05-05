@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { DatepickerComponent } from '@instagrammer/web/shared/ui/datepicker';
 
 @Component({
   selector: 'ng-insta-dob-register-step',
@@ -12,5 +13,24 @@ export class DobRegisterStepComponent {
   @Output()
   stepback: EventEmitter<void> = new EventEmitter();
 
-  //  URL: https://help.instagram.com/1558337079003881
+  @ViewChild(DatepickerComponent)
+  datepickerComponent!: DatepickerComponent;
+
+  public isUnderAge = true;
+
+  public onDobChange(selectedDob: Date): void {
+    const underAgeLimitDate = new Date();
+
+    underAgeLimitDate.setFullYear(underAgeLimitDate.getFullYear() - 13);
+
+    if (underAgeLimitDate > selectedDob) {
+      this.isUnderAge = false;
+
+      return;
+    }
+
+    this.isUnderAge = true;
+  }
 }
+
+//  URL: https://help.instagram.com/1558337079003881
