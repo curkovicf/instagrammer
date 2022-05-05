@@ -11,11 +11,10 @@
 <!--  ></ng-insta-dob-register-step>-->
 <!--</ng-container>-->
 
-<ng-insta-card>
-  <div class="card-content">
-    <ng-insta-datepicker></ng-insta-datepicker>
-  </div>
-</ng-insta-card>
+<ng-insta-dob-register-step
+  (next)="registerViewModel.submitForm($event)"
+  (stepback)="registerViewModel.stepBackFromDob()"
+></ng-insta-dob-register-step>
 
 <ng-insta-text-with-link-in-card
   [text]="'Have an account?'"
