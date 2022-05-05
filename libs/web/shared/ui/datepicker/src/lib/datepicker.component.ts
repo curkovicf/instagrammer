@@ -27,6 +27,7 @@ export class DatepickerComponent {
   public years: number[] = [];
 
   public selectedMonth: string;
+  public selectedMonthIndex: number;
   public selectedDay: number;
   public selectedYear: number;
 
@@ -35,11 +36,12 @@ export class DatepickerComponent {
 
     this.selectedYear = today.getFullYear();
     this.selectedMonth = `${today.getMonth()}`;
+    this.selectedMonthIndex = 0;
     this.selectedDay = today.getDate();
 
     this.initYears();
     this.initMonths();
-    this.initDays(today);
+    this.initDays();
   }
 
   private initYears(): void {
@@ -65,36 +67,28 @@ export class DatepickerComponent {
     ];
   }
 
-  private initDays(date: Date): void {
+  private initDays(): void {
     this.days.length = 0;
-
-    const daysInMonthCount = this.daysInMonth(date.getMonth() + 1, date.getFullYear());
+    const daysInMonthCount = new Date(this.selectedYear, this.selectedMonthIndex + 1, 0).getDate();
 
     for (let index = 1; index < daysInMonthCount + 1; index++) {
       this.days.push(index);
     }
   }
 
-  private daysInMonth(month: number, year: number): number {
-    return new Date(year, month, 0).getDate();
+  public updateDays(dayIndex: number): void {
+    this.selectedDay = ++dayIndex;
+    this.initDays();
   }
 
-  public onMonthChange(monthIndex: number): void {
-    const date = new Date();
-
-    date.setMonth(monthIndex);
-    date.setFullYear(this.selectedYear);
-
-    this.initDays(date);
+  public updateMonths(monthIndex: number): void {
+    this.selectedMonthIndex = monthIndex;
+    this.selectedMonth = this.months[monthIndex];
+    this.initDays();
   }
 
-  public onYearChange(year: string): void {
-    console.log('YAR ', year);
-    const date = new Date();
-
-    date.setMonth(monthIndex);
-    date.setFullYear(Number(year));
-
-    this.initDays(date);
+  public updateYears(year: string): void {
+    this.selectedYear = +year;
+    this.initDays();
   }
 }
