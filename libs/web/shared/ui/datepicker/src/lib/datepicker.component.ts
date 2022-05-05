@@ -76,18 +76,17 @@ export class DatepickerComponent {
     }
   }
 
-  public updateDays(dayIndex: number): void {
+  public onUpdateDays(dayIndex: number): void {
     this.selectedDay = ++dayIndex;
-    this.initDays();
   }
 
-  public updateMonths(monthIndex: number): void {
+  public onUpdateMonths(monthIndex: number): void {
     this.selectedMonthIndex = monthIndex;
     this.selectedMonth = this.months[monthIndex];
     this.initDays();
   }
 
-  public updateYears(year: string): void {
+  public onUpdateYears(year: string): void {
     this.selectedYear = +year;
     this.initDays();
   }

@@ -5,7 +5,7 @@
       name="month"
       id="month"
       class="select-datepicker"
-      (change)="updateMonths(monthsSelect.selectedIndex)"
+      (change)="onUpdateMonths(monthsSelect.selectedIndex)"
     >
       <option *ngFor="let month of months" [value]="month">{{ month }}</option>
     </select>
@@ -19,7 +19,7 @@
       name="day"
       id="day"
       class="select-datepicker"
-      (change)="updateDays(daysSelect.selectedIndex)"
+      (change)="onUpdateDays(daysSelect.selectedIndex)"
     >
       <option *ngFor="let day of days" [value]="day">{{ day }}</option>
     </select>
@@ -33,7 +33,7 @@
       name="year"
       id="year"
       class="select-datepicker"
-      (change)="updateYears(yearsSelect.value)"
+      (change)="onUpdateYears(yearsSelect.value)"
     >
       <option *ngFor="let year of years" [value]="year">{{ year }}</option>
     </select>
