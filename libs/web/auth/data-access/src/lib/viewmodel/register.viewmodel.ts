@@ -5,6 +5,7 @@ import { RegisterDto } from '@instagrammer/api/auth/data-access';
 export enum ActiveView {
   baseInfo = 'baseInfo',
   dob = 'dob',
+  confirmationCode = 'confirmationCode',
 }
 
 export interface RegisterState {
@@ -15,7 +16,10 @@ export interface RegisterState {
 
 @Injectable()
 export class RegisterViewModel extends ComponentStore<RegisterState> {
-  public vm$ = this.select(state => ({ activeVIew: state.activeView }));
+  public vm$ = this.select(state => ({
+    activeVIew: state.activeView,
+    email: state.registerDto?.email ? state.registerDto.email : null,
+  }));
 
   constructor() {
     super({
@@ -36,7 +40,15 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
     this.patchState({ activeView: ActiveView.baseInfo, dob: null });
   }
 
+  public stepBackToDob(): void {
+    this.patchState({ activeView: ActiveView.dob });
+  }
+
   public submitForm(dob: Date): void {
-    this.patchState({ dob });
+    this.patchState({ dob, activeView: ActiveView.confirmationCode });
+  }
+
+  public confirmCode(confirmationCode: number): void {
+    console.log('Confirmation Code ', confirmationCode);
   }
 }

@@ -1,0 +1,21 @@
+<ng-insta-card>
+  <div class="card-content">
+    <img src="/assets/images/confirmation_mail.png" alt="Confirm email image" />
+
+    <h2>Enter Confirmation Code</h2>
+
+    <p class="resend-code-message">
+      Enter the confirmation code we sent to {{ email }}.
+      <span class="resend-code-action" (click)="resendcode.emit()">Resend Code</span>.
+    </p>
+
+    <ng-insta-input #confirmationCode [placeholder]="'Confirmation Code'"></ng-insta-input>
+
+    <ng-inst-cta-button
+      [title]="'Next'"
+      [isDisabled]="!confirmationCode.isValid"
+    ></ng-inst-cta-button>
+
+    <button class="go-back-button" (click)="stepback.emit()">Go Back</button>
+  </div>
+</ng-insta-card>

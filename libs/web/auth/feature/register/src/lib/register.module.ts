@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DobRegisterStepModule } from '@instagrammer/web/auth/ui/dob-register-step';
 import { BaseInfoRegisterStepModule } from '@instagrammer/web/auth/ui/base-info-register-step';
 import { DatepickerModule } from '@instagrammer/web/shared/ui/datepicker';
+import { ConfirmationCodeModule } from '@instagrammer/web/auth/ui/confirmation-code';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { DatepickerModule } from '@instagrammer/web/shared/ui/datepicker';
     DobRegisterStepModule,
     BaseInfoRegisterStepModule,
     DatepickerModule,
+    ConfirmationCodeModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],

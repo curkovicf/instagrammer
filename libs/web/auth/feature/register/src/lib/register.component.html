@@ -9,12 +9,14 @@
     (next)="registerViewModel.submitForm($event)"
     (stepback)="registerViewModel.stepBackFromDob()"
   ></ng-insta-dob-register-step>
-</ng-container>
 
-<!--<ng-insta-dob-register-step-->
-<!--  (next)="registerViewModel.submitForm($event)"-->
-<!--  (stepback)="registerViewModel.stepBackFromDob()"-->
-<!--&gt;</ng-insta-dob-register-step>-->
+  <ng-insta-confirmation-code
+    *ngIf="vm.activeVIew === 'confirmationCode'"
+    [email]="vm.email"
+    (next)="registerViewModel.confirmCode($event)"
+    (stepback)="registerViewModel.stepBackToDob()"
+  ></ng-insta-confirmation-code>
+</ng-container>
 
 <ng-insta-text-with-link-in-card
   [text]="'Have an account?'"

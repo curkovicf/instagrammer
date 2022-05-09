@@ -49,6 +49,9 @@
       "@instagrammer/web/auth/ui/base-info-register-step": [
         "libs/web/auth/ui/base-info-register-step/src/index.ts"
       ],
+      "@instagrammer/web/auth/ui/confirmation-code": [
+        "libs/web/auth/ui/confirmation-code/src/index.ts"
+      ],
       "@instagrammer/web/auth/ui/dob-register-step": [
         "libs/web/auth/ui/dob-register-step/src/index.ts"
       ],

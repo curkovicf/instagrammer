@@ -15,6 +15,7 @@
     "web-auth-feature-register": "libs/web/auth/feature/register",
     "web-auth-feature-shell": "libs/web/auth/feature/shell",
     "web-auth-ui-base-info-register-step": "libs/web/auth/ui/base-info-register-step",
+    "web-auth-ui-confirmation-code": "libs/web/auth/ui/confirmation-code",
     "web-auth-ui-dob-register-step": "libs/web/auth/ui/dob-register-step",
     "web-auth-ui-log-in-with-facebook": "libs/web/auth/ui/log-in-with-facebook",
     "web-auth-ui-logo": "libs/web/auth/ui/logo",
