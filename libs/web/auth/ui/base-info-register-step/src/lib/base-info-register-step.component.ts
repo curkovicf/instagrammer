@@ -15,7 +15,7 @@ export class BaseInfoRegisterStepComponent {
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.registerFormGroup = formBuilder.group({
-      phoneOrEmail: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       fullName: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -23,9 +23,8 @@ export class BaseInfoRegisterStepComponent {
   }
 
   public onCtaClick(): void {
-    const { phoneOrEmail, fullName, username, password } = this.registerFormGroup.value;
+    const { email, fullName, username, password } = this.registerFormGroup.value;
 
-    //  TODO: Fix proper dto types
-    this.next.emit({ fullName, password, username, email: phoneOrEmail });
+    this.next.emit({ fullName, password, username, email });
   }
 }

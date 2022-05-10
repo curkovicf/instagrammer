@@ -1,4 +1,9 @@
-import { ConflictException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { RegisterDto } from '../dto/register.dto';
 import { LoginDto } from '../dto/login.dto';
 import { UserRepository } from '../repository/user.repository';
@@ -9,7 +14,11 @@ import * as bcrypt from 'bcrypt';
 
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
-import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import {
+  LoginResponseDto,
+  UsernameAvailabilityResponseDto,
+} from '@instagrammer/shared/data-access/api-dtos';
+import { UsernameAvailabilityDto } from '../dto/username-availability.dto';
 
 @Injectable()
 export class AuthService {
@@ -46,5 +55,22 @@ export class AuthService {
 
     //  TODO: convert expires to injection token
     return { jwtToken, loggedInAt: currentDate, expiresAt: currentDate + expireDuration };
+  }
+
+  public async checkUsernameAvailability(
+    usernameAvailabilityDto: UsernameAvailabilityDto,
+  ): Promise<UsernameAvailabilityResponseDto> {
+    const { username } = usernameAvailabilityDto;
+    const responseDto: UsernameAvailabilityResponseDto = { username, isUsernameAvailable: false };
+
+    const usernameExists = await this.userRepository.findOne({ username });
+
+    if (usernameExists) {
+      return responseDto;
+    }
+
+    responseDto.isUsernameAvailable = true;
+
+    return responseDto;
   }
 }

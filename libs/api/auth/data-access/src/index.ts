@@ -1,5 +1,6 @@
 export * from './lib/dto/register.dto';
 export * from './lib/dto/login.dto';
+export * from './lib/dto/username-availability.dto';
 
 export * from './lib/repository/user.repository';
 
