@@ -15,6 +15,7 @@ import {
   first,
   map,
   Observable,
+  takeWhile,
   tap,
 } from 'rxjs';
 import { AuthApiService } from '@instagrammer/web/auth/data-access';
@@ -48,6 +49,13 @@ export class BaseInfoRegisterStepComponent implements OnDestroy {
       ),
       password: new FormControl('', [Validators.required]),
     });
+
+    this.registerFormGroup.valueChanges
+      .pipe(
+        takeWhile(() => this.isAlive),
+        tap(() => this.validateRegisterForm()),
+      )
+      .subscribe();
   }
 
   public ngOnDestroy(): void {
@@ -74,7 +82,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy {
   private validateRegisterForm(): void {
     this.registerFormGroup.markAsTouched();
 
-    if (this.registerFormGroup.valid) {
+    if (this.registerFormGroup.valid && !this.registerFormGroup.pending) {
       this.isFormDisabled$.next(false);
 
       return;
