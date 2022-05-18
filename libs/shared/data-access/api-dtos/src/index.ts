@@ -1,4 +1,2 @@
 export * from './lib/res/login-response.dto';
-export * from './lib/res/username-availability-response.dto';
-
-export * from './lib/req/login-request.dto';
+export * from './lib/res/username-exists-response.dto';

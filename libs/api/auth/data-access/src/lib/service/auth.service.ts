@@ -16,9 +16,9 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
 import {
   LoginResponseDto,
-  UsernameAvailabilityResponseDto,
+  UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
-import { UsernameAvailabilityDto } from '../dto/username-availability.dto';
+import { UsernameExistsDto } from '../dto/username-exists.dto';
 
 @Injectable()
 export class AuthService {
@@ -57,11 +57,11 @@ export class AuthService {
     return { jwtToken, loggedInAt: currentDate, expiresAt: currentDate + expireDuration };
   }
 
-  public async checkUsernameAvailability(
-    usernameAvailabilityDto: UsernameAvailabilityDto,
-  ): Promise<UsernameAvailabilityResponseDto> {
-    const { username } = usernameAvailabilityDto;
-    const responseDto: UsernameAvailabilityResponseDto = { username, isUsernameAvailable: false };
+  public async checkIfUsernameExists(
+    usernameExistsDto: UsernameExistsDto,
+  ): Promise<UsernameExistsResponseDto> {
+    const { username } = usernameExistsDto;
+    const responseDto: UsernameExistsResponseDto = { username, isUsernameAvailable: false };
 
     const usernameExists = await this.userRepository.findOne({ username });
 

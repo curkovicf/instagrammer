@@ -16,6 +16,7 @@ export class UserRepository extends Repository<UserEntity> {
 
   private async hashPasswordWithSalt(password: string): Promise<string> {
     const salt = await bcrypt.genSalt();
+
     return await bcrypt.hash(password, salt);
   }
 }

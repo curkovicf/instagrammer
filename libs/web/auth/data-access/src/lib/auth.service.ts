@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { LoginRequestDto } from '@instagrammer/shared/data-access/api-dtos';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
+import { LoginDto } from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AuthService {
     private readonly jwtStorageService: JwtStorageService,
   ) {}
 
-  public login(credentials: LoginRequestDto): Observable<boolean> {
+  public login(credentials: LoginDto): Observable<boolean> {
     return this.authApiService.login(credentials).pipe(
       map((loginResponseDto?) => {
         if (!loginResponseDto) {

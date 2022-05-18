@@ -13,7 +13,7 @@ export class CtaButtonComponent implements OnInit {
   isSpinnerActive = false;
 
   @Input()
-  isDisabled = false;
+  isDisabled: boolean | null = false;
 
   @Output()
   ctaclick: EventEmitter<void> = new EventEmitter();

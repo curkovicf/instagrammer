@@ -3,7 +3,7 @@ import { IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validat
 export class RegisterDto {
   @IsString()
   @IsNotEmpty()
-  @MinLength(4)
+  @MinLength(5)
   username!: string;
 
   @IsString()

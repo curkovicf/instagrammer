@@ -3,11 +3,11 @@ import {
   AuthService,
   RegisterDto,
   LoginDto,
-  UsernameAvailabilityDto,
+  UsernameExistsDto,
 } from '@instagrammer/api/auth/data-access';
 import {
   LoginResponseDto,
-  UsernameAvailabilityResponseDto,
+  UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
 
 @Controller('auth')
@@ -19,11 +19,11 @@ export class AuthController {
     return await this.authService.register(registerDto);
   }
 
-  @Post('/check-username-availability')
-  public async checkUsernameAvailability(
-    @Body() usernameAvailabilityDto: UsernameAvailabilityDto,
-  ): Promise<UsernameAvailabilityResponseDto> {
-    return await this.authService.checkUsernameAvailability(usernameAvailabilityDto);
+  @Post('/username-exists')
+  public async checkUsernameExists(
+    @Body() usernameExistsDto: UsernameExistsDto,
+  ): Promise<UsernameExistsResponseDto> {
+    return await this.authService.checkIfUsernameExists(usernameExistsDto);
   }
 
   @Post('/login')

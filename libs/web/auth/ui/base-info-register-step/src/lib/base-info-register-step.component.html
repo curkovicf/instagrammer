@@ -37,7 +37,7 @@
     <ng-inst-cta-button
       class="cta-next"
       title="Next"
-      [isDisabled]="registerFormGroup.invalid"
+      [isDisabled]="isFormDisabled$ | async"
       (ctaclick)="onCtaClick()"
     ></ng-inst-cta-button>
 
