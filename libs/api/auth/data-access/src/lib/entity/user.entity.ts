@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UserVerificationEntity } from './user-verification.entity';
 
 @Entity()
 export class UserEntity {
@@ -11,15 +12,10 @@ export class UserEntity {
   @Column()
   password!: string;
 
-  // @Column()
-  // fullName!: string;
+  @Column()
+  verified!: boolean;
 
-  // @Column({ unique: true })
-  // email!: string;
-
-  // @Column()
-  // bio?: string;
-
-  // @Column()
-  // createdAt!: Date;
+  @OneToOne(() => UserVerificationEntity, { cascade: true })
+  @JoinColumn()
+  userVerification!: UserVerificationEntity;
 }
