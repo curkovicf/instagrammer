@@ -3,3 +3,5 @@ export interface LoginResponseDto {
   loggedInAt: number;
   expiresAt: number;
 }
+
+export interface RegisterResponseDto extends LoginResponseDto {}

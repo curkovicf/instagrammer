@@ -6,7 +6,7 @@
 
   <ng-insta-dob-register-step
     *ngIf="vm.activeVIew === 'dob'"
-    (next)="registerViewModel.submitForm($event)"
+    (next)="registerViewModel.submitDobForm($event)"
     (stepback)="registerViewModel.stepBackFromDob()"
   ></ng-insta-dob-register-step>
 

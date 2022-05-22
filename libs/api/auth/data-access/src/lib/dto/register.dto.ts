@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
+import { IsDate, IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
 
 export class RegisterDto {
   @IsString()
@@ -14,6 +14,10 @@ export class RegisterDto {
   @IsNotEmpty()
   @IsEmail()
   email!: string;
+
+  @IsDate()
+  @IsNotEmpty()
+  dob!: Date;
 
   /**
    * About regex

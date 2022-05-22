@@ -13,6 +13,9 @@ export class UserEntity {
   password!: string;
 
   @Column()
+  dob!: Date;
+
+  @Column()
   verified!: boolean;
 
   @OneToOne(() => UserVerificationEntity, { cascade: true })

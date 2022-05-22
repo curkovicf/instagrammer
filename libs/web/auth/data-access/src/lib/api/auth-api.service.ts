@@ -4,9 +4,10 @@ import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
 import {
   LoginResponseDto,
+  RegisterResponseDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
-import { LoginDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,9 @@ export class AuthApiService {
       `${this.url}/username-exists`,
       usernameExistsDto,
     );
+  }
+
+  public register(registerDto: RegisterDto): Observable<RegisterResponseDto> {
+    return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
 }

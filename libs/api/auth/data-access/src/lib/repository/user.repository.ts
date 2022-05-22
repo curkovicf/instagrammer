@@ -8,12 +8,13 @@ import { UserEntity } from '../entity/user.entity';
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
   public async createUser(registerDto: RegisterDto): Promise<void> {
-    const { username, password, email, fullName } = registerDto;
+    const { username, password, email, fullName, dob } = registerDto;
 
     const newUser = this.create({
       username,
       password: await this.hashPasswordWithSalt(password),
       verified: false,
+      dob,
       userVerification: {
         createdAt: new Date(),
         expiresAt: new Date(),

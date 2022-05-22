@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { LoginDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, RegisterDto } from '@instagrammer/api/auth/data-access';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
   providedIn: 'root',
@@ -19,19 +20,35 @@ export class AuthService {
 
   public login(credentials: LoginDto): Observable<boolean> {
     return this.authApiService.login(credentials).pipe(
-      map((loginResponseDto?) => {
+      map(loginResponseDto => {
         if (!loginResponseDto) {
           return false;
         }
 
-        this.authFacadeService.updateAuthState(loginResponseDto);
-        this.jwtStorageService.saveAuthState(loginResponseDto);
-
-        this.router.navigate(['/dummy-home']);
-
-        return true;
+        return this.handleSuccessfulLogin(loginResponseDto);
       }),
     );
+  }
+
+  public register(registerDto: RegisterDto): Observable<boolean> {
+    return this.authApiService.register(registerDto).pipe(
+      map(registerResponseDto => {
+        if (!registerResponseDto) {
+          return false;
+        }
+
+        return this.handleSuccessfulLogin(registerResponseDto);
+      }),
+    );
+  }
+
+  private handleSuccessfulLogin(loginResponseDto: LoginResponseDto): boolean {
+    this.authFacadeService.updateAuthState(loginResponseDto);
+    this.jwtStorageService.saveAuthState(loginResponseDto);
+
+    this.router.navigate(['/dummy-home']);
+
+    return true;
   }
 
   public logout(): void {

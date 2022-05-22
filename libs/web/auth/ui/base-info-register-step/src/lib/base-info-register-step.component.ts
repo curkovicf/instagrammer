@@ -27,7 +27,7 @@ import { AuthApiService } from '@instagrammer/web/auth/data-access';
 })
 export class BaseInfoRegisterStepComponent implements OnDestroy {
   @Output()
-  next: EventEmitter<RegisterDto> = new EventEmitter();
+  next: EventEmitter<Partial<RegisterDto>> = new EventEmitter();
 
   public readonly isFormDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
