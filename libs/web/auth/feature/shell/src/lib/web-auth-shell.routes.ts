@@ -19,4 +19,10 @@ export const authRoutes: Routes = [
     loadChildren: async () =>
       (await import('@instagrammer/web/auth/feature/register')).RegisterModule,
   },
+  {
+    path: 'onetap',
+    // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+    loadChildren: async () =>
+      (await import('@instagrammer/web-auth-feature-save-login-info')).SaveLoginInfoModule,
+  },
 ];

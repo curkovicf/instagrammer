@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'web-auth-ui-save-login-info-prompt',
+  displayName: 'web-auth-feature-save-login-info',
   preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../../coverage/libs/web/auth/ui/save-login-info-prompt',
+  coverageDirectory: '../../../../../coverage/libs/web/auth/feature/save-login-info',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

@@ -38,6 +38,9 @@
       "@instagrammer/shared/data-access/api-dtos": [
         "libs/shared/data-access/api-dtos/src/index.ts"
       ],
+      "@instagrammer/web-auth-feature-save-login-info": [
+        "libs/web/auth/feature/save-login-info/src/index.ts"
+      ],
       "@instagrammer/web-auth-ui-text-with-link-in-card": [
         "libs/web/auth/ui/text-with-link-in-card/src/index.ts"
       ],
@@ -65,9 +68,6 @@
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/ui/rotating-phones": [
         "libs/web/auth/ui/rotating-phones/src/index.ts"
-      ],
-      "@instagrammer/web/auth/ui/save-login-info-prompt": [
-        "libs/web/auth/ui/save-login-info-prompt/src/index.ts"
       ],
       "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@instagrammer/web/dummy-home": ["libs/web/dummy-home/src/index.ts"],

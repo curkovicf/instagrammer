@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { finalize, map, Observable, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
@@ -46,16 +46,8 @@ export class AuthService {
     this.authFacadeService.updateAuthState(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 
-    if (this.promptToPermanentlySaveLogin()) {
-
-    }
-
     this.router.navigate(['/dummy-home']);
 
-    return true;
-  }
-
-  private promptToPermanentlySaveLogin(): boolean {
     return true;
   }
 
@@ -63,5 +55,19 @@ export class AuthService {
     this.authFacadeService.logout();
     this.jwtStorageService.clearStorage();
     this.router.navigate(['/auth/login']);
+  }
+
+  public saveLoginInfo(): void {
+    this.authApiService
+      .requestPermanentJwtToken()
+      .pipe(
+        take(1),
+        tap(loginResponseDto => {
+          this.authFacadeService.updateAuthState(loginResponseDto);
+          this.jwtStorageService.saveAuthState(loginResponseDto);
+        }),
+        finalize(() => this.router.navigate(['/dummy-home'])),
+      )
+      .subscribe();
   }
 }

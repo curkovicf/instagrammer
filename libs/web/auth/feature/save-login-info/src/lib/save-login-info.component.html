@@ -9,9 +9,9 @@
     <ng-inst-cta-button
       class="cta-next"
       title="Next"
-      (ctaclick)="saveinfo.emit()"
+      (ctaclick)="authService.saveLoginInfo()"
     ></ng-inst-cta-button>
 
-    <button class="go-back-button" (click)="skipsaveinfo.emit()">Not Now</button>
+    <button class="go-back-button" (click)="router.navigate(['/dummy-home'])">Not Now</button>
   </div>
 </ng-insta-card>

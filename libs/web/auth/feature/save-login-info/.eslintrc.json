@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "instagrammer",
+            "prefix": "ng-insta",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "instagrammer",
+            "prefix": "ng-insta",
             "style": "kebab-case"
           }
         ]

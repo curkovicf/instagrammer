@@ -38,4 +38,8 @@ export class AuthApiService {
   public register(registerDto: RegisterDto): Observable<RegisterResponseDto> {
     return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
+
+  public requestPermanentJwtToken(): Observable<LoginResponseDto> {
+    return this.http.get<LoginResponseDto>(`${this.url}/request-permanent-jwt`);
+  }
 }

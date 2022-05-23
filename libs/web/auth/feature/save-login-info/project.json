@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/auth/feature/save-login-info",
+  "sourceRoot": "libs/web/auth/feature/save-login-info/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/feature/save-login-info"],
+      "options": {
+        "jestConfig": "libs/web/auth/feature/save-login-info/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/auth/feature/save-login-info/src/**/*.ts",
+          "libs/web/auth/feature/save-login-info/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
