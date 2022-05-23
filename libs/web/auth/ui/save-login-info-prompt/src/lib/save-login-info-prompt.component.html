@@ -1,0 +1,17 @@
+<ng-insta-card>
+  <div class="card-content">
+    <img src="" alt="" />
+
+    <h4>Save Your Login Info?</h4>
+
+    <p>We can save your login info on this browser so you don't need to enter it again.</p>
+
+    <ng-inst-cta-button
+      class="cta-next"
+      title="Next"
+      (ctaclick)="saveinfo.emit()"
+    ></ng-inst-cta-button>
+
+    <button class="go-back-button" (click)="skipsaveinfo.emit()">Not Now</button>
+  </div>
+</ng-insta-card>

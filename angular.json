@@ -22,6 +22,7 @@
     "web-auth-ui-or-block": "libs/web/auth/ui/or-block",
     "web-auth-ui-phone-get-app": "libs/web/auth/ui/phone-get-app",
     "web-auth-ui-rotating-phones": "libs/web/auth/ui/rotating-phones",
+    "web-auth-ui-save-login-info-prompt": "libs/web/auth/ui/save-login-info-prompt",
     "web-auth-ui-text-with-link-in-card": "libs/web/auth/ui/text-with-link-in-card",
     "web-auth-util": "libs/web/auth/util",
     "web-dummy-home": "libs/web/dummy-home",

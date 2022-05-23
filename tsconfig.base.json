@@ -66,6 +66,9 @@
       "@instagrammer/web/auth/ui/rotating-phones": [
         "libs/web/auth/ui/rotating-phones/src/index.ts"
       ],
+      "@instagrammer/web/auth/ui/save-login-info-prompt": [
+        "libs/web/auth/ui/save-login-info-prompt/src/index.ts"
+      ],
       "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@instagrammer/web/dummy-home": ["libs/web/dummy-home/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
