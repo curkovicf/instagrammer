@@ -1,33 +1,48 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { RegisterDto } from '../dto/register.dto';
-
-import { v4 as uuidv4 } from 'uuid';
-import * as bcrypt from 'bcrypt';
 import { UserEntity } from '../entity/user.entity';
+import { BCryptEncryptionService } from '@instagrammer/api/shared/util/encryption';
+import { JwtService } from '@nestjs/jwt';
+import { JwtSignOptions } from '@nestjs/jwt/dist/interfaces/jwt-module-options.interface';
 
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
+  constructor(
+    private readonly encryptionService: BCryptEncryptionService,
+    private readonly jwtService: JwtService,
+  ) {
+    super();
+  }
+
   public async createUser(registerDto: RegisterDto): Promise<void> {
     const { username, password, email, fullName, dob } = registerDto;
 
+    const hashedRefreshToken = this.createRefreshToken(username);
+
     const newUser = this.create({
       username,
-      password: await this.hashPasswordWithSalt(password),
-      verified: false,
+      password: await this.encryptionService.hashWithSalt(password),
       dob,
-      userVerification: {
+      refreshToken: {
+        hashedRefreshToken,
         createdAt: new Date(),
         expiresAt: new Date(),
-        uniqueString: uuidv4(),
       },
     });
 
     await this.save(newUser);
   }
 
-  private async hashPasswordWithSalt(password: string): Promise<string> {
-    const salt = await bcrypt.genSalt();
+  private createRefreshToken(username: string): string {
+    const payload = {
+      username,
+    };
 
-    return await bcrypt.hash(password, salt);
+    const options: JwtSignOptions = {
+      secret: 'refresh_token',
+      expiresIn: 100000000,
+    };
+
+    return this.jwtService.sign(payload, options);
   }
 }

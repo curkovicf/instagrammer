@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { UserVerificationEntity } from './user-verification.entity';
+import { RefreshTokenEntity } from './refresh-token.entity';
 
 @Entity()
 export class UserEntity {
@@ -15,10 +15,7 @@ export class UserEntity {
   @Column()
   dob!: Date;
 
-  @Column()
-  verified!: boolean;
-
-  @OneToOne(() => UserVerificationEntity, { cascade: true })
+  @OneToOne(() => RefreshTokenEntity, { cascade: true })
   @JoinColumn()
-  userVerification!: UserVerificationEntity;
+  refreshToken!: RefreshTokenEntity;
 }

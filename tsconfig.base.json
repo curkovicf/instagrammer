@@ -34,6 +34,7 @@
       "@instagrammer/api/shared/data-access/interfaces": [
         "libs/api/shared/data-access/interfaces/src/index.ts"
       ],
+      "@instagrammer/api/shared/util/encryption": ["libs/api/shared/util/encryption/src/index.ts"],
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
       "@instagrammer/shared/data-access/api-dtos": [
         "libs/shared/data-access/api-dtos/src/index.ts"
