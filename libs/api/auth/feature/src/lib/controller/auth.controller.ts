@@ -1,14 +1,17 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Req, Res } from '@nestjs/common';
 import {
   AuthService,
   RegisterDto,
   LoginDto,
   UsernameExistsDto,
+  LogoutDto,
 } from '@instagrammer/api/auth/data-access';
 import {
   LoginResponseDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
+import { Request, Response } from 'express';
+import { log } from 'util';
 
 @Controller('auth')
 export class AuthController {
@@ -27,7 +30,27 @@ export class AuthController {
   }
 
   @Post('/login')
-  public async login(@Body() loginDto: LoginDto): Promise<LoginResponseDto> {
+  public async login(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+    @Body() loginDto: LoginDto,
+  ): Promise<LoginResponseDto> {
+    const cookie = this.authService.getCookieWithRefreshJwt(loginDto.username);
+    res.setHeader('Set-Cookie', cookie);
+
     return await this.authService.login(loginDto);
+  }
+
+  @Post('/refresh-jwt')
+  public async refreshJwt(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+  ): Promise<string> {
+    return '';
+  }
+
+  @Post('/logout')
+  public async logout(@Body() logoutDto: LogoutDto): Promise<void> {
+    return await this.authService.logout(logoutDto);
   }
 }

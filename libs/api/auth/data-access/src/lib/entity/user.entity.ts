@@ -17,5 +17,5 @@ export class UserEntity {
 
   @OneToOne(() => RefreshTokenEntity, { cascade: true })
   @JoinColumn()
-  refreshToken!: RefreshTokenEntity;
+  refreshToken: RefreshTokenEntity | null = null;
 }

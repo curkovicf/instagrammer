@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { UserEntity, UserVerificationEntity } from '@instagrammer/api/auth/data-access';
+import { UserEntity, RefreshTokenEntity } from '@instagrammer/api/auth/data-access';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { UserEntity, UserVerificationEntity } from '@instagrammer/api/auth/data-
       password: 'awesome_dev_pass',
       database: 'instagrammer',
       //  Finds all entities files for you and loads them automatically
-      entities: [UserEntity, UserVerificationEntity],
+      entities: [UserEntity, RefreshTokenEntity],
       //  Always keep DB schema up to date
       synchronize: true,
     }),

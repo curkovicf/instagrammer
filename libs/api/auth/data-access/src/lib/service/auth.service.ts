@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { RegisterDto } from '../dto/register.dto';
@@ -9,9 +10,6 @@ import { LoginDto } from '../dto/login.dto';
 import { UserRepository } from '../repository/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
-
-import * as bcrypt from 'bcrypt';
-
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
 import {
@@ -19,6 +17,10 @@ import {
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
 import { UsernameExistsDto } from '../dto/username-exists.dto';
+import { compare, hashWithSalt } from '@instagrammer/api/shared/util/encryption';
+import { RefreshTokenEntity } from '../entity/refresh-token.entity';
+import { LogoutDto } from '../dto/logout.dto';
+import { log } from 'util';
 
 @Injectable()
 export class AuthService {
@@ -29,8 +31,10 @@ export class AuthService {
 
   public async register(registerDto: RegisterDto): Promise<void> {
     try {
-      await this.userRepository.createUser(registerDto);
+      const refreshJwt = this.createJwt(registerDto, 8888);
+      await this.userRepository.createUser(registerDto, refreshJwt);
     } catch (err) {
+      console.log(err);
       if (err instanceof QueryFailedError && Number(err.driverError.code) === 23505) {
         throw new ConflictException('Username already taken');
       } else {
@@ -44,17 +48,33 @@ export class AuthService {
 
     const user = await this.userRepository.findOne({ username });
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!user || !(await compare(password, user.password))) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const expireDuration = 3600;
-    const payload: JwtPayload = { username };
-    const jwtToken: string = this.jwtService.sign(payload);
+    const accessJwt = this.createJwt(loginDto, 3600);
+    const refreshJwt = this.createJwt(loginDto, 8888);
     const currentDate = new Date().getTime();
 
+    const refreshTokenEntity = new RefreshTokenEntity();
+
+    refreshTokenEntity.hashedRefreshToken = await hashWithSalt(refreshJwt);
+    refreshTokenEntity.expiresAt = new Date(new Date().getTime() + 88888);
+    refreshTokenEntity.createdAt = new Date();
+
+    user.refreshToken = refreshTokenEntity;
+
+    await this.userRepository.save(user);
+
     //  TODO: convert expires to injection token
-    return { jwtToken, loggedInAt: currentDate, expiresAt: currentDate + expireDuration };
+    return { jwtToken: accessJwt, loggedInAt: currentDate, expiresAt: currentDate + 3600 };
+  }
+
+  private createJwt(loginDto: LoginDto, exp: number): string {
+    const { username } = loginDto;
+    const payload: JwtPayload = { username };
+
+    return this.jwtService.sign(payload, { expiresIn: exp });
   }
 
   public async checkIfUsernameExists(
@@ -72,5 +92,26 @@ export class AuthService {
     responseDto.isUsernameAvailable = true;
 
     return responseDto;
+  }
+
+  public getCookieWithRefreshJwt(username: string) {
+    const payload: JwtPayload = { username };
+    const token = this.jwtService.sign(payload);
+
+    return `Authentication=${token}; HttpOnly; Path=/auth/refresh-jwt; Max-Age=${3600}`;
+  }
+
+  async logout(logoutDto: LogoutDto): Promise<void> {
+    const { username } = logoutDto;
+
+    const user = await this.userRepository.findOne({ username });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    user.refreshToken = null;
+
+    await this.userRepository.save(user);
   }
 }

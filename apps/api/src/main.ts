@@ -5,6 +5,7 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import * as cookieParser from 'cookie-parser';
 
 import { AppModule } from './app/app.module';
 
@@ -20,6 +21,9 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3333;
   await app.listen(port);
+
+  //  Add cookie parser to nest app
+  app.use(cookieParser());
 
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }
