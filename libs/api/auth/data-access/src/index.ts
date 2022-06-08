@@ -2,6 +2,7 @@ export * from './lib/dto/register.dto';
 export * from './lib/dto/login.dto';
 export * from './lib/dto/username-exists.dto';
 export * from './lib/dto/logout.dto';
+export * from './lib/dto/refresh-jwt.dto';
 
 export * from './lib/repository/user.repository';
 

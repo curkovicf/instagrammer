@@ -27,7 +27,7 @@ import { AuthApiService } from '@instagrammer/web/auth/data-access';
 })
 export class BaseInfoRegisterStepComponent implements OnDestroy {
   @Output()
-  next: EventEmitter<Partial<RegisterDto>> = new EventEmitter();
+  next: EventEmitter<RegisterDto> = new EventEmitter();
 
   public readonly isFormDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
@@ -76,7 +76,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy {
   public onCtaClick(): void {
     const { email, fullName, username, password } = this.registerFormGroup.value;
 
-    this.next.emit({ fullName, password, username, email });
+    this.next.emit({ fullName, password, username, email, dob: new Date() });
   }
 
   private validateRegisterForm(): void {

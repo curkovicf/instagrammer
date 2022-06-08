@@ -13,7 +13,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: '*',
+    origin: 'http://localhost:4200',
+    // allowedHeaders: ['Access-Control-Allow-Credentials'],
+    credentials: true,
   });
 
   const globalPrefix = 'api';

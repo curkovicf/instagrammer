@@ -23,7 +23,9 @@ export class AuthApiService {
   }
 
   public login(loginDto: LoginDto): Observable<LoginResponseDto> {
-    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto);
+    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto, {
+      withCredentials: true,
+    });
   }
 
   public checkIfUsernameExists(

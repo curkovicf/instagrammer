@@ -20,10 +20,14 @@ import { UsernameExistsDto } from '../dto/username-exists.dto';
 import { compare, hashWithSalt } from '@instagrammer/api/shared/util/encryption';
 import { RefreshTokenEntity } from '../entity/refresh-token.entity';
 import { LogoutDto } from '../dto/logout.dto';
-import { log } from 'util';
+import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
 
 @Injectable()
 export class AuthService {
+  private readonly accessJwtExpires = 60 * 10;
+  private readonly refreshJwtExpiresLong = 60 * 60 * 24 * 60;
+  private readonly refreshJwtExpiresShort = 60 * 60 * 24;
+
   constructor(
     @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
     private readonly jwtService: JwtService,
@@ -31,8 +35,7 @@ export class AuthService {
 
   public async register(registerDto: RegisterDto): Promise<void> {
     try {
-      const refreshJwt = this.createJwt(registerDto, 8888);
-      await this.userRepository.createUser(registerDto, refreshJwt);
+      await this.userRepository.createUser(registerDto);
     } catch (err) {
       console.log(err);
       if (err instanceof QueryFailedError && Number(err.driverError.code) === 23505) {
@@ -52,14 +55,14 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const accessJwt = this.createJwt(loginDto, 3600);
-    const refreshJwt = this.createJwt(loginDto, 8888);
+    const accessJwt = this.createJwt(username, this.accessJwtExpires);
+    const refreshJwt = this.createJwt(username, this.refreshJwtExpiresLong);
     const currentDate = new Date().getTime();
 
     const refreshTokenEntity = new RefreshTokenEntity();
 
     refreshTokenEntity.hashedRefreshToken = await hashWithSalt(refreshJwt);
-    refreshTokenEntity.expiresAt = new Date(new Date().getTime() + 88888);
+    refreshTokenEntity.expiresAt = new Date(new Date().getTime() + this.refreshJwtExpiresLong);
     refreshTokenEntity.createdAt = new Date();
 
     user.refreshToken = refreshTokenEntity;
@@ -67,14 +70,17 @@ export class AuthService {
     await this.userRepository.save(user);
 
     //  TODO: convert expires to injection token
-    return { jwtToken: accessJwt, loggedInAt: currentDate, expiresAt: currentDate + 3600 };
+    return {
+      jwtToken: accessJwt,
+      loggedInAt: currentDate,
+      expiresAt: currentDate + this.accessJwtExpires,
+    };
   }
 
-  private createJwt(loginDto: LoginDto, exp: number): string {
-    const { username } = loginDto;
+  private createJwt(username: string, expiresIn: number): string {
     const payload: JwtPayload = { username };
 
-    return this.jwtService.sign(payload, { expiresIn: exp });
+    return this.jwtService.sign(payload, { expiresIn });
   }
 
   public async checkIfUsernameExists(
@@ -94,11 +100,11 @@ export class AuthService {
     return responseDto;
   }
 
-  public getCookieWithRefreshJwt(username: string) {
-    const payload: JwtPayload = { username };
-    const token = this.jwtService.sign(payload);
-
-    return `Authentication=${token}; HttpOnly; Path=/auth/refresh-jwt; Max-Age=${3600}`;
+  public async createNewCookieWithRefreshJwt(refreshJwt: string): Promise<string> {
+    // Path=/auth/refresh-jwt
+    return `Authentication=${refreshJwt}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
+      new Date().getTime() + this.refreshJwtExpiresLong
+    }`;
   }
 
   async logout(logoutDto: LogoutDto): Promise<void> {
@@ -113,5 +119,34 @@ export class AuthService {
     user.refreshToken = null;
 
     await this.userRepository.save(user);
+  }
+
+  public async generateNewRefreshJwt(refreshJwtDto: RefreshJwtDto): Promise<string> {
+    const { username, isLongSession } = refreshJwtDto;
+
+    const user = await this.userRepository.findOne({ username });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const newToken = this.createJwt(
+      username,
+      isLongSession ? this.refreshJwtExpiresLong : this.refreshJwtExpiresShort,
+    );
+    const refreshTokenEntity = new RefreshTokenEntity();
+
+    refreshTokenEntity.hashedRefreshToken = await hashWithSalt(newToken);
+    refreshTokenEntity.createdAt = new Date();
+    refreshTokenEntity.expiresAt = new Date(
+      new Date().getTime() +
+        (isLongSession ? this.refreshJwtExpiresLong : this.refreshJwtExpiresShort),
+    );
+
+    user.refreshToken = refreshTokenEntity;
+
+    await this.userRepository.save(user);
+
+    return refreshTokenEntity.hashedRefreshToken;
   }
 }

@@ -5,13 +5,13 @@ import {
   LoginDto,
   UsernameExistsDto,
   LogoutDto,
+  RefreshJwtDto,
 } from '@instagrammer/api/auth/data-access';
 import {
   LoginResponseDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
 import { Request, Response } from 'express';
-import { log } from 'util';
 
 @Controller('auth')
 export class AuthController {
@@ -35,8 +35,13 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
     @Body() loginDto: LoginDto,
   ): Promise<LoginResponseDto> {
-    const cookie = this.authService.getCookieWithRefreshJwt(loginDto.username);
-    res.setHeader('Set-Cookie', cookie);
+    const hashedRefreshJwt = await this.authService.generateNewRefreshJwt({
+      username: loginDto.username,
+      isLongSession: false,
+    });
+    const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt);
+
+    res.setHeader('Set-Cookie', newCookie);
 
     return await this.authService.login(loginDto);
   }
@@ -45,7 +50,17 @@ export class AuthController {
   public async refreshJwt(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
+    @Body() refreshJwtDto: RefreshJwtDto,
   ): Promise<string> {
+    // const hashedRefreshJwt = await this.authService.generateNewRefreshJwt(refreshJwtDto);
+    // const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt);
+    //
+    // res.setHeader('Set-Cookie', newCookie);
+
+    // return await this.authService.generateNewRefreshJwt(refreshJwtDto);
+
+    console.log('Cookies ', req.cookies);
+
     return '';
   }
 
