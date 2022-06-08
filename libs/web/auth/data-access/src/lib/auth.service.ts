@@ -46,7 +46,7 @@ export class AuthService {
     this.authFacadeService.updateAuthState(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 
-    this.router.navigate(['/dummy-home']);
+    this.router.navigate(['/auth/onetap']);
 
     return true;
   }
