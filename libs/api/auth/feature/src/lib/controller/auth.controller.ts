@@ -7,10 +7,9 @@ import {
   LogoutDto,
   RefreshJwtDto,
 } from '@instagrammer/api/auth/data-access';
-import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { JwtResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { Request, Response } from 'express';
-import { TokenPairDto } from '../../../../data-access/src/lib/dto/token-pair.dto';
-import { log } from 'util';
+import { JwtTokenDto } from '../../../../data-access/src/lib/dto/token-pair.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -31,7 +30,7 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @Body() loginDto: LoginDto,
-  ): Promise<LoginResponseDto> {
+  ): Promise<JwtResponseDto> {
     const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
     const newCookie = await this.authService.createNewCookieWithRefreshJwt(refreshToken);
 
@@ -45,13 +44,13 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @Body() refreshJwtDto: RefreshJwtDto,
-  ): Promise<boolean> {
-    const hashedRefreshJwt: TokenPairDto = await this.authService.generateNewRefreshJwt(refreshJwtDto);
-    const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt.refreshToken.value);
+  ): Promise<JwtTokenDto> {
+    const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
+    const newCookie = this.authService.createNewCookieWithRefreshJwt(refreshToken.value);
 
     res.setHeader('Set-Cookie', newCookie);
 
-    return true;
+    return accessToken;
   }
 
   @Post('/logout')

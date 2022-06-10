@@ -5,7 +5,7 @@ import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
 import { LoginDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
-import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { JwtResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,7 @@ export class AuthService {
     );
   }
 
-  private handleSuccessfulLogin(loginResponseDto: LoginResponseDto): boolean {
+  private handleSuccessfulLogin(loginResponseDto: JwtResponseDto): boolean {
     this.authFacadeService.updateAuthState(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 

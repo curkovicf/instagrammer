@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
 import {
-  LoginResponseDto,
+  JwtResponseDto,
   RegisterResponseDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
@@ -22,8 +22,8 @@ export class AuthApiService {
     this.url = `${this.environmentService.baseUrl}/auth`;
   }
 
-  public login(loginDto: LoginDto): Observable<LoginResponseDto> {
-    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto, {
+  public login(loginDto: LoginDto): Observable<JwtResponseDto> {
+    return this.http.post<JwtResponseDto>(`${this.url}/login`, loginDto, {
       withCredentials: true,
     });
   }
@@ -41,7 +41,7 @@ export class AuthApiService {
     return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
 
-  public requestPermanentJwtToken(refreshJwtDto: RefreshJwtDto): Observable<LoginResponseDto> {
-    return this.http.post<LoginResponseDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
+  public requestPermanentJwtToken(refreshJwtDto: RefreshJwtDto): Observable<JwtResponseDto> {
+    return this.http.post<JwtResponseDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 }
