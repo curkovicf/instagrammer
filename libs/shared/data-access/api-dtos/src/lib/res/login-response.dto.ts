@@ -1,6 +1,6 @@
 export interface LoginResponseDto {
   jwtToken: string;
-  loggedInAt: number;
+  issuedAt: number;
   expiresAt: number;
 }
 

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { LoginDto, RegisterDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
 import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
@@ -58,8 +58,13 @@ export class AuthService {
   }
 
   public saveLoginInfo(): void {
+    const refreshJwtDto: RefreshJwtDto = {
+      username: 'user123',
+      isLongSession: true,
+    };
+
     this.authApiService
-      .requestPermanentJwtToken()
+      .requestPermanentJwtToken(refreshJwtDto)
       .pipe(
         take(1),
         tap(loginResponseDto => {

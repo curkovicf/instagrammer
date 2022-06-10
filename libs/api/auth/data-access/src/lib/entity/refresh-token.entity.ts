@@ -11,7 +11,7 @@ export class RefreshTokenEntity {
   hashedRefreshToken!: string;
 
   @Column()
-  createdAt!: Date;
+  issuedAt!: Date;
 
   @Column()
   expiresAt!: Date;

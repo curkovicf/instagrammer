@@ -7,7 +7,7 @@ import {
   RegisterResponseDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared/data-access/api-dtos';
-import { LoginDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, RefreshJwtDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +41,7 @@ export class AuthApiService {
     return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
 
-  public requestPermanentJwtToken(): Observable<LoginResponseDto> {
-    return this.http.get<LoginResponseDto>(`${this.url}/request-permanent-jwt`);
+  public requestPermanentJwtToken(refreshJwtDto: RefreshJwtDto): Observable<LoginResponseDto> {
+    return this.http.post<LoginResponseDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 }

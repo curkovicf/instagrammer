@@ -7,11 +7,10 @@ import {
   LogoutDto,
   RefreshJwtDto,
 } from '@instagrammer/api/auth/data-access';
-import {
-  LoginResponseDto,
-  UsernameExistsResponseDto,
-} from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { Request, Response } from 'express';
+import { TokenPairDto } from '../../../../data-access/src/lib/dto/token-pair.dto';
+import { log } from 'util';
 
 @Controller('auth')
 export class AuthController {
@@ -23,9 +22,7 @@ export class AuthController {
   }
 
   @Post('/username-exists')
-  public async checkUsernameExists(
-    @Body() usernameExistsDto: UsernameExistsDto,
-  ): Promise<UsernameExistsResponseDto> {
+  public async checkUsernameExists(@Body() usernameExistsDto: UsernameExistsDto): Promise<UsernameExistsResponseDto> {
     return await this.authService.checkIfUsernameExists(usernameExistsDto);
   }
 
@@ -35,15 +32,12 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
     @Body() loginDto: LoginDto,
   ): Promise<LoginResponseDto> {
-    const hashedRefreshJwt = await this.authService.generateNewRefreshJwt({
-      username: loginDto.username,
-      isLongSession: false,
-    });
-    const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt);
+    const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
+    const newCookie = await this.authService.createNewCookieWithRefreshJwt(refreshToken);
 
     res.setHeader('Set-Cookie', newCookie);
 
-    return await this.authService.login(loginDto);
+    return loginResponseDto;
   }
 
   @Post('/refresh-jwt')
@@ -51,17 +45,13 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @Body() refreshJwtDto: RefreshJwtDto,
-  ): Promise<string> {
-    // const hashedRefreshJwt = await this.authService.generateNewRefreshJwt(refreshJwtDto);
-    // const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt);
-    //
-    // res.setHeader('Set-Cookie', newCookie);
+  ): Promise<boolean> {
+    const hashedRefreshJwt: TokenPairDto = await this.authService.generateNewRefreshJwt(refreshJwtDto);
+    const newCookie = await this.authService.createNewCookieWithRefreshJwt(hashedRefreshJwt.refreshToken.value);
 
-    // return await this.authService.generateNewRefreshJwt(refreshJwtDto);
+    res.setHeader('Set-Cookie', newCookie);
 
-    console.log('Cookies ', req.cookies);
-
-    return '';
+    return true;
   }
 
   @Post('/logout')
