@@ -6,8 +6,8 @@ import * as AuthActions from './auth.actions';
 export const AUTH_FEATURE_KEY = 'AUTH_FEATURE';
 
 const initialAuthState: AuthState = {
-  jwtToken: null,
-  loggedInAt: null,
+  value: null,
+  issuedAt: null,
   expiresAt: null,
 };
 
@@ -17,8 +17,8 @@ export const authReducer = createReducer(
     ...loginResponseDto,
   })),
   on(AuthActions.logoutAction, state => ({
-    jwtToken: null,
+    value: null,
     expiresAt: null,
-    loggedInAt: null,
+    issuedAt: null,
   })),
 );

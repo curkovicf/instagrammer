@@ -1,5 +1,5 @@
 export interface JwtResponseDto {
-  jwtToken: string;
+  value: string;
   issuedAt: number;
   expiresAt: number;
 }

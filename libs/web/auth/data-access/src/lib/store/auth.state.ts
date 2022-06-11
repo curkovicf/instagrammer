@@ -1,5 +1,5 @@
 export interface AuthState {
-  jwtToken: string | null;
-  loggedInAt: number | null;
+  value: string | null;
+  issuedAt: number | null;
   expiresAt: number | null;
 }

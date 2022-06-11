@@ -64,7 +64,7 @@ export class AuthService {
     };
 
     this.authApiService
-      .requestPermanentJwtToken(refreshJwtDto)
+      .saveLoginInfo(refreshJwtDto)
       .pipe(
         take(1),
         tap(loginResponseDto => {

@@ -19,13 +19,10 @@ import { RefreshTokenEntity } from '../entity/refresh-token.entity';
 import { LogoutDto } from '../dto/logout.dto';
 import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
 import { JwtTokenDto, TokenPairDto } from '../dto/token-pair.dto';
+import { getJwtExpiryInMiliseconds, JwtExpiresStr } from '../constants';
 
 @Injectable()
 export class AuthService {
-  private readonly accessJwtExpires = 60 * 10;
-  private readonly refreshJwtExpiresLong = 60 * 60 * 24 * 60;
-  private readonly refreshJwtExpiresShort = 60 * 60 * 24;
-
   constructor(
     @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
     private readonly jwtService: JwtService,
@@ -59,21 +56,20 @@ export class AuthService {
 
     await this.userRepository.save(user);
 
-    //  TODO: convert expires to injection token
     return {
       loginResponseDto: {
-        jwtToken: accessToken.value,
+        value: accessToken.value,
         issuedAt: accessToken.issuedAt,
-        expiresAt: accessToken.issuedAt,
+        expiresAt: accessToken.expiresAt,
       },
       refreshToken: refreshToken.value,
     };
   }
 
-  private createJwt(username: string, expiresIn: number): string {
+  private createJwt(username: string, jwtExpires: JwtExpiresStr): string {
     const payload: JwtPayload = { username };
 
-    return this.jwtService.sign(payload, { expiresIn });
+    return this.jwtService.sign(payload, { expiresIn: jwtExpires });
   }
 
   public async checkIfUsernameExists(usernameExistsDto: UsernameExistsDto): Promise<UsernameExistsResponseDto> {
@@ -91,10 +87,10 @@ export class AuthService {
     return responseDto;
   }
 
-  public createNewCookieWithRefreshJwt(refreshJwt: string): string {
+  public createNewHttpHeaderWithCookie(refreshJwt: string): string {
     // Path=/auth/refresh-jwt
     return `Authentication=${refreshJwt}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
-      new Date().getTime() + this.refreshJwtExpiresLong
+      new Date().getTime() + getJwtExpiryInMiliseconds(JwtExpiresStr.REFRESH_JWT_EXPIRES_LONG)
     }`;
   }
 
@@ -144,9 +140,9 @@ export class AuthService {
   }
 
   private generateTokenPair(username: string, isLongSession: boolean): TokenPairDto {
-    const accessToken: JwtTokenDto = this.generateToken(username, this.accessJwtExpires);
+    const accessToken: JwtTokenDto = this.generateToken(username, JwtExpiresStr.ACCESS_JWT);
 
-    const refreshTokenExpires = isLongSession ? this.refreshJwtExpiresLong : this.refreshJwtExpiresShort;
+    const refreshTokenExpires = isLongSession ? JwtExpiresStr.REFRESH_JWT_EXPIRES_LONG : JwtExpiresStr.REFRESH_JWT_EXPIRES_SHORT;
     const refreshToken: JwtTokenDto = this.generateToken(username, refreshTokenExpires);
 
     return {
@@ -155,10 +151,10 @@ export class AuthService {
     };
   }
 
-  private generateToken(username: string, expiresAt: number): JwtTokenDto {
+  private generateToken(username: string, jwtExpiresStr: JwtExpiresStr): JwtTokenDto {
     return {
-      value: this.createJwt(username, expiresAt),
-      expiresAt: new Date().getTime() + expiresAt,
+      value: this.createJwt(username, jwtExpiresStr),
+      expiresAt: new Date().getTime() + getJwtExpiryInMiliseconds(jwtExpiresStr),
       issuedAt: new Date().getTime(),
     };
   }

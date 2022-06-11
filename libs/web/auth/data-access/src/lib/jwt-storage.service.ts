@@ -29,7 +29,7 @@ export class JwtStorageService {
   }
 
   private isTokenFromStorageValid(expiresAt: number): boolean {
-    return new Date().getTime() > expiresAt;
+    return new Date().getTime() < expiresAt;
   }
 
   public saveAuthState(loginResponseDto: JwtResponseDto): void {

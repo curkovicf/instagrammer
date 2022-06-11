@@ -9,7 +9,8 @@
     <ng-inst-cta-button
       class="cta-next"
       title="Save Info"
-      (ctaclick)="authService.saveLoginInfo()"
+      [isSpinnerActive]="isSpinnerActive"
+      (ctaclick)="onSaveInfoClick()"
     ></ng-inst-cta-button>
 
     <button class="go-back-button" (click)="router.navigate(['/dummy-home'])">Not Now</button>

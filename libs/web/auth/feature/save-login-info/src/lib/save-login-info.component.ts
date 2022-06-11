@@ -8,5 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./save-login-info.component.scss'],
 })
 export class SaveLoginInfoComponent {
+  public isSpinnerActive = false;
+
   constructor(public readonly authService: AuthService, public readonly router: Router) {}
+
+  public onSaveInfoClick(): void {
+    this.isSpinnerActive = true;
+
+    setTimeout(() => {
+      this.authService.saveLoginInfo();
+    }, 2000);
+  }
 }

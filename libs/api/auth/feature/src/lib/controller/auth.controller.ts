@@ -32,7 +32,7 @@ export class AuthController {
     @Body() loginDto: LoginDto,
   ): Promise<JwtResponseDto> {
     const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
-    const newCookie = await this.authService.createNewCookieWithRefreshJwt(refreshToken);
+    const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
 
     res.setHeader('Set-Cookie', newCookie);
 
@@ -46,7 +46,7 @@ export class AuthController {
     @Body() refreshJwtDto: RefreshJwtDto,
   ): Promise<JwtTokenDto> {
     const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
-    const newCookie = this.authService.createNewCookieWithRefreshJwt(refreshToken.value);
+    const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken.value);
 
     res.setHeader('Set-Cookie', newCookie);
 
