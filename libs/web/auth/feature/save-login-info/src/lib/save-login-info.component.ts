@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@instagrammer/web/auth/data-access';
+import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data-access';
 import { Router } from '@angular/router';
+import { RefreshJwtDto } from '@instagrammer/api/auth/data-access';
 
 @Component({
   selector: 'ng-insta-save-login-info-prompt',
@@ -10,13 +11,22 @@ import { Router } from '@angular/router';
 export class SaveLoginInfoComponent {
   public isSpinnerActive = false;
 
-  constructor(public readonly authService: AuthService, public readonly router: Router) {}
+  constructor(
+    public readonly authService: AuthService,
+    public readonly router: Router,
+    private readonly jwtStorageService: JwtStorageService,
+  ) {}
 
   public onSaveInfoClick(): void {
     this.isSpinnerActive = true;
 
     setTimeout(() => {
-      this.authService.saveLoginInfo();
+      const refreshJwtDto: RefreshJwtDto = {
+        username: this.jwtStorageService.getUsername(),
+        isLongSession: true,
+      };
+
+      this.authService.saveLogin(refreshJwtDto);
     }, 2000);
   }
 }

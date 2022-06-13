@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
-import { JwtResponseDto, RegisterResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto, RegisterResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { LoginDto, RefreshJwtDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
+import { JwtTokenDto } from '../../../../../../api/auth/data-access/src/lib/dto/token-pair.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class AuthApiService {
     this.url = `${this.environmentService.baseUrl}/auth`;
   }
 
-  public login(loginDto: LoginDto): Observable<JwtResponseDto> {
-    return this.http.post<JwtResponseDto>(`${this.url}/login`, loginDto, {
+  public login(loginDto: LoginDto): Observable<LoginResponseDto> {
+    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto, {
       withCredentials: true,
     });
   }
@@ -29,7 +30,7 @@ export class AuthApiService {
     return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
 
-  public saveLoginInfo(refreshJwtDto: RefreshJwtDto): Observable<JwtResponseDto> {
-    return this.http.post<JwtResponseDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
+  public saveLoginInfo(refreshJwtDto: RefreshJwtDto): Observable<JwtTokenDto> {
+    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AUTH_FEATURE_KEY, AuthFacadeService } from '@instagrammer/web/auth/data-access';
-import { JwtResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
   providedIn: 'root',
@@ -10,33 +10,47 @@ export class JwtStorageService {
 
   constructor(private readonly authFacadeService: AuthFacadeService) {}
 
-  public init(): void {
+  public init(): boolean {
     const authState = localStorage.getItem(this.authKey);
 
     if (!authState) {
-      return;
+      return false;
     }
 
-    const parsedAuthState: JwtResponseDto = JSON.parse(authState);
+    const parsedAuthState: LoginResponseDto = JSON.parse(authState);
 
     if (!this.isTokenFromStorageValid(parsedAuthState.expiresAt)) {
       this.clearStorage();
 
-      return;
+      return false;
     }
 
     this.authFacadeService.updateAuthState(parsedAuthState);
+
+    return true;
   }
 
   private isTokenFromStorageValid(expiresAt: number): boolean {
     return new Date().getTime() < expiresAt;
   }
 
-  public saveAuthState(loginResponseDto: JwtResponseDto): void {
+  public saveAuthState(loginResponseDto: LoginResponseDto): void {
     localStorage.setItem(this.authKey, JSON.stringify(loginResponseDto));
   }
 
   public clearStorage(): void {
     localStorage.removeItem(this.authKey);
+  }
+
+  public getUsername(): string {
+    const authState = localStorage.getItem(this.authKey);
+
+    if (!authState) {
+      throw new Error('Auth state is missing in local storage');
+    }
+
+    const parsedAuthState: LoginResponseDto = JSON.parse(authState);
+
+    return parsedAuthState.username;
   }
 }

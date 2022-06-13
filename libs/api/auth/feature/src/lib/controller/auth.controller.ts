@@ -7,7 +7,7 @@ import {
   LogoutDto,
   RefreshJwtDto,
 } from '@instagrammer/api/auth/data-access';
-import { JwtResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { Request, Response } from 'express';
 import { JwtTokenDto } from '../../../../data-access/src/lib/dto/token-pair.dto';
 
@@ -30,7 +30,7 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @Body() loginDto: LoginDto,
-  ): Promise<JwtResponseDto> {
+  ): Promise<LoginResponseDto> {
     const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
 

@@ -12,7 +12,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
-import { JwtResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { UsernameExistsDto } from '../dto/username-exists.dto';
 import { compare, hashWithSalt } from '@instagrammer/api/shared/util/encryption';
 import { RefreshTokenEntity } from '../entity/refresh-token.entity';
@@ -41,7 +41,7 @@ export class AuthService {
     }
   }
 
-  public async login(loginDto: LoginDto): Promise<{ loginResponseDto: JwtResponseDto; refreshToken: string }> {
+  public async login(loginDto: LoginDto): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
     const { username, password, email } = loginDto;
 
     const user = await this.userRepository.findOne({ username });
@@ -58,7 +58,8 @@ export class AuthService {
 
     return {
       loginResponseDto: {
-        value: accessToken.value,
+        username,
+        jwt: accessToken.value,
         issuedAt: accessToken.issuedAt,
         expiresAt: accessToken.expiresAt,
       },

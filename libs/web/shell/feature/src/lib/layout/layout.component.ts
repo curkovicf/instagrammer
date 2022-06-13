@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtStorageService } from '@instagrammer/web/auth/data-access';
+import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data-access';
+import { RefreshJwtDto } from '@instagrammer/api/auth/data-access';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -8,9 +9,18 @@ import { JwtStorageService } from '@instagrammer/web/auth/data-access';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  constructor(private readonly jwtStorageService: JwtStorageService) {}
+  constructor(private readonly jwtStorageService: JwtStorageService, private readonly authService: AuthService) {}
 
   public ngOnInit(): void {
-    this.jwtStorageService.init();
+    const isJwtValid = this.jwtStorageService.init();
+
+    if (isJwtValid) {
+      const refreshJwtDto: RefreshJwtDto = {
+        username: this.jwtStorageService.getUsername(),
+        isLongSession: true,
+      };
+
+      this.authService.saveLogin(refreshJwtDto);
+    }
   }
 }

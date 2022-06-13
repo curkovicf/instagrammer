@@ -5,7 +5,7 @@ import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
 import { LoginDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
-import { JwtResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,7 @@ export class AuthService {
     );
   }
 
-  private handleSuccessfulLogin(loginResponseDto: JwtResponseDto): boolean {
+  private handleSuccessfulLogin(loginResponseDto: LoginResponseDto): boolean {
     this.authFacadeService.updateAuthState(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 
@@ -57,21 +57,23 @@ export class AuthService {
     this.router.navigate(['/auth/login']);
   }
 
-  public saveLoginInfo(): void {
-    const refreshJwtDto: RefreshJwtDto = {
-      username: 'user123',
-      isLongSession: true,
-    };
-
+  public saveLogin(refreshJwtDto: RefreshJwtDto): void {
     this.authApiService
       .saveLoginInfo(refreshJwtDto)
       .pipe(
         take(1),
-        tap(loginResponseDto => {
+        tap(jwtTokenDto => {
+          const loginResponseDto: LoginResponseDto = {
+            ...jwtTokenDto,
+            jwt: jwtTokenDto.value,
+            username: this.jwtStorageService.getUsername(),
+          };
+
+          this.authFacadeService.disableOneTapRouter();
           this.authFacadeService.updateAuthState(loginResponseDto);
           this.jwtStorageService.saveAuthState(loginResponseDto);
         }),
-        finalize(() => this.router.navigate(['/dummy-home'])),
+        finalize(() => this.router.navigate(['dummy-home'])),
       )
       .subscribe();
   }

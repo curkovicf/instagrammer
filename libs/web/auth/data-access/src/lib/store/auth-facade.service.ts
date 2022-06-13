@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { JwtResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 import * as AuthSelectors from './auth.selectors';
 import * as AuthActions from './auth.actions';
@@ -12,11 +12,16 @@ import * as AuthActions from './auth.actions';
 export class AuthFacadeService {
   public readonly authState$ = this.store.select(AuthSelectors.selectAuthState);
   public readonly jwtToken$ = this.store.select(AuthSelectors.selectJwtToken);
+  public readonly isOneTapRouterEnabled$ = this.store.select(AuthSelectors.selectIsOneTapRouterEnabled);
 
   constructor(private readonly store: Store) {}
 
-  public updateAuthState(loginResponseDto: JwtResponseDto): void {
+  public updateAuthState(loginResponseDto: LoginResponseDto): void {
     this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
+  }
+
+  public disableOneTapRouter(): void {
+    this.store.dispatch(AuthActions.disableOneTapRouterAction());
   }
 
   public logout(): void {

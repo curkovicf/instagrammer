@@ -1,5 +1,7 @@
 export interface AuthState {
-  value: string | null;
+  username: string | null;
+  jwt: string | null;
   issuedAt: number | null;
   expiresAt: number | null;
+  isOneTapRouterEnabled: boolean;
 }
