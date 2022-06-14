@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import {
   AuthService,
   RegisterDto,
@@ -53,8 +53,20 @@ export class AuthController {
     return accessToken;
   }
 
+  @Get('/access-jwt')
+  public async getAccessJwt(@Req() req: Request, @Res() res: Response): Promise<JwtTokenDto> {
+    const refreshJwt = req.cookies.Authentication;
+    const someVar = await this.authService.generateNewAccessToken(refreshJwt);
+
+    console.log(someVar);
+
+    return someVar;
+  }
+
   @Post('/logout')
-  public async logout(@Body() logoutDto: LogoutDto): Promise<void> {
+  public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutDto): Promise<void> {
+    res.clearCookie('Authentication', { path: '/' });
+
     return await this.authService.logout(logoutDto);
   }
 }

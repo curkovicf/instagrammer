@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { LoginDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, LogoutDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
 import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 @Injectable({
@@ -52,9 +52,18 @@ export class AuthService {
   }
 
   public logout(): void {
-    this.authFacadeService.logout();
-    this.jwtStorageService.clearStorage();
-    this.router.navigate(['/auth/login']);
+    const logoutDto: LogoutDto = new LogoutDto();
+
+    logoutDto.username = this.jwtStorageService.getUsername();
+
+    this.authApiService.logout(logoutDto).pipe(
+      take(1),
+      finalize(() => {
+        this.authFacadeService.logout();
+        this.jwtStorageService.clearStorage();
+        this.router.navigate(['/auth/login']);
+      }),
+    );
   }
 
   public saveLogin(refreshJwtDto: RefreshJwtDto): void {
@@ -76,5 +85,9 @@ export class AuthService {
         finalize(() => this.router.navigate(['dummy-home'])),
       )
       .subscribe();
+  }
+
+  public getAccessToken(): void {
+    this.authApiService.getAccessJwt().subscribe(jwt => console.log(jwt));
   }
 }

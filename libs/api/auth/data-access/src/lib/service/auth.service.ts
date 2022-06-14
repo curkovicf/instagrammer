@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  MethodNotAllowedException,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -20,6 +21,7 @@ import { LogoutDto } from '../dto/logout.dto';
 import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
 import { JwtTokenDto, TokenPairDto } from '../dto/token-pair.dto';
 import { getJwtExpiryInMiliseconds, JwtExpiresStr } from '../constants';
+import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
 
 @Injectable()
 export class AuthService {
@@ -158,5 +160,25 @@ export class AuthService {
       expiresAt: new Date().getTime() + getJwtExpiryInMiliseconds(jwtExpiresStr),
       issuedAt: new Date().getTime(),
     };
+  }
+
+  public async generateNewAccessToken(refreshJwt: string): Promise<JwtTokenDto> {
+    const decodedToken: DecodedJwtDto | null = this.jwtService.decode(refreshJwt) as DecodedJwtDto;
+
+    if (!decodedToken) {
+      throw new MethodNotAllowedException();
+    }
+
+    const user = await this.userRepository.findOne({ username: decodedToken.username });
+
+    if (!user) {
+      throw new NotFoundException();
+    }
+
+    if (await compare(user.refreshToken?.hashedRefreshToken ?? '', await hashWithSalt(refreshJwt))) {
+      throw new UnauthorizedException();
+    }
+
+    return this.generateToken(decodedToken.username, JwtExpiresStr.ACCESS_JWT);
   }
 }

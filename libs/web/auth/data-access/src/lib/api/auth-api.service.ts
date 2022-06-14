@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
 import { LoginResponseDto, RegisterResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
-import { LoginDto, RefreshJwtDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
+import { LoginDto, LogoutDto, RefreshJwtDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
 import { JwtTokenDto } from '../../../../../../api/auth/data-access/src/lib/dto/token-pair.dto';
 
 @Injectable({
@@ -31,6 +31,18 @@ export class AuthApiService {
   }
 
   public saveLoginInfo(refreshJwtDto: RefreshJwtDto): Observable<JwtTokenDto> {
-    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
+    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto, {
+      withCredentials: true,
+    });
+  }
+
+  public getAccessJwt(): Observable<string> {
+    return this.http.get<string>(`${this.url}/access-jwt`, {
+      withCredentials: true,
+    });
+  }
+
+  public logout(logoutDto: LogoutDto): Observable<void> {
+    return this.http.post<void>(`${this.url}/logout`, logoutDto);
   }
 }
