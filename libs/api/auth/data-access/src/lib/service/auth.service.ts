@@ -20,7 +20,7 @@ import { RefreshTokenEntity } from '../entity/refresh-token.entity';
 import { LogoutDto } from '../dto/logout.dto';
 import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
 import { JwtTokenDto, TokenPairDto } from '../dto/token-pair.dto';
-import { getJwtExpiryInMiliseconds, JwtExpiresStr } from '../constants';
+import { getJwtExpiryInMilliseconds, JwtExpiresStr } from '../constants';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
 
 @Injectable()
@@ -93,7 +93,7 @@ export class AuthService {
   public createNewHttpHeaderWithCookie(refreshJwt: string): string {
     // Path=/auth/refresh-jwt
     return `Authentication=${refreshJwt}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
-      new Date().getTime() + getJwtExpiryInMiliseconds(JwtExpiresStr.REFRESH_JWT_EXPIRES_LONG)
+      new Date().getTime() + getJwtExpiryInMilliseconds(JwtExpiresStr.REFRESH_JWT_EXPIRES_LONG)
     }`;
   }
 
@@ -157,7 +157,7 @@ export class AuthService {
   private generateToken(username: string, jwtExpiresStr: JwtExpiresStr): JwtTokenDto {
     return {
       value: this.createJwt(username, jwtExpiresStr),
-      expiresAt: new Date().getTime() + getJwtExpiryInMiliseconds(jwtExpiresStr),
+      expiresAt: new Date().getTime() + getJwtExpiryInMilliseconds(jwtExpiresStr),
       issuedAt: new Date().getTime(),
     };
   }

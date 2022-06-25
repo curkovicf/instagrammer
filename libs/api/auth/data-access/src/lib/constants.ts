@@ -4,7 +4,7 @@ export enum JwtExpiresStr {
   REFRESH_JWT_EXPIRES_LONG = '60 days',
 }
 
-export function getJwtExpiryInMiliseconds(jwtExpiresStr: JwtExpiresStr): number {
+export function getJwtExpiryInMilliseconds(jwtExpiresStr: JwtExpiresStr): number {
   switch (jwtExpiresStr) {
     case JwtExpiresStr.ACCESS_JWT:
       return 300 * 1000;

@@ -6,10 +6,10 @@ import {
   UsernameExistsDto,
   LogoutDto,
   RefreshJwtDto,
+  JwtTokenDto,
 } from '@instagrammer/api/auth/data-access';
 import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import { Request, Response } from 'express';
-import { JwtTokenDto } from '../../../../data-access/src/lib/dto/token-pair.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -56,16 +56,13 @@ export class AuthController {
   @Get('/access-jwt')
   public async getAccessJwt(@Req() req: Request, @Res() res: Response): Promise<JwtTokenDto> {
     const refreshJwt = req.cookies.Authentication;
-    const someVar = await this.authService.generateNewAccessToken(refreshJwt);
 
-    console.log(someVar);
-
-    return someVar;
+    return await this.authService.generateNewAccessToken(refreshJwt);
   }
 
   @Post('/logout')
   public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutDto): Promise<void> {
-    res.clearCookie('Authentication', { path: '/' });
+    res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
 
     return await this.authService.logout(logoutDto);
   }

@@ -3,8 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
 import { LoginResponseDto, RegisterResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
-import { LoginDto, LogoutDto, RefreshJwtDto, RegisterDto, UsernameExistsDto } from '@instagrammer/api/auth/data-access';
-import { JwtTokenDto } from '../../../../../../api/auth/data-access/src/lib/dto/token-pair.dto';
+import {
+  JwtTokenDto,
+  LoginDto,
+  LogoutDto,
+  RefreshJwtDto,
+  RegisterDto,
+  UsernameExistsDto,
+} from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +49,8 @@ export class AuthApiService {
   }
 
   public logout(logoutDto: LogoutDto): Observable<void> {
-    return this.http.post<void>(`${this.url}/logout`, logoutDto);
+    return this.http.post<void>(`${this.url}/logout`, logoutDto, {
+      withCredentials: true,
+    });
   }
 }
