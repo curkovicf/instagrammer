@@ -54,6 +54,9 @@ export class AuthService {
 
     const { accessToken, refreshToken } = this.generateTokenPair(username, false);
 
+    user.refreshToken = null;
+    await this.userRepository.save(user);
+
     user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
 
     await this.userRepository.save(user);
@@ -122,6 +125,9 @@ export class AuthService {
 
     const { accessToken, refreshToken } = this.generateTokenPair(username, isLongSession);
 
+    user.refreshToken = null;
+    await this.userRepository.save(user);
+
     user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
 
     await this.userRepository.save(user);
@@ -175,7 +181,7 @@ export class AuthService {
       throw new NotFoundException();
     }
 
-    if (await compare(user.refreshToken?.hashedRefreshToken ?? '', await hashWithSalt(refreshJwt))) {
+    if (!(await compare(user.refreshToken?.hashedRefreshToken ?? '', await hashWithSalt(refreshJwt)))) {
       throw new UnauthorizedException();
     }
 

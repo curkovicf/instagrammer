@@ -87,6 +87,9 @@ export class AuthService {
   }
 
   public getAccessToken(): void {
-    this.authApiService.getAccessJwt().subscribe(jwt => console.log(jwt));
+    this.authApiService.getAccessJwt().subscribe(jwt => {
+      console.log('API CALL');
+      console.log(jwt)
+    });
   }
 }

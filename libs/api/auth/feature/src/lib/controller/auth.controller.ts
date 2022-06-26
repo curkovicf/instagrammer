@@ -55,9 +55,9 @@ export class AuthController {
 
   @Get('/access-jwt')
   public async getAccessJwt(@Req() req: Request, @Res() res: Response): Promise<JwtTokenDto> {
-    const refreshJwt = req.cookies.Authentication;
+    const refreshJwtFromCookie = req.cookies.Authentication;
 
-    return await this.authService.generateNewAccessToken(refreshJwt);
+    return await this.authService.generateNewAccessToken(refreshJwtFromCookie);
   }
 
   @Post('/logout')

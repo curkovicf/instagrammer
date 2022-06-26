@@ -23,10 +23,10 @@ export class AuthApiService {
   }
 
   public login(loginDto: LoginDto): Observable<LoginResponseDto> {
-    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto, {
-      withCredentials: true,
-    });
+    return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto);
   }
+
+  public loginWithCookie(): void {}
 
   public checkIfUsernameExists(usernameExistsDto: UsernameExistsDto): Observable<UsernameExistsResponseDto> {
     return this.http.post<UsernameExistsResponseDto>(`${this.url}/username-exists`, usernameExistsDto);
@@ -37,20 +37,14 @@ export class AuthApiService {
   }
 
   public saveLoginInfo(refreshJwtDto: RefreshJwtDto): Observable<JwtTokenDto> {
-    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto, {
-      withCredentials: true,
-    });
+    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 
   public getAccessJwt(): Observable<string> {
-    return this.http.get<string>(`${this.url}/access-jwt`, {
-      withCredentials: true,
-    });
+    return this.http.get<string>(`${this.url}/access-jwt`);
   }
 
   public logout(logoutDto: LogoutDto): Observable<void> {
-    return this.http.post<void>(`${this.url}/logout`, logoutDto, {
-      withCredentials: true,
-    });
+    return this.http.post<void>(`${this.url}/logout`, logoutDto);
   }
 }

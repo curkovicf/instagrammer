@@ -4,11 +4,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategyService } from './strategy/jwt-strategy.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { UserRepository } from '@instagrammer/api/auth/data-access';
+import { UserRepository, RefreshTokenRepository } from '@instagrammer/api/auth/data-access';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([UserRepository]),
+    TypeOrmModule.forFeature([UserRepository, RefreshTokenRepository]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     //  TODO: Don't put secret key here, make env file
     JwtModule.register({ secret: 'super_secret', signOptions: { expiresIn: 3600 } }),
