@@ -15,7 +15,7 @@ export class UserEntity {
   @Column()
   dob!: Date;
 
-  @OneToOne(() => RefreshTokenEntity, { cascade: true })
+  @OneToOne(() => RefreshTokenEntity, { cascade: true, eager: true })
   @JoinColumn()
   refreshToken: RefreshTokenEntity | null = null;
 }

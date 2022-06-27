@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { UserEntity, RefreshTokenEntity } from '@instagrammer/api/auth/data-access';
 
 @Module({

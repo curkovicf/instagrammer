@@ -22,11 +22,14 @@ import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
 import { JwtTokenDto, TokenPairDto } from '../dto/token-pair.dto';
 import { getJwtExpiryInMilliseconds, JwtExpiresStr } from '../constants';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
+import { RefreshTokenRepository } from '../repository/refresh-token.repository';
+import { UserEntity } from '../entity/user.entity';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
+    @InjectRepository(RefreshTokenRepository) private readonly refreshTokenRepository: RefreshTokenRepository,
     private readonly jwtService: JwtService,
   ) {}
 
@@ -44,7 +47,7 @@ export class AuthService {
   }
 
   public async login(loginDto: LoginDto): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
-    const { username, password, email } = loginDto;
+    const { username, password } = loginDto;
 
     const user = await this.userRepository.findOne({ username });
 
@@ -54,8 +57,7 @@ export class AuthService {
 
     const { accessToken, refreshToken } = this.generateTokenPair(username, false);
 
-    user.refreshToken = null;
-    await this.userRepository.save(user);
+    await this.deleteCurrentRefreshToken(user);
 
     user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
 
@@ -125,8 +127,7 @@ export class AuthService {
 
     const { accessToken, refreshToken } = this.generateTokenPair(username, isLongSession);
 
-    user.refreshToken = null;
-    await this.userRepository.save(user);
+    await this.deleteCurrentRefreshToken(user);
 
     user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
 
@@ -169,7 +170,7 @@ export class AuthService {
   }
 
   public async generateNewAccessToken(refreshJwt: string): Promise<JwtTokenDto> {
-    const decodedToken: DecodedJwtDto | null = this.jwtService.decode(refreshJwt) as DecodedJwtDto;
+    const decodedToken: DecodedJwtDto | null = this.jwtService.decode(refreshJwt.slice()) as DecodedJwtDto;
 
     if (!decodedToken) {
       throw new MethodNotAllowedException();
@@ -181,10 +182,28 @@ export class AuthService {
       throw new NotFoundException();
     }
 
+    console.log('SAVED HASH ', user.refreshToken?.hashedRefreshToken);
+    console.log('FROM COOKIE HASH ', await hashWithSalt(refreshJwt.slice()));
+    console.log('REFRESH JWT ', refreshJwt);
+    // console.log('AAAAA ', await hashWithSalt(user.refreshToken?.hashedRefreshToken ?? ''));
+
     if (!(await compare(user.refreshToken?.hashedRefreshToken ?? '', await hashWithSalt(refreshJwt)))) {
       throw new UnauthorizedException();
     }
 
     return this.generateToken(decodedToken.username, JwtExpiresStr.ACCESS_JWT);
+  }
+
+  private async deleteCurrentRefreshToken(userEntity: UserEntity): Promise<void> {
+    if (!userEntity?.refreshToken) {
+      return;
+    }
+
+    const { refreshTokenId } = userEntity.refreshToken;
+
+    userEntity.refreshToken = null;
+
+    await this.userRepository.save(userEntity);
+    await this.refreshTokenRepository.delete({ refreshTokenId });
   }
 }

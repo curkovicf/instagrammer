@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { RefreshTokenEntity } from '@instagrammer/api/auth/data-access';
+import { RefreshTokenEntity } from '../entity/refresh-token.entity';
 
 @EntityRepository(RefreshTokenEntity)
 export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {}

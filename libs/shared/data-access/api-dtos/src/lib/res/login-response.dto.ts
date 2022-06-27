@@ -5,4 +5,4 @@ export interface LoginResponseDto {
   expiresAt: number;
 }
 
-export interface RegisterResponseDto extends LoginResponseDto {}
+export type RegisterResponseDto = LoginResponseDto;
