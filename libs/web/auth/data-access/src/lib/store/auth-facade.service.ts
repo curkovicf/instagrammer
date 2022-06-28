@@ -5,6 +5,7 @@ import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 
 import * as AuthSelectors from './auth.selectors';
 import * as AuthActions from './auth.actions';
+import { JwtTokenDto } from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,10 @@ export class AuthFacadeService {
 
   public updateAuthState(loginResponseDto: LoginResponseDto): void {
     this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
+  }
+
+  public updateAccessJwtState(accessJwtDto: JwtTokenDto): void {
+    this.store.dispatch(AuthActions.updateAccessJwtAction({ accessJwtDto }));
   }
 
   public disableOneTapRouter(): void {

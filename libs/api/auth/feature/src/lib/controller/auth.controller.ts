@@ -54,7 +54,7 @@ export class AuthController {
   }
 
   @Get('/access-jwt')
-  public async getAccessJwt(@Req() req: Request, @Res() res: Response): Promise<JwtTokenDto> {
+  public async getAccessJwt(@Req() req: Request, @Res({ passthrough: true }) res: Response): Promise<LoginResponseDto> {
     const refreshJwtFromCookie = req.cookies.Authentication;
 
     return await this.authService.generateNewAccessToken(refreshJwtFromCookie);

@@ -87,9 +87,16 @@ export class AuthService {
   }
 
   public getAccessToken(): void {
-    this.authApiService.getAccessJwt().subscribe(jwt => {
-      console.log('API CALL');
-      console.log(jwt)
-    });
+    this.authApiService
+      .getAccessJwt()
+      .pipe(
+        take(1),
+        tap((loginResponseDto: LoginResponseDto) => {
+          this.authFacadeService.updateAuthState(loginResponseDto);
+          this.jwtStorageService.saveAuthState(loginResponseDto);
+        }),
+        finalize(() => this.router.navigate(['dummy-home'])),
+      )
+      .subscribe();
   }
 }

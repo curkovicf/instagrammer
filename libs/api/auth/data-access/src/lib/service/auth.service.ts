@@ -169,7 +169,7 @@ export class AuthService {
     };
   }
 
-  public async generateNewAccessToken(refreshJwt: string): Promise<JwtTokenDto> {
+  public async generateNewAccessToken(refreshJwt: string): Promise<LoginResponseDto> {
     const decodedToken: DecodedJwtDto | null = this.jwtService.decode(refreshJwt.slice()) as DecodedJwtDto;
 
     if (!decodedToken) {
@@ -182,16 +182,18 @@ export class AuthService {
       throw new NotFoundException();
     }
 
-    console.log('SAVED HASH ', user.refreshToken?.hashedRefreshToken);
-    console.log('FROM COOKIE HASH ', await hashWithSalt(refreshJwt.slice()));
-    console.log('REFRESH JWT ', refreshJwt);
-    // console.log('AAAAA ', await hashWithSalt(user.refreshToken?.hashedRefreshToken ?? ''));
-
-    if (!(await compare(user.refreshToken?.hashedRefreshToken ?? '', await hashWithSalt(refreshJwt)))) {
+    if (!(await compare(refreshJwt, user.refreshToken?.hashedRefreshToken ?? ''))) {
       throw new UnauthorizedException();
     }
 
-    return this.generateToken(decodedToken.username, JwtExpiresStr.ACCESS_JWT);
+    const newToken = this.generateToken(decodedToken.username, JwtExpiresStr.ACCESS_JWT);
+
+    return {
+      jwt: newToken.value,
+      issuedAt: newToken.issuedAt,
+      expiresAt: newToken.expiresAt,
+      username: decodedToken.username,
+    };
   }
 
   private async deleteCurrentRefreshToken(userEntity: UserEntity): Promise<void> {

@@ -40,8 +40,8 @@ export class AuthApiService {
     return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 
-  public getAccessJwt(): Observable<string> {
-    return this.http.get<string>(`${this.url}/access-jwt`);
+  public getAccessJwt(): Observable<LoginResponseDto> {
+    return this.http.get<LoginResponseDto>(`${this.url}/access-jwt`);
   }
 
   public logout(logoutDto: LogoutDto): Observable<void> {

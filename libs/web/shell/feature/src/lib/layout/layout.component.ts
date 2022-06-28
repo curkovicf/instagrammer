@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
     const isJwtValid = this.jwtStorageService.init();
 
     if (!isJwtValid) {
-      this.authService.getAccessToken();
+      setTimeout(() => this.authService.getAccessToken(), 1);
     }
 
     // if (isJwtValid) {

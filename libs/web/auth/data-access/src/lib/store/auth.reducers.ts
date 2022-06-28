@@ -30,4 +30,10 @@ export const authReducer = createReducer(
     issuedAt: null,
     isOneTapRouterEnabled: false,
   })),
+  on(AuthActions.updateAccessJwtAction, (state, { accessJwtDto }) => ({
+    ...state,
+    jwt: accessJwtDto.value,
+    issuedAt: accessJwtDto.issuedAt,
+    expiresAt: accessJwtDto.expiresAt,
+  })),
 );

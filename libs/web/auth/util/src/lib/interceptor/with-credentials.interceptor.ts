@@ -23,11 +23,11 @@ export class WithCredentialsInterceptor implements HttpInterceptor {
 
     console.log('Attach ', req.url);
 
-    req = req.clone({
-      withCredentials: true,
-    });
-
-    return next.handle(req);
+    return next.handle(
+      req.clone({
+        withCredentials: true,
+      }),
+    );
   }
 
   private shouldAttachCookie(url: string): boolean {
