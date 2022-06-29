@@ -62,7 +62,7 @@ export class AuthController {
 
   @Post('/logout')
   public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutDto): Promise<void> {
-    res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
+    res.clearCookie('Authentication', { path: '/auth', httpOnly: true, sameSite: 'strict' });
 
     return await this.authService.logout(logoutDto);
   }

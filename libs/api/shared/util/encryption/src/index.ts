@@ -1,2 +1,4 @@
-export * from './lib/bcrypt/compare.function';
-export * from './lib/bcrypt/hash-with-salt.function';
+export * from './lib/encryption.module';
+export * from './lib/encryption.class';
+
+export * from './lib/bcrypt/bcrypt-encryption.service';
