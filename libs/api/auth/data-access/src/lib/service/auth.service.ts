@@ -6,23 +6,26 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { RegisterDto } from '../dto/register.dto';
-import { LoginDto } from '../dto/login.dto';
 import { UserRepository } from '../repository/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
-import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
-import { UsernameExistsDto } from '../dto/username-exists.dto';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
 import { RefreshTokenEntity } from '../entity/refresh-token.entity';
-import { LogoutDto } from '../dto/logout.dto';
-import { RefreshJwtDto } from '../dto/refresh-jwt.dto';
-import { JwtTokenDto, TokenPairDto } from '../dto/token-pair.dto';
-import { getJwtExpiryInMilliseconds, JwtExpiresStr } from '../jwt/constants';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
 import { RefreshTokenRepository } from '../repository/refresh-token.repository';
 import { UserEntity } from '../entity/user.entity';
-import { JwtUtilService } from '../jwt/jwt-util.service';
+import {
+  JwtDto,
+  JwtPairDto,
+  LoginRequestDto,
+  LoginResponseDto,
+  LogoutRequestDto,
+  RefreshJwtRequestDto,
+  RegisterRequestDto,
+  UsernameExistsRequestDto,
+  UsernameExistsResponseDto,
+} from '@instagrammer/shared-data-access-api-auth-dto';
+import { JwtExpires, JwtUtilService } from '@instagrammer/api/auth/util/jwt';
 
 @Injectable()
 export class AuthService {
@@ -37,7 +40,7 @@ export class AuthService {
    * Attempts to create/register new user
    * @param registerDto
    */
-  public async register(registerDto: RegisterDto): Promise<void> {
+  public async register(registerDto: RegisterRequestDto): Promise<void> {
     try {
       await this.userRepository.createUser(registerDto);
     } catch (err) {
@@ -54,7 +57,7 @@ export class AuthService {
    * Attempts to log-in/sign-in user
    * @param loginDto
    */
-  public async login(loginDto: LoginDto): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
+  public async login(loginDto: LoginRequestDto): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
     const { username, password } = loginDto;
 
     const user = await this.userRepository.findOne({ username });
@@ -86,7 +89,7 @@ export class AuthService {
    * Checks if username is being used in the database
    * @param usernameExistsDto
    */
-  public async checkIfUsernameExists(usernameExistsDto: UsernameExistsDto): Promise<UsernameExistsResponseDto> {
+  public async checkIfUsernameExists(usernameExistsDto: UsernameExistsRequestDto): Promise<UsernameExistsResponseDto> {
     const { username } = usernameExistsDto;
     const responseDto: UsernameExistsResponseDto = { username, isUsernameAvailable: false };
 
@@ -107,7 +110,7 @@ export class AuthService {
    */
   public createNewHttpHeaderWithCookie(refreshJwt: string): string {
     return `Authentication=${refreshJwt}; HttpOnly; Path=/auth; SameSite=Strict; Max-Age=${
-      new Date().getTime() + getJwtExpiryInMilliseconds(JwtExpiresStr.REFRESH_JWT_EXPIRES_LONG)
+      new Date().getTime() + this.jwtUtilService.getJwtExpiryInMilliseconds(JwtExpires.REFRESH_JWT_EXPIRES_LONG)
     }`;
   }
 
@@ -115,7 +118,7 @@ export class AuthService {
    * Attempts to log-out user
    * @param logoutDto
    */
-  async logout(logoutDto: LogoutDto): Promise<void> {
+  async logout(logoutDto: LogoutRequestDto): Promise<void> {
     const { username } = logoutDto;
 
     const user = await this.userRepository.findOne({ username });
@@ -134,7 +137,7 @@ export class AuthService {
    * Session can be long(60 days) or short(2 days)
    * @param refreshJwtDto
    */
-  public async generateNewRefreshJwt(refreshJwtDto: RefreshJwtDto): Promise<TokenPairDto> {
+  public async generateNewRefreshJwt(refreshJwtDto: RefreshJwtRequestDto): Promise<JwtPairDto> {
     const { username, isLongSession } = refreshJwtDto;
 
     const user = await this.userRepository.findOne({ username });
@@ -162,7 +165,7 @@ export class AuthService {
    * @param refreshToken
    * @private
    */
-  private async createNewRefreshTokenEntity(refreshToken: JwtTokenDto): Promise<RefreshTokenEntity> {
+  private async createNewRefreshTokenEntity(refreshToken: JwtDto): Promise<RefreshTokenEntity> {
     const refreshTokenEntity = new RefreshTokenEntity();
 
     refreshTokenEntity.hashedRefreshToken = await this.encryptionService.hash(refreshToken.value);
@@ -193,7 +196,7 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
-    const newToken = this.jwtUtilService.generateToken(decodedToken.username, JwtExpiresStr.ACCESS_JWT);
+    const newToken = this.jwtUtilService.generateToken(decodedToken.username, JwtExpires.ACCESS_JWT);
 
     return {
       jwt: newToken.value,

@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
-import { LoginResponseDto, RegisterResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
 import {
-  JwtTokenDto,
-  LoginDto,
-  LogoutDto,
-  RefreshJwtDto,
-  RegisterDto,
-  UsernameExistsDto,
-} from '@instagrammer/api/auth/data-access';
+  JwtDto,
+  LoginRequestDto,
+  LoginResponseDto,
+  LogoutRequestDto,
+  RefreshJwtRequestDto,
+  RegisterRequestDto,
+  RegisterResponseDto,
+  UsernameExistsRequestDto,
+  UsernameExistsResponseDto,
+} from '@instagrammer/shared-data-access-api-auth-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -22,29 +24,27 @@ export class AuthApiService {
     this.url = `${this.environmentService.baseUrl}/auth`;
   }
 
-  public login(loginDto: LoginDto): Observable<LoginResponseDto> {
+  public login(loginDto: LoginRequestDto): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto);
   }
 
-  public loginWithCookie(): void {}
-
-  public checkIfUsernameExists(usernameExistsDto: UsernameExistsDto): Observable<UsernameExistsResponseDto> {
+  public checkIfUsernameExists(usernameExistsDto: UsernameExistsRequestDto): Observable<UsernameExistsResponseDto> {
     return this.http.post<UsernameExistsResponseDto>(`${this.url}/username-exists`, usernameExistsDto);
   }
 
-  public register(registerDto: RegisterDto): Observable<RegisterResponseDto> {
+  public register(registerDto: RegisterRequestDto): Observable<RegisterResponseDto> {
     return this.http.post<RegisterResponseDto>(`${this.url}/register`, registerDto);
   }
 
-  public saveLoginInfo(refreshJwtDto: RefreshJwtDto): Observable<JwtTokenDto> {
-    return this.http.post<JwtTokenDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
+  public saveLoginInfo(refreshJwtDto: RefreshJwtRequestDto): Observable<JwtDto> {
+    return this.http.post<JwtDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
   }
 
   public getAccessJwt(): Observable<LoginResponseDto> {
     return this.http.get<LoginResponseDto>(`${this.url}/access-jwt`);
   }
 
-  public logout(logoutDto: LogoutDto): Observable<void> {
+  public logout(logoutDto: LogoutRequestDto): Observable<void> {
     return this.http.post<void>(`${this.url}/logout`, logoutDto);
   }
 }

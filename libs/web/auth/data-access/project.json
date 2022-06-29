@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/auth/data-access/src/**/*.ts",
-          "libs/web/auth/data-access/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/auth/data-access/src/**/*.ts", "libs/web/auth/data-access/src/**/*.html"]
       }
     }
   },

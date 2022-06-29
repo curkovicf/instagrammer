@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/apple-spinner/src/**/*.ts",
-          "libs/web/shared/ui/apple-spinner/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/shared/ui/apple-spinner/src/**/*.ts", "libs/web/shared/ui/apple-spinner/src/**/*.html"]
       }
     }
   },

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import { JwtDto, LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
 
 import * as AuthSelectors from './auth.selectors';
 import * as AuthActions from './auth.actions';
-import { JwtTokenDto } from '@instagrammer/api/auth/data-access';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +20,7 @@ export class AuthFacadeService {
     this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
   }
 
-  public updateAccessJwtState(accessJwtDto: JwtTokenDto): void {
+  public updateAccessJwtState(accessJwtDto: JwtDto): void {
     this.store.dispatch(AuthActions.updateAccessJwtAction({ accessJwtDto }));
   }
 

@@ -1,8 +1,8 @@
 import { IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { IsFieldDefined } from '@instagrammer/api/auth/util';
+import { IsFieldDefined } from '@instagrammer/api-auth-util-validator';
 
-export class LoginDto {
+export class LoginRequestDto {
   @IsString()
   @IsFieldDefined('email')
   username!: string;

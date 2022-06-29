@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/auth/ui/phone-get-app/src/**/*.ts",
-          "libs/web/auth/ui/phone-get-app/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/auth/ui/phone-get-app/src/**/*.ts", "libs/web/auth/ui/phone-get-app/src/**/*.html"]
       }
     }
   },

@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/shell/ui/not-found/src/**/*.ts",
-          "libs/web/shell/ui/not-found/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/shell/ui/not-found/src/**/*.ts", "libs/web/shell/ui/not-found/src/**/*.html"]
       }
     }
   },

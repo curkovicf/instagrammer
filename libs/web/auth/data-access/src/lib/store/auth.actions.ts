@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
-import { JwtTokenDto } from '@instagrammer/api/auth/data-access';
+import { JwtDto, LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
 
 export const loginAction = createAction('[Auth] Login', props<{ loginResponseDto: LoginResponseDto }>());
 
@@ -8,4 +7,4 @@ export const disableOneTapRouterAction = createAction('[Auth] Disable one-tap ro
 
 export const logoutAction = createAction('[Auth] logout');
 
-export const updateAccessJwtAction = createAction('[Auth] Update access JWT', props<{ accessJwtDto: JwtTokenDto }>());
+export const updateAccessJwtAction = createAction('[Auth] Update access JWT', props<{ accessJwtDto: JwtDto }>());

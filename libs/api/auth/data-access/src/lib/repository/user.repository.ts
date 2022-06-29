@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { RegisterDto } from '../dto/register.dto';
 import { UserEntity } from '../entity/user.entity';
 import { BcryptEncryptionService } from '@instagrammer/api/shared/util/encryption';
+import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
 
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
@@ -9,7 +9,7 @@ export class UserRepository extends Repository<UserEntity> {
     super();
   }
 
-  public async createUser(registerDto: RegisterDto): Promise<void> {
+  public async createUser(registerDto: RegisterRequestDto): Promise<void> {
     const { username, password, email, fullName, dob } = registerDto;
 
     const newUser = this.create({

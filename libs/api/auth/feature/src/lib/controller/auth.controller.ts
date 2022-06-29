@@ -1,27 +1,27 @@
 import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import {
-  AuthService,
-  RegisterDto,
-  LoginDto,
-  UsernameExistsDto,
-  LogoutDto,
-  RefreshJwtDto,
-  JwtTokenDto,
-} from '@instagrammer/api/auth/data-access';
-import { LoginResponseDto, UsernameExistsResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+  JwtDto,
+  LoginRequestDto,
+  LoginResponseDto,
+  LogoutRequestDto,
+  RefreshJwtRequestDto,
+  RegisterRequestDto,
+  UsernameExistsRequestDto,
+} from '@instagrammer/shared-data-access-api-auth-dto';
 import { Request, Response } from 'express';
+import { AuthService } from '@instagrammer/api/auth/data-access';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/register')
-  public async register(@Body() registerDto: RegisterDto): Promise<void> {
+  public async register(@Body() registerDto: RegisterRequestDto): Promise<void> {
     return await this.authService.register(registerDto);
   }
 
   @Post('/username-exists')
-  public async checkUsernameExists(@Body() usernameExistsDto: UsernameExistsDto): Promise<UsernameExistsResponseDto> {
+  public async checkUsernameExists(@Body() usernameExistsDto: UsernameExistsRequestDto): Promise<UsernameExistsRequestDto> {
     return await this.authService.checkIfUsernameExists(usernameExistsDto);
   }
 
@@ -29,7 +29,7 @@ export class AuthController {
   public async login(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() loginDto: LoginDto,
+    @Body() loginDto: LoginRequestDto,
   ): Promise<LoginResponseDto> {
     const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
@@ -43,8 +43,8 @@ export class AuthController {
   public async refreshJwt(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() refreshJwtDto: RefreshJwtDto,
-  ): Promise<JwtTokenDto> {
+    @Body() refreshJwtDto: RefreshJwtRequestDto,
+  ): Promise<JwtDto> {
     const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken.value);
 
@@ -61,7 +61,7 @@ export class AuthController {
   }
 
   @Post('/logout')
-  public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutDto): Promise<void> {
+  public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutRequestDto): Promise<void> {
     res.clearCookie('Authentication', { path: '/auth', httpOnly: true, sameSite: 'strict' });
 
     return await this.authService.logout(logoutDto);

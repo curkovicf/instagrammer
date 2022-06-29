@@ -1,6 +1,6 @@
 import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 
-export class RefreshJwtDto {
+export class RefreshJwtRequestDto {
   @IsNotEmpty()
   @IsString()
   username!: string;

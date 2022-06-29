@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/cta-button/src/**/*.ts",
-          "libs/web/shared/ui/cta-button/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/shared/ui/cta-button/src/**/*.ts", "libs/web/shared/ui/cta-button/src/**/*.html"]
       }
     }
   },

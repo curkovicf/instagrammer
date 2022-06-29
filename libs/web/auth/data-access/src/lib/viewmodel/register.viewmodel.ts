@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { RegisterDto } from '@instagrammer/api/auth/data-access';
 import { AuthService } from '../auth.service';
 import { of, switchMap, take } from 'rxjs';
+import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
 
 export enum ActiveView {
   baseInfo = 'baseInfo',
@@ -68,7 +68,7 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
 
           const { email, fullName, username, password } = partialRegisterDto;
 
-          const registerDto: RegisterDto = {
+          const registerDto: RegisterRequestDto = {
             email,
             username,
             password,

@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ng-insta-rotating-phones',
@@ -21,6 +14,7 @@ import {
 })
 export class RotatingPhonesComponent implements OnDestroy, AfterViewInit {
   private isAlive = true;
+  // @ts-ignore
   private intervalId: NodeJS.Timer | undefined;
   private previousScreenshotIndex = 0;
   private activeScreenshotIndex = 1;

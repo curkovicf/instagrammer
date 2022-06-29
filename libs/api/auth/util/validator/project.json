@@ -1,19 +1,19 @@
 {
-  "root": "libs/api/auth/util",
-  "sourceRoot": "libs/api/auth/util/src",
+  "root": "libs/api/auth/util/validator",
+  "sourceRoot": "libs/api/auth/util/validator/src",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api/auth/util/**/*.ts"]
+        "lintFilePatterns": ["libs/api/auth/util/validator/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/auth/util"],
+      "outputs": ["coverage/libs/api/auth/util/validator"],
       "options": {
-        "jestConfig": "libs/api/auth/util/jest.config.js",
+        "jestConfig": "libs/api/auth/util/validator/jest.config.js",
         "passWithNoTests": true
       }
     }

@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/api/shared/util/encryption/src/**/*.ts",
-          "libs/api/shared/util/encryption/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/api/shared/util/encryption/src/**/*.ts", "libs/api/shared/util/encryption/src/**/*.html"]
       }
     }
   },

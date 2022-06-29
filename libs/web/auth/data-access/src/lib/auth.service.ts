@@ -4,8 +4,12 @@ import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { LoginDto, RefreshJwtDto, RegisterDto } from '@instagrammer/api/auth/data-access';
-import { LoginResponseDto } from '@instagrammer/shared/data-access/api-dtos';
+import {
+  LoginRequestDto,
+  LoginResponseDto,
+  RefreshJwtRequestDto,
+  RegisterRequestDto,
+} from '@instagrammer/shared-data-access-api-auth-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +22,7 @@ export class AuthService {
     private readonly jwtStorageService: JwtStorageService,
   ) {}
 
-  public login(credentials: LoginDto): Observable<boolean> {
+  public login(credentials: LoginRequestDto): Observable<boolean> {
     return this.authApiService.login(credentials).pipe(
       map(loginResponseDto => {
         if (!loginResponseDto) {
@@ -30,7 +34,7 @@ export class AuthService {
     );
   }
 
-  public register(registerDto: RegisterDto): Observable<boolean> {
+  public register(registerDto: RegisterRequestDto): Observable<boolean> {
     return this.authApiService.register(registerDto).pipe(
       map(registerResponseDto => {
         if (!registerResponseDto) {
@@ -65,7 +69,7 @@ export class AuthService {
       .subscribe();
   }
 
-  public saveLogin(refreshJwtDto: RefreshJwtDto): void {
+  public saveLogin(refreshJwtDto: RefreshJwtRequestDto): void {
     this.authApiService
       .saveLoginInfo(refreshJwtDto)
       .pipe(

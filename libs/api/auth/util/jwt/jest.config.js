@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'shared-data-access-api-dtos',
-  preset: '../../../../jest.preset.js',
+  displayName: 'api-auth-util-jwt',
+  preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/shared/data-access/api-dtos',
+  coverageDirectory: '../../../../../coverage/libs/api/auth/util/jwt',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

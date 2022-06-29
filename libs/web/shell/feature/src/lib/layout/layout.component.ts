@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data-access';
-import { RefreshJwtDto } from '@instagrammer/api/auth/data-access';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -19,7 +18,7 @@ export class LayoutComponent implements OnInit {
     }
 
     // if (isJwtValid) {
-    //   const refreshJwtDto: RefreshJwtDto = {
+    //   const refreshJwtDto: RefreshJwtRequestDto = {
     //     username: this.jwtStorageService.getUsername(),
     //     isLongSession: true,
     //   };

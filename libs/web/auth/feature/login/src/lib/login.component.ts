@@ -15,10 +15,7 @@ export class LoginComponent implements OnDestroy {
 
   public formGroup: FormGroup;
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly formBuilder: FormBuilder,
-  ) {
+  constructor(private readonly authService: AuthService, private readonly formBuilder: FormBuilder) {
     this.formGroup = this.formBuilder.group({
       phoneOrUsernameOrEmail: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),

@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/input/src/**/*.ts",
-          "libs/web/shared/ui/input/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/shared/ui/input/src/**/*.ts", "libs/web/shared/ui/input/src/**/*.html"]
       }
     }
   },
