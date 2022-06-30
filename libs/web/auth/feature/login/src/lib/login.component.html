@@ -12,12 +12,16 @@
               formControlName="phoneOrUsernameOrEmail"
               inputType="text"
               placeholder="Phone number, username, or email"
+              [showValidityIcon]="false"
+              (onenterkeypress)="onLogInClick()"
             ></ng-insta-input>
 
             <ng-insta-input
               formControlName="password"
               inputType="password"
               placeholder="Password"
+              [showValidityIcon]="false"
+              (onenterkeypress)="onLogInClick()"
             ></ng-insta-input>
           </form>
 
@@ -31,6 +35,10 @@
           <ng-insta-or-block></ng-insta-or-block>
 
           <ng-insta-log-in-with-facebook></ng-insta-log-in-with-facebook>
+
+          <p class="error-message" *ngIf="!showErrorMessage">
+            Sorry, your password was incorrect. Please double-check your password.
+          </p>
 
           <div class="forgot-password">
             <p>Forgot password?</p>

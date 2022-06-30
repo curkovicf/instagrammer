@@ -35,8 +35,14 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
   @Input()
   inputType: 'text' | 'number' | 'password' = 'text';
 
+  @Input()
+  showValidityIcon = true;
+
   @Output()
   onchange: EventEmitter<boolean> = new EventEmitter();
+
+  @Output()
+  onenterkeypress: EventEmitter<void> = new EventEmitter();
 
   value = '';
 
@@ -160,5 +166,15 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     }
 
     this.isValid = true;
+  }
+
+  public onKeyDown($event: KeyboardEvent): void {
+    if ($event.key !== 'Enter') {
+      return;
+    }
+
+    $event.preventDefault();
+
+    this.onenterkeypress.emit();
   }
 }

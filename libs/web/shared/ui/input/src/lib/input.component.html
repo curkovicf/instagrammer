@@ -15,14 +15,15 @@
     (blur)="onTouched()"
     (focusin)="onFocusIn()"
     (focusout)="onFocusOut()"
+    (keydown)="onKeyDown($event)"
   />
 
   <div class="response-wrapper">
-    <div *ngIf="isValid && !isInputFocused && isTouched" class="icon-wrapper">
+    <div *ngIf="isValid && !isInputFocused && isTouched && showValidityIcon" class="icon-wrapper">
       <img class="valid-icon" src="/assets/icons/ok-circle-svgrepo-com.svg" alt="" />
     </div>
 
-    <div *ngIf="!isValid && !isInputFocused && isTouched" class="icon-wrapper">
+    <div *ngIf="!isValid && !isInputFocused && isTouched && showValidityIcon" class="icon-wrapper">
       <img class="invalid-icon" src="/assets/icons/close-circle-outline-svgrepo-com.svg" alt="" />
     </div>
 

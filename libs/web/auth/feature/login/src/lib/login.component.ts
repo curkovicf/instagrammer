@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { take, takeWhile, tap } from 'rxjs';
+import { catchError, finalize, of, take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data-access';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -12,6 +12,7 @@ export class LoginComponent implements OnDestroy {
   private isAlive = true;
   public isSpinnerActive = false;
   public isFormValid = false;
+  public showErrorMessage = false;
 
   public formGroup: FormGroup;
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnDestroy {
       return;
     }
 
-    this.isSpinnerActive = !this.isSpinnerActive;
+    this.toggleSpinner();
 
     const phoneOrUsernameOrEmail = this.formGroup.get('phoneOrUsernameOrEmail')?.value;
     const password = this.formGroup.get('password')?.value;
@@ -55,7 +56,12 @@ export class LoginComponent implements OnDestroy {
         .login({ username: phoneOrUsernameOrEmail, password })
         .pipe(
           take(1),
-          tap(() => (this.isSpinnerActive = !this.isSpinnerActive)),
+          catchError(() => {
+            this.showErrorMessage = true;
+
+            return of(null);
+          }),
+          finalize(() => this.toggleSpinner()),
         )
         .subscribe();
     }, 2000);
@@ -77,5 +83,9 @@ export class LoginComponent implements OnDestroy {
     }
 
     this.isFormValid = true;
+  }
+
+  private toggleSpinner(): void {
+    this.isSpinnerActive = !this.isSpinnerActive;
   }
 }

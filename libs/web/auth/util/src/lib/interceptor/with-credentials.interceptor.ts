@@ -17,11 +17,8 @@ export class WithCredentialsInterceptor implements HttpInterceptor {
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!this.shouldAttachCookie(req.url)) {
-      console.log('Do not attach ', req.url);
       return next.handle(req);
     }
-
-    console.log('Attach ', req.url);
 
     return next.handle(
       req.clone({
