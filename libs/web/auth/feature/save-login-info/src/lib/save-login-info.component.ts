@@ -22,7 +22,7 @@ export class SaveLoginInfoComponent {
 
     setTimeout(() => {
       const refreshJwtDto: RefreshJwtRequestDto = {
-        username: this.jwtStorageService.getUsername(),
+        usernameOrEmail: this.jwtStorageService.getUsername(),
         isLongSession: true,
       };
 

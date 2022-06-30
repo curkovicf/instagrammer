@@ -2,6 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { catchError, finalize, of, take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data-access';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'ng-inst-login',
@@ -13,6 +15,7 @@ export class LoginComponent implements OnDestroy {
   public isSpinnerActive = false;
   public isFormValid = false;
   public showErrorMessage = false;
+  public errorMessage = '';
 
   public formGroup: FormGroup;
 
@@ -30,13 +33,6 @@ export class LoginComponent implements OnDestroy {
       .subscribe();
   }
 
-  public login(username: string, password: string): void {
-    this.authService
-      .login({ username, password })
-      .pipe(take(1))
-      .subscribe(result => console.log('Result ', result));
-  }
-
   public ngOnDestroy(): void {
     this.isAlive = false;
   }
@@ -51,12 +47,19 @@ export class LoginComponent implements OnDestroy {
     const phoneOrUsernameOrEmail = this.formGroup.get('phoneOrUsernameOrEmail')?.value;
     const password = this.formGroup.get('password')?.value;
 
+    const loginRequestDto: LoginRequestDto = {
+      username: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? null : phoneOrUsernameOrEmail,
+      email: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? phoneOrUsernameOrEmail : null,
+      password,
+    };
+
     setTimeout(() => {
       this.authService
-        .login({ username: phoneOrUsernameOrEmail, password })
+        .login(loginRequestDto)
         .pipe(
           take(1),
-          catchError(() => {
+          catchError((err: HttpErrorResponse) => {
+            this.errorMessage = err.error.message;
             this.showErrorMessage = true;
 
             return of(null);

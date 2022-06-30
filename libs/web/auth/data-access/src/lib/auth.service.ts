@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { finalize, map, Observable, take, tap } from 'rxjs';
+import { catchError, finalize, map, Observable, of, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
@@ -57,7 +57,7 @@ export class AuthService {
 
   public logout(): void {
     this.authApiService
-      .logout({ username: this.jwtStorageService.getUsername() })
+      .logout({ usernameOrEmail: this.jwtStorageService.getUsername() })
       .pipe(
         take(1),
         finalize(() => {
@@ -96,10 +96,15 @@ export class AuthService {
       .pipe(
         take(1),
         tap((loginResponseDto: LoginResponseDto) => {
+          if (!loginResponseDto) {
+            return;
+          }
+
           this.authFacadeService.updateAuthState(loginResponseDto);
           this.jwtStorageService.saveAuthState(loginResponseDto);
+          this.router.navigate(['dummy-home']);
         }),
-        finalize(() => this.router.navigate(['dummy-home'])),
+        // catchError(err => of(null)),
       )
       .subscribe();
   }

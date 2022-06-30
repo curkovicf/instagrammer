@@ -10,12 +10,10 @@ import { UserRepository } from '../repository/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
-import { RefreshTokenEntity } from '../entity/refresh-token.entity';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
 import { RefreshTokenRepository } from '../repository/refresh-token.repository';
 import { UserEntity } from '../entity/user.entity';
 import {
-  JwtDto,
   JwtPairDto,
   LoginRequestDto,
   LoginResponseDto,
@@ -42,9 +40,11 @@ export class AuthService {
    */
   public async register(registerDto: RegisterRequestDto): Promise<void> {
     try {
-      await this.userRepository.createUser(registerDto);
+      await this.userRepository.createUser({
+        ...registerDto,
+        password: await this.encryptionService.hash(registerDto.password),
+      });
     } catch (err) {
-      console.log(err);
       if (err instanceof QueryFailedError && Number(err.driverError.code) === 23505) {
         throw new ConflictException('Username already taken');
       } else {
@@ -58,19 +58,28 @@ export class AuthService {
    * @param loginDto
    */
   public async login(loginDto: LoginRequestDto): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
-    const { username, password } = loginDto;
+    const { username, password, email } = loginDto;
 
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOneByUsernameOrEmail(username ?? email);
 
-    if (!user || !(await this.encryptionService.compare(password, user.password))) {
-      throw new UnauthorizedException('Invalid credentials');
+    if (!user) {
+      throw new NotFoundException(
+        "The username you entered doesn't belong to an account. Please check your username and try again.",
+      );
+    }
+
+    if (!(await this.encryptionService.compare(password, user.password))) {
+      throw new UnauthorizedException('Sorry, your password was incorrect. Please double-check your password.');
     }
 
     const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, false);
 
     await this.deleteCurrentRefreshToken(user);
 
-    user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
+    user.refreshToken = await this.refreshTokenRepository.createNewRefreshTokenEntity({
+      ...refreshToken,
+      value: await this.encryptionService.hash(refreshToken.value),
+    });
 
     await this.userRepository.save(user);
 
@@ -109,7 +118,7 @@ export class AuthService {
    * @param refreshJwt
    */
   public createNewHttpHeaderWithCookie(refreshJwt: string): string {
-    return `Authentication=${refreshJwt}; HttpOnly; Path=/auth; SameSite=Strict; Max-Age=${
+    return `Authentication=${refreshJwt}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
       new Date().getTime() + this.jwtUtilService.getJwtExpiryInMilliseconds(JwtExpires.REFRESH_JWT_EXPIRES_LONG)
     }`;
   }
@@ -119,9 +128,9 @@ export class AuthService {
    * @param logoutDto
    */
   async logout(logoutDto: LogoutRequestDto): Promise<void> {
-    const { username } = logoutDto;
+    const { usernameOrEmail } = logoutDto;
 
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOneByUsernameOrEmail(usernameOrEmail);
 
     if (!user) {
       throw new NotFoundException('User not found');
@@ -138,19 +147,22 @@ export class AuthService {
    * @param refreshJwtDto
    */
   public async generateNewRefreshJwt(refreshJwtDto: RefreshJwtRequestDto): Promise<JwtPairDto> {
-    const { username, isLongSession } = refreshJwtDto;
+    const { usernameOrEmail, isLongSession } = refreshJwtDto;
 
-    const user = await this.userRepository.findOne({ username });
+    const user = await this.userRepository.findOneByUsernameOrEmail(usernameOrEmail);
 
     if (!user) {
       throw new NotFoundException('User not found');
     }
 
-    const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, isLongSession);
+    const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(usernameOrEmail, isLongSession);
 
     await this.deleteCurrentRefreshToken(user);
 
-    user.refreshToken = await this.createNewRefreshTokenEntity(refreshToken);
+    user.refreshToken = await this.refreshTokenRepository.createNewRefreshTokenEntity({
+      ...refreshToken,
+      value: await this.encryptionService.hash(refreshToken.value),
+    });
 
     await this.userRepository.save(user);
 
@@ -161,26 +173,11 @@ export class AuthService {
   }
 
   /**
-   * Creates new refresh token entity
-   * @param refreshToken
-   * @private
-   */
-  private async createNewRefreshTokenEntity(refreshToken: JwtDto): Promise<RefreshTokenEntity> {
-    const refreshTokenEntity = new RefreshTokenEntity();
-
-    refreshTokenEntity.hashedRefreshToken = await this.encryptionService.hash(refreshToken.value);
-    refreshTokenEntity.issuedAt = new Date(refreshToken.issuedAt);
-    refreshTokenEntity.expiresAt = new Date(refreshToken.expiresAt);
-
-    return refreshTokenEntity;
-  }
-
-  /**
    * Generates new access token if refresh JWT from cookie is valid
    * @param refreshJwt
    */
   public async generateNewAccessToken(refreshJwt: string): Promise<LoginResponseDto> {
-    const decodedToken: DecodedJwtDto | null = this.jwtUtilService.decode(refreshJwt.slice()) as DecodedJwtDto;
+    const decodedToken: DecodedJwtDto | null = this.jwtUtilService.decode(refreshJwt?.slice() ?? '') as DecodedJwtDto;
 
     if (!decodedToken) {
       throw new MethodNotAllowedException();

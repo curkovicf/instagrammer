@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, MethodNotAllowedException, Post, Req, Res } from '@nestjs/common';
 import {
   JwtDto,
   LoginRequestDto,
@@ -54,15 +54,25 @@ export class AuthController {
   }
 
   @Get('/access-jwt')
-  public async getAccessJwt(@Req() req: Request, @Res({ passthrough: true }) res: Response): Promise<LoginResponseDto> {
+  public async getAccessJwt(@Req() req: Request, @Res({ passthrough: true }) res: Response): Promise<LoginResponseDto | boolean> {
     const refreshJwtFromCookie = req.cookies.Authentication;
 
-    return await this.authService.generateNewAccessToken(refreshJwtFromCookie);
+    try {
+      return await this.authService.generateNewAccessToken(refreshJwtFromCookie);
+    } catch (err) {
+      if (!(err instanceof MethodNotAllowedException)) {
+        throw err;
+      }
+
+      res.clearCookie('Authentication', { path: '/auth', httpOnly: true, sameSite: 'strict' });
+
+      return false;
+    }
   }
 
   @Post('/logout')
   public async logout(@Res({ passthrough: true }) res: Response, @Body() logoutDto: LogoutRequestDto): Promise<void> {
-    res.clearCookie('Authentication', { path: '/auth', httpOnly: true, sameSite: 'strict' });
+    res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
 
     return await this.authService.logout(logoutDto);
   }
