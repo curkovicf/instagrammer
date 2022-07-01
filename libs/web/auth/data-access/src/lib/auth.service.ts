@@ -37,6 +37,7 @@ export class AuthService {
   public register(registerDto: RegisterRequestDto): Observable<boolean> {
     return this.authApiService.register(registerDto).pipe(
       map(registerResponseDto => {
+        console.log('REGISTER ', registerResponseDto);
         if (!registerResponseDto) {
           return false;
         }
@@ -104,7 +105,6 @@ export class AuthService {
           this.jwtStorageService.saveAuthState(loginResponseDto);
           this.router.navigate(['dummy-home']);
         }),
-        // catchError(err => of(null)),
       )
       .subscribe();
   }

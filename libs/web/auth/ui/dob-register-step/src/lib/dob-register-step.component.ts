@@ -17,6 +17,7 @@ export class DobRegisterStepComponent {
   datepickerComponent!: DatepickerComponent;
 
   public isUnderAge = true;
+  public isSpinnerActive = false;
 
   public onDobChange(selectedDob: Date): void {
     const underAgeLimitDate = new Date();

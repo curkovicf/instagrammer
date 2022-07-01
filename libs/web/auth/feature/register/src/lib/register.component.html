@@ -1,21 +1,15 @@
 <ng-container *ngIf="registerViewModel.vm$ | async as vm">
   <ng-insta-base-info-register-step
     *ngIf="vm.activeVIew === 'baseInfo'"
+    [formData]="vm.registerNoDobDto"
     (next)="registerViewModel.stepToDob($event)"
   ></ng-insta-base-info-register-step>
 
   <ng-insta-dob-register-step
     *ngIf="vm.activeVIew === 'dob'"
-    (next)="registerViewModel.submitDobForm($event)"
+    (next)="registerViewModel.submitRegistration($event)"
     (stepback)="registerViewModel.stepBackFromDob()"
   ></ng-insta-dob-register-step>
-
-  <ng-insta-confirmation-code
-    *ngIf="vm.activeVIew === 'confirmationCode'"
-    [email]="vm.email"
-    (next)="registerViewModel.confirmCode($event)"
-    (stepback)="registerViewModel.stepBackToDob()"
-  ></ng-insta-confirmation-code>
 </ng-container>
 
 <ng-insta-text-with-link-in-card

@@ -18,9 +18,10 @@
 
     <ng-inst-cta-button
       class="cta-next"
-      title="Next"
+      title="Submit"
+      [isSpinnerActive]="isSpinnerActive"
       [isDisabled]="isUnderAge"
-      (ctaclick)="next.emit(datepickerComponent.getCurrentDob())"
+      (ctaclick)="next.emit(datepickerComponent.getCurrentDob()); isSpinnerActive = !isSpinnerActive"
     ></ng-inst-cta-button>
 
     <button class="go-back-button" (click)="stepback.emit()">Go Back</button>

@@ -1,5 +1,6 @@
-<label [class.focus-input]="isInputFocused">
+<label #labelElement [class.focus-input]="isInputFocused">
   <span
+    #placeholderElement
     class="placeholder"
     [class.shrink-placeholder]="inputElement.value && inputElement.value.length > 0"
     >{{ placeholder }}</span

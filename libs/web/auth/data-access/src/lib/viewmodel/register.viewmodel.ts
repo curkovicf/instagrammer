@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { AuthService } from '../auth.service';
-import { of, switchMap, take } from 'rxjs';
+import { delay, of, switchMap, take } from 'rxjs';
 import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
 
 export enum ActiveView {
   baseInfo = 'baseInfo',
   dob = 'dob',
-  confirmationCode = 'confirmationCode',
 }
 
 export interface RegisterNoDobDto {
@@ -28,6 +27,7 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
   public readonly vm$ = this.select(state => ({
     activeVIew: state.activeView,
     email: state.registerDto?.email ? state.registerDto.email : null,
+    registerNoDobDto: state.registerDto,
   }));
 
   private readonly registerDto$ = this.select(state => state.registerDto);
@@ -51,16 +51,11 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
     this.patchState({ activeView: ActiveView.baseInfo, dob: null });
   }
 
-  public stepBackToDob(): void {
-    this.patchState({ activeView: ActiveView.dob });
-  }
-
-  public submitDobForm(dob: Date): void {
-    this.patchState({ dob, activeView: ActiveView.confirmationCode });
-
+  public submitRegistration(dob: Date): void {
     this.registerDto$
       .pipe(
         take(1),
+        delay(2000),
         switchMap(partialRegisterDto => {
           if (!partialRegisterDto) {
             return of(null);
@@ -76,13 +71,14 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
             fullName,
           };
 
-          return this.authService.register(registerDto);
+          return (
+            this.authService
+              .register(registerDto)
+              //
+              .pipe(switchMap(() => this.authService.login({ username, password })))
+          );
         }),
       )
       .subscribe();
-  }
-
-  public confirmCode(confirmationCode: number): void {
-    console.log('Confirmation Code ', confirmationCode);
   }
 }

@@ -7,7 +7,7 @@ import {
   Input,
   OnInit,
   Optional,
-  Output,
+  Output, Renderer2,
   Self,
   ViewChild,
 } from '@angular/core';
@@ -20,6 +20,9 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements ControlValueAccessor, OnInit, AfterViewInit {
+  @ViewChild('placeholderElement')
+  placeholderElement: ElementRef | undefined;
+
   @ViewChild('inputElement')
   inputElement: ElementRef | undefined;
 
@@ -51,6 +54,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
   public isPasswordType = false;
   public isValid = false;
   public isTouched = false;
+  public isShrunkProgrammatically = false;
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -61,6 +65,7 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     @Optional()
     private ngControl: NgControl,
     private elementRef: ElementRef,
+    private readonly renderer2: Renderer2,
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -176,5 +181,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     $event.preventDefault();
 
     this.onenterkeypress.emit();
+  }
+
+  public markAsTouchedAndDirty(): void {
+    this.renderer2.addClass(this.placeholderElement?.nativeElement, 'shrink-placeholder');
+    this.renderer2.addClass(this.inputElement?.nativeElement, 'shrink-input');
   }
 }
