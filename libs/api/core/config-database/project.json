@@ -1,0 +1,22 @@
+{
+  "root": "libs/api/core/config-database",
+  "sourceRoot": "libs/api/core/config-database/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/core/config-database/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/core/config-database"],
+      "options": {
+        "jestConfig": "libs/api/core/config-database/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:api-core", "type:core"]
+}

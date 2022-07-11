@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, finalize, map, Observable, of, take, tap } from 'rxjs';
+import { finalize, map, Observable, of, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
@@ -37,7 +37,6 @@ export class AuthService {
   public register(registerDto: RegisterRequestDto): Observable<boolean> {
     return this.authApiService.register(registerDto).pipe(
       map(registerResponseDto => {
-        console.log('REGISTER ', registerResponseDto);
         if (!registerResponseDto) {
           return false;
         }

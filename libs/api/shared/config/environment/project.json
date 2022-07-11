@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/api/shared/config/environment",
+  "sourceRoot": "libs/api/shared/config/environment/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/shared/config/environment"],
+      "options": {
+        "jestConfig": "libs/api/shared/config/environment/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/shared/config/environment/src/**/*.ts", "libs/api/shared/config/environment/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -6,7 +6,7 @@ services:
     volumes:
       - data:/var/lib/postgresql
     env_file:
-      - apps/api/src/environments/postgres.env
+      - libs/api/shared/config/environment/src/lib/database/postgres.env
     ports:
       - "5432:5432"
     expose:

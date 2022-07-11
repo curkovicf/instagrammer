@@ -2,18 +2,17 @@ import { forwardRef, Module } from '@nestjs/common';
 import { AuthService } from './service/auth.service';
 import { UserRepository } from './repository/user.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { ApiCoreModule } from '@instagrammer/api/core';
+import { ConfigDatabaseModule } from '@instagrammer/api-core-config-database';
 import { RefreshTokenRepository } from './repository/refresh-token.repository';
 import { EncryptionModule } from '@instagrammer/api/shared/util/encryption';
-import { JwtUtilModule } from '@instagrammer/api/auth/util/jwt';
+import { ConfigJwtModule } from '@instagrammer/api/core/config-jwt';
 
 @Module({
   imports: [
-    forwardRef(() => ApiCoreModule),
+    forwardRef(() => ConfigDatabaseModule),
     TypeOrmModule.forFeature([UserRepository, RefreshTokenRepository]),
     EncryptionModule,
-    JwtUtilModule,
+    ConfigJwtModule,
   ],
   providers: [AuthService],
   exports: [AuthService],

@@ -23,7 +23,7 @@ import {
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
-import { JwtExpires, JwtUtilService } from '@instagrammer/api/auth/util/jwt';
+import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/config-jwt';
 
 @Injectable()
 export class AuthService {
