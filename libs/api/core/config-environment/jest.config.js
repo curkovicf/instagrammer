@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'api-core-config-jwt',
+  displayName: 'api-core-config-environment',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/api/core/config-jwt',
+  coverageDirectory: '../../../../coverage/libs/api/core/config-environment',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

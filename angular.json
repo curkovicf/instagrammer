@@ -6,7 +6,7 @@
     "api-auth-feature": "libs/api/auth/feature",
     "api-auth-util-validator": "libs/api/auth/util/validator",
     "api-core-config-database": "libs/api/core/config-database",
-    "api-core-config-jwt": "libs/api/core/config-jwt",
+    "api-core-config-environment": "libs/api/core/config-environment",
     "api-core-shell": "libs/api/core/shell",
     "api-shared-data-access-interfaces": "libs/api/shared/data-access/interfaces",
     "api-shared-util-encryption": "libs/api/shared/util/encryption",

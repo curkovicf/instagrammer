@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TYPEORM_ENV } from '@instagrammer/api/shared/config/environment';
 import { RefreshTokenEntity, UserEntity } from '@instagrammer/api/auth/data-access';
+import { TYPEORM_ENV } from '@instagrammer/api/core/config-environment';
 
 @Global()
 @Module({
