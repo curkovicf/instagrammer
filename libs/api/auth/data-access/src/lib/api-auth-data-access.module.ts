@@ -9,6 +9,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategyService } from './jwt/strategy/jwt-strategy.service';
 import { EnvironmentModule, JWT_OPTIONS_ENV, PASSPORT_ENV } from '@instagrammer/api/core/config-environment';
+import { JwtUtilService } from './jwt/util/jwt-util.service';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { EnvironmentModule, JWT_OPTIONS_ENV, PASSPORT_ENV } from '@instagrammer/
     EncryptionModule,
     EnvironmentModule,
   ],
-  providers: [AuthService, JwtStrategyService],
+  providers: [AuthService, JwtStrategyService, JwtUtilService],
   exports: [AuthService],
 })
 export class ApiAuthDataAccessModule {}
