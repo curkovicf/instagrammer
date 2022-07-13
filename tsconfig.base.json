@@ -20,9 +20,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@instagrammer/api-auth-util-validator": ["libs/api/auth/util/validator/src/index.ts"],
       "@instagrammer/api-core-config-database": ["libs/api/core/config-database/src/index.ts"],
       "@instagrammer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@instagrammer/api-shared-util-validator": ["libs/api/shared/util/validator/src/index.ts"],
       "@instagrammer/api/auth/config": ["libs/api/auth/config/src/index.ts"],
       "@instagrammer/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@instagrammer/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],

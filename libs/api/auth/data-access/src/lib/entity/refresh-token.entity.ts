@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { UserEntity } from '@instagrammer/api/auth/data-access';
+import { UserEntity } from '../entity/user.entity';
 
 @Entity()
 export class RefreshTokenEntity {

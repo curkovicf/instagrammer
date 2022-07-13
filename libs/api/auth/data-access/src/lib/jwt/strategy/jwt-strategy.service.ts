@@ -2,7 +2,8 @@ import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { IAuthModuleOptions, PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity, UserRepository } from '@instagrammer/api/auth/data-access';
+import { UserEntity } from '../../entity/user.entity';
+import { UserRepository } from '../../repository/user.repository';
 import { PASSPORT_INJECTION_TOKEN } from '@instagrammer/api/core/config-environment';
 import { JwtPayload } from '../jwt-payload.interface';
 

@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'api-auth-util-validator',
+  displayName: 'api-shared-util-validator',
   preset: '../../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../../coverage/libs/api/auth/util/validator',
+  coverageDirectory: '../../../../../coverage/libs/api/shared/util/validator',
 };

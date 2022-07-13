@@ -1,0 +1,22 @@
+{
+  "root": "libs/api/shared/util/validator",
+  "sourceRoot": "libs/api/shared/util/validator/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/shared/util/validator/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/shared/util/validator"],
+      "options": {
+        "jestConfig": "libs/api/shared/util/validator/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:api-shared", "type:util"]
+}
