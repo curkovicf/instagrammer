@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtExpires } from './jwt-expires.enum';
-import { JwtPayload } from '@instagrammer/api/shared/data-access/interfaces';
 import { JwtDto, JwtPairDto } from '@instagrammer/shared-data-access-api-auth-dto';
 import * as jwt from 'jsonwebtoken';
+import { JwtPayload } from '../jwt-payload.interface';
 
 @Injectable()
 export class JwtUtilService {

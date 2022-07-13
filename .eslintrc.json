@@ -7,7 +7,28 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"]
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "type:config", "scope:api-shared"],
+                "bannedExternalImports": ["@angular/*"]
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

@@ -18,5 +18,5 @@
       }
     }
   },
-  "tags": ["scope:api-auth", "type:feature"]
+  "tags": ["scope:api-shell", "type:feature"]
 }

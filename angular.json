@@ -8,7 +8,6 @@
     "api-core-config-database": "libs/api/core/config-database",
     "api-core-config-environment": "libs/api/core/config-environment",
     "api-core-shell": "libs/api/core/shell",
-    "api-shared-data-access-interfaces": "libs/api/shared/data-access/interfaces",
     "api-shared-util-encryption": "libs/api/shared/util/encryption",
     "api-shell": "libs/api/shell",
     "mobile-flutter-instagrammer": "apps/mobile/flutter-instagrammer",
