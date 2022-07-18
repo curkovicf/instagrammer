@@ -14,8 +14,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild }
 })
 export class RotatingPhonesComponent implements OnDestroy, AfterViewInit {
   private isAlive = true;
-  // @ts-ignore
-  private intervalId: NodeJS.Timer | undefined;
+  private intervalId: number | undefined;
   private previousScreenshotIndex = 0;
   private activeScreenshotIndex = 1;
 

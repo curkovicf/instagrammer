@@ -1,12 +1,6 @@
 <section class="date-wrapper">
   <div class="month-wrapper select-wrapper">
-    <select
-      #monthsSelect
-      name="month"
-      id="month"
-      class="select-datepicker"
-      (change)="onUpdateMonths(monthsSelect.selectedIndex)"
-    >
+    <select #monthsSelect name="month" id="month" class="select-datepicker" (change)="onUpdateMonths(monthsSelect.selectedIndex)">
       <option *ngFor="let month of months" [value]="month">{{ month }}</option>
     </select>
 
@@ -14,13 +8,7 @@
   </div>
 
   <div class="day-wrapper select-wrapper">
-    <select
-      #daysSelect
-      name="day"
-      id="day"
-      class="select-datepicker"
-      (change)="onUpdateDays(daysSelect.selectedIndex)"
-    >
+    <select #daysSelect name="day" id="day" class="select-datepicker" (change)="onUpdateDays(daysSelect.selectedIndex)">
       <option *ngFor="let day of days" [value]="day">{{ day }}</option>
     </select>
 
@@ -28,13 +16,7 @@
   </div>
 
   <div class="year-wrapper select-wrapper">
-    <select
-      #yearsSelect
-      name="year"
-      id="year"
-      class="select-datepicker"
-      (change)="onUpdateYears(yearsSelect.value)"
-    >
+    <select #yearsSelect name="year" id="year" class="select-datepicker" (change)="onUpdateYears(yearsSelect.value)">
       <option *ngFor="let year of years" [value]="year">{{ year }}</option>
     </select>
 

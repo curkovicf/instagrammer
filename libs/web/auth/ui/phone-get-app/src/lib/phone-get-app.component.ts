@@ -9,11 +9,7 @@ import { Component } from '@angular/core';
 
     <section class="mobile-downloads">
       <img class="ios-image" src="/assets/images/download_ios.png" alt="download ios image" />
-      <img
-        class="android-image"
-        src="/assets/images/download_android.png"
-        alt="download android image"
-      />
+      <img class="android-image" src="/assets/images/download_android.png" alt="download android image" />
     </section>
   `,
   styleUrls: ['./phone-get-app.component.scss'],

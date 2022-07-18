@@ -95,5 +95,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["type:web-app"]
 }

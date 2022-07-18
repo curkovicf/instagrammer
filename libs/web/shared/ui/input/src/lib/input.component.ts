@@ -7,7 +7,8 @@ import {
   Input,
   OnInit,
   Optional,
-  Output, Renderer2,
+  Output,
+  Renderer2,
   Self,
   ViewChild,
 } from '@angular/core';
@@ -124,8 +125,10 @@ export class InputComponent implements ControlValueAccessor, OnInit, AfterViewIn
     this.onTouched = fn;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onChange() {}
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onTouched() {}
 
   onInputChange($event: Event) {

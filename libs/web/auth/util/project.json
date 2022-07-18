@@ -19,5 +19,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["type:web-util", "scope:web-auth"]
 }

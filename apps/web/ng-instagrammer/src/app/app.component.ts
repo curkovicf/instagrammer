@@ -3,7 +3,8 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'instagrammer-root',
-  template: `<ng-inst-layout></ng-inst-layout>`,
+  template: `<ng-inst-layout></ng-inst-layou>
+>`,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {

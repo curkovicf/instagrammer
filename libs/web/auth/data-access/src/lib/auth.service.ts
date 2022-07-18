@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { finalize, map, Observable, of, take, tap } from 'rxjs';
+import { finalize, map, Observable, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AUTH_FEATURE_KEY, AuthFacadeService } from '@instagrammer/web/auth/data-access';
 import { LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { AuthFacadeService } from './store/auth-facade.service';
+import { AUTH_FEATURE_KEY } from './store/auth.reducers';
 
 @Injectable({
   providedIn: 'root',

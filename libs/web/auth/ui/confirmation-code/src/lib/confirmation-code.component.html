@@ -11,10 +11,7 @@
 
     <ng-insta-input #confirmationCode [placeholder]="'Confirmation Code'"></ng-insta-input>
 
-    <ng-inst-cta-button
-      [title]="'Next'"
-      [isDisabled]="!confirmationCode.isValid"
-    ></ng-inst-cta-button>
+    <ng-inst-cta-button [title]="'Next'" [isDisabled]="!confirmationCode.isValid"></ng-inst-cta-button>
 
     <button class="go-back-button" (click)="stepback.emit()">Go Back</button>
   </div>

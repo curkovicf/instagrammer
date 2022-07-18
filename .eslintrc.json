@@ -16,6 +16,39 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "type:web-app",
+                "onlyDependOnLibsWithTags": ["type:web-shell", "type:web-util", "scope:web-shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "type:web-data-access",
+                "onlyDependOnLibsWithTags": ["type:web-util", "type:web-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "type:web-ui",
+                "onlyDependOnLibsWithTags": ["type:web-ui", "scope:web-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "type:web-feature",
+                "onlyDependOnLibsWithTags": ["type:web-ui", "type:web-data-access", "type:web-util", "scope:web-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "type:web-util",
+                "onlyDependOnLibsWithTags": ["type:web-util", "scope:web-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "type:web-shell",
+                "onlyDependOnLibsWithTags": ["type:web-feature", "type:web-util", "type:web-ui", "scope:web-shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+
+
+
+              {
                 "sourceTag": "type:api-app",
                 "onlyDependOnLibsWithTags": ["type:shell"],
                 "bannedExternalImports": ["@angular/*"]
@@ -32,7 +65,7 @@
               },
               {
                 "sourceTag": "type:util",
-                "onlyDependOnLibsWithTags": ["type:util", "scope:api-shared"],
+                "onlyDependOnLibsWithTags": ["type:util", "type:util", "scope:api-shared"],
                 "bannedExternalImports": ["@angular/*"]
               },
               {
