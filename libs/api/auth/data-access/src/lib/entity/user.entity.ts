@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { RefreshTokenEntity } from './refresh-token.entity';
+import { PostEntity } from '../../../../../feed/data-access/src/lib/entity/post.entity';
 
 @Entity()
 export class UserEntity {
@@ -24,4 +25,8 @@ export class UserEntity {
   @OneToOne(() => RefreshTokenEntity, { cascade: true, eager: true })
   @JoinColumn()
   refreshToken: RefreshTokenEntity | null = null;
+
+  @OneToMany(() => PostEntity, post => post.user, { cascade: true })
+  @JoinColumn()
+  posts?: PostEntity[];
 }
