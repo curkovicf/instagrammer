@@ -1,9 +1,14 @@
-import { EntityRepository, Repository } from 'typeorm';
-import { RefreshTokenEntity } from '../entity/refresh-token.entity';
+import { DataSource, Repository } from 'typeorm';
 import { JwtDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { RefreshTokenEntity } from '@instagrammer/api/core/data-access';
+import { Injectable } from '@nestjs/common';
 
-@EntityRepository(RefreshTokenEntity)
+@Injectable()
 export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
+  constructor(private readonly dataSource: DataSource) {
+    super(RefreshTokenEntity, dataSource.createEntityManager());
+  }
+
   public async createNewRefreshTokenEntity(refreshToken: JwtDto): Promise<RefreshTokenEntity> {
     const refreshTokenEntity = new RefreshTokenEntity();
 

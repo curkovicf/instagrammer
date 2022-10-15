@@ -14,7 +14,7 @@ export class PostEntity {
   @Column()
   public createdAt!: Date;
 
-  @ManyToOne(() => UserEntity, user => user.posts, { cascade: true })
+  @ManyToOne(() => UserEntity, user => user.posts)
   @JoinColumn()
   public user!: UserEntity;
 
@@ -22,7 +22,7 @@ export class PostEntity {
   @JoinColumn()
   public photoPaths!: PhotoEntity[];
 
-  @ManyToMany(() => UserEntity, user => user.postsLiked, { cascade: true, eager: true })
+  @ManyToMany(() => UserEntity, user => user.postsLiked)
   @JoinColumn()
   public likes?: UserEntity[];
 

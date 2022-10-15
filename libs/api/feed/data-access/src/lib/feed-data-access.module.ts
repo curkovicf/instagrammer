@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { FeedService } from './service/feed.service';
+import { FeedService } from './service/post.service';
 
 @Module({
   providers: [FeedService],

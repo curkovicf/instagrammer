@@ -12,7 +12,6 @@ import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
 import { RefreshTokenRepository } from '../repository/refresh-token.repository';
-import { UserEntity } from '../entity/user.entity';
 import {
   JwtPairDto,
   LoginRequestDto,
@@ -25,6 +24,7 @@ import {
 } from '@instagrammer/shared-data-access-api-auth-dto';
 import { JwtUtilService } from '../jwt/util/jwt-util.service';
 import { JwtExpires } from '../jwt/util/jwt-expires.enum';
+import { UserEntity } from '@instagrammer/api/core/data-access';
 
 @Injectable()
 export class AuthService {
@@ -103,7 +103,7 @@ export class AuthService {
     const { username } = usernameExistsDto;
     const responseDto: UsernameExistsResponseDto = { username, isUsernameAvailable: false };
 
-    const usernameExists = await this.userRepository.findOne({ username });
+    const usernameExists = await this.userRepository.findOne({ where: { username } });
 
     if (usernameExists) {
       return responseDto;
@@ -184,7 +184,7 @@ export class AuthService {
       throw new MethodNotAllowedException();
     }
 
-    const user = await this.userRepository.findOne({ username: decodedToken.username });
+    const user = await this.userRepository.findOne({ where: { username: decodedToken.username } });
 
     if (!user) {
       throw new NotFoundException();

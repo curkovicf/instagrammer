@@ -5,7 +5,7 @@ export const authRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    redirectTo: '/auth/login',
+    // redirectTo: '/auth/login',
     pathMatch: 'full',
   },
   {

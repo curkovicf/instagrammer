@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './service/auth.service';
 import { UserRepository } from './repository/user.repository';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { RefreshTokenRepository } from './repository/refresh-token.repository';
 import { EncryptionModule } from '@instagrammer/api/shared/util/encryption';
 import { PassportModule } from '@nestjs/passport';
@@ -14,11 +13,10 @@ import { JwtUtilService } from './jwt/util/jwt-util.service';
   imports: [
     PassportModule.register(PASSPORT_ENV),
     JwtModule.register(JWT_OPTIONS_ENV),
-    TypeOrmModule.forFeature([UserRepository, RefreshTokenRepository]),
     EncryptionModule,
     EnvironmentModule,
   ],
-  providers: [AuthService, JwtStrategyService, JwtUtilService],
+  providers: [AuthService, JwtStrategyService, JwtUtilService, RefreshTokenRepository, UserRepository],
   exports: [AuthService],
 })
 export class ApiAuthDataAccessModule {}

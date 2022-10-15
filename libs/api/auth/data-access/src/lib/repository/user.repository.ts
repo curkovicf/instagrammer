@@ -1,9 +1,14 @@
-import { EntityRepository, getConnection, Repository } from 'typeorm';
-import { UserEntity } from '../entity/user.entity';
+import { DataSource, Repository } from 'typeorm';
 import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { UserEntity } from '@instagrammer/api/core/data-access';
+import { Injectable } from '@nestjs/common';
 
-@EntityRepository(UserEntity)
+@Injectable()
 export class UserRepository extends Repository<UserEntity> {
+  constructor(private dataSource: DataSource) {
+    super(UserEntity, dataSource.createEntityManager());
+  }
+
   public async createUser(registerDto: RegisterRequestDto): Promise<void> {
     const { username, password, email, fullName, dob } = registerDto;
 
@@ -18,9 +23,8 @@ export class UserRepository extends Repository<UserEntity> {
     await this.save(newUser);
   }
 
-  public async findOneByUsernameOrEmail(usernameOrEmail: string): Promise<UserEntity | undefined> {
-    return await getConnection()
-      .createQueryBuilder(UserEntity, 'user')
+  public async findOneByUsernameOrEmail(usernameOrEmail: string): Promise<UserEntity | null> {
+    return await this.createQueryBuilder('user')
       .where(`user.username = :username`, { username: usernameOrEmail })
       .orWhere(`user.email = :email`, { email: usernameOrEmail })
       .getOne();
