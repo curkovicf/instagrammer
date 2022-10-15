@@ -36,7 +36,7 @@ export class UserEntity {
   @JoinColumn()
   public postsLiked?: PostEntity[];
 
-  @ManyToOne(() => CommentEntity, comment => comment.commentMadeBy, { cascade: true })
+  @OneToMany(() => CommentEntity, comment => comment.commentMadeBy, { cascade: true })
   @JoinColumn()
   public commentsOnPosts?: CommentEntity[];
 

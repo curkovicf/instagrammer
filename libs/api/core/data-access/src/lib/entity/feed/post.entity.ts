@@ -26,7 +26,7 @@ export class PostEntity {
   @JoinColumn()
   public likes?: UserEntity[];
 
-  @ManyToOne(() => CommentEntity, user => user.post, { cascade: true, eager: true })
+  @OneToMany(() => CommentEntity, user => user.post, { cascade: true, eager: true })
   @JoinColumn()
   public comments!: CommentEntity[];
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UserEntity } from '../user/user.entity';
 import { PostEntity } from './post.entity';
 
@@ -13,11 +13,11 @@ export class CommentEntity {
   @Column()
   public createdAt!: Date;
 
-  @OneToMany(() => UserEntity, user => user.commentsOnPosts)
+  @ManyToOne(() => UserEntity, user => user.commentsOnPosts)
   @JoinColumn()
   public commentMadeBy!: UserEntity;
 
-  @OneToMany(() => PostEntity, post => post.comments)
+  @ManyToOne(() => PostEntity, post => post.comments)
   @JoinColumn()
   public post!: PostEntity;
 }
