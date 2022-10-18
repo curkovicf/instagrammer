@@ -1,1 +1,3 @@
-export * from './lib/feed-data-access.module';
+export * from './lib/post.module';
+export * from './lib/service/post.service';
+export * from './lib/service/post.interface';

@@ -1,5 +1,5 @@
 import { PostEntity } from '@instagrammer/api/core/data-access';
 
-export interface IPostService {
+export interface IFeedController {
   getPosts(userId: string): Promise<PostEntity[]>;
 }
