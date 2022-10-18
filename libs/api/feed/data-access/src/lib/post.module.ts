@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { FeedService } from './service/post.service';
+import { PostService } from './service/post.service';
 
 @Module({
-  providers: [FeedService],
+  providers: [PostService],
 })
 export class FeedDataAccessModule {}
