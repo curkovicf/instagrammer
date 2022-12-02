@@ -45,5 +45,5 @@
       "style": "scss"
     }
   },
-  "plugins": ["@nxrocks/nx-flutter"]
+  "plugins": []
 }

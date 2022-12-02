@@ -24,6 +24,9 @@ export class RotatingPhonesComponent implements OnDestroy, AfterViewInit {
   constructor(private readonly renderer2: Renderer2) {}
 
   public ngAfterViewInit(): void {
+    //  FIXME
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.intervalId = setInterval(() => this.animateScreenshots(), 6000);
   }
 

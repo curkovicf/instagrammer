@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ComponentStore } from '@ngrx/component-store';
 import { AuthService } from '../auth.service';
 import { delay, of, switchMap, take } from 'rxjs';
 import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { ComponentStore } from '@ngrx/component-store';
 
 export enum ActiveView {
   baseInfo = 'baseInfo',
