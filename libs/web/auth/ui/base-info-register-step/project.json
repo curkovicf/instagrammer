@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-base-info-register-step",
   "projectType": "library",
-  "root": "libs/web/auth/ui/base-info-register-step",
   "sourceRoot": "libs/web/auth/ui/base-info-register-step/src",
   "prefix": "instagrammer",
   "targets": {

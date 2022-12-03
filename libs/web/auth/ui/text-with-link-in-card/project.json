@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-text-with-link-in-card",
   "projectType": "library",
-  "root": "libs/web/auth/ui/text-with-link-in-card",
   "sourceRoot": "libs/web/auth/ui/text-with-link-in-card/src",
   "prefix": "instagrammer",
   "targets": {

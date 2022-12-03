@@ -1,6 +1,6 @@
 {
+  "name": "web-shell-ui-not-found",
   "projectType": "library",
-  "root": "libs/web/shell/ui/not-found",
   "sourceRoot": "libs/web/shell/ui/not-found/src",
   "prefix": "instagrammer",
   "targets": {

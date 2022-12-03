@@ -1,6 +1,6 @@
 {
+  "name": "shared-data-access-api-auth-dto",
   "projectType": "library",
-  "root": "libs/shared/data-access/api-auth-dto",
   "sourceRoot": "libs/shared/data-access/api-auth-dto/src",
   "prefix": "instagrammer",
   "targets": {

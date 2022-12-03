@@ -1,6 +1,7 @@
-module.exports = {
-  displayName: 'web-dummy-home',
-  preset: '../../../jest.preset.js',
+/* eslint-disable */
+export default {
+  displayName: 'web-home-feature-shell',
+  preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/web/dummy-home',
+  coverageDirectory: '../../../../../coverage/libs/web/home/feature/shell',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

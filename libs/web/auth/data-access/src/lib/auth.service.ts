@@ -85,7 +85,7 @@ export class AuthService {
           this.authFacadeService.updateAuthState(loginResponseDto);
           this.jwtStorageService.saveAuthState(loginResponseDto);
         }),
-        finalize(() => this.router.navigate(['dummy-home'])),
+        finalize(() => this.router.navigate(['home'])),
       )
       .subscribe();
   }

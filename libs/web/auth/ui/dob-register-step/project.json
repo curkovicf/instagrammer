@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-dob-register-step",
   "projectType": "library",
-  "root": "libs/web/auth/ui/dob-register-step",
   "sourceRoot": "libs/web/auth/ui/dob-register-step/src",
   "prefix": "instagrammer",
   "targets": {

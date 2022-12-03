@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-data-access",
   "projectType": "library",
-  "root": "libs/web/auth/data-access",
   "sourceRoot": "libs/web/auth/data-access/src",
   "prefix": "instagrammer",
   "targets": {

@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-card",
   "projectType": "library",
-  "root": "libs/web/shared/ui/card",
   "sourceRoot": "libs/web/shared/ui/card/src",
   "prefix": "instagrammer",
   "targets": {

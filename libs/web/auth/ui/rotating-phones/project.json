@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-rotating-phones",
   "projectType": "library",
-  "root": "libs/web/auth/ui/rotating-phones",
   "sourceRoot": "libs/web/auth/ui/rotating-phones/src",
   "prefix": "instagrammer",
   "targets": {

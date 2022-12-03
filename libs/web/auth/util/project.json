@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-util",
   "projectType": "library",
-  "root": "libs/web/auth/util",
   "sourceRoot": "libs/web/auth/util/src",
   "prefix": "instagrammer",
   "targets": {

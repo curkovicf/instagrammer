@@ -1,6 +1,6 @@
 {
+  "name": "web-shell-util",
   "projectType": "library",
-  "root": "libs/web/shell/util",
   "sourceRoot": "libs/web/shell/util/src",
   "prefix": "instagrammer",
   "targets": {

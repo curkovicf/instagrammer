@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-datepicker",
   "projectType": "library",
-  "root": "libs/web/shared/ui/datepicker",
   "sourceRoot": "libs/web/shared/ui/datepicker/src",
   "prefix": "instagrammer",
   "targets": {

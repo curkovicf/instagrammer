@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-app-configs",
   "projectType": "library",
-  "root": "libs/web/shared/app-configs",
   "sourceRoot": "libs/web/shared/app-configs/src",
   "prefix": "instagrammer",
   "targets": {

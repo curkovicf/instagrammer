@@ -1,6 +1,6 @@
 {
+  "name": "api-feed-feature",
   "projectType": "library",
-  "root": "libs/api/feed/feature",
   "sourceRoot": "libs/api/feed/feature/src",
   "prefix": "instagrammer",
   "targets": {

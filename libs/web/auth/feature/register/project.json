@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-feature-register",
   "projectType": "library",
-  "root": "libs/web/auth/feature/register",
   "sourceRoot": "libs/web/auth/feature/register/src",
   "prefix": "instagrammer",
   "targets": {

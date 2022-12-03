@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-apple-spinner",
   "projectType": "library",
-  "root": "libs/web/shared/ui/apple-spinner",
   "sourceRoot": "libs/web/shared/ui/apple-spinner/src",
   "prefix": "instagrammer",
   "targets": {

@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-or-block",
   "projectType": "library",
-  "root": "libs/web/auth/ui/or-block",
   "sourceRoot": "libs/web/auth/ui/or-block/src",
   "prefix": "instagrammer",
   "targets": {

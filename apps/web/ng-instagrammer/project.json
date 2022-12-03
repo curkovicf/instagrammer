@@ -1,6 +1,6 @@
 {
+  "name": "web-ng-instagrammer",
   "projectType": "application",
-  "root": "apps/web/ng-instagrammer",
   "sourceRoot": "apps/web/ng-instagrammer/src",
   "prefix": "ng-inst",
   "targets": {

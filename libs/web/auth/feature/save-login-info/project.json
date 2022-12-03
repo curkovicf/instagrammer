@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-feature-save-login-info",
   "projectType": "library",
-  "root": "libs/web/auth/feature/save-login-info",
   "sourceRoot": "libs/web/auth/feature/save-login-info/src",
   "prefix": "instagrammer",
   "targets": {

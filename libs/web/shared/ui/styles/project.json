@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-styles",
   "projectType": "library",
-  "root": "libs/web/shared/ui/styles",
   "sourceRoot": "libs/web/shared/ui/styles/src",
   "prefix": "instagrammer",
   "targets": {

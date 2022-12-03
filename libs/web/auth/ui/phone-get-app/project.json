@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-phone-get-app",
   "projectType": "library",
-  "root": "libs/web/auth/ui/phone-get-app",
   "sourceRoot": "libs/web/auth/ui/phone-get-app/src",
   "prefix": "instagrammer",
   "targets": {

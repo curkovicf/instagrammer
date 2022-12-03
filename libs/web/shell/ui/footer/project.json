@@ -1,6 +1,6 @@
 {
+  "name": "web-shell-ui-footer",
   "projectType": "library",
-  "root": "libs/web/shell/ui/footer",
   "sourceRoot": "libs/web/shell/ui/footer/src",
   "prefix": "ng-inst",
   "targets": {

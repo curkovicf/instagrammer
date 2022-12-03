@@ -1,5 +1,5 @@
 {
-  "root": "libs/api/core/config-database",
+  "name": "api-core-config-database",
   "sourceRoot": "libs/api/core/config-database/src",
   "targets": {
     "lint": {

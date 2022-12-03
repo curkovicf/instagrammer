@@ -1,5 +1,5 @@
 {
-  "root": "libs/api/shell",
+  "name": "api-shell",
   "sourceRoot": "libs/api/shell/src",
   "targets": {
     "lint": {

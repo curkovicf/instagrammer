@@ -1,6 +1,6 @@
 {
+  "name": "api-core-shell",
   "projectType": "library",
-  "root": "libs/api/core/shell",
   "sourceRoot": "libs/api/core/shell/src",
   "prefix": "instagrammer",
   "targets": {

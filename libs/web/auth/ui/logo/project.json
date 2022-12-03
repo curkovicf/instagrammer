@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-logo",
   "projectType": "library",
-  "root": "libs/web/auth/ui/logo",
   "sourceRoot": "libs/web/auth/ui/logo/src",
   "prefix": "instagrammer",
   "targets": {

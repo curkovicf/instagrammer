@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-cta-button",
   "projectType": "library",
-  "root": "libs/web/shared/ui/cta-button",
   "sourceRoot": "libs/web/shared/ui/cta-button/src",
   "prefix": "instagrammer",
   "targets": {

@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-ui-confirmation-code",
   "projectType": "library",
-  "root": "libs/web/auth/ui/confirmation-code",
   "sourceRoot": "libs/web/auth/ui/confirmation-code/src",
   "prefix": "instagrammer",
   "targets": {

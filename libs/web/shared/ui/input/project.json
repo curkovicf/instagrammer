@@ -1,6 +1,6 @@
 {
+  "name": "web-shared-ui-input",
   "projectType": "library",
-  "root": "libs/web/shared/ui/input",
   "sourceRoot": "libs/web/shared/ui/input/src",
   "prefix": "instagrammer",
   "targets": {

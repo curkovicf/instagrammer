@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-feature-shell",
   "projectType": "library",
-  "root": "libs/web/auth/feature/shell",
   "sourceRoot": "libs/web/auth/feature/shell/src",
   "prefix": "instagrammer",
   "targets": {

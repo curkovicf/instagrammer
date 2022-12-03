@@ -1,5 +1,5 @@
 {
-  "root": "libs/api/shared/util/validator",
+  "name": "api-shared-util-validator",
   "sourceRoot": "libs/api/shared/util/validator/src",
   "targets": {
     "lint": {

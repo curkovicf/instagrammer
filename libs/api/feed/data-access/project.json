@@ -1,6 +1,6 @@
 {
+  "name": "api-feed-data-access",
   "projectType": "library",
-  "root": "libs/api/feed/data-access",
   "sourceRoot": "libs/api/feed/data-access/src",
   "prefix": "instagrammer",
   "targets": {

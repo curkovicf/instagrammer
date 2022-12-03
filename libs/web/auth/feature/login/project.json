@@ -1,6 +1,6 @@
 {
+  "name": "web-auth-feature-login",
   "projectType": "library",
-  "root": "libs/web/auth/feature/login",
   "sourceRoot": "libs/web/auth/feature/login/src",
   "prefix": "instagrammer",
   "targets": {

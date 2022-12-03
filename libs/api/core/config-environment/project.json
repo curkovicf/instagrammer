@@ -1,6 +1,6 @@
 {
+  "name": "api-core-config-environment",
   "projectType": "library",
-  "root": "libs/api/core/config-environment",
   "sourceRoot": "libs/api/core/config-environment/src",
   "prefix": "instagrammer",
   "targets": {

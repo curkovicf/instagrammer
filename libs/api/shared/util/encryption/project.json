@@ -1,6 +1,6 @@
 {
+  "name": "api-shared-util-encryption",
   "projectType": "library",
-  "root": "libs/api/shared/util/encryption",
   "sourceRoot": "libs/api/shared/util/encryption/src",
   "prefix": "instagrammer",
   "targets": {
