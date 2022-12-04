@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ng-insta-logo',
   template: `
     <div class="instagram-logo">
-      <img src="/assets/images/logo.png" alt="" />
+      <img [ngClass]="{ lg: size === 'lg', sm: size === 'sm' }" src="/assets/images/logo.png" alt="" />
     </div>
   `,
   styles: [
@@ -21,9 +21,19 @@ import { Component } from '@angular/core';
           margin-top: 2.1rem;
           margin-bottom: 0.8rem;
           @include center-flex-X();
+
+          & > .sm {
+            height: 2rem;
+          }
+
+          & > .lg {
+            height: 6rem;
+          }
         }
       }
     `,
   ],
 })
-export class LogoComponent {}
+export class LogoComponent {
+  @Input() size: 'sm' | 'lg' = 'lg';
+}

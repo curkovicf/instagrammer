@@ -11,8 +11,8 @@
     display: flex;
 
     & > .toolbar-wrapper {
-      background-color: cadetblue;
-      width: 21rem;
+      background-color: #FFFFFF;
+      width: 23rem;
       height: 100%;
 
       & > ng-inst-toolbar {}
@@ -37,15 +37,3 @@
     }
   }
 }
-
-
-//<div class="home-wrapper">
-//  <section class="toolbar-wrapper">
-//    <ng-inst-toolbar></ng-inst-toolbar>
-//  </section>
-//
-//  <main>
-//    <ng-inst-feed></ng-inst-feed>
-//    <ng-inst-suggestions></ng-inst-suggestions>
-//  </main>
-//</div>

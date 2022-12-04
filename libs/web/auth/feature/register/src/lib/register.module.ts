@@ -4,7 +4,7 @@ import { RegisterComponent } from './register.component';
 import { RouterModule } from '@angular/router';
 import { registerRoutes } from './register.routes';
 import { CardModule } from '@instagrammer/web/shared/ui/card';
-import { LogoModule } from '@instagrammer/web/auth/ui/logo';
+import { LogoModule } from '@instagrammer/web/shared/ui/logo';
 import { OrBlockModule } from '@instagrammer/web/auth/ui/or-block';
 import { InputModule } from '@instagrammer/web/shared/ui/input';
 import { CtaButtonModule } from '@instagrammer/web/shared/ui/cta-button';

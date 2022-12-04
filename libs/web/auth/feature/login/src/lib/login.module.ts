@@ -12,7 +12,7 @@ import { CardModule } from '@instagrammer/web/shared/ui/card';
 import { TextWithLinkInCardModule } from '@instagrammer/web-auth-ui-text-with-link-in-card';
 import { LogInWithFacebookModule } from '@instagrammer/web/auth/ui/log-in-with-facebook';
 import { RotatingPhonesModule } from '@instagrammer/web/auth/ui/rotating-phones';
-import { LogoModule } from '@instagrammer/web/auth/ui/logo';
+import { LogoModule } from '@instagrammer/web/shared/ui/logo';
 
 @NgModule({
   imports: [
