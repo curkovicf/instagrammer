@@ -47,6 +47,7 @@
       "@instagrammer/web/auth/ui/base-info-register-step": ["libs/web/auth/ui/base-info-register-step/src/index.ts"],
       "@instagrammer/web/auth/ui/confirmation-code": ["libs/web/auth/ui/confirmation-code/src/index.ts"],
       "@instagrammer/web/auth/ui/dob-register-step": ["libs/web/auth/ui/dob-register-step/src/index.ts"],
+      "@instagrammer/web/auth/ui/footer": ["libs/web/auth/ui/footer/src/index.ts"],
       "@instagrammer/web/auth/ui/log-in-with-facebook": ["libs/web/auth/ui/log-in-with-facebook/src/index.ts"],
       "@instagrammer/web/auth/ui/login": ["libs/web/auth/ui/login/src/index.ts"],
       "@instagrammer/web/auth/ui/logo": ["libs/web/auth/ui/logo/src/index.ts"],
@@ -70,7 +71,6 @@
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
       "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
-      "@instagrammer/web/shell/ui/footer": ["libs/web/shell/ui/footer/src/index.ts"],
       "@instagrammer/web/shell/ui/not-found": ["libs/web/shell/ui/not-found/src/index.ts"],
       "@instagrammer/web/shell/util": ["libs/web/shell/util/src/index.ts"]
     }

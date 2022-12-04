@@ -3,4 +3,49 @@
   width: 100%;
   height: 100%;
   background-color: orange;
+
+  & > .home-wrapper {
+    width: inherit;
+    height: inherit;
+    background-color: violet;
+    display: flex;
+
+    & > .toolbar-wrapper {
+      background-color: cadetblue;
+      width: 21rem;
+      height: 100%;
+
+      & > ng-inst-toolbar {}
+    }
+
+    & > main {
+      width: 100%;
+      height: 100%;
+      background-color: #ed4956;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > .feed-wrapper {
+        background-color: yellow;
+        width: 51rem;
+        height: 100%;
+
+        & > ng-inst-feed {}
+        & > ng-inst-suggestions {}
+      }
+    }
+  }
 }
+
+
+//<div class="home-wrapper">
+//  <section class="toolbar-wrapper">
+//    <ng-inst-toolbar></ng-inst-toolbar>
+//  </section>
+//
+//  <main>
+//    <ng-inst-feed></ng-inst-feed>
+//    <ng-inst-suggestions></ng-inst-suggestions>
+//  </main>
+//</div>

@@ -22,6 +22,7 @@
     "web-auth-ui-base-info-register-step": "libs/web/auth/ui/base-info-register-step",
     "web-auth-ui-confirmation-code": "libs/web/auth/ui/confirmation-code",
     "web-auth-ui-dob-register-step": "libs/web/auth/ui/dob-register-step",
+    "web-auth-ui-footer": "libs/web/auth/ui/footer",
     "web-auth-ui-log-in-with-facebook": "libs/web/auth/ui/log-in-with-facebook",
     "web-auth-ui-logo": "libs/web/auth/ui/logo",
     "web-auth-ui-or-block": "libs/web/auth/ui/or-block",
@@ -43,7 +44,6 @@
     "web-shared-ui-input": "libs/web/shared/ui/input",
     "web-shared-ui-styles": "libs/web/shared/ui/styles",
     "web-shell-feature": "libs/web/shell/feature",
-    "web-shell-ui-footer": "libs/web/shell/ui/footer",
     "web-shell-ui-not-found": "libs/web/shell/ui/not-found",
     "web-shell-util": "libs/web/shell/util"
   }
