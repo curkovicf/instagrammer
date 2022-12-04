@@ -1,3 +1,17 @@
 :host {
-  & > ng-insta-logo {}
+  display: block;
+
+  & > .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+
+    & > ng-insta-logo {
+      width: 9rem;
+    }
+  }
+}
+
+img {
+  width: 20px;
 }

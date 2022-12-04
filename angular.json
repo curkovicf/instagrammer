@@ -33,6 +33,7 @@
     "web-home-feature-shell": "libs/web/home/feature/shell",
     "web-home-feature-suggestions": "libs/web/home/feature/suggestions",
     "web-home-feature-toolbar": "libs/web/home/feature/toolbar",
+    "web-home-ui-toolbar-item": "libs/web/home/ui/toolbar-item",
     "web-ng-instagrammer": "apps/web/ng-instagrammer",
     "web-shared-app-configs": "libs/web/shared/app-configs",
     "web-shared-ui-apple-spinner": "libs/web/shared/ui/apple-spinner",

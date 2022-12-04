@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
         & > .instagram-logo {
           height: 6rem;
           margin-top: 2.1rem;
-          margin-bottom: 0.8rem;
+          margin-bottom: 0.8rem;& > ng-insta-logo {}
           @include center-flex-X();
 
           & > .sm {

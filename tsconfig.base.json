@@ -59,6 +59,7 @@
       "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
       "@instagrammer/web/home/feature/suggestions": ["libs/web/home/feature/suggestions/src/index.ts"],
       "@instagrammer/web/home/feature/toolbar": ["libs/web/home/feature/toolbar/src/index.ts"],
+      "@instagrammer/web/home/ui/toolbar-item": ["libs/web/home/ui/toolbar-item/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
