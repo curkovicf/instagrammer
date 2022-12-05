@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'ng-insta-logo',
   template: `
-    <div class="instagram-logo">
+    <div [ngClass]="{ 'lg-margin': size === 'lg', 'sm-margin': size === 'sm' }" class="instagram-logo">
       <img [ngClass]="{ lg: size === 'lg', sm: size === 'sm' }" src="/assets/images/logo.png" alt="" />
     </div>
   `,
@@ -17,9 +17,6 @@ import { Component, Input } from '@angular/core';
         display: block;
 
         & > .instagram-logo {
-          height: 6rem;
-          margin-top: 2.1rem;
-          margin-bottom: 0.8rem;& > ng-insta-logo {}
           @include center-flex-X();
 
           & > .sm {
@@ -29,6 +26,18 @@ import { Component, Input } from '@angular/core';
           & > .lg {
             height: 6rem;
           }
+        }
+
+        & > .lg-margin {
+          height: 6rem;
+          margin-top: 2.1rem;
+          margin-bottom: 0.8rem;
+        }
+
+        & > .sm-margin {
+          height: 2rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.4rem;
         }
       }
     `,

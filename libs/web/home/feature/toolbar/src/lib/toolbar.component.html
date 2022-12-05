@@ -1,8 +1,10 @@
 <div class="wrapper">
   <ng-insta-logo size="sm"></ng-insta-logo>
 
-  <div class="item">
-    <img src="/assets/icons/icons8-home-black.svg" alt="" />
-    <p>Home</p>
-  </div>
+  <instagrammer-toolbar-item
+    *ngFor="let toolbarItem of toolbarItems"
+    [itemTitle]="toolbarItem.title"
+    [iconPathDefault]="toolbarItem.iconPathDefault"
+    [iconPathSelected]="toolbarItem.iconPathSelected"
+  ></instagrammer-toolbar-item>
 </div>
