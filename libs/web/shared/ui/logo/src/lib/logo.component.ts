@@ -20,7 +20,7 @@ import { Component, Input } from '@angular/core';
           @include center-flex-X();
 
           & > .sm {
-            height: 2rem;
+            height: 1.9rem;
           }
 
           & > .lg {
