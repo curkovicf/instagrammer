@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IToolbarItem } from './toolbar.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ng-inst-toolbar',
@@ -10,8 +11,11 @@ export class ToolbarComponent {
   public toolbarItems: IToolbarItem[] = [
     {
       title: 'Home',
-      iconPathDefault: '/assets/icons/icons8-home-black.svg',
-      iconPathSelected: '/assets/icons/icons8-home-white.svg',
+      iconPathSelected: '/assets/icons/icons8-home-black.svg',
+      iconPathDefault: '/assets/icons/icons8-home-white.svg',
+      routePath: '/home',
     },
   ];
+
+  constructor(public readonly router: Router) {}
 }

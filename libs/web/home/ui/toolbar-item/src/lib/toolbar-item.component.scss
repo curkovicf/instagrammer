@@ -15,6 +15,7 @@
     width: inherit;
     border-radius: 5rem;
     cursor: pointer;
+    user-select: none;
 
     &::before {
       @include absolute-center-X();
