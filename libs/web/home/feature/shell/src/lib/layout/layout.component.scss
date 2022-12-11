@@ -14,6 +14,7 @@
       background-color: #FFFFFF;
       width: 18rem;
       height: 100%;
+      border-right: 1px solid #D3D3D3;
 
       & > ng-inst-toolbar {}
     }
@@ -21,18 +22,28 @@
     & > main {
       width: 100%;
       height: 100%;
-      background-color: #ed4956;
+      background-color: #F9F9F9;
       display: flex;
       justify-content: center;
       align-items: center;
 
       & > .feed-wrapper {
-        background-color: yellow;
         width: 51rem;
         height: 100%;
+        display: flex;
 
-        & > ng-inst-feed {}
-        & > ng-inst-suggestions {}
+        & > .main-feed-wrapper {
+          max-width: 470px;
+          width: 100%;
+
+          & > ng-inst-feed {
+            background-color: violet;
+          }
+        }
+
+        & > ng-inst-suggestions {
+          background-color: green;
+        }
       }
     }
   }

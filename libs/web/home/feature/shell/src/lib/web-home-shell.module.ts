@@ -6,9 +6,10 @@ import { routes } from './web-home-shell.routes';
 import { FeedModule } from '@instagrammer/web/home/feature/feed';
 import { SuggestionsModule } from '@instagrammer/web/home/feature/suggestions';
 import { ToolbarModule } from '@instagrammer/web/home/feature/toolbar';
+import { StoryToolbarModule } from '@instagrammer/web/home/feature/story-toolbar';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), FeedModule, SuggestionsModule, ToolbarModule],
+  imports: [CommonModule, RouterModule.forChild(routes), FeedModule, SuggestionsModule, ToolbarModule, StoryToolbarModule],
   declarations: [LayoutComponent],
   exports: [LayoutComponent],
 })
