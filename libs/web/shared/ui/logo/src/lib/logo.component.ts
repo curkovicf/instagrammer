@@ -24,7 +24,7 @@ import { Component, Input } from '@angular/core';
           }
 
           & > .lg {
-            height: 6rem;
+            height: 3rem;
           }
         }
 
