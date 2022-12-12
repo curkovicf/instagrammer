@@ -29,6 +29,7 @@
     "web-auth-ui-rotating-phones": "libs/web/auth/ui/rotating-phones",
     "web-auth-ui-text-with-link-in-card": "libs/web/auth/ui/text-with-link-in-card",
     "web-auth-util": "libs/web/auth/util",
+    "web-home-data-access": "libs/web/home/data-access",
     "web-home-feature-feed": "libs/web/home/feature/feed",
     "web-home-feature-shell": "libs/web/home/feature/shell",
     "web-home-feature-story-toolbar": "libs/web/home/feature/story-toolbar",

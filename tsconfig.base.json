@@ -55,6 +55,7 @@
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/ui/rotating-phones": ["libs/web/auth/ui/rotating-phones/src/index.ts"],
       "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
+      "@instagrammer/web/home/data-access": ["libs/web/home/data-access/src/index.ts"],
       "@instagrammer/web/home/feature/feed": ["libs/web/home/feature/feed/src/index.ts"],
       "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
       "@instagrammer/web/home/feature/story-toolbar": ["libs/web/home/feature/story-toolbar/src/index.ts"],

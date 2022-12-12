@@ -6,6 +6,7 @@
     [itemTitle]="toolbarItem.title"
     [iconPathDefault]="toolbarItem.iconPathDefault"
     [iconPathSelected]="toolbarItem.iconPathSelected"
-    [isSelected]="router.url === toolbarItem.routePath"
+    [isSelected]="(homeViewModel.vm$ | async)?.activeToolbarItem === toolbarItem"
+    (itemClicked)="homeViewModel.setActiveToolbarItem(toolbarItem)"
   ></instagrammer-toolbar-item>
 </div>

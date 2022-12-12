@@ -4,9 +4,10 @@ import { ToolbarComponent } from './toolbar.component';
 import { LogoModule } from '@instagrammer/web/shared/ui/logo';
 import { ToolbarItemModule } from '@instagrammer/web/home/ui/toolbar-item';
 import { RouterLink } from '@angular/router';
+import { WebHomeDataAccessModule } from '@instagrammer/web/home/data-access';
 
 @NgModule({
-  imports: [CommonModule, LogoModule, ToolbarItemModule, RouterLink],
+  imports: [CommonModule, LogoModule, ToolbarItemModule, RouterLink, WebHomeDataAccessModule],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],
 })
