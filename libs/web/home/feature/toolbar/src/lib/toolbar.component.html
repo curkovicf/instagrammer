@@ -2,7 +2,7 @@
   <ng-insta-logo size="sm" routerLink="/home"></ng-insta-logo>
 
   <instagrammer-toolbar-item
-    *ngFor="let toolbarItem of toolbarItems"
+    *ngFor="let toolbarItem of (homeViewModel.vm$ | async)?.toolbarItems"
     [itemTitle]="toolbarItem.title"
     [iconPathDefault]="toolbarItem.iconPathDefault"
     [iconPathSelected]="toolbarItem.iconPathSelected"

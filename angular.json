@@ -35,6 +35,7 @@
     "web-home-feature-story-toolbar": "libs/web/home/feature/story-toolbar",
     "web-home-feature-suggestions": "libs/web/home/feature/suggestions",
     "web-home-feature-toolbar": "libs/web/home/feature/toolbar",
+    "web-home-feature-toolbar-small": "libs/web/home/feature/toolbar-small",
     "web-home-ui-feed-card": "libs/web/home/ui/feed-card",
     "web-home-ui-story-item": "libs/web/home/ui/story-item",
     "web-home-ui-toolbar-item": "libs/web/home/ui/toolbar-item",
