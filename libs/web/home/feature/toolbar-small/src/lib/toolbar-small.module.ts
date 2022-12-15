@@ -6,5 +6,8 @@ import { WebHomeDataAccessModule } from '@instagrammer/web/home/data-access';
 @NgModule({
   imports: [CommonModule, WebHomeDataAccessModule],
   declarations: [ToolbarSmallComponent],
+  exports: [
+    ToolbarSmallComponent,
+  ],
 })
 export class ToolbarSmallModule {}

@@ -1,16 +1,20 @@
 <div class="home-wrapper">
   <section class="toolbar-wrapper">
-    <ng-inst-toolbar></ng-inst-toolbar>
+    <ng-inst-toolbar *ngIf="(toolbarViewModel.vm$ | async)?.isBigToolbar; else smallToolbar"></ng-inst-toolbar>
+
+    <ng-template #smallToolbar>
+      <ng-inst-toolbar-small></ng-inst-toolbar-small>
+      <ng-inst-sticky-sidenav-content-box></ng-inst-sticky-sidenav-content-box>
+    </ng-template>
   </section>
 
   <main>
     <div class="feed-wrapper">
-      <div class='main-feed-wrapper'>
-        <ng-inst-story-toolbar></ng-inst-story-toolbar>
-        <ng-inst-feed></ng-inst-feed>
-      </div>
+      <ng-inst-story-toolbar></ng-inst-story-toolbar>
 
-      <ng-inst-suggestions></ng-inst-suggestions>
+      <ng-inst-feed></ng-inst-feed>
+
+<!--      <ng-inst-suggestions></ng-inst-suggestions>-->
     </div>
   </main>
 </div>

@@ -63,6 +63,7 @@
       "@instagrammer/web/home/feature/toolbar": ["libs/web/home/feature/toolbar/src/index.ts"],
       "@instagrammer/web/home/feature/toolbar-small": ["libs/web/home/feature/toolbar-small/src/index.ts"],
       "@instagrammer/web/home/ui/feed-card": ["libs/web/home/ui/feed-card/src/index.ts"],
+      "@instagrammer/web/home/ui/sticky-sidenav-content-box": ["libs/web/home/ui/sticky-sidenav-content-box/src/index.ts"],
       "@instagrammer/web/home/ui/story-item": ["libs/web/home/ui/story-item/src/index.ts"],
       "@instagrammer/web/home/ui/toolbar-item": ["libs/web/home/ui/toolbar-item/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],

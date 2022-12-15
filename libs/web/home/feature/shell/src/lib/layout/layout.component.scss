@@ -9,14 +9,21 @@
     height: inherit;
     background-color: violet;
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     & > .toolbar-wrapper {
+      position: fixed;
+      left: 0;
       background-color: #FFFFFF;
       width: 18rem;
       height: 100%;
-      border-right: 1px solid #D3D3D3;
 
       & > ng-inst-toolbar {}
+
+      & > ng-inst-toolbar-small {
+        width: 4.5rem;
+      }
     }
 
     & > main {
@@ -28,18 +35,15 @@
       align-items: center;
 
       & > .feed-wrapper {
-        width: 51rem;
         height: 100%;
+        max-width: 470px;
+        width: 100%;
         display: flex;
+        flex-direction: column;
 
-        & > .main-feed-wrapper {
-          max-width: 470px;
-          width: 100%;
-
-          & > ng-inst-feed {
-            background-color: violet;
-            margin-top: 1rem;
-          }
+        & > ng-inst-feed {
+          background-color: violet;
+          margin-top: 1rem;
         }
 
         & > ng-inst-suggestions {
