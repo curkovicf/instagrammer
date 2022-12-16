@@ -5,6 +5,15 @@ import { CommonModule } from '@angular/common';
   selector: 'ng-inst-svg-instagram-icon',
   standalone: true,
   imports: [CommonModule],
+  styles: [
+    `
+      @import 'ng-instagrammer-mixins';
+
+      :host {
+        @include center-flex-X();
+      }
+    `,
+  ],
   template: `
     <svg
       aria-label="Instagram"

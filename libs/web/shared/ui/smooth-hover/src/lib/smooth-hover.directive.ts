@@ -8,7 +8,7 @@ export class SmoothHoverDirective implements OnInit {
   public defaultBackgroundColor = 'transparent';
 
   @Input()
-  public hoverBackgroundColor = '#fbfbfb';
+  public hoverBackgroundColor = '#F9F9F9';
 
   private svgElement: SVGElement | null = null;
   private hostNativeElement: HTMLElement | null = null;
