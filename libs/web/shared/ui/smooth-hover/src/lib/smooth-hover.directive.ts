@@ -1,21 +1,21 @@
-import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[ngInstSmoothHover]',
 })
-export class SmoothHoverDirective implements OnInit {
+export class SmoothHoverDirective implements AfterViewInit {
   @Input()
   public defaultBackgroundColor = 'transparent';
 
   @Input()
   public hoverBackgroundColor = '#F9F9F9';
 
-  private svgElement: SVGElement | null = null;
+  private svgElement: any = null;
   private hostNativeElement: HTMLElement | null = null;
 
   constructor(private hostElement: ElementRef, private renderer: Renderer2) {}
 
-  public ngOnInit(): void {
+  public ngAfterViewInit(): void {
     this.hostNativeElement = this.hostElement.nativeElement;
     this.svgElement = this.findSvgElementInTree(this.hostElement.nativeElement.children);
 

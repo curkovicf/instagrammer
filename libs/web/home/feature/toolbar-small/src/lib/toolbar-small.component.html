@@ -1,12 +1,17 @@
 <div class="top-part">
-  <div class="icon-wrapper" ngInstSmoothHover>
-    <ng-inst-svg-instagram-icon></ng-inst-svg-instagram-icon>
-  </div>
+  <ng-inst-svg-instagram-icon (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"></ng-inst-svg-instagram-icon>
 </div>
 
 <div class="middle-part">
-  <ng-inst-svg-home-icon [isSelected]="selectedToolbarItem === 1" (itemSelected)="onItemSelect($event)"></ng-inst-svg-home-icon>
-  <ng-inst-svg-search-icon></ng-inst-svg-search-icon>
+  <ng-inst-svg-home-icon
+    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+  ></ng-inst-svg-home-icon>
+
+  <ng-inst-svg-search-icon
+    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+  ></ng-inst-svg-search-icon>
 </div>
 
 <div class="bottom-part"></div>

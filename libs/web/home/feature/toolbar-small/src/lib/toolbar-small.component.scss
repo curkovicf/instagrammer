@@ -24,7 +24,11 @@
     @include center-flex-Y();
     justify-content: start;
 
-    & > .icon-wrapper {
+    & > ng-inst-svg-home-icon {
+      margin-bottom: 0.5rem;
+    }
+
+    & > ng-inst-svg-search-icon {
       margin-bottom: 0.5rem;
     }
   }

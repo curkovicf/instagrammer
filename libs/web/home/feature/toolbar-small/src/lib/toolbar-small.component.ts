@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeViewModel, ToolbarItem } from '@instagrammer/web/home/data-access';
+import { HomeViewModel, ToolbarItem, ToolbarViewModel } from '@instagrammer/web/home/data-access';
 
 @Component({
   selector: 'ng-inst-toolbar-small',
@@ -7,11 +7,5 @@ import { HomeViewModel, ToolbarItem } from '@instagrammer/web/home/data-access';
   styleUrls: ['./toolbar-small.component.scss'],
 })
 export class ToolbarSmallComponent {
-  public selectedToolbarItem: ToolbarItem = ToolbarItem.home;
-
-  constructor(public readonly homeViewModel: HomeViewModel) {}
-
-  public onItemSelect(selectedToolbarItem: ToolbarItem): void {
-    this.selectedToolbarItem = selectedToolbarItem;
-  }
+  constructor(public readonly homeViewModel: HomeViewModel, public readonly toolbarViewModel: ToolbarViewModel) {}
 }

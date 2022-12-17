@@ -25,9 +25,9 @@ import { ToolbarItem } from '@instagrammer/web/home/data-access';
     `,
   ],
   template: `
-    <div class="icon-wrapper" ngInstSmoothHover (click)='onItemClick()'>
+    <div class="icon-wrapper" ngInstSmoothHover (click)="onItemClick()">
       <svg
-        *ngIf="isSelected"
+        *ngIf="activeToolbarItem === 'home'"
         aria-label="Home"
         class="_ab6-"
         color="#262626"
@@ -43,7 +43,7 @@ import { ToolbarItem } from '@instagrammer/web/home/data-access';
       </svg>
 
       <svg
-        *ngIf="!isSelected"
+        *ngIf="activeToolbarItem !== 'home'"
         aria-label="Home"
         class="_ab6-"
         color="#262626"
@@ -66,7 +66,7 @@ import { ToolbarItem } from '@instagrammer/web/home/data-access';
 })
 export class HomeIconComponent {
   @Input()
-  public isSelected = false;
+  public activeToolbarItem: ToolbarItem | undefined;
 
   @Output()
   public itemSelected: EventEmitter<ToolbarItem> = new EventEmitter();

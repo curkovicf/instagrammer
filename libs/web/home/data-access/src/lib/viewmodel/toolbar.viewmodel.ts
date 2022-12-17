@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { IToolbarItem } from '@instagrammer/web/home/data-access';
+import { ToolbarItem } from '../interface/toolbar.interface';
 import { Observable } from 'rxjs';
 
 export interface IToolbarState {
-  activeToolbarItem: IToolbarItem | null;
+  activeToolbarItem: ToolbarItem;
 
   isBigToolbar: boolean;
 }
 
 export interface IToolbarStateView {
-  activeToolbarItem: IToolbarItem | null;
+  activeToolbarItem: ToolbarItem;
 
   isBigToolbar: boolean;
 }
@@ -24,8 +24,22 @@ export class ToolbarViewModel extends ComponentStore<IToolbarState> {
 
   constructor() {
     super({
-      activeToolbarItem: null,
+      activeToolbarItem: ToolbarItem.home,
       isBigToolbar: false,
     });
+  }
+
+  public setActiveToolbarItem(activeToolbarItem: ToolbarItem): void {
+    switch (activeToolbarItem) {
+      case ToolbarItem.instLogo:
+        this.patchState({ activeToolbarItem: ToolbarItem.home, isBigToolbar: false });
+        break;
+      case ToolbarItem.home:
+        this.patchState({ activeToolbarItem, isBigToolbar: false });
+        break;
+      case ToolbarItem.search:
+        this.patchState({ activeToolbarItem, isBigToolbar: true });
+        break;
+    }
   }
 }

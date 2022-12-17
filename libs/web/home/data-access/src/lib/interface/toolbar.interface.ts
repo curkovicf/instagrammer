@@ -6,7 +6,7 @@ export interface IToolbarItem {
 }
 
 export enum ToolbarItem {
-  instLogo,
-  home,
-  search,
+  instLogo = 'instLogo',
+  home = 'home',
+  search = 'search',
 }
