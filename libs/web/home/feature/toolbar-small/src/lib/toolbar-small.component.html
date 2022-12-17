@@ -4,6 +4,9 @@
   </div>
 </div>
 
-<div class="middle-part"></div>
+<div class="middle-part">
+  <ng-inst-svg-home-icon [isSelected]="selectedToolbarItem === 1" (itemSelected)="onItemSelect($event)"></ng-inst-svg-home-icon>
+  <ng-inst-svg-search-icon></ng-inst-svg-search-icon>
+</div>
 
 <div class="bottom-part"></div>

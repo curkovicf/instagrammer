@@ -4,3 +4,9 @@ export interface IToolbarItem {
   iconPathSelected: string;
   routePath: string;
 }
+
+export enum ToolbarItem {
+  instLogo,
+  home,
+  search,
+}
