@@ -5,9 +5,10 @@ import { LogoModule } from '@instagrammer/web/shared/ui/logo';
 import { ToolbarItemModule } from '@instagrammer/web/home/ui/toolbar-item';
 import { RouterLink } from '@angular/router';
 import { WebHomeDataAccessModule } from '@instagrammer/web/home/data-access';
+import { HomeIconComponent } from '@instagrammer/web/home/ui/svg-icon';
 
 @NgModule({
-  imports: [CommonModule, LogoModule, ToolbarItemModule, RouterLink, WebHomeDataAccessModule],
+  imports: [CommonModule, LogoModule, ToolbarItemModule, RouterLink, WebHomeDataAccessModule, HomeIconComponent],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],
 })

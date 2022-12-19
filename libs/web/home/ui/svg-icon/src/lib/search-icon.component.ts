@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarItem } from '@instagrammer/web/home/data-access';
+import { ToolbarItemName } from '@instagrammer/web/home/data-access';
 import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
 
 @Component({
@@ -94,12 +94,12 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
 })
 export class SearchIconComponent {
   @Input()
-  public activeToolbarItem: ToolbarItem | undefined;
+  public activeToolbarItem: ToolbarItemName | undefined;
 
   @Output()
-  public itemSelected: EventEmitter<ToolbarItem> = new EventEmitter();
+  public itemSelected: EventEmitter<ToolbarItemName> = new EventEmitter();
 
   public onItemClick(): void {
-    this.itemSelected.emit(ToolbarItem.search);
+    this.itemSelected.emit(ToolbarItemName.search);
   }
 }

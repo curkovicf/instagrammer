@@ -17,30 +17,6 @@
     cursor: pointer;
     user-select: none;
 
-    &::before {
-      @include absolute-center-X();
-      content: "";
-      width: 98%;
-      height: 3rem;
-      border-radius: 5rem;
-      pointer-events: none;
-      background-color: transparent;
-      transition: ease-in 0.2s;
-    }
-
-    &:hover::before {
-      z-index: 1;
-      height: 3rem;
-      background-color: #FBFBFB;
-      cursor: pointer;
-    }
-
-    &:hover {
-      & > img {
-        scale: 105%;
-      }
-    }
-
     & > img {
       z-index: 2;
       width: 1.5rem;

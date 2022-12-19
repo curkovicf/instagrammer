@@ -1,4 +1,4 @@
 <div class="item">
-  <img [src]="isSelected ? iconPathSelected : iconPathDefault" alt="Toolbar Icon" />
+  <ng-content select='.svg-icon'></ng-content>
   <p>{{ itemTitle }}</p>
 </div>

@@ -1,34 +1,26 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { ToolbarItemName } from '@instagrammer/web/home/data-access';
 
 @Component({
-  selector: 'instagrammer-toolbar-item',
+  selector: 'ng-inst-toolbar-item',
   templateUrl: './toolbar-item.component.html',
   styleUrls: ['./toolbar-item.component.scss'],
 })
-export class ToolbarItemComponent implements OnInit {
+export class ToolbarItemComponent {
   @Input()
   isSelected = false;
 
   @Input()
-  iconPathDefault!: string;
-
-  @Input()
-  iconPathSelected!: string;
-
-  @Input()
   itemTitle!: string;
 
-  @Output()
-  itemClicked: EventEmitter<void> = new EventEmitter();
+  @Input()
+  itemName!: ToolbarItemName;
 
-  public ngOnInit(): void {
-    if (!this.iconPathDefault || !this.iconPathSelected) {
-      throw new Error('TOOLBAR ITEM COMPONENT: Icon is not set, please provide icon path.');
-    }
-  }
+  @Output()
+  itemClicked: EventEmitter<ToolbarItemName> = new EventEmitter();
 
   @HostListener('click', [])
   onItemClick(): void {
-    this.itemClicked.emit();
+    this.itemClicked.emit(this.itemName);
   }
 }

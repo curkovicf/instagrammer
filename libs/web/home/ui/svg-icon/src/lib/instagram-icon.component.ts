@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
-import { ToolbarItem } from '@instagrammer/web/home/data-access';
+import { ToolbarItemName } from '@instagrammer/web/home/data-access';
 
 @Component({
   selector: 'ng-inst-svg-instagram-icon',
@@ -45,12 +45,12 @@ import { ToolbarItem } from '@instagrammer/web/home/data-access';
 })
 export class InstagramIconComponent {
   @Input()
-  public activeToolbarItem: ToolbarItem | undefined;
+  public activeToolbarItem: ToolbarItemName | undefined;
 
   @Output()
-  public itemSelected: EventEmitter<ToolbarItem> = new EventEmitter();
+  public itemSelected: EventEmitter<ToolbarItemName> = new EventEmitter();
 
   public onItemClick(): void {
-    this.itemSelected.emit(ToolbarItem.instLogo);
+    this.itemSelected.emit(ToolbarItemName.instLogo);
   }
 }

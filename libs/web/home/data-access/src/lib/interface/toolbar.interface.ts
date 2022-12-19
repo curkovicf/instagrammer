@@ -1,11 +1,10 @@
 export interface IToolbarItem {
   title: string;
-  iconPathDefault: string;
-  iconPathSelected: string;
-  routePath: string;
+  routerLink: string;
+  toolbarItemName: ToolbarItemName;
 }
 
-export enum ToolbarItem {
+export enum ToolbarItemName {
   instLogo = 'instLogo',
   home = 'home',
   search = 'search',
