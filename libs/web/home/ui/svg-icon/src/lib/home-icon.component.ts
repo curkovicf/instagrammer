@@ -29,7 +29,7 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
           height: 3rem;
           cursor: pointer;
           @include center-flex-X();
-          justify-content: start;
+          justify-content: flex-start;
           padding: 0 0.9rem;
           user-select: none;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -38,7 +38,7 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
             margin-left: 1rem;
           }
 
-          & > bolded-text {
+          & > .bolded-text {
             font-weight: 500;
           }
         }

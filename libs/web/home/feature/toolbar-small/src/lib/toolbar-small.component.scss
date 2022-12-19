@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 
   & > div {
     width: 100%;
@@ -34,7 +35,6 @@
   }
 
   & > .bottom-part {
-    background-color: #262626;
     height: 7rem;
   }
 

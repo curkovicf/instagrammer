@@ -11,6 +11,10 @@
       margin-bottom: 2rem;
       cursor: pointer;
     }
+
+    & > ng-inst-svg-home-icon {
+      margin-bottom: 0.5rem;
+    }
   }
 }
 

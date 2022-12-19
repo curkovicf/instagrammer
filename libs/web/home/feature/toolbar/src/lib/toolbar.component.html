@@ -1,21 +1,17 @@
 <div class="wrapper">
   <ng-insta-logo size="sm" routerLink="/home"></ng-insta-logo>
 
-  <!--  <ng-inst-toolbar-item-->
-  <!--    itemTitle="Home"-->
-  <!--    [isSelected]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === toolbarItemName.home"-->
-  <!--    [itemName]="toolbarItemName.home"-->
-  <!--    (itemClicked)="toolbarViewModel.setActiveToolbarItem($event)"-->
-  <!--  >-->
-  <!--    <ng-inst-svg-home-icon-->
-  <!--      class="svg-icon"-->
-  <!--      [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"-->
-  <!--    ></ng-inst-svg-home-icon>-->
-  <!--  </ng-inst-toolbar-item>-->
-
   <ng-inst-svg-home-icon
     class="svg-icon"
     label="Home"
     [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
+    (itemSelected)='toolbarViewModel.setActiveToolbarItem($event)'
   ></ng-inst-svg-home-icon>
+
+  <ng-inst-svg-search-icon
+    class="svg-icon"
+    label="Search"
+    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
+    (itemSelected)='toolbarViewModel.setActiveToolbarItem($event)'
+  ></ng-inst-svg-search-icon>
 </div>

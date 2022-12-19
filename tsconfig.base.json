@@ -67,7 +67,6 @@
       "@instagrammer/web/home/ui/story-item": ["libs/web/home/ui/story-item/src/index.ts"],
       "@instagrammer/web/home/ui/svg-icon": ["libs/web/home/ui/svg-icon/src/index.ts"],
       "@instagrammer/web/home/ui/toolbar-icon-wrapper": ["libs/web/home/ui/toolbar-icon-wrapper/src/index.ts"],
-      "@instagrammer/web/home/ui/toolbar-item": ["libs/web/home/ui/toolbar-item/src/index.ts"],
       "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],

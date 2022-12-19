@@ -19,13 +19,34 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
           width: 3rem;
           height: 3rem;
           cursor: pointer;
+          user-select: none;
           @include center-flex-X();
+        }
+
+        & .icon-wrapper-lg {
+          border-radius: 5rem;
+          width: 95%;
+          height: 3rem;
+          cursor: pointer;
+          @include center-flex-X();
+          justify-content: flex-start;
+          padding: 0 0.9rem;
+          user-select: none;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+          & > p {
+            margin-left: 1rem;
+          }
+
+          & > .bolded-text {
+            font-weight: 500;
+          }
         }
       }
     `,
   ],
   template: `
-    <div class="icon-wrapper" ngInstSmoothHover (click)="onItemClick()">
+    <div class="icon-wrapper" [ngClass]="{ 'icon-wrapper': !label, 'icon-wrapper-lg': !!label }" ngInstSmoothHover (click)="onItemClick()">
       <svg
         *ngIf="activeToolbarItem === 'search'"
         aria-label="Search"
@@ -89,12 +110,17 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
           y2="22"
         ></line>
       </svg>
+
+      <p [ngClass]="{ 'bolded-text': activeToolbarItem === 'search' }" *ngIf="label">{{ label }}</p>
     </div>
   `,
 })
 export class SearchIconComponent {
   @Input()
   public activeToolbarItem: ToolbarItemName | undefined;
+
+  @Input()
+  public label: string | undefined;
 
   @Output()
   public itemSelected: EventEmitter<ToolbarItemName> = new EventEmitter();
