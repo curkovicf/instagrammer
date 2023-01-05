@@ -16,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/home/feature/suggestions/**/*.ts", "libs/web/home/feature/suggestions/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/home/feature/suggestions/**/*.ts",
+          "libs/web/home/feature/suggestions/**/*.html"
+        ]
       }
     }
   },

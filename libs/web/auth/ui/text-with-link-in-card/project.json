@@ -1,12 +1,13 @@
 {
   "name": "web-auth-ui-text-with-link-in-card",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/auth/ui/text-with-link-in-card/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/auth/ui/text-with-link-in-card"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/ui/text-with-link-in-card"],
       "options": {
         "jestConfig": "libs/web/auth/ui/text-with-link-in-card/jest.config.js",
         "passWithNoTests": true

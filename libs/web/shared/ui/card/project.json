@@ -1,12 +1,13 @@
 {
   "name": "web-shared-ui-card",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shared/ui/card/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shared/ui/card"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/card"],
       "options": {
         "jestConfig": "libs/web/shared/ui/card/jest.config.js",
         "passWithNoTests": true

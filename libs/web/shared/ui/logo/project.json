@@ -7,7 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shared/ui/logo"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/logo"],
       "options": {
         "jestConfig": "libs/web/shared/ui/logo/jest.config.js",
         "passWithNoTests": true

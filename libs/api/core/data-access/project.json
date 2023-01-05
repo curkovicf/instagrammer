@@ -1,12 +1,13 @@
 {
   "name": "api-core-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/api/core/data-access/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/core/data-access"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/core/data-access"],
       "options": {
         "jestConfig": "libs/api/core/data-access/jest.config.js",
         "passWithNoTests": true
@@ -15,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/api/core/data-access/src/**/*.ts", "libs/api/core/data-access/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/api/core/data-access/src/**/*.ts",
+          "libs/api/core/data-access/src/**/*.html"
+        ]
       }
     }
   },

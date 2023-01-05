@@ -1,12 +1,13 @@
 {
   "name": "web-auth-feature-save-login-info",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/auth/feature/save-login-info/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/auth/feature/save-login-info"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/feature/save-login-info"],
       "options": {
         "jestConfig": "libs/web/auth/feature/save-login-info/jest.config.js",
         "passWithNoTests": true

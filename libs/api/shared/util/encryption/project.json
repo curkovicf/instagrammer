@@ -1,12 +1,13 @@
 {
   "name": "api-shared-util-encryption",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/api/shared/util/encryption/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/shared/util/encryption"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/shared/util/encryption"],
       "options": {
         "jestConfig": "libs/api/shared/util/encryption/jest.config.js",
         "passWithNoTests": true
@@ -15,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/api/shared/util/encryption/src/**/*.ts", "libs/api/shared/util/encryption/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/api/shared/util/encryption/src/**/*.ts",
+          "libs/api/shared/util/encryption/src/**/*.html"
+        ]
       }
     }
   },

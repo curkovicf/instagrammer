@@ -1,12 +1,13 @@
 {
   "name": "web-shared-ui-input",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shared/ui/input/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shared/ui/input"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/input"],
       "options": {
         "jestConfig": "libs/web/shared/ui/input/jest.config.js",
         "passWithNoTests": true

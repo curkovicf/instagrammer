@@ -1,12 +1,13 @@
 {
   "name": "web-shell-util",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shell/util/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shell/util"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shell/util"],
       "options": {
         "jestConfig": "libs/web/shell/util/jest.config.js",
         "passWithNoTests": true

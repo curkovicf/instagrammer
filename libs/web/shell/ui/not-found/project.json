@@ -1,12 +1,13 @@
 {
   "name": "web-shell-ui-not-found",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shell/ui/not-found/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shell/ui/not-found"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shell/ui/not-found"],
       "options": {
         "jestConfig": "libs/web/shell/ui/not-found/jest.config.js",
         "passWithNoTests": true
@@ -15,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shell/ui/not-found/src/**/*.ts", "libs/web/shell/ui/not-found/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shell/ui/not-found/src/**/*.ts",
+          "libs/web/shell/ui/not-found/src/**/*.html"
+        ]
       }
     }
   },

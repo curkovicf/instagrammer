@@ -1,5 +1,6 @@
 {
   "name": "api-shared-util-validator",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/api/shared/util/validator/src",
   "targets": {
     "lint": {
@@ -11,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/shared/util/validator"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/shared/util/validator"],
       "options": {
         "jestConfig": "libs/api/shared/util/validator/jest.config.js",
         "passWithNoTests": true

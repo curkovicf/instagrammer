@@ -1,12 +1,13 @@
 {
   "name": "web-shared-ui-styles",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/web/shared/ui/styles/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/shared/ui/styles"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/styles"],
       "options": {
         "jestConfig": "libs/web/shared/ui/styles/jest.config.js",
         "passWithNoTests": true
@@ -15,7 +16,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shared/ui/styles/src/**/*.ts", "libs/web/shared/ui/styles/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shared/ui/styles/src/**/*.ts",
+          "libs/web/shared/ui/styles/src/**/*.html"
+        ]
       }
     }
   },
