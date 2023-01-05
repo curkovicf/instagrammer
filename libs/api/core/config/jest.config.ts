@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'api-core-config-environment',
+/* eslint-disable */
+export default {
+  displayName: 'api-core-config',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/api/core/config-environment',
+  coverageDirectory: '../../../../coverage/libs/api/core/config',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

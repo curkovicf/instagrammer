@@ -26,7 +26,7 @@
       "@instagrammer/api/auth/config": ["libs/api/auth/config/src/index.ts"],
       "@instagrammer/api/auth/data-access": ["libs/api/auth/data-access/src/index.ts"],
       "@instagrammer/api/auth/feature": ["libs/api/auth/feature/src/index.ts"],
-      "@instagrammer/api/core/config-environment": ["libs/api/core/config-environment/src/index.ts"],
+      "@instagrammer/api/core/config": ["libs/api/core/config/src/index.ts"],
       "@instagrammer/api/core/data-access": ["libs/api/core/data-access/src/index.ts"],
       "@instagrammer/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@instagrammer/api/core/shell": ["libs/api/core/shell/src/index.ts"],

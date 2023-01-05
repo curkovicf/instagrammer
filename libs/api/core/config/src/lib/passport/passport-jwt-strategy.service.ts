@@ -1,20 +1,22 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { IAuthModuleOptions, PassportStrategy } from '@nestjs/passport';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserRepository } from '../../repository/user.repository';
-import { PASSPORT_INJECTION_TOKEN } from '@instagrammer/api/core/config-environment';
-import { JwtPayload } from '../jwt-payload.interface';
+import { UserRepository } from '@instagrammer/api/auth/data-access';
+import { JwtPayload } from '../../../../../auth/data-access/src/lib/jwt/jwt-payload.interface';
 import { UserEntity } from '@instagrammer/api/core/data-access';
+import { ConfigService } from '@nestjs/config';
+import { EnvironmentVariable } from '../env/environment-variable.enum';
 
 @Injectable()
 export class JwtStrategyService extends PassportStrategy(Strategy) {
   constructor(
     @InjectRepository(UserRepository) private readonly usersRepository: UserRepository,
-    @Inject(PASSPORT_INJECTION_TOKEN) passportEnvironment: IAuthModuleOptions,
+    // @Inject(PASSPORT_INJECTION_TOKEN) passportEnvironment: IAuthModuleOptions,
+    private readonly configService: ConfigService,
   ) {
     super({
-      secretOrKey: passportEnvironment['secret'],
+      secretOrKey: configService.get(EnvironmentVariable.PASSPORT_SECRET),
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
