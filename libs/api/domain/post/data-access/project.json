@@ -1,0 +1,27 @@
+{
+  "name": "api-domain-post-data-access",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/api/domain/post/data-access/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/api/domain/post/data-access"],
+      "options": {
+        "jestConfig": "libs/api/domain/post/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/api/domain/post/data-access/src/**/*.ts",
+          "libs/api/domain/post/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:api", "type:data-access"]
+}
