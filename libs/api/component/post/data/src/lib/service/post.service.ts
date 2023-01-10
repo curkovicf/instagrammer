@@ -3,31 +3,18 @@ import { IPostService } from './post.interface';
 import { PostEntity } from '@instagrammer/api/core/entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PostRepository } from '../repository/post.repository';
-import { UserRepository } from '@instagrammer/api/component/user/data';
 import { CreatePostDto } from '../dto/create-post.dto';
 
 @Injectable()
 export class PostService implements IPostService {
-  constructor(
-    @InjectRepository(PostRepository) private readonly postRepository: PostRepository,
-    @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
-  ) {}
+  constructor(@InjectRepository(PostRepository) private readonly postRepository: PostRepository) {}
 
   public async getPosts(userId: string): Promise<PostEntity[]> {
-    return await this.postRepository.find({
-      where: { user: { userId: userId } },
-      select: {
-        postId: true,
-        comments: true,
-        description: true,
-        likes: true,
-        createdAt: true,
-        photoPaths: true,
-      },
-    });
+    return await this.postRepository.getPosts(userId);
   }
 
   public createPost(userId: string, createPostDto: CreatePostDto): Promise<void> {
+    //  TODO: Impl
     return Promise.resolve(undefined);
   }
 }

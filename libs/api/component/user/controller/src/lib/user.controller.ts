@@ -9,11 +9,11 @@ import {
   UsernameExistsRequestDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
 import { Request, Response } from 'express';
-import { AuthService } from '@instagrammer/api/component/user/data';
+import { UserService } from '@instagrammer/api/component/user/data';
 
 @Controller('auth')
 export class UserController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: UserService) {}
 
   @Post('/register')
   public async register(@Body() registerDto: RegisterRequestDto): Promise<void> {

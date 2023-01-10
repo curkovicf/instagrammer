@@ -27,7 +27,7 @@ import { JwtExpires } from '../jwt/util/jwt-expires.enum';
 import { UserEntity } from '@instagrammer/api/core/entity';
 
 @Injectable()
-export class AuthService {
+export class UserService {
   constructor(
     @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
     @InjectRepository(RefreshTokenRepository) private readonly refreshTokenRepository: RefreshTokenRepository,
