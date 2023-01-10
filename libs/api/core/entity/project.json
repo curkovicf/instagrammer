@@ -1,0 +1,24 @@
+{
+  "name": "api-core-entity",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/api/core/entity/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/api/core/entity"],
+      "options": {
+        "jestConfig": "libs/api/core/entity/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/core/entity/src/**/*.ts", "libs/api/core/entity/src/**/*.html"]
+      }
+    }
+  },
+  "tags": ["scope:api", "type:data-access"]
+}

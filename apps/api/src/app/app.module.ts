@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ApiShellModule } from '@instagrammer/api/shell/feature';
+import { ApiShellModule } from '@instagrammer/api/shell';
 
 @Module({
   imports: [ApiShellModule],
