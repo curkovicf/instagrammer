@@ -22,9 +22,8 @@ import {
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
-import { JwtUtilService } from '../jwt/util/jwt-util.service';
-import { JwtExpires } from '../jwt/util/jwt-expires.enum';
 import { UserEntity } from '@instagrammer/api/core/entity';
+import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/config';
 
 @Injectable()
 export class UserService {

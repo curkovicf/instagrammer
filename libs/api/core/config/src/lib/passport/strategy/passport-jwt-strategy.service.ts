@@ -3,16 +3,15 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from '@instagrammer/api/component/user/data';
-import { JwtPayload } from '../../../../../auth/data-access/src/lib/jwt/jwt-payload.interface';
 import { UserEntity } from '@instagrammer/api/core/entity';
 import { ConfigService } from '@nestjs/config';
-import { EnvironmentVariable } from '../env/environment-variable.enum';
+import { EnvironmentVariable } from '../../env/environment-variable.enum';
+import { JwtPayload } from '../jwt/jwt-payload.interface';
 
 @Injectable()
 export class JwtStrategyService extends PassportStrategy(Strategy) {
   constructor(
     @InjectRepository(UserRepository) private readonly usersRepository: UserRepository,
-    // @Inject(PASSPORT_INJECTION_TOKEN) passportEnvironment: IAuthModuleOptions,
     private readonly configService: ConfigService,
   ) {
     super({
