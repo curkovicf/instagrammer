@@ -1,5 +1,5 @@
 import {
-  ConflictException,
+  ConflictException, forwardRef, Inject,
   Injectable,
   InternalServerErrorException,
   MethodNotAllowedException,
@@ -28,8 +28,11 @@ import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/config';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(UserRepository) private readonly userRepository: UserRepository,
-    @InjectRepository(RefreshTokenRepository) private readonly refreshTokenRepository: RefreshTokenRepository,
+    @InjectRepository(UserRepository)
+    private readonly userRepository: UserRepository,
+    @InjectRepository(RefreshTokenRepository)
+    private readonly refreshTokenRepository: RefreshTokenRepository,
+    @Inject(forwardRef(() => JwtUtilService))
     private readonly jwtUtilService: JwtUtilService,
     private readonly encryptionService: BaseEncryptionService,
   ) {}

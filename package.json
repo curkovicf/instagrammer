@@ -10,7 +10,9 @@
     "build": "nx build",
     "test": "STAGE=dev nx test",
     "i18n:extract": "ng extract-i18n --output-path apps/instagram/src/locale",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "set-env:dev": "cross-env STAGE=dev",
+    "set-env:prod": "cross-env STAGE=prod"
   },
   "private": true,
   "eslintIgnore": [
@@ -81,6 +83,7 @@
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "cross-env": "^7.0.3",
     "cypress": "^11.0.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",

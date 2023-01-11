@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { UserService } from './service/user.service';
 import { UserRepository } from './repository/user.repository';
 import { RefreshTokenRepository } from './repository/refresh-token.repository';
@@ -7,8 +7,8 @@ import { ApiCoreConfigModule } from '@instagrammer/api/core/config';
 
 @Module({
   // imports: [PassportModule.register(PASSPORT_ENV), JwtModule.register(JWT_OPTIONS_ENV), EncryptionModule],
-  imports: [EncryptionModule, ApiCoreConfigModule],
+  imports: [EncryptionModule, forwardRef(() => ApiCoreConfigModule)],
   providers: [UserService, RefreshTokenRepository, UserRepository],
-  exports: [UserService],
+  exports: [UserService, UserRepository],
 })
 export class ApiAuthDataAccessModule {}
