@@ -12,7 +12,8 @@
     "i18n:extract": "ng extract-i18n --output-path apps/instagram/src/locale",
     "prepare": "husky install",
     "set-env:dev": "cross-env STAGE=dev",
-    "set-env:prod": "cross-env STAGE=prod"
+    "set-env:prod": "cross-env STAGE=prod",
+    "set-tags": ""
   },
   "private": true,
   "eslintIgnore": [

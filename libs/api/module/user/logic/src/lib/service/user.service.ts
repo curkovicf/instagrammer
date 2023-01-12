@@ -21,16 +21,15 @@ import {
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
-import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/config';
 import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { RefreshTokenService } from './refresh-token.service';
+import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/jwt/util';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserRepository)
     private readonly userRepository: UserRepository,
-    @Inject(forwardRef(() => JwtUtilService))
     private readonly jwtUtilService: JwtUtilService,
     private readonly encryptionService: BaseEncryptionService,
 
@@ -234,5 +233,9 @@ export class UserService {
 
     await this.userRepository.save(userEntity);
     await this.refreshTokenService.delete(refreshTokenId);
+  }
+
+  async findOne(username: string): Promise<UserEntity | null> {
+    return this.userRepository.findOne({ where: { username } });
   }
 }

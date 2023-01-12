@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PhotoEntity } from './photo.entity';
+import { CommentEntity } from './comment.entity';
 
 @Entity()
 export class PostEntity {

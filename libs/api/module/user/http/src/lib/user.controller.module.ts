@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UserDataModule } from '@instagrammer/api/module/user/data';
 import { UserController } from './user.controller';
+import { UserLogicModule } from '@instagrammer/api/module/user/logic';
 
 @Module({
-  imports: [UserDataModule],
+  imports: [UserLogicModule],
   controllers: [UserController],
 })
 export class UserControllerModule {}
