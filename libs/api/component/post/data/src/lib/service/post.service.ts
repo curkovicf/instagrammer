@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { IPostService } from './post.interface';
-import { PostEntity } from '@instagrammer/api/core/entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PostRepository } from '../repository/post.repository';
 import { CreatePostDto } from '../dto/create-post.dto';
+import { PostEntity } from '../entity/post.entity';
 
 @Injectable()
-export class PostService implements IPostService {
+export class PostService {
   constructor(@InjectRepository(PostRepository) private readonly postRepository: PostRepository) {}
 
   public async getPosts(userId: string): Promise<PostEntity[]> {

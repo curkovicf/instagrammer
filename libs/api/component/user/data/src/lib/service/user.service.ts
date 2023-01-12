@@ -1,5 +1,7 @@
 import {
-  ConflictException, forwardRef, Inject,
+  ConflictException,
+  forwardRef,
+  Inject,
   Injectable,
   InternalServerErrorException,
   MethodNotAllowedException,
@@ -11,7 +13,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
 import { DecodedJwtDto } from '../dto/decoded-jwt.dto';
-import { RefreshTokenRepository } from '../repository/refresh-token.repository';
 import {
   JwtPairDto,
   LoginRequestDto,
@@ -22,19 +23,20 @@ import {
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
-import { UserEntity } from '@instagrammer/api/core/entity';
 import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/config';
+import { RefreshTokenService } from '@instagrammer/api/component/refresh-token/data';
+import { UserEntity } from '../entity/user.entity';
 
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserRepository)
     private readonly userRepository: UserRepository,
-    @InjectRepository(RefreshTokenRepository)
-    private readonly refreshTokenRepository: RefreshTokenRepository,
     @Inject(forwardRef(() => JwtUtilService))
     private readonly jwtUtilService: JwtUtilService,
     private readonly encryptionService: BaseEncryptionService,
+
+    private readonly refreshTokenService: RefreshTokenService,
   ) {}
 
   /**
@@ -83,7 +85,7 @@ export class UserService {
 
     await this.deleteCurrentRefreshToken(user);
 
-    user.refreshToken = await this.refreshTokenRepository.createNewRefreshTokenEntity({
+    user.refreshToken = this.refreshTokenService.createNewRefreshToken({
       ...refreshToken,
       value: await this.encryptionService.hash(refreshToken.value),
     });
@@ -172,7 +174,7 @@ export class UserService {
 
     await this.deleteCurrentRefreshToken(user);
 
-    user.refreshToken = await this.refreshTokenRepository.createNewRefreshTokenEntity({
+    user.refreshToken = await this.refreshTokenService.createNewRefreshToken({
       ...refreshToken,
       value: await this.encryptionService.hash(refreshToken.value),
     });
@@ -233,6 +235,6 @@ export class UserService {
     userEntity.refreshToken = null;
 
     await this.userRepository.save(userEntity);
-    await this.refreshTokenRepository.delete({ refreshTokenId });
+    await this.refreshTokenService.delete(refreshTokenId);
   }
 }

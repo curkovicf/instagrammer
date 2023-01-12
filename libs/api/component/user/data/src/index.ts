@@ -1,6 +1,7 @@
 export * from './lib/repository/user.repository';
-export * from './lib/repository/refresh-token.repository';
+
+export * from './lib/entity/user.entity';
 
 export * from './lib/service/user.service';
 
-export * from './lib/api-auth-data-access.module';
+export * from './lib/user-data.module';

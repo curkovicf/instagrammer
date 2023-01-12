@@ -1,7 +1,7 @@
 import { DataSource, Repository } from 'typeorm';
 import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
-import { UserEntity } from '@instagrammer/api/core/entity';
 import { Injectable } from '@nestjs/common';
+import { UserEntity } from '../entity/user.entity';
 
 @Injectable()
 export class UserRepository extends Repository<UserEntity> {

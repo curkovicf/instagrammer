@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { PostEntity } from '@instagrammer/api/core/entity';
-import { CreatePostDto, PostService } from '@instagrammer/api/component/post/data';
+import { CreatePostDto, PostEntity, PostService } from '@instagrammer/api/component/post/data';
 
 @Controller('feed')
 export class PostController {
