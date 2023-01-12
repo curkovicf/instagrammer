@@ -1,0 +1,27 @@
+{
+  "name": "api-module-post-http",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/api/module/post/http/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/api/module/post/http"],
+      "options": {
+        "jestConfig": "libs/api/module/post/http/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/api/module/post/http/src/**/*.ts",
+          "libs/api/module/post/http/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:api-shell", "type:feature"]
+}

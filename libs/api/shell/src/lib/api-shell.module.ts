@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserControllerModule } from '@instagrammer/api/component/user/controller';
+import { UserControllerModule } from '@instagrammer/api/module/user/http';
 
 @Module({
   imports: [UserControllerModule],

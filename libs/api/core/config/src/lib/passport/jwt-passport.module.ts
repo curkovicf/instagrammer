@@ -1,11 +1,11 @@
-import { forwardRef, Global, Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { JwtStrategyService } from './strategy/passport-jwt-strategy.service';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '../env/environment-variable.enum';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtUtilService } from './jwt/util/jwt-util.service';
-import { UserDataModule } from '@instagrammer/api/component/user/data';
+import { UserDataModule } from '@instagrammer/api/module/user/data';
 
 @Global()
 @Module({
@@ -29,7 +29,7 @@ import { UserDataModule } from '@instagrammer/api/component/user/data';
         },
       }),
     }),
-    forwardRef(() => UserDataModule),
+    UserDataModule,
   ],
   providers: [JwtStrategyService, JwtUtilService],
   exports: [JwtStrategyService, JwtUtilService],
