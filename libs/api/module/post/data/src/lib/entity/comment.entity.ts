@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PostEntity } from './post.entity';
 
-@Entity()
+@Entity('comment')
 export class CommentEntity {
   @PrimaryGeneratedColumn('uuid')
   public commentId!: string;

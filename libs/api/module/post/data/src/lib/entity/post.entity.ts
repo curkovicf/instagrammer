@@ -11,7 +11,7 @@ import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PhotoEntity } from './photo.entity';
 import { CommentEntity } from './comment.entity';
 
-@Entity()
+@Entity('post')
 export class PostEntity {
   @PrimaryGeneratedColumn('uuid')
   public postId!: string;

@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { PostEntity } from './post.entity';
 
-@Entity()
+@Entity('photo')
 export class PhotoEntity {
   @PrimaryGeneratedColumn('uuid')
   public imageId!: string;

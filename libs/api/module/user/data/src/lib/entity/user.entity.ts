@@ -3,7 +3,7 @@ import { CommentEntity, PostEntity } from '@instagrammer/api/module/post/data';
 import { AccountSettingsEntity } from '@instagrammer/api/module/settings/data';
 import { RefreshTokenEntity } from './refresh-token.entity';
 
-@Entity()
+@Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   public userId!: string;
