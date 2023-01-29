@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/ui/phone-get-app"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/auth/ui/phone-get-app"
+      ],
       "options": {
         "jestConfig": "libs/web/auth/ui/phone-get-app/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web-auth"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

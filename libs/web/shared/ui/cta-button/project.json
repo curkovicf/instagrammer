@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/cta-button"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/ui/cta-button"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/ui/cta-button/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web-shared"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/feature/register"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/auth/feature/register"
+      ],
       "options": {
         "jestConfig": "libs/web/auth/feature/register/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:web-feature", "scope:web-auth"]
+  "tags": [
+    "type:feature",
+    "scope:web"
+  ]
 }

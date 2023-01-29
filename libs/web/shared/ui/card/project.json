@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/card"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/ui/card"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/ui/card/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,15 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shared/ui/card/src/**/*.ts", "libs/web/shared/ui/card/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shared/ui/card/src/**/*.ts",
+          "libs/web/shared/ui/card/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web-shared"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

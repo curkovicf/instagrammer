@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/data-access"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/auth/data-access"
+      ],
       "options": {
         "jestConfig": "libs/web/auth/data-access/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:web-data-access", "scope:web", "scope:web-shared"]
+  "tags": [
+    "type:data",
+    "scope:web"
+  ]
 }

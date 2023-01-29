@@ -5,19 +5,28 @@
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/api/module/user/http/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/api/module/user/http/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/module/user/http"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/api/module/user/http"
+      ],
       "options": {
         "jestConfig": "libs/api/module/user/http/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["scope:api-shell", "type:feature"]
+  "tags": [
+    "type:http",
+    "scope:api"
+  ]
 }

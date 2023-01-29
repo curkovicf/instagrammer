@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shell/ui/not-found"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shell/ui/not-found"
+      ],
       "options": {
         "jestConfig": "libs/web/shell/ui/not-found/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,9 @@
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web"]
+  "tags": [
+    "type:ui",
+    "type:shell",
+    "scope:web"
+  ]
 }

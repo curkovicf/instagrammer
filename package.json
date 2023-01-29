@@ -13,7 +13,7 @@
     "prepare": "husky install",
     "set-env:dev": "cross-env STAGE=dev",
     "set-env:prod": "cross-env STAGE=prod",
-    "set-tags": "npx ts-node scripts/tag.ts"
+    "build-tags": "npx ts-node scripts/tag.ts"
   },
   "private": true,
   "eslintIgnore": [

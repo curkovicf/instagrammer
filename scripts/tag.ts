@@ -65,6 +65,12 @@ function generateTags(absolutePath: string, appPrefix?: string): string[] {
     absolutePath.match(tag) ? tags.push(`type:${tag}`) : null,
   );
 
+  if (appPrefix) {
+    tags.push(`scope:${appPrefix}`);
+  } else {
+    tags.push(`scope:shared`);
+  }
+
   if (absolutePath.match('/web/libs/api') !== null) {
     tags.push('scope:api');
   }

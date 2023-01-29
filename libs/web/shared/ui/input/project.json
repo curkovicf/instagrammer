@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/input"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/ui/input"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/ui/input/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,15 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shared/ui/input/src/**/*.ts", "libs/web/shared/ui/input/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shared/ui/input/src/**/*.ts",
+          "libs/web/shared/ui/input/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web-shared"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

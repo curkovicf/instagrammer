@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/module/post/http"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/api/module/post/http"
+      ],
       "options": {
         "jestConfig": "libs/api/module/post/http/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["scope:api-shell", "type:feature"]
+  "tags": [
+    "type:http",
+    "scope:api"
+  ]
 }

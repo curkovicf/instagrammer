@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shell/feature"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shell/feature"
+      ],
       "options": {
         "jestConfig": "libs/web/shell/feature/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,16 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shell/feature/src/**/*.ts", "libs/web/shell/feature/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shell/feature/src/**/*.ts",
+          "libs/web/shell/feature/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:web-shell", "scope:web"]
+  "tags": [
+    "type:feature",
+    "type:shell",
+    "scope:web"
+  ]
 }

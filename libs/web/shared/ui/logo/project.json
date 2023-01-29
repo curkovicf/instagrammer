@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/logo"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/ui/logo"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/ui/logo/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,15 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/shared/ui/logo/src/**/*.ts", "libs/web/shared/ui/logo/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/shared/ui/logo/src/**/*.ts",
+          "libs/web/shared/ui/logo/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:web-ui", "scope:web-auth"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

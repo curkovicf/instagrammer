@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/app-configs"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/app-configs"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/app-configs/jest.config.js",
         "passWithNoTests": true
@@ -23,5 +25,7 @@
       }
     }
   },
-  "tags": ["type:web-util", "scope:web-shared"]
+  "tags": [
+    "scope:web"
+  ]
 }
