@@ -11,7 +11,16 @@ import { ToolbarSmallModule } from '@instagrammer/web/home/feature/toolbar-small
 import { StickySidenavContentBoxComponent } from '@instagrammer/web/home/ui/sticky-sidenav-content-box';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), FeedModule, SuggestionsModule, ToolbarModule, StoryToolbarModule, ToolbarSmallModule, StickySidenavContentBoxComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    FeedModule,
+    SuggestionsModule,
+    ToolbarModule,
+    StoryToolbarModule,
+    ToolbarSmallModule,
+    StickySidenavContentBoxComponent,
+  ],
   declarations: [LayoutComponent],
   exports: [LayoutComponent],
 })

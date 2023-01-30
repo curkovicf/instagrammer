@@ -5,8 +5,6 @@ import { StoryToolbarComponent } from './story-toolbar.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [StoryToolbarComponent],
-  exports: [
-    StoryToolbarComponent,
-  ],
+  exports: [StoryToolbarComponent],
 })
 export class StoryToolbarModule {}

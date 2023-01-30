@@ -4,8 +4,8 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { UserEntity } from '@instagrammer/api/module/user/data';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/env';
-import { JwtPayload } from '../interface/jwt-payload.interface';
 import { UserService } from '@instagrammer/api/module/user/logic';
+import { JwtPayload } from '@instagrammer/api/shared/data';
 
 @Injectable()
 export class JwtStrategyService extends PassportStrategy(Strategy) {

@@ -5,13 +5,13 @@
     class="svg-icon"
     label="Home"
     [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)='toolbarViewModel.setActiveToolbarItem($event)'
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
   ></ng-inst-svg-home-icon>
 
   <ng-inst-svg-search-icon
     class="svg-icon"
     label="Search"
     [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)='toolbarViewModel.setActiveToolbarItem($event)'
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
   ></ng-inst-svg-search-icon>
 </div>

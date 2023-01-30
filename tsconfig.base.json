@@ -28,7 +28,6 @@
       "@instagrammer/api/core/env": ["libs/api/core/env/src/index.ts"],
       "@instagrammer/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@instagrammer/api/core/jwt/strategy": ["libs/api/core/jwt/strategy/src/index.ts"],
-      "@instagrammer/api/core/jwt/util": ["libs/api/core/jwt/util/src/index.ts"],
       "@instagrammer/api/module/post/data": ["libs/api/module/post/data/src/index.ts"],
       "@instagrammer/api/module/post/http": ["libs/api/module/post/http/src/index.ts"],
       "@instagrammer/api/module/post/logic": ["libs/api/module/post/logic/src/index.ts"],
@@ -38,6 +37,7 @@
       "@instagrammer/api/module/user/logic": ["libs/api/module/user/logic/src/index.ts"],
       "@instagrammer/api/shared/api-repositories": ["libs/api/shared/api-repositories/src/index.ts"],
       "@instagrammer/api/shared/app-config": ["libs/api/shared/app-config/src/index.ts"],
+      "@instagrammer/api/shared/data": ["libs/api/shared/data/src/index.ts"],
       "@instagrammer/api/shared/util/encryption": ["libs/api/shared/util/encryption/src/index.ts"],
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
       "@instagrammer/shared-data-access-api-auth-dto": ["libs/shared/data-access/api-auth-dto/src/index.ts"],
@@ -66,7 +66,9 @@
       "@instagrammer/web/auth/ui/phone-get-app": ["libs/web/auth/ui/phone-get-app/src/index.ts"],
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/ui/rotating-phones": ["libs/web/auth/ui/rotating-phones/src/index.ts"],
-      "@instagrammer/web/auth/util": ["libs/web/auth/util/src/index.ts"],
+      "@instagrammer/web/core/environment": ["libs/web/core/environment/src/index.ts"],
+      "@instagrammer/web/core/guard": ["libs/web/core/guard/src/index.ts"],
+      "@instagrammer/web/core/interceptor": ["libs/web/core/interceptor/src/index.ts"],
       "@instagrammer/web/home/data-access": ["libs/web/home/data-access/src/index.ts"],
       "@instagrammer/web/home/feature/feed": ["libs/web/home/feature/feed/src/index.ts"],
       "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
@@ -83,7 +85,6 @@
       "@instagrammer/web/home/ui/toolbar-icon-wrapper": [
         "libs/web/home/ui/toolbar-icon-wrapper/src/index.ts"
       ],
-      "@instagrammer/web/shared/app-configs": ["libs/web/shared/app-configs/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
       "@instagrammer/web/shared/ui/card": ["libs/web/shared/ui/card/src/index.ts"],
@@ -95,9 +96,7 @@
       "@instagrammer/web/shared/ui/smooth-hover": ["libs/web/shared/ui/smooth-hover/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
-      "@instagrammer/web/shell/feature": ["libs/web/shell/feature/src/index.ts"],
-      "@instagrammer/web/shell/ui/not-found": ["libs/web/shell/ui/not-found/src/index.ts"],
-      "@instagrammer/web/shell/util": ["libs/web/shell/util/src/index.ts"]
+      "@instagrammer/web/ui/not-found": ["libs/web/ui/not-found/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

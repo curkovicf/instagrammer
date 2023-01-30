@@ -7,7 +7,14 @@ import { WebHomeDataAccessModule } from '@instagrammer/web/home/data-access';
 import { HomeIconComponent, SearchIconComponent } from '@instagrammer/web/home/ui/svg-icon';
 
 @NgModule({
-  imports: [CommonModule, LogoModule, RouterLink, WebHomeDataAccessModule, HomeIconComponent, SearchIconComponent],
+  imports: [
+    CommonModule,
+    LogoModule,
+    RouterLink,
+    WebHomeDataAccessModule,
+    HomeIconComponent,
+    SearchIconComponent,
+  ],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],
 })

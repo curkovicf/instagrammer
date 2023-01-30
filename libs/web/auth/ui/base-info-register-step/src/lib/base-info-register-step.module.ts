@@ -9,7 +9,15 @@ import { InputModule } from '@instagrammer/web/shared/ui/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, LogoModule, CardModule, CtaButtonModule, OrBlockModule, InputModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    LogoModule,
+    CardModule,
+    CtaButtonModule,
+    OrBlockModule,
+    InputModule,
+    ReactiveFormsModule,
+  ],
   declarations: [BaseInfoRegisterStepComponent],
   exports: [BaseInfoRegisterStepComponent],
 })

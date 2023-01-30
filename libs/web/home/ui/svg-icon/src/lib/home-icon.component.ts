@@ -46,7 +46,11 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
     `,
   ],
   template: `
-    <div ngInstSmoothHover [ngClass]="{ 'icon-wrapper': !label, 'icon-wrapper-lg': !!label }" (click)="onItemClick()">
+    <div
+      ngInstSmoothHover
+      [ngClass]="{ 'icon-wrapper': !label, 'icon-wrapper-lg': !!label }"
+      (click)="onItemClick()"
+    >
       <svg
         *ngIf="activeToolbarItem === 'home'"
         aria-label="Home"

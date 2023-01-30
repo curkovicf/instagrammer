@@ -8,6 +8,7 @@ import { UserLogicModule } from '@instagrammer/api/module/user/logic';
 
 @Module({
   imports: [
+    JwtModule,
     PassportModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

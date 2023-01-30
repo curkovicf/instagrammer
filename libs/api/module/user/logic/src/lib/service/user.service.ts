@@ -1,7 +1,5 @@
 import {
   ConflictException,
-  forwardRef,
-  Inject,
   Injectable,
   InternalServerErrorException,
   MethodNotAllowedException,
@@ -23,7 +21,8 @@ import {
 } from '@instagrammer/shared-data-access-api-auth-dto';
 import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { RefreshTokenService } from './refresh-token.service';
-import { JwtExpires, JwtUtilService } from '@instagrammer/api/core/jwt/util';
+import { JwtUtilService } from './jwt-util.service';
+import { JwtExpires } from '../interface/jwt-expires.enum';
 
 @Injectable()
 export class UserService {

@@ -6,4 +6,7 @@ export const selectAuthState = createFeatureSelector<AuthState>(AUTH_FEATURE_KEY
 
 export const selectJwtToken = createSelector(selectAuthState, state => state?.jwt);
 
-export const selectIsOneTapRouterEnabled = createSelector(selectAuthState, state => state?.isOneTapRouterEnabled);
+export const selectIsOneTapRouterEnabled = createSelector(
+  selectAuthState,
+  state => state?.isOneTapRouterEnabled,
+);

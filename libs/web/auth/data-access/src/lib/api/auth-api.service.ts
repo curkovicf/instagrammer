@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EnvironmentService } from '@instagrammer/web/shared/app-configs';
 import { Observable } from 'rxjs';
 import {
   JwtDto,
@@ -13,6 +12,7 @@ import {
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
 } from '@instagrammer/shared-data-access-api-auth-dto';
+import { EnvironmentService } from '@instagrammer/web/core/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,9 @@ export class AuthApiService {
     return this.http.post<LoginResponseDto>(`${this.url}/login`, loginDto);
   }
 
-  public checkIfUsernameExists(usernameExistsDto: UsernameExistsRequestDto): Observable<UsernameExistsResponseDto> {
+  public checkIfUsernameExists(
+    usernameExistsDto: UsernameExistsRequestDto,
+  ): Observable<UsernameExistsResponseDto> {
     return this.http.post<UsernameExistsResponseDto>(`${this.url}/username-exists`, usernameExistsDto);
   }
 

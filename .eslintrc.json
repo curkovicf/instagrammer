@@ -16,72 +16,52 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "type:web-app",
-                "onlyDependOnLibsWithTags": ["type:web-shell", "type:web-util", "scope:web-shared"],
-                "bannedExternalImports": ["@nestjs/*"]
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": ["type:shell", "type:util"]
               },
               {
-                "sourceTag": "type:web-data-access",
-                "onlyDependOnLibsWithTags": ["type:web-util", "type:web-shared", "scope:shared"],
-                "bannedExternalImports": ["@nestjs/*"]
+                "sourceTag": "type:data",
+                "onlyDependOnLibsWithTags": ["type:core", "type:util", "type:shared", "type:data"]
               },
               {
-                "sourceTag": "type:web-ui",
-                "onlyDependOnLibsWithTags": ["type:web-ui", "scope:web-shared", "scope:shared"],
-                "bannedExternalImports": ["@nestjs/*"]
-              },
-              {
-                "sourceTag": "type:web-feature",
-                "onlyDependOnLibsWithTags": ["type:web-ui", "type:web-data-access", "type:web-util", "scope:web-shared", "scope:shared"],
-                "bannedExternalImports": ["@nestjs/*"]
-              },
-              {
-                "sourceTag": "type:web-util",
-                "onlyDependOnLibsWithTags": ["type:web-util", "scope:web-shared", "scope:shared"],
-                "bannedExternalImports": ["@nestjs/*"]
-              },
-              {
-                "sourceTag": "type:web-shell",
-                "onlyDependOnLibsWithTags": ["type:web-feature", "type:web-util", "type:web-ui", "scope:web-shared"],
-                "bannedExternalImports": ["@nestjs/*"]
-              },
-
-
-
-              {
-                "sourceTag": "type:api-app",
-                "onlyDependOnLibsWithTags": ["type:shell"],
-                "bannedExternalImports": ["@angular/*"]
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": ["type:ui"]
               },
               {
                 "sourceTag": "type:feature",
-                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "scope:api-shared"],
-                "bannedExternalImports": ["@angular/*"]
+                "onlyDependOnLibsWithTags": ["type:feature", "type:core", "type:ui", "type:data", "type:util"]
               },
               {
-                "sourceTag": "type:data-access",
-                "onlyDependOnLibsWithTags": ["type:data-access", "type:util", "type:config", "scope:api-shared"],
-                "bannedExternalImports": ["@angular/*"]
+                "sourceTag": "type:http",
+                "onlyDependOnLibsWithTags": ["type:data", "type:logic", "type:util"]
+              },
+              {
+                "sourceTag": "type:logic",
+                "onlyDependOnLibsWithTags": ["type:data", "type:logic", "type:util"]
               },
               {
                 "sourceTag": "type:util",
-                "onlyDependOnLibsWithTags": ["type:util", "type:util", "scope:api-shared"],
-                "bannedExternalImports": ["@angular/*"]
-              },
-              {
-                "sourceTag": "type:config",
-                "onlyDependOnLibsWithTags": ["type:config", "type:data-access", "scope:api-shared"],
-                "bannedExternalImports": ["@angular/*"]
+                "onlyDependOnLibsWithTags": ["type:util", "type:config"]
               },
               {
                 "sourceTag": "type:shell",
-                "onlyDependOnLibsWithTags": ["type:shell", "type:config", "type:feature", "scope:api-shared"],
-                "bannedExternalImports": ["@angular/*"]
+                "onlyDependOnLibsWithTags": ["type:shell", "type:data", "type:core", "type:feature", "type:util", "type:ui", "type:http", "type:config"]
               },
               {
-                "sourceTag": "scope:api-shared",
-                "onlyDependOnLibsWithTags": ["scope:api-shared", "type:data-access", "type:util"],
-                "bannedExternalImports": ["@angular/*"]
+                "sourceTag": "type:config",
+                "onlyDependOnLibsWithTags": ["type:config", "type:data", "type:util"]
+              },
+              {
+                "sourceTag": "scope:api",
+                "onlyDependOnLibsWithTags": ["scope:api", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:web",
+                "onlyDependOnLibsWithTags": ["scope:web", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
               }
             ]
           }

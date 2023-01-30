@@ -48,6 +48,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
+    //  FIXME: Refactor, move this from UI
     private readonly authApiService: AuthApiService,
     private readonly changeDetectorRef: ChangeDetectorRef,
   ) {

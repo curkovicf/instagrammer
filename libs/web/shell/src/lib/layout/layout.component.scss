@@ -1,0 +1,19 @@
+@import 'ng-instagrammer-colors';
+@import 'ng-instagrammer-fonts';
+@import 'ng-instagrammer-mixins';
+
+:host {
+  display: block;
+  height: 100vh;
+  overflow-y: auto;
+
+  & > main {
+    width: 100%;
+    min-height: 80%;
+    height: 100%;
+  }
+
+  & > footer {
+    @include box(100%, 20%);
+  }
+}

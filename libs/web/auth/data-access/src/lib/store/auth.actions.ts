@@ -7,4 +7,7 @@ export const disableOneTapRouterAction = createAction('[Auth] Disable one-tap ro
 
 export const logoutAction = createAction('[Auth] logout');
 
-export const updateAccessJwtAction = createAction('[Auth] Update access JWT', props<{ accessJwtDto: JwtDto }>());
+export const updateAccessJwtAction = createAction(
+  '[Auth] Update access JWT',
+  props<{ accessJwtDto: JwtDto }>(),
+);

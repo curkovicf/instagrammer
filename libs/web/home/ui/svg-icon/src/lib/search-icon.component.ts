@@ -46,7 +46,12 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
     `,
   ],
   template: `
-    <div class="icon-wrapper" [ngClass]="{ 'icon-wrapper': !label, 'icon-wrapper-lg': !!label }" ngInstSmoothHover (click)="onItemClick()">
+    <div
+      class="icon-wrapper"
+      [ngClass]="{ 'icon-wrapper': !label, 'icon-wrapper-lg': !!label }"
+      ngInstSmoothHover
+      (click)="onItemClick()"
+    >
       <svg
         *ngIf="activeToolbarItem === 'search'"
         aria-label="Search"

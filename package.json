@@ -13,7 +13,8 @@
     "prepare": "husky install",
     "set-env:dev": "cross-env STAGE=dev",
     "set-env:prod": "cross-env STAGE=prod",
-    "build-tags": "npx ts-node scripts/tag.ts"
+    "build-tags": "npx ts-node scripts/tag.ts",
+    "lint": "nx run-many --target=lint --all --parallel --fix"
   },
   "private": true,
   "eslintIgnore": [
