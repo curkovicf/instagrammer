@@ -17,11 +17,11 @@
             "depConstraints": [
               {
                 "sourceTag": "type:app",
-                "onlyDependOnLibsWithTags": ["type:shell", "type:util"]
+                "onlyDependOnLibsWithTags": ["type:shell", "type:util", "scope:shared"]
               },
               {
                 "sourceTag": "type:data",
-                "onlyDependOnLibsWithTags": ["type:core", "type:util", "type:shared", "type:data"]
+                "onlyDependOnLibsWithTags": ["type:data", "type:core", "type:util", "type:shared", "type:ui"]
               },
               {
                 "sourceTag": "type:ui",

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-core-interceptor',
+  displayName: 'web-auth-middleware',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/web/core/interceptor',
+  coverageDirectory: '../../../../coverage/libs/web/auth/middleware',
 };

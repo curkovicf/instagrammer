@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-core-guard',
+  displayName: 'web-core-middleware',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/web/core/guard',
+  coverageDirectory: '../../../../coverage/libs/web/core/middleware',
 };

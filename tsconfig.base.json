@@ -52,6 +52,7 @@
       "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
       "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
       "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
+      "@instagrammer/web/auth/middleware": ["libs/web/auth/middleware/src/index.ts"],
       "@instagrammer/web/auth/ui/base-info-register-step": [
         "libs/web/auth/ui/base-info-register-step/src/index.ts"
       ],
@@ -67,8 +68,7 @@
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
       "@instagrammer/web/auth/ui/rotating-phones": ["libs/web/auth/ui/rotating-phones/src/index.ts"],
       "@instagrammer/web/core/environment": ["libs/web/core/environment/src/index.ts"],
-      "@instagrammer/web/core/guard": ["libs/web/core/guard/src/index.ts"],
-      "@instagrammer/web/core/interceptor": ["libs/web/core/interceptor/src/index.ts"],
+      "@instagrammer/web/core/middleware": ["libs/web/core/middleware/src/index.ts"],
       "@instagrammer/web/home/data-access": ["libs/web/home/data-access/src/index.ts"],
       "@instagrammer/web/home/feature/feed": ["libs/web/home/feature/feed/src/index.ts"],
       "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
@@ -93,10 +93,10 @@
       "@instagrammer/web/shared/ui/input": ["libs/web/shared/ui/input/src/index.ts"],
       "@instagrammer/web/shared/ui/insta-input": ["libs/web/shared/ui/insta-input/src/index.ts"],
       "@instagrammer/web/shared/ui/logo": ["libs/web/shared/ui/logo/src/index.ts"],
+      "@instagrammer/web/shared/ui/not-found": ["libs/web/shared/ui/not-found/src/index.ts"],
       "@instagrammer/web/shared/ui/smooth-hover": ["libs/web/shared/ui/smooth-hover/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
-      "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"],
-      "@instagrammer/web/ui/not-found": ["libs/web/ui/not-found/src/index.ts"]
+      "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

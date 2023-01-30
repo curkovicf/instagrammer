@@ -1,7 +1,7 @@
 {
-  "name": "web-core-guard",
+  "name": "web-auth-middleware",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/web/core/guard/src",
+  "sourceRoot": "libs/web/auth/middleware/src",
   "projectType": "library",
   "targets": {
     "lint": {
@@ -11,7 +11,7 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/web/core/guard/**/*.ts"
+          "libs/web/auth/middleware/**/*.ts"
         ]
       }
     },
@@ -21,13 +21,13 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/web/core/guard/jest.config.ts",
+        "jestConfig": "libs/web/auth/middleware/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
-    "type:core",
+    "type:middleware",
     "scope:web"
   ]
 }

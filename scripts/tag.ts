@@ -58,7 +58,7 @@ function isFileProjectJson(fileOrDir: string) {
  * @param appPrefix
  */
 function generateTags(absolutePath: string, appPrefix?: string): string[] {
-  const defaultTags = ['data', 'logic', 'http', 'feature', 'core', 'util', 'ui', 'shell'];
+  const defaultTags = ['data', 'middleware', 'logic', 'http', 'feature', 'core', 'util', 'ui', 'shell'];
   const tags: string[] = [];
 
   defaultTags.forEach(tag =>
@@ -69,18 +69,6 @@ function generateTags(absolutePath: string, appPrefix?: string): string[] {
     tags.push(`scope:${appPrefix}`);
   } else {
     tags.push(`scope:shared`);
-  }
-
-  if (absolutePath.match('/web/libs/api') !== null) {
-    tags.push('scope:api');
-  }
-
-  if (absolutePath.match('/web/libs/shared') !== null) {
-    tags.push('scope:shared');
-  }
-
-  if (absolutePath.match('/web/libs/web') !== null) {
-    tags.push('scope:web');
   }
 
   return tags;

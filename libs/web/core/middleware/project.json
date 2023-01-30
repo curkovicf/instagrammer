@@ -1,7 +1,7 @@
 {
-  "name": "web-core-interceptor",
+  "name": "web-core-middleware",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/web/core/interceptor/src",
+  "sourceRoot": "libs/web/core/middleware/src",
   "projectType": "library",
   "targets": {
     "lint": {
@@ -11,7 +11,7 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/web/core/interceptor/**/*.ts"
+          "libs/web/core/middleware/**/*.ts"
         ]
       }
     },
@@ -21,12 +21,13 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/web/core/interceptor/jest.config.ts",
+        "jestConfig": "libs/web/core/middleware/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
+    "type:middleware",
     "type:core",
     "scope:web"
   ]

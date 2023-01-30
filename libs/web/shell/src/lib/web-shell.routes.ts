@@ -2,8 +2,8 @@
 // https://stackoverflow.com/questions/42874859/angular-2-routing-redirect-to-with-child-routes
 
 import { Routes } from '@angular/router';
-import { NotFoundComponent } from '@instagrammer/web/ui/not-found';
-import { AuthGuard } from './guard/auth.guard';
+import { NotFoundComponent } from '@instagrammer/web/shared/ui/not-found';
+import { AuthGuard } from '@instagrammer/web/auth/middleware';
 
 export const shellRoutes: Routes = [
   {
