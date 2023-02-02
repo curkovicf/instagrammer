@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
-import { ToolbarItemName } from '@instagrammer/web/home/data-access';
 
 @Component({
   selector: 'ng-inst-svg-home-icon',
@@ -52,7 +51,7 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
       (click)="onItemClick()"
     >
       <svg
-        *ngIf="activeToolbarItem === 'home'"
+        *ngIf="isActive"
         aria-label="Home"
         class="_ab6-"
         color="#262626"
@@ -68,7 +67,7 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
       </svg>
 
       <svg
-        *ngIf="activeToolbarItem !== 'home'"
+        *ngIf="!isActive"
         aria-label="Home"
         class="_ab6-"
         color="#262626"
@@ -87,21 +86,21 @@ import { ToolbarItemName } from '@instagrammer/web/home/data-access';
         ></path>
       </svg>
 
-      <p [ngClass]="{ 'bolded-text': activeToolbarItem === 'home' }" *ngIf="label">{{ label }}</p>
+      <p [ngClass]="{ 'bolded-text': isActive === 'home' }" *ngIf="label">{{ label }}</p>
     </div>
   `,
 })
 export class HomeIconComponent {
   @Input()
-  public activeToolbarItem: ToolbarItemName | undefined;
+  public isActive?: boolean;
 
   @Input()
   public label: string | undefined;
 
   @Output()
-  public itemSelected: EventEmitter<ToolbarItemName> = new EventEmitter();
+  public itemSelected: EventEmitter<void> = new EventEmitter();
 
   public onItemClick(): void {
-    this.itemSelected.emit(ToolbarItemName.home);
+    this.itemSelected.emit();
   }
 }

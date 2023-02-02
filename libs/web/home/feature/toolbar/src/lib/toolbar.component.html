@@ -4,14 +4,14 @@
   <ng-inst-svg-home-icon
     class="svg-icon"
     label="Home"
-    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+    [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'home'"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('home')"
   ></ng-inst-svg-home-icon>
 
   <ng-inst-svg-search-icon
     class="svg-icon"
     label="Search"
-    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+    [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'search'"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('search')"
   ></ng-inst-svg-search-icon>
 </div>

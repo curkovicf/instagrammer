@@ -44,16 +44,18 @@ export class ToolbarViewModel extends ComponentStore<IToolbarState> {
     });
   }
 
-  public setActiveToolbarItem(activeToolbarItem: ToolbarItemName): void {
-    switch (activeToolbarItem) {
+  public setActiveToolbarItem(activeToolbarItem: string): void {
+    const item = activeToolbarItem as ToolbarItemName;
+
+    switch (item) {
       case ToolbarItemName.instLogo:
         this.patchState({ activeToolbarItem: ToolbarItemName.home, isBigToolbar: true });
         break;
       case ToolbarItemName.home:
-        this.patchState({ activeToolbarItem, isBigToolbar: true });
+        this.patchState({ activeToolbarItem: item, isBigToolbar: true });
         break;
       case ToolbarItemName.search:
-        this.patchState({ activeToolbarItem, isBigToolbar: false });
+        this.patchState({ activeToolbarItem: item, isBigToolbar: false });
         break;
     }
   }

@@ -1,18 +1,18 @@
 <div class="top-part">
   <ng-inst-svg-instagram-icon
-    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('instLogo')"
   ></ng-inst-svg-instagram-icon>
 </div>
 
 <div class="middle-part">
   <ng-inst-svg-home-icon
-    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+    [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'home'"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('home')"
   ></ng-inst-svg-home-icon>
 
   <ng-inst-svg-search-icon
-    [activeToolbarItem]="(toolbarViewModel.vm$ | async)?.activeToolbarItem"
-    (itemSelected)="toolbarViewModel.setActiveToolbarItem($event)"
+    [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'search'"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('search')"
   ></ng-inst-svg-search-icon>
 </div>
 

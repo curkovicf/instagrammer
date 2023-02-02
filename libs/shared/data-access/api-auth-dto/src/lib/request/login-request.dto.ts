@@ -1,6 +1,8 @@
 import { IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
 import { IsFieldDefined } from '@instagrammer/api-shared-util-validator';
 
+//  FIXME: Add namespace
+
 export class LoginRequestDto {
   @IsString()
   @IsFieldDefined('email')

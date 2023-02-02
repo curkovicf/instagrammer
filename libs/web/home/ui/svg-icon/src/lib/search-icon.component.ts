@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarItemName } from '@instagrammer/web/home/data-access';
 import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
+
+export type SvgHomeIcon = 'svg-home-icon';
 
 @Component({
   selector: 'ng-inst-svg-search-icon',
@@ -53,7 +54,7 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
       (click)="onItemClick()"
     >
       <svg
-        *ngIf="activeToolbarItem === 'search'"
+        *ngIf="isActive"
         aria-label="Search"
         class="_ab6-"
         color="#262626"
@@ -85,7 +86,7 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
       </svg>
 
       <svg
-        *ngIf="activeToolbarItem !== 'search'"
+        *ngIf="!isActive"
         aria-label="Search"
         class="_ab6-"
         color="#262626"
@@ -116,21 +117,21 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
         ></line>
       </svg>
 
-      <p [ngClass]="{ 'bolded-text': activeToolbarItem === 'search' }" *ngIf="label">{{ label }}</p>
+      <p [ngClass]="{ 'bolded-text': isActive === 'search' }" *ngIf="label">{{ label }}</p>
     </div>
   `,
 })
 export class SearchIconComponent {
   @Input()
-  public activeToolbarItem: ToolbarItemName | undefined;
+  public isActive?: boolean;
 
   @Input()
-  public label: string | undefined;
+  public label?: string;
 
   @Output()
-  public itemSelected: EventEmitter<ToolbarItemName> = new EventEmitter();
+  public itemSelected: EventEmitter<string> = new EventEmitter();
 
   public onItemClick(): void {
-    this.itemSelected.emit(ToolbarItemName.search);
+    this.itemSelected.emit('search');
   }
 }

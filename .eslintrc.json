@@ -29,7 +29,7 @@
               },
               {
                 "sourceTag": "type:feature",
-                "onlyDependOnLibsWithTags": ["type:feature", "type:core", "type:ui", "type:data", "type:util"]
+                "onlyDependOnLibsWithTags": ["type:feature", "type:core", "type:ui", "type:data", "type:util", "type:middleware"]
               },
               {
                 "sourceTag": "type:http",
@@ -45,7 +45,7 @@
               },
               {
                 "sourceTag": "type:shell",
-                "onlyDependOnLibsWithTags": ["type:shell", "type:data", "type:core", "type:feature", "type:util", "type:ui", "type:http", "type:config"]
+                "onlyDependOnLibsWithTags": ["type:shell", "type:data", "type:core", "type:feature", "type:util", "type:ui", "type:http", "type:config", "type:middleware"]
               },
               {
                 "sourceTag": "type:config",
