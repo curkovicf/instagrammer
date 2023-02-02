@@ -18,7 +18,7 @@ import {
   RegisterRequestDto,
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
-} from '@instagrammer/shared-data-access-api-auth-dto';
+} from '@instagrammer/shared/data-access/api';
 import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { RefreshTokenService } from './refresh-token.service';
 import { JwtUtilService } from './jwt-util.service';

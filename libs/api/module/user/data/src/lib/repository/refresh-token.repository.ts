@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { RefreshTokenEntity } from '../entity/refresh-token.entity';
-import { JwtDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { JwtDto } from '@instagrammer/shared/data-access/api';
 
 @Injectable()
 export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {

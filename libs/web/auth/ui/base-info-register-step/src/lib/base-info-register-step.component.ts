@@ -19,8 +19,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { BehaviorSubject, distinctUntilChanged, first, map, Observable, takeWhile, tap } from 'rxjs';
-import { AuthApiService, RegisterNoDobDto } from '@instagrammer/web/auth/data-access';
-import { RegisterRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { AuthApiService, RegisterNoDobDto } from '@instagrammer/web/auth/data';
+import { RegisterRequestDto } from '@instagrammer/shared/data-access/api';
 import { InputComponent } from '@instagrammer/web/shared/ui/input';
 
 @Component({

@@ -1,17 +1,15 @@
 {
-  "name": "web-home-data-access",
+  "name": "shared-data-access-api",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/web/home/data-access/src",
+  "sourceRoot": "libs/shared/data-access/api/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/data-access/api"],
       "options": {
-        "jestConfig": "libs/web/home/data-access/jest.config.ts",
+        "jestConfig": "libs/shared/data-access/api/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -19,14 +17,11 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/web/home/data-access/**/*.ts",
-          "libs/web/home/data-access/**/*.html"
+          "libs/shared/data-access/api/src/**/*.ts",
+          "libs/shared/data-access/api/src/**/*.html"
         ]
       }
     }
   },
-  "tags": [
-    "type:data",
-    "scope:web"
-  ]
+  "tags": ["type:data", "scope:shared"]
 }

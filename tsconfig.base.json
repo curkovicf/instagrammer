@@ -40,14 +40,14 @@
       "@instagrammer/api/shared/data": ["libs/api/shared/data/src/index.ts"],
       "@instagrammer/api/shared/util/encryption": ["libs/api/shared/util/encryption/src/index.ts"],
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
-      "@instagrammer/shared-data-access-api-auth-dto": ["libs/shared/data-access/api-auth-dto/src/index.ts"],
+      "@instagrammer/shared/data-access/api": ["libs/shared/data-access/api/src/index.ts"],
       "@instagrammer/web-auth-feature-save-login-info": [
         "libs/web/auth/feature/save-login-info/src/index.ts"
       ],
       "@instagrammer/web-auth-ui-text-with-link-in-card": [
         "libs/web/auth/ui/text-with-link-in-card/src/index.ts"
       ],
-      "@instagrammer/web/auth/data-access": ["libs/web/auth/data-access/src/index.ts"],
+      "@instagrammer/web/auth/data": ["libs/web/auth/data/src/index.ts"],
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
       "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
@@ -69,7 +69,7 @@
       "@instagrammer/web/auth/ui/rotating-phones": ["libs/web/auth/ui/rotating-phones/src/index.ts"],
       "@instagrammer/web/core/environment": ["libs/web/core/environment/src/index.ts"],
       "@instagrammer/web/core/middleware": ["libs/web/core/middleware/src/index.ts"],
-      "@instagrammer/web/home/data-access": ["libs/web/home/data-access/src/index.ts"],
+      "@instagrammer/web/home/data": ["libs/web/home/data/src/index.ts"],
       "@instagrammer/web/home/feature/feed": ["libs/web/home/feature/feed/src/index.ts"],
       "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
       "@instagrammer/web/home/feature/story-toolbar": ["libs/web/home/feature/story-toolbar/src/index.ts"],

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { JwtDto, LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { JwtDto, LoginResponseDto } from '@instagrammer/shared/data-access/api';
 
 export const loginAction = createAction('[Auth] Login', props<{ loginResponseDto: LoginResponseDto }>());
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToolbarItemName, ToolbarViewModel } from '@instagrammer/web/home/data-access';
+import { ToolbarItemName, ToolbarViewModel } from '@instagrammer/web/home/data';
 
 @Component({
   selector: 'ng-inst-toolbar',

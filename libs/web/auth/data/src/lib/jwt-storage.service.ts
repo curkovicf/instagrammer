@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { LoginResponseDto } from '@instagrammer/shared/data-access/api';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { AUTH_FEATURE_KEY } from './store/auth.reducers';
 

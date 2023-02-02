@@ -9,7 +9,7 @@ import {
   LoginResponseDto,
   RefreshJwtRequestDto,
   RegisterRequestDto,
-} from '@instagrammer/shared-data-access-api-auth-dto';
+} from '@instagrammer/shared/data-access/api';
 
 @Injectable({
   providedIn: 'root',

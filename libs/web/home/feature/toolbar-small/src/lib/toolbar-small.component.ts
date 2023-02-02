@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToolbarViewModel } from '@instagrammer/web/home/data-access';
+import { ToolbarViewModel } from '@instagrammer/web/home/data';
 
 @Component({
   selector: 'ng-inst-toolbar-small',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data-access';
+import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data';
 import { Router } from '@angular/router';
-import { RefreshJwtRequestDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { RefreshJwtRequestDto } from '@instagrammer/shared/data-access/api';
 
 @Component({
   selector: 'ng-insta-save-login-info-prompt',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthFacadeService } from '@instagrammer/web/auth/data-access';
+import { AuthFacadeService } from '@instagrammer/web/auth/data';
 import { map, Observable } from 'rxjs';
 
 @Injectable({

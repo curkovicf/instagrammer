@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RegisterViewModel } from '@instagrammer/web/auth/data-access';
+import { RegisterViewModel } from '@instagrammer/web/auth/data';
 
 @Component({
   selector: 'ng-inst-register',

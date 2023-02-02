@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { JwtDto, LoginResponseDto } from '@instagrammer/shared-data-access-api-auth-dto';
+import { JwtDto, LoginResponseDto } from '@instagrammer/shared/data-access/api';
 
 import * as AuthSelectors from './auth.selectors';
 import * as AuthActions from './auth.actions';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data-access';
+import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
