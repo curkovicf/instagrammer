@@ -11,8 +11,8 @@ import {
   RegisterResponseDto,
   UsernameExistsRequestDto,
   UsernameExistsResponseDto,
-} from '@instagrammer/shared/data-access/api';
-import { EnvironmentService } from '@instagrammer/web/core/environment';
+} from '@instagrammer/shared/data/api';
+import { EnvironmentService } from '@instagrammer/web/core/env';
 
 @Injectable({
   providedIn: 'root',

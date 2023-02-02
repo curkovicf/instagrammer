@@ -7,7 +7,7 @@ import {
   RefreshJwtRequestDto,
   RegisterRequestDto,
   UsernameExistsRequestDto,
-} from '@instagrammer/shared/data-access/api';
+} from '@instagrammer/shared/data/api';
 import { Request, Response } from 'express';
 import { UserService } from '@instagrammer/api/module/user/logic';
 

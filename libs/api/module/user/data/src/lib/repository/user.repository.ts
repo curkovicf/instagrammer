@@ -1,5 +1,5 @@
 import { DataSource, Repository } from 'typeorm';
-import { RegisterRequestDto } from '@instagrammer/shared/data-access/api';
+import { RegisterRequestDto } from '@instagrammer/shared/data/api';
 import { Injectable } from '@nestjs/common';
 import { UserEntity } from '../entity/user.entity';
 

@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { catchError, finalize, of, take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginRequestDto } from '@instagrammer/shared/data-access/api';
+import { LoginRequestDto } from '@instagrammer/shared/data/api';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

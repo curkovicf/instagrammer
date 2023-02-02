@@ -8,7 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { WebAuthDataAccessModule } from '@instagrammer/web/auth/data';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ENVIRONMENT_TOKEN, environmentDev } from '@instagrammer/web/core/environment';
+import { ENVIRONMENT_TOKEN, environmentDev } from '@instagrammer/web/core/env';
 import { WithCredentialsInterceptor } from '@instagrammer/web/core/middleware';
 
 @NgModule({

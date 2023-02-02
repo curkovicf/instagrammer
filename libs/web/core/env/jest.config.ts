@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-core-environment',
+  displayName: 'web-core-env',
   preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/web/core/environment',
+  coverageDirectory: '../../../../coverage/libs/web/core/env',
 };

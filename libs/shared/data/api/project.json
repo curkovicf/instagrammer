@@ -1,25 +1,22 @@
 {
-  "name": "shared-data-access-api",
+  "name": "shared-data-api",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/shared/data-access/api/src",
+  "sourceRoot": "libs/shared/data/api/src",
   "prefix": "instagrammer",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/shared/data-access/api"],
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/data/api"],
       "options": {
-        "jestConfig": "libs/shared/data-access/api/jest.config.js",
+        "jestConfig": "libs/shared/data/api/jest.config.js",
         "passWithNoTests": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/shared/data-access/api/src/**/*.ts",
-          "libs/shared/data-access/api/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/shared/data/api/src/**/*.ts", "libs/shared/data/api/src/**/*.html"]
       }
     }
   },
