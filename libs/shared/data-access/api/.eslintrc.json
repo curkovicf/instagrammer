@@ -28,6 +28,13 @@
       "files": ["*.html"],
       "extends": ["plugin:@nrwl/nx/angular-template"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts"],
+      "extends": [],
+      "rules": {
+        "@typescript-eslint/no-namespace": "off"
+      }
     }
   ]
 }
