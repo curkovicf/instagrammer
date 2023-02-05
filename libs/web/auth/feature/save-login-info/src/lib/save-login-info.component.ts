@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService, JwtStorageService } from '@instagrammer/web/auth/data';
 import { Router } from '@angular/router';
-import { RefreshJwtRequestDto } from '@instagrammer/shared/data/api';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Component({
   selector: 'ng-insta-save-login-info-prompt',
@@ -21,7 +21,7 @@ export class SaveLoginInfoComponent {
     this.isSpinnerActive = true;
 
     setTimeout(() => {
-      const refreshJwtDto: RefreshJwtRequestDto = {
+      const refreshJwtDto: UserApi.RefreshJwtRequestDto = {
         usernameOrEmail: this.jwtStorageService.getUsername(),
         isLongSession: true,
       };

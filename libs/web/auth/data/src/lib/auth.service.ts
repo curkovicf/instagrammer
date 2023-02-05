@@ -4,12 +4,7 @@ import { Router } from '@angular/router';
 import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import {
-  LoginRequestDto,
-  LoginResponseDto,
-  RefreshJwtRequestDto,
-  RegisterRequestDto,
-} from '@instagrammer/shared/data/api';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +17,7 @@ export class AuthService {
     private readonly jwtStorageService: JwtStorageService,
   ) {}
 
-  public login(credentials: LoginRequestDto): Observable<boolean> {
+  public login(credentials: UserApi.LoginRequestDto): Observable<boolean> {
     return this.authApiService.login(credentials).pipe(
       map(loginResponseDto => {
         if (!loginResponseDto) {
@@ -34,7 +29,7 @@ export class AuthService {
     );
   }
 
-  public register(registerDto: RegisterRequestDto): Observable<boolean> {
+  public register(registerDto: UserApi.RegisterRequestDto): Observable<boolean> {
     return this.authApiService.register(registerDto).pipe(
       map(registerResponseDto => {
         if (!registerResponseDto) {
@@ -46,7 +41,7 @@ export class AuthService {
     );
   }
 
-  private handleSuccessfulLogin(loginResponseDto: LoginResponseDto): boolean {
+  private handleSuccessfulLogin(loginResponseDto: UserApi.LoginResponseDto): boolean {
     this.authFacadeService.updateAuthState(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 
@@ -69,13 +64,13 @@ export class AuthService {
       .subscribe();
   }
 
-  public saveLogin(refreshJwtDto: RefreshJwtRequestDto): void {
+  public saveLogin(refreshJwtDto: UserApi.RefreshJwtRequestDto): void {
     this.authApiService
       .saveLoginInfo(refreshJwtDto)
       .pipe(
         take(1),
         tap(jwtTokenDto => {
-          const loginResponseDto: LoginResponseDto = {
+          const loginResponseDto: UserApi.LoginResponseDto = {
             ...jwtTokenDto,
             jwt: jwtTokenDto.value,
             username: this.jwtStorageService.getUsername(),
@@ -95,7 +90,7 @@ export class AuthService {
       .getAccessJwt()
       .pipe(
         take(1),
-        tap((loginResponseDto: LoginResponseDto) => {
+        tap((loginResponseDto: UserApi.LoginResponseDto) => {
           if (!loginResponseDto) {
             return;
           }

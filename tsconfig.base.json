@@ -22,7 +22,6 @@
     "paths": {
       "@instagrammer/api-core-config-database": ["libs/api/core/config-database/src/index.ts"],
       "@instagrammer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@instagrammer/api-shared-util-validator": ["libs/api/shared/util/validator/src/index.ts"],
       "@instagrammer/api/auth/config": ["libs/api/auth/config/src/index.ts"],
       "@instagrammer/api/core/db": ["libs/api/core/db/src/index.ts"],
       "@instagrammer/api/core/env": ["libs/api/core/env/src/index.ts"],
@@ -41,6 +40,7 @@
       "@instagrammer/api/shared/util/encryption": ["libs/api/shared/util/encryption/src/index.ts"],
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
       "@instagrammer/shared/data/api": ["libs/shared/data/api/src/index.ts"],
+      "@instagrammer/shared/util/validator": ["libs/shared/util/validator/src/index.ts"],
       "@instagrammer/web-auth-feature-save-login-info": [
         "libs/web/auth/feature/save-login-info/src/index.ts"
       ],

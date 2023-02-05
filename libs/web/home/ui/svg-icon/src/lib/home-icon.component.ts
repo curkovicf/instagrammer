@@ -86,7 +86,7 @@ import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
         ></path>
       </svg>
 
-      <p [ngClass]="{ 'bolded-text': isActive === 'home' }" *ngIf="label">{{ label }}</p>
+      <p [ngClass]="{ 'bolded-text': isActive }" *ngIf="label">{{ label }}</p>
     </div>
   `,
 })

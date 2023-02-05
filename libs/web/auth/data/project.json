@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/data"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/auth/data"
+      ],
       "options": {
         "jestConfig": "libs/web/auth/data/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,15 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/web/auth/data/src/**/*.ts", "libs/web/auth/data/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/web/auth/data/src/**/*.ts",
+          "libs/web/auth/data/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:data", "scope:web"]
+  "tags": [
+    "type:data",
+    "scope:web"
+  ]
 }

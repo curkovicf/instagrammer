@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/shared/data/api"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/shared/data/api"
+      ],
       "options": {
         "jestConfig": "libs/shared/data/api/jest.config.js",
         "passWithNoTests": true
@@ -16,9 +18,15 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/shared/data/api/src/**/*.ts", "libs/shared/data/api/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/shared/data/api/src/**/*.ts",
+          "libs/shared/data/api/src/**/*.html"
+        ]
       }
     }
   },
-  "tags": ["type:data", "scope:shared"]
+  "tags": [
+    "type:data",
+    "scope:shared"
+  ]
 }

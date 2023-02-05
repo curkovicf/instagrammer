@@ -1,6 +1,5 @@
 import { IsBoolean, IsDate, IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { IsFieldDefined } from '@instagrammer/api-shared-util-validator';
+import { IsFieldDefined } from '@instagrammer/shared/util/validator';
 
 export namespace UserApi {
   export class LoginRequestDto {

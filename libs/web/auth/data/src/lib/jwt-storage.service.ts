@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { LoginResponseDto } from '@instagrammer/shared/data/api';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { AUTH_FEATURE_KEY } from './store/auth.reducers';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class JwtStorageService {
       return false;
     }
 
-    const parsedAuthState: LoginResponseDto = JSON.parse(authState);
+    const parsedAuthState: UserApi.LoginResponseDto = JSON.parse(authState);
 
     if (!this.isTokenFromStorageValid(parsedAuthState.expiresAt)) {
       this.clearStorage();
@@ -35,7 +35,7 @@ export class JwtStorageService {
     return new Date().getTime() < expiresAt;
   }
 
-  public saveAuthState(loginResponseDto: LoginResponseDto): void {
+  public saveAuthState(loginResponseDto: UserApi.LoginResponseDto): void {
     localStorage.setItem(this.authKey, JSON.stringify(loginResponseDto));
   }
 
@@ -50,7 +50,7 @@ export class JwtStorageService {
       throw new Error('Auth state is missing in local storage');
     }
 
-    const parsedAuthState: LoginResponseDto = JSON.parse(authState);
+    const parsedAuthState: UserApi.LoginResponseDto = JSON.parse(authState);
 
     return parsedAuthState.username;
   }

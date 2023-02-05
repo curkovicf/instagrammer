@@ -117,7 +117,7 @@ export type SvgHomeIcon = 'svg-home-icon';
         ></line>
       </svg>
 
-      <p [ngClass]="{ 'bolded-text': isActive === 'search' }" *ngIf="label">{{ label }}</p>
+      <p [ngClass]="{ 'bolded-text': isActive }" *ngIf="label">{{ label }}</p>
     </div>
   `,
 })

@@ -20,8 +20,8 @@ import {
 } from '@angular/forms';
 import { BehaviorSubject, distinctUntilChanged, first, map, Observable, takeWhile, tap } from 'rxjs';
 import { AuthApiService, RegisterNoDobDto } from '@instagrammer/web/auth/data';
-import { RegisterRequestDto } from '@instagrammer/shared/data/api';
 import { InputComponent } from '@instagrammer/web/shared/ui/input';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Component({
   selector: 'ng-insta-base-info-register-step',
@@ -36,7 +36,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
   formData: RegisterNoDobDto | null = null;
 
   @Output()
-  next: EventEmitter<RegisterRequestDto> = new EventEmitter();
+  next: EventEmitter<UserApi.RegisterRequestDto> = new EventEmitter();
 
   @ViewChildren(InputComponent) inputComponents!: QueryList<InputComponent>;
 

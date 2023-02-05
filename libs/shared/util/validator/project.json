@@ -1,7 +1,7 @@
 {
-  "name": "api-shared-util-validator",
-  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/shared/util/validator/src",
+  "name": "shared-util-validator",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/util/validator/src",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -10,23 +10,23 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/api/shared/util/validator/**/*.ts"
+          "libs/shared/util/validator/**/*.ts"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/api/shared/util/validator"
+        "{workspaceRoot}/coverage/libs/shared/util/validator"
       ],
       "options": {
-        "jestConfig": "libs/api/shared/util/validator/jest.config.js",
+        "jestConfig": "libs/shared/util/validator/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
   "tags": [
     "type:util",
-    "scope:api"
+    "scope:shared"
   ]
 }

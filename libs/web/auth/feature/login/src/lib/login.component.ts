@@ -2,8 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { catchError, finalize, of, take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/auth/data';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginRequestDto } from '@instagrammer/shared/data/api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Component({
   selector: 'ng-inst-login',
@@ -47,7 +47,7 @@ export class LoginComponent implements OnDestroy {
     const phoneOrUsernameOrEmail = this.formGroup.get('phoneOrUsernameOrEmail')?.value;
     const password = this.formGroup.get('password')?.value;
 
-    const loginRequestDto: LoginRequestDto = {
+    const loginRequestDto: UserApi.LoginRequestDto = {
       username: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? null : phoneOrUsernameOrEmail,
       email: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? phoneOrUsernameOrEmail : null,
       password,
