@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { RefreshTokenEntity } from '../entity/refresh-token.entity';
-import { JwtDto } from '@instagrammer/shared/data/api';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable()
 export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
@@ -9,7 +9,7 @@ export class RefreshTokenRepository extends Repository<RefreshTokenEntity> {
     super(RefreshTokenEntity, dataSource.createEntityManager());
   }
 
-  public async createNewRefreshTokenEntity(refreshToken: JwtDto): Promise<RefreshTokenEntity> {
+  public async createNewRefreshTokenEntity(refreshToken: UserApi.JwtDto): Promise<RefreshTokenEntity> {
     const refreshTokenEntity = new RefreshTokenEntity();
 
     refreshTokenEntity.hashedRefreshToken = refreshToken.value;

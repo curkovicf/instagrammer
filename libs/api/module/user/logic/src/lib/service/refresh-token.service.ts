@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { JwtDto } from '@instagrammer/shared/data/api';
 import { RefreshTokenEntity, RefreshTokenRepository } from '@instagrammer/api/module/user/data';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable()
 export class RefreshTokenService {
@@ -9,7 +9,7 @@ export class RefreshTokenService {
     @InjectRepository(RefreshTokenRepository) private readonly refreshTokenRepository: RefreshTokenRepository,
   ) {}
 
-  public createNewRefreshToken(jwtDto: JwtDto): Promise<RefreshTokenEntity> {
+  public createNewRefreshToken(jwtDto: UserApi.JwtDto): Promise<RefreshTokenEntity> {
     return this.refreshTokenRepository.createNewRefreshTokenEntity(jwtDto);
   }
 

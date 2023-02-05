@@ -4,11 +4,10 @@ import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { EnvironmentVariable } from '@instagrammer/api/core/env';
-import { UserLogicModule } from '@instagrammer/api/module/user/logic';
+import { UserDataModule } from '@instagrammer/api/module/user/data';
 
 @Module({
   imports: [
-    JwtModule,
     PassportModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -28,7 +27,7 @@ import { UserLogicModule } from '@instagrammer/api/module/user/logic';
         },
       }),
     }),
-    UserLogicModule,
+    UserDataModule,
   ],
   providers: [JwtStrategyService],
 })

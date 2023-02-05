@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { JwtExpires } from '../interface/jwt-expires.enum';
-import { JwtDto, JwtPairDto } from '@instagrammer/shared/data/api';
 import * as jwt from 'jsonwebtoken';
 import { JwtPayload } from '@instagrammer/api/shared/data';
+import { UserApi } from '@instagrammer/shared/data/api';
+import { ConfigService } from '@nestjs/config';
+import { EnvironmentVariable } from '@instagrammer/api/core/env';
 
 @Injectable()
 export class JwtUtilService {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(private readonly jwtService: JwtService, private readonly configService: ConfigService) {}
 
-  public generateToken(username: string, jwtExpiresStr: JwtExpires): JwtDto {
+  public generateToken(username: string, jwtExpiresStr: JwtExpires): UserApi.JwtDto {
     return {
       value: this.createJwt(username, jwtExpiresStr),
       expiresAt: new Date().getTime() + this.getJwtExpiryInMilliseconds(jwtExpiresStr),
@@ -17,13 +19,13 @@ export class JwtUtilService {
     };
   }
 
-  public generateTokenPair(username: string, isLongSession: boolean): JwtPairDto {
-    const accessToken: JwtDto = this.generateToken(username, JwtExpires.ACCESS_JWT);
+  public generateTokenPair(username: string, isLongSession: boolean): UserApi.JwtPairDto {
+    const accessToken: UserApi.JwtDto = this.generateToken(username, JwtExpires.ACCESS_JWT);
 
     const refreshTokenExpires = isLongSession
       ? JwtExpires.REFRESH_JWT_EXPIRES_LONG
       : JwtExpires.REFRESH_JWT_EXPIRES_SHORT;
-    const refreshToken: JwtDto = this.generateToken(username, refreshTokenExpires);
+    const refreshToken: UserApi.JwtDto = this.generateToken(username, refreshTokenExpires);
 
     return {
       accessToken,
@@ -34,7 +36,10 @@ export class JwtUtilService {
   public createJwt(username: string, jwtExpires: JwtExpires): string {
     const payload: JwtPayload = { username };
 
-    return this.jwtService.sign(payload, { expiresIn: jwtExpires });
+    return this.jwtService.sign(payload, {
+      expiresIn: jwtExpires,
+      secret: this.configService.get<string>(EnvironmentVariable.PASSPORT_SECRET),
+    });
   }
 
   public decode(

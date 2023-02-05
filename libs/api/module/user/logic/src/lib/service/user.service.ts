@@ -9,20 +9,11 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
-import {
-  JwtPairDto,
-  LoginRequestDto,
-  LoginResponseDto,
-  LogoutRequestDto,
-  RefreshJwtRequestDto,
-  RegisterRequestDto,
-  UsernameExistsRequestDto,
-  UsernameExistsResponseDto,
-} from '@instagrammer/shared/data/api';
 import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { RefreshTokenService } from './refresh-token.service';
 import { JwtUtilService } from './jwt-util.service';
 import { JwtExpires } from '../interface/jwt-expires.enum';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable()
 export class UserService {
@@ -39,7 +30,7 @@ export class UserService {
    * Attempts to create/register new user
    * @param registerDto
    */
-  public async register(registerDto: RegisterRequestDto): Promise<void> {
+  public async register(registerDto: UserApi.RegisterRequestDto): Promise<void> {
     try {
       await this.userRepository.createUser({
         ...registerDto,
@@ -59,8 +50,8 @@ export class UserService {
    * @param loginDto
    */
   public async login(
-    loginDto: LoginRequestDto,
-  ): Promise<{ loginResponseDto: LoginResponseDto; refreshToken: string }> {
+    loginDto: UserApi.LoginRequestDto,
+  ): Promise<{ loginResponseDto: UserApi.LoginResponseDto; refreshToken: string }> {
     const { username, password, email } = loginDto;
 
     const user = await this.userRepository.findOneByUsernameOrEmail(username ?? email);
@@ -104,10 +95,10 @@ export class UserService {
    * @param usernameExistsDto
    */
   public async checkIfUsernameExists(
-    usernameExistsDto: UsernameExistsRequestDto,
-  ): Promise<UsernameExistsResponseDto> {
+    usernameExistsDto: UserApi.UsernameExistsRequestDto,
+  ): Promise<UserApi.UsernameExistsResponseDto> {
     const { username } = usernameExistsDto;
-    const responseDto: UsernameExistsResponseDto = { username, isUsernameAvailable: false };
+    const responseDto: UserApi.UsernameExistsResponseDto = { username, isUsernameAvailable: false };
 
     const usernameExists = await this.userRepository.findOne({ where: { username } });
 
@@ -135,7 +126,7 @@ export class UserService {
    * Attempts to log-out user
    * @param logoutDto
    */
-  async logout(logoutDto: LogoutRequestDto): Promise<void> {
+  async logout(logoutDto: UserApi.LogoutRequestDto): Promise<void> {
     const { usernameOrEmail } = logoutDto;
 
     const user = await this.userRepository.findOneByUsernameOrEmail(usernameOrEmail);
@@ -154,7 +145,9 @@ export class UserService {
    * Session can be long(60 days) or short(2 days)
    * @param refreshJwtDto
    */
-  public async generateNewRefreshJwt(refreshJwtDto: RefreshJwtRequestDto): Promise<JwtPairDto> {
+  public async generateNewRefreshJwt(
+    refreshJwtDto: UserApi.RefreshJwtRequestDto,
+  ): Promise<UserApi.JwtPairDto> {
     const { usernameOrEmail, isLongSession } = refreshJwtDto;
 
     const user = await this.userRepository.findOneByUsernameOrEmail(usernameOrEmail);
@@ -187,7 +180,7 @@ export class UserService {
    * Generates new access token if refresh JWT from cookie is valid
    * @param refreshJwt
    */
-  public async generateNewAccessToken(refreshJwt: string): Promise<LoginResponseDto> {
+  public async generateNewAccessToken(refreshJwt: string): Promise<UserApi.LoginResponseDto> {
     const decodedToken: DecodedJwtDto | null = this.jwtUtilService.decode(
       refreshJwt?.slice() ?? '',
     ) as DecodedJwtDto;

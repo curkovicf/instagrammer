@@ -1,29 +1,21 @@
 import { Body, Controller, Get, MethodNotAllowedException, Post, Req, Res } from '@nestjs/common';
-import {
-  JwtDto,
-  LoginRequestDto,
-  LoginResponseDto,
-  LogoutRequestDto,
-  RefreshJwtRequestDto,
-  RegisterRequestDto,
-  UsernameExistsRequestDto,
-} from '@instagrammer/shared/data/api';
 import { Request, Response } from 'express';
 import { UserService } from '@instagrammer/api/module/user/logic';
+import { UserApi } from '@instagrammer/shared/data/api';
 
 @Controller('auth')
 export class UserController {
   constructor(private readonly authService: UserService) {}
 
   @Post('/register')
-  public async register(@Body() registerDto: RegisterRequestDto): Promise<void> {
+  public async register(@Body() registerDto: UserApi.RegisterRequestDto): Promise<void> {
     return await this.authService.register(registerDto);
   }
 
   @Post('/username-exists')
   public async checkUsernameExists(
-    @Body() usernameExistsDto: UsernameExistsRequestDto,
-  ): Promise<UsernameExistsRequestDto> {
+    @Body() usernameExistsDto: UserApi.UsernameExistsRequestDto,
+  ): Promise<UserApi.UsernameExistsRequestDto> {
     return await this.authService.checkIfUsernameExists(usernameExistsDto);
   }
 
@@ -31,8 +23,8 @@ export class UserController {
   public async login(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() loginDto: LoginRequestDto,
-  ): Promise<LoginResponseDto> {
+    @Body() loginDto: UserApi.LoginRequestDto,
+  ): Promise<UserApi.LoginResponseDto> {
     const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
 
@@ -45,8 +37,8 @@ export class UserController {
   public async refreshJwt(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() refreshJwtDto: RefreshJwtRequestDto,
-  ): Promise<JwtDto> {
+    @Body() refreshJwtDto: UserApi.RefreshJwtRequestDto,
+  ): Promise<UserApi.JwtDto> {
     const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken.value);
 
@@ -59,7 +51,7 @@ export class UserController {
   public async getAccessJwt(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-  ): Promise<LoginResponseDto | boolean> {
+  ): Promise<UserApi.LoginResponseDto | boolean> {
     const refreshJwtFromCookie = req.cookies.Authentication;
 
     try {
@@ -78,7 +70,7 @@ export class UserController {
   @Post('/logout')
   public async logout(
     @Res({ passthrough: true }) res: Response,
-    @Body() logoutDto: LogoutRequestDto,
+    @Body() logoutDto: UserApi.LogoutRequestDto,
   ): Promise<void> {
     res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
 

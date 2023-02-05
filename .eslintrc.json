@@ -37,7 +37,7 @@
               },
               {
                 "sourceTag": "type:logic",
-                "onlyDependOnLibsWithTags": ["type:data", "type:logic", "type:util"]
+                "onlyDependOnLibsWithTags": ["type:data", "type:logic", "type:util", "type:core"]
               },
               {
                 "sourceTag": "type:util",
