@@ -19,9 +19,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { BehaviorSubject, distinctUntilChanged, first, map, Observable, takeWhile, tap } from 'rxjs';
-import { AuthApiService, RegisterNoDobDto } from '@instagrammer/web/auth/data';
+import { RegisterNoDobDto } from '@instagrammer/web/auth/data';
 import { InputComponent } from '@instagrammer/web/shared/ui/input';
 import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApiService } from '@instagrammer/web/shared/data/api';
 
 @Component({
   selector: 'ng-insta-base-info-register-step',

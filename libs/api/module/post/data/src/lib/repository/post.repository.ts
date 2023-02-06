@@ -16,7 +16,7 @@ export class PostRepository extends Repository<PostEntity> {
         description: true,
         likes: true,
         createdAt: true,
-        photoPaths: true,
+        photos: true,
       },
     });
   }

@@ -28,13 +28,13 @@ export class PostEntity {
 
   @OneToMany(() => PhotoEntity, photo => photo.imagePath, { cascade: true, nullable: false })
   @JoinColumn()
-  public photoPaths!: PhotoEntity[];
+  public photos!: PhotoEntity[];
 
   @ManyToMany(() => UserEntity, user => user.postsLiked)
   @JoinColumn()
   public likes?: UserEntity[];
 
-  @OneToMany(() => CommentEntity, user => user.post, { cascade: true, eager: true })
+  @OneToMany(() => CommentEntity, user => user.post, { cascade: true })
   @JoinColumn()
   public comments!: CommentEntity[];
 }

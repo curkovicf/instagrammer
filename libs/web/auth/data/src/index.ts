@@ -10,4 +10,3 @@ export * from './lib/store/auth.reducers';
 export * from './lib/store/auth.state';
 export * from './lib/store/auth-facade.service';
 
-export * from './lib/api/auth-api.service';

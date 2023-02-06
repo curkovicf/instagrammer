@@ -12,7 +12,7 @@ export class PhotoEntity {
   @Column()
   public createdAt!: Date;
 
-  @ManyToOne(() => PostEntity, post => post.photoPaths)
+  @ManyToOne(() => PostEntity, post => post.photos)
   @JoinColumn()
   public post!: PostEntity;
 }

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
+import { UserRepository } from '@instagrammer/api/module/user/data';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/env';
 import { JwtPayload } from '@instagrammer/api/shared/data';
@@ -19,7 +19,7 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
     });
   }
 
-  public async validate(payload: JwtPayload): Promise<UserEntity> {
+  public async validate(payload: JwtPayload): Promise<string> {
     const { username } = payload;
     const user = await this.userRepository.findOne({ where: { username } });
 
@@ -27,6 +27,6 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    return user;
+    return user.userId;
   }
 }

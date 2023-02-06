@@ -85,6 +85,7 @@
       "@instagrammer/web/home/ui/toolbar-icon-wrapper": [
         "libs/web/home/ui/toolbar-icon-wrapper/src/index.ts"
       ],
+      "@instagrammer/web/shared/data/api": ["libs/web/shared/data/api/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
       "@instagrammer/web/shared/ui/card": ["libs/web/shared/ui/card/src/index.ts"],

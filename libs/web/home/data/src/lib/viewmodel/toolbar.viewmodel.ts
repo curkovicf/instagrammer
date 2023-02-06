@@ -32,7 +32,7 @@ export class ToolbarViewModel extends ComponentStore<IToolbarState> {
       toolbarItems: [
         {
           title: 'Home',
-          routerLink: '/home',
+          routerLink: '/',
           toolbarItemName: ToolbarItemName.home,
         },
         {

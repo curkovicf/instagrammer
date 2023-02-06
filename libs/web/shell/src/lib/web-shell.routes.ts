@@ -11,7 +11,7 @@ export const shellRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: async () => (await import('@instagrammer/web/home/feature/shell')).WebHomeShellModule,
       },
     ],

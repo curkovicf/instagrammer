@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { finalize, map, Observable, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthApiService } from './api/auth-api.service';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
 import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApiService } from '@instagrammer/web/shared/data/api';
 
 @Injectable({
   providedIn: 'root',
@@ -80,7 +80,7 @@ export class AuthService {
           this.authFacadeService.updateAuthState(loginResponseDto);
           this.jwtStorageService.saveAuthState(loginResponseDto);
         }),
-        finalize(() => this.router.navigate(['home'])),
+        finalize(() => this.router.navigate([''])),
       )
       .subscribe();
   }
@@ -97,7 +97,7 @@ export class AuthService {
 
           this.authFacadeService.updateAuthState(loginResponseDto);
           this.jwtStorageService.saveAuthState(loginResponseDto);
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         }),
       )
       .subscribe();
