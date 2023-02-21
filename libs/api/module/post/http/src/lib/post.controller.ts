@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreatePostDto, PostEntity } from '@instagrammer/api/module/post/data';
 import { PostService } from '@instagrammer/api/module/post/logic';
 import { UserId } from '@instagrammer/api/module/user/logic';
@@ -8,7 +8,7 @@ export class PostController {
   constructor(private readonly postService: PostService) {}
 
   @Get()
-  public getPosts(@UserId() userId: string): Promise<PostEntity[]> {
+  public getPosts(@Query('userId') userId: string): Promise<PostEntity[]> {
     return this.postService.getPosts(userId);
   }
 

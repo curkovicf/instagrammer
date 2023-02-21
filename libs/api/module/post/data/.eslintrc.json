@@ -3,7 +3,7 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": ["*.entity.ts"],
+      "files": ["*.entity.ts", "*.repository.ts"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": "off"
       }

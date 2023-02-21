@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { PostEntity } from '../entity/post.entity';
+import { FollowerEntity } from '@instagrammer/api/module/user/data';
 
 @Injectable()
 export class PostRepository extends Repository<PostEntity> {
@@ -8,16 +9,8 @@ export class PostRepository extends Repository<PostEntity> {
     super(PostEntity, dataSource.createEntityManager());
   }
   public async getPosts(userId: string): Promise<PostEntity[]> {
-    return await this.find({
-      where: { user: { userId: userId } },
-      select: {
-        postId: true,
-        comments: true,
-        description: true,
-        likes: true,
-        createdAt: true,
-        photos: true,
-      },
-    });
+    return await this.createQueryBuilder('post')
+      .innerJoin(FollowerEntity, 'follower', 'follower.followerId = :userId', { userId })
+      .getMany();
   }
 }
