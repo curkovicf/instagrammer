@@ -14,6 +14,12 @@
     [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'search'"
     (itemSelected)="toolbarViewModel.setActiveToolbarItem('search')"
   ></ng-inst-svg-search-icon>
+
+  <ng-inst-svg-post-content-icon
+    [isActive]="(toolbarViewModel.vm$ | async)?.activeToolbarItem === 'create'"
+    (itemSelected)="toolbarViewModel.setActiveToolbarItem('create')"
+    (click)="createPostViewModel.toggleDialog()"
+  ></ng-inst-svg-post-content-icon>
 </div>
 
 <div class="bottom-part"></div>

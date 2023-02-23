@@ -1,0 +1,27 @@
+:host {
+  & > .overlay {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    & > .close-button {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  & > .window {
+    position: absolute;
+    background-color: orange;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, 0);
+  }
+}

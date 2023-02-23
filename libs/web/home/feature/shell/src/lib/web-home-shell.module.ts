@@ -9,6 +9,7 @@ import { ToolbarModule } from '@instagrammer/web/home/feature/toolbar';
 import { StoryToolbarModule } from '@instagrammer/web/home/feature/story-toolbar';
 import { ToolbarSmallModule } from '@instagrammer/web/home/feature/toolbar-small';
 import { StickySidenavContentBoxComponent } from '@instagrammer/web/home/ui/sticky-sidenav-content-box';
+import { CreateModule } from '@instagrammer/web/module/post/feature/create';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { StickySidenavContentBoxComponent } from '@instagrammer/web/home/ui/stic
     StoryToolbarModule,
     ToolbarSmallModule,
     StickySidenavContentBoxComponent,
+    CreateModule,
   ],
   declarations: [LayoutComponent],
   exports: [LayoutComponent],

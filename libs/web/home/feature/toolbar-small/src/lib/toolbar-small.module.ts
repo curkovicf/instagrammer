@@ -4,6 +4,7 @@ import { ToolbarSmallComponent } from './toolbar-small.component';
 import { WebHomeDataAccessModule } from '@instagrammer/web/home/data';
 import { SmoothHoverModule } from '@instagrammer/web/shared/ui/smooth-hover';
 import {
+  AddPostIconComponent,
   HomeIconComponent,
   InstagramIconComponent,
   SearchIconComponent,
@@ -17,6 +18,7 @@ import {
     InstagramIconComponent,
     HomeIconComponent,
     SearchIconComponent,
+    AddPostIconComponent,
   ],
   declarations: [ToolbarSmallComponent],
   exports: [ToolbarSmallComponent],

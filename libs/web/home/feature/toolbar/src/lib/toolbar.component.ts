@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToolbarItemName, ToolbarViewModel } from '@instagrammer/web/home/data';
+import { CreatePostViewModel } from '@instagrammer/web/module/post/data';
 
 @Component({
   selector: 'ng-inst-toolbar',
@@ -10,5 +11,9 @@ import { ToolbarItemName, ToolbarViewModel } from '@instagrammer/web/home/data';
 export class ToolbarComponent {
   public toolbarItemName = ToolbarItemName;
 
-  constructor(public readonly router: Router, public readonly toolbarViewModel: ToolbarViewModel) {}
+  constructor(
+    public readonly router: Router,
+    public readonly toolbarViewModel: ToolbarViewModel,
+    public readonly createPostViewModel: CreatePostViewModel,
+  ) {}
 }

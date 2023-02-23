@@ -8,4 +8,5 @@ export enum ToolbarItemName {
   instLogo = 'instLogo',
   home = 'home',
   search = 'search',
+  create = 'create',
 }

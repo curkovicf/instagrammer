@@ -4,7 +4,7 @@ import { ToolbarComponent } from './toolbar.component';
 import { LogoModule } from '@instagrammer/web/shared/ui/logo';
 import { RouterLink } from '@angular/router';
 import { WebHomeDataAccessModule } from '@instagrammer/web/home/data';
-import { HomeIconComponent, SearchIconComponent } from '@instagrammer/web/home/ui/svg-icon';
+import { AddPostIconComponent, HomeIconComponent, SearchIconComponent } from '@instagrammer/web/home/ui/svg-icon';
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import { HomeIconComponent, SearchIconComponent } from '@instagrammer/web/home/u
     WebHomeDataAccessModule,
     HomeIconComponent,
     SearchIconComponent,
+    AddPostIconComponent,
   ],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],
