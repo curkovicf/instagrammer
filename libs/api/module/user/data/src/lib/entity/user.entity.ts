@@ -32,7 +32,7 @@ export class UserEntity {
   @OneToMany(() => FollowerEntity, follower => follower.following)
   public followers!: FollowerEntity[];
 
-  @OneToOne(() => RefreshTokenEntity)
+  @OneToOne(() => RefreshTokenEntity, { cascade: true })
   @JoinColumn()
   public refreshToken: RefreshTokenEntity | null = null;
 
