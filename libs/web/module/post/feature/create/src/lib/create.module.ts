@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create.component';
-import { DialogModule } from '@instagrammer/web/module/post/ui/dialog';
+import { DialogStepperModule } from '@instagrammer/web/shared/ui/dialog-stepper';
 
 @NgModule({
-  imports: [CommonModule, DialogModule],
+  imports: [CommonModule, DialogStepperModule],
   declarations: [CreateComponent],
-  exports: [
-    CreateComponent,
-  ],
+  exports: [CreateComponent],
 })
 export class CreateModule {}

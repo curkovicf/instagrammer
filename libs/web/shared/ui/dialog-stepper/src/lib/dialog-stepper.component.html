@@ -1,0 +1,19 @@
+<ng-insta-closable-overlay (closeOverlay)="closeDialog.emit()"></ng-insta-closable-overlay>
+
+<div class="window">
+  <div class="title">
+    <div class="back-arrow-wrapper" (click)="stepBack.emit()"></div>
+
+    <div class="title-wrapper">
+      <ng-content select=".title"></ng-content>
+    </div>
+
+    <div class="cta-next" (click)="stepNext.emit()"></div>
+  </div>
+
+  <hr />
+
+  <div class="content">
+    <ng-content select=".content"></ng-content>
+  </div>
+</div>

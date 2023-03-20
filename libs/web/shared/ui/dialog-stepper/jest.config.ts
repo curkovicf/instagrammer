@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-module-post-ui-dialog',
-  preset: '../../../../../../jest.preset.js',
+  displayName: 'web-shared-ui-dialog-stepper',
+  preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../../../coverage/libs/web/module/post/ui/dialog',
+  coverageDirectory: '../../../../../coverage/libs/web/shared/ui/dialog-stepper',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

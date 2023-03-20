@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'ng-inst-create-post-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+  selector: 'ng-inst-dialog-stepper',
+  templateUrl: './dialog-stepper.component.html',
+  styleUrls: ['./dialog-stepper.component.scss'],
 })
-export class DialogComponent {
+export class DialogStepperComponent {
   @Output()
   public closeDialog: EventEmitter<void> = new EventEmitter();
 
