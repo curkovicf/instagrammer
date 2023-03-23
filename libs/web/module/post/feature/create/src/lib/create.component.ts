@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreatePostViewModel } from '@instagrammer/web/module/post/data';
+import { CreatePostStep, CreatePostViewModel } from '@instagrammer/web/module/post/data';
 
 @Component({
   selector: 'ng-inst-create-post',
@@ -7,5 +7,7 @@ import { CreatePostViewModel } from '@instagrammer/web/module/post/data';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent {
+  public createPostStep = CreatePostStep;
+
   constructor(public readonly createPostViewModel: CreatePostViewModel) {}
 }

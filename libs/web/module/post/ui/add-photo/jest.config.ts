@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-module-post-ui-image-picker',
+  displayName: 'web-module-post-ui-add-photo',
   preset: '../../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../../../coverage/libs/web/module/post/ui/image-picker',
+  coverageDirectory: '../../../../../../coverage/libs/web/module/post/ui/add-photo',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

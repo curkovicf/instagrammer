@@ -23,8 +23,5 @@
       }
     }
   },
-  "tags": [
-    "type:ui",
-    "scope:web"
-  ]
+  "tags": ["type:ui", "scope:web"]
 }
