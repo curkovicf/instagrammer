@@ -1,21 +1,15 @@
-<ng-inst-dialog-stepper
+<ng-inst-dialog-card
   *ngIf="createPostViewModel.vm$ | async as vm"
   (closeDialog)="createPostViewModel.toggleDialog()"
 >
   <!-- ************** -->
   <!-- ADD IMAGE STEP -->
   <!-- ************** -->
-  <ng-container class="title" *ngIf="createPostStep.ADD_IMAGE === vm.activeStep">
-    <div class="title">
-      <p>Create new post</p>
-    </div>
-
-    <div class="content">
-      <ng-inst-add-photo></ng-inst-add-photo>
-    </div>
-  </ng-container>
+  <ng-inst-step-wrapper *ngIf="createPostStep.ADD_IMAGE === vm.activeStep" title="Create new post">
+    <ng-inst-add-photo></ng-inst-add-photo>
+  </ng-inst-step-wrapper>
 
   <!-- ************** -->
   <!--  -->
   <!-- ************** -->
-</ng-inst-dialog-stepper>
+</ng-inst-dialog-card>

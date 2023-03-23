@@ -1,0 +1,13 @@
+<div class="title-container">
+  <div class="step-back-container" (click)="stepBack.emit()">back</div>
+
+  <div class="title-wrapper">
+    <p>{{ title }}</p>
+  </div>
+
+  <div class="step-next-container" (click)="stepNext.emit()">next</div>
+</div>
+
+<div class="content">
+  <ng-content></ng-content>
+</div>
