@@ -5,6 +5,7 @@
 :host {
   display: block;
   position: relative;
+  width: fit-content;
 
   & > button {
     @include box-max();
@@ -22,7 +23,7 @@
     text-align: center;
 
     &:active {
-      background-color: rgba(0,149,246,.7) !important;
+      background-color: rgba(0, 149, 246, .7) !important;
     }
   }
 

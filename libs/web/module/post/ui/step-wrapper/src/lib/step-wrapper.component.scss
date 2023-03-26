@@ -15,4 +15,9 @@
     font-weight: bold;
     border-bottom: 1px solid gainsboro;
   }
+
+  & > .content {
+    width: 100%;
+    height: calc(100% - 3rem);
+  }
 }

@@ -1,11 +1,15 @@
 <div class="title-container">
-  <div class="step-back-container" (click)="stepBack.emit()">back</div>
+  <div class="step-back-container" (click)="stepBack.emit()">
+    <p *ngIf="canStepBack">back</p>
+  </div>
 
   <div class="title-wrapper">
     <p>{{ title }}</p>
   </div>
 
-  <div class="step-next-container" (click)="stepNext.emit()">next</div>
+  <div class="step-next-container" (click)="stepNext.emit()">
+    <p *ngIf="canStepNext">next</p>
+  </div>
 </div>
 
 <div class="content">
