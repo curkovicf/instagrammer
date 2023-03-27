@@ -26,5 +26,15 @@
 
   <h5 class="container-item image-text">Drag photos and videos here</h5>
 
-  <ng-inst-cta-button class="container-item" title="Select from computer"></ng-inst-cta-button>
+  <div class="image-picker-wrapper">
+    <label #label>
+      <input #imgInput type="file" (change)="loadImage(imgInput.files)" />
+
+      <ng-inst-cta-button
+        class="container-item"
+        title="Select from computer"
+        (ctaclick)="label.click()"
+      ></ng-inst-cta-button>
+    </label>
+  </div>
 </div>

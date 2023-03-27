@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 
 export enum CreatePostStep {
   ADD_IMAGE = 'ADD_IMAGE',
+  IMAGE_INFO = 'IMAGE_INFO',
 }
 
 export interface ICreatePostState {
   isDialogOpen: boolean;
   activeStep: CreatePostStep;
+  imageFile?: File;
 }
 
 @Injectable({
@@ -31,5 +33,9 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
     const { isDialogOpen } = this.get();
 
     this.patchState({ isDialogOpen: !isDialogOpen, activeStep: CreatePostStep.ADD_IMAGE });
+  }
+
+  public saveFile(imageFile: File): void {
+    this.patchState({ imageFile, activeStep: CreatePostStep.IMAGE_INFO });
   }
 }

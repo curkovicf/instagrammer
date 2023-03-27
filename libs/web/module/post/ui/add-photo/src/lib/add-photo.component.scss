@@ -21,6 +21,15 @@
     & > .image-text {
       font-size: 20px;
       font-weight: normal;
+      margin-bottom: 1.5rem;
+    }
+
+    & > .image-picker-wrapper {
+      & > label {
+        & > input {
+          display: none;
+        }
+      }
     }
   }
 }
