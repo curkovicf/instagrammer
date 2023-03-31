@@ -1,6 +1,6 @@
 <div class="title-container">
   <div class="step-back-container" (click)="stepBack.emit()">
-    <p *ngIf="canStepBack">back</p>
+    <i-feather *ngIf="canStepBack" name="arrow-left"></i-feather>
   </div>
 
   <div class="title-wrapper">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="step-next-container" (click)="stepNext.emit()">
-    <p *ngIf="canStepNext">next</p>
+    <p *ngIf="canStepNext">{{ stepNextTitle }}</p>
   </div>
 </div>
 

@@ -99,6 +99,7 @@
       "@instagrammer/web/shared/ui/cta-button": ["libs/web/shared/ui/cta-button/src/index.ts"],
       "@instagrammer/web/shared/ui/datepicker": ["libs/web/shared/ui/datepicker/src/index.ts"],
       "@instagrammer/web/shared/ui/dialog-card": ["libs/web/shared/ui/dialog-card/src/index.ts"],
+      "@instagrammer/web/shared/ui/feather": ["libs/web/shared/ui/feather/src/index.ts"],
       "@instagrammer/web/shared/ui/input": ["libs/web/shared/ui/input/src/index.ts"],
       "@instagrammer/web/shared/ui/insta-input": ["libs/web/shared/ui/insta-input/src/index.ts"],
       "@instagrammer/web/shared/ui/logo": ["libs/web/shared/ui/logo/src/index.ts"],

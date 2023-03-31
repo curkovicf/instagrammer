@@ -12,7 +12,15 @@
   <!-- ************** -->
   <!-- ADD IMAGE INFO -->
   <!-- ************** -->
-  <ng-inst-step-wrapper *ngIf="createPostStep.IMAGE_INFO === vm.activeStep" title="Create new post">
-    <ng-inst-image-info></ng-inst-image-info>
+  <ng-inst-step-wrapper
+    *ngIf="createPostStep.IMAGE_INFO === vm.activeStep"
+    title="Create new post"
+    stepNextTitle="Share"
+    [canStepBack]="true"
+    [canStepNext]="true"
+    (stepBack)="createPostViewModel.stepBackToAddImage()"
+    (stepNext)="createPostViewModel.submit()"
+  >
+    <ng-inst-image-info [imageFile]="vm.imageFile"></ng-inst-image-info>
   </ng-inst-step-wrapper>
 </ng-inst-dialog-card>

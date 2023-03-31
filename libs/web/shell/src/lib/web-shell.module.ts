@@ -10,6 +10,7 @@ import { WebAuthDataAccessModule } from '@instagrammer/web/auth/data';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ENVIRONMENT_TOKEN, environmentDev } from '@instagrammer/web/core/env';
 import { WithCredentialsInterceptor } from '@instagrammer/web/core/middleware';
+import { SharedFeatherModule } from '@instagrammer/web/shared/ui/feather';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { WithCredentialsInterceptor } from '@instagrammer/web/core/middleware';
     EffectsModule.forRoot([]),
     !environmentDev.production ? StoreDevtoolsModule.instrument() : [],
     WebAuthDataAccessModule,
+    SharedFeatherModule,
   ],
   declarations: [LayoutComponent],
   providers: [

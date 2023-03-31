@@ -18,6 +18,7 @@ export interface ICreatePostState {
 })
 export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   public readonly vm$: Observable<ICreatePostState> = this.select(state => ({
+    imageFile: state.imageFile,
     isDialogOpen: state.isDialogOpen,
     activeStep: state.activeStep,
   }));
@@ -37,5 +38,13 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
 
   public saveFile(imageFile: File): void {
     this.patchState({ imageFile, activeStep: CreatePostStep.IMAGE_INFO });
+  }
+
+  public stepBackToAddImage(): void {
+    this.patchState({ imageFile: undefined, activeStep: CreatePostStep.ADD_IMAGE });
+  }
+
+  public submit(): void {
+    console.log('Submit');
   }
 }
