@@ -90,6 +90,16 @@
       "@instagrammer/web/module/post/feature/shell": ["libs/web/module/post/feature/shell/src/index.ts"],
       "@instagrammer/web/module/post/ui/add-photo": ["libs/web/module/post/ui/add-photo/src/index.ts"],
       "@instagrammer/web/module/post/ui/image-info": ["libs/web/module/post/ui/image-info/src/index.ts"],
+      "@instagrammer/web/module/post/ui/post-accessibility": [
+        "libs/web/module/post/ui/post-accessibility/src/index.ts"
+      ],
+      "@instagrammer/web/module/post/ui/post-advanced-settings": [
+        "libs/web/module/post/ui/post-advanced-settings/src/index.ts"
+      ],
+      "@instagrammer/web/module/post/ui/post-caption": ["libs/web/module/post/ui/post-caption/src/index.ts"],
+      "@instagrammer/web/module/post/ui/post-location": [
+        "libs/web/module/post/ui/post-location/src/index.ts"
+      ],
       "@instagrammer/web/module/post/ui/step-wrapper": ["libs/web/module/post/ui/step-wrapper/src/index.ts"],
       "@instagrammer/web/shared/data/api": ["libs/web/shared/data/api/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],

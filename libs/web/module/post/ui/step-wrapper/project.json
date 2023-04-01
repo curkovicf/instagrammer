@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/web/module/post/ui/step-wrapper/jest.config.ts",
         "passWithNoTests": true
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }
