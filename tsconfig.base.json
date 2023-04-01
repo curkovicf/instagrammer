@@ -88,7 +88,8 @@
       "@instagrammer/web/module/post/data": ["libs/web/module/post/data/src/index.ts"],
       "@instagrammer/web/module/post/feature/create": ["libs/web/module/post/feature/create/src/index.ts"],
       "@instagrammer/web/module/post/feature/shell": ["libs/web/module/post/feature/shell/src/index.ts"],
-      "@instagrammer/web/module/post/ui/add-photo": ["libs/web/module/post/ui/add-photo/src/index.ts"],
+      "@instagrammer/web/module/post/ui/image-add": ["libs/web/module/post/ui/image-add/src/index.ts"],
+      "@instagrammer/web/module/post/ui/image-crop": ["libs/web/module/post/ui/image-crop/src/index.ts"],
       "@instagrammer/web/module/post/ui/image-info": ["libs/web/module/post/ui/image-info/src/index.ts"],
       "@instagrammer/web/module/post/ui/post-accessibility": [
         "libs/web/module/post/ui/post-accessibility/src/index.ts"

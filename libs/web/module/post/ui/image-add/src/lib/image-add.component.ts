@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CtaButtonModule } from '@instagrammer/web/shared/ui/cta-button';
 
 @Component({
-  selector: 'ng-inst-add-photo',
+  selector: 'ng-inst-image-add',
   standalone: true,
   imports: [CommonModule, CtaButtonModule],
-  templateUrl: './add-photo.component.html',
-  styleUrls: ['./add-photo.component.scss'],
+  templateUrl: './image-add.component.html',
+  styleUrls: ['./image-add.component.scss'],
 })
-export class AddPhotoComponent {
+export class ImageAddComponent {
   @Output()
   fileLoad: EventEmitter<File> = new EventEmitter<File>();
 

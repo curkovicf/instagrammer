@@ -6,7 +6,7 @@
   <!-- ADD IMAGE STEP -->
   <!-- ************** -->
   <ng-inst-step-wrapper *ngIf="createPostStep.ADD_IMAGE === vm.activeStep" title="Create new post">
-    <ng-inst-add-photo (fileLoad)="createPostViewModel.saveFile($event)"></ng-inst-add-photo>
+    <ng-inst-image-add (fileLoad)="createPostViewModel.saveFile($event)"></ng-inst-image-add>
   </ng-inst-step-wrapper>
 
   <!-- ************** -->

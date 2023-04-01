@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { PostCaptionComponent } from '../../../post-caption/src/lib/post-caption.component';
 
 @Component({
   selector: 'ng-inst-image-info',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PostCaptionComponent, NgOptimizedImage],
   templateUrl: './image-info.component.html',
   styleUrls: ['./image-info.component.scss'],
 })
