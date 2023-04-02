@@ -10,6 +10,21 @@
   </ng-inst-step-wrapper>
 
   <!-- ************** -->
+  <!-- CROP IMAGE -->
+  <!-- ************** -->
+  <ng-inst-step-wrapper
+    *ngIf="createPostStep.IMAGE_CROP === vm.activeStep"
+    title="Crop"
+    stepNextTitle="Next"
+    [canStepBack]="true"
+    [canStepNext]="true"
+    (stepBack)="createPostViewModel.stepBackToAddImage()"
+    (stepNext)="createPostViewModel.stepToImageInfo($event)"
+  >
+    <ng-inst-image-crop [imageFile]="vm.imageFile"></ng-inst-image-crop>
+  </ng-inst-step-wrapper>
+
+  <!-- ************** -->
   <!-- ADD IMAGE INFO -->
   <!-- ************** -->
   <ng-inst-step-wrapper
@@ -18,7 +33,7 @@
     stepNextTitle="Share"
     [canStepBack]="true"
     [canStepNext]="true"
-    (stepBack)="createPostViewModel.stepBackToAddImage()"
+    (stepBack)="createPostViewModel.stepBackToCropImage()"
     (stepNext)="createPostViewModel.submit()"
   >
     <ng-inst-image-info [imageFile]="vm.imageFile"></ng-inst-image-info>

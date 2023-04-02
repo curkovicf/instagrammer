@@ -5,11 +5,13 @@ import { Observable } from 'rxjs';
 export enum CreatePostStep {
   ADD_IMAGE = 'ADD_IMAGE',
   IMAGE_INFO = 'IMAGE_INFO',
+  IMAGE_CROP = 'IMAGE_CROP',
 }
 
 export interface ICreatePostState {
   isDialogOpen: boolean;
   activeStep: CreatePostStep;
+  imageFileOriginal?: File;
   imageFile?: File;
 }
 
@@ -19,6 +21,7 @@ export interface ICreatePostState {
 export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   public readonly vm$: Observable<ICreatePostState> = this.select(state => ({
     imageFile: state.imageFile,
+    imageFileOriginal: state.imageFileOriginal,
     isDialogOpen: state.isDialogOpen,
     activeStep: state.activeStep,
   }));
@@ -37,11 +40,21 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   }
 
   public saveFile(imageFile: File): void {
-    this.patchState({ imageFile, activeStep: CreatePostStep.IMAGE_INFO });
+    this.patchState({ imageFile, activeStep: CreatePostStep.IMAGE_CROP });
   }
 
   public stepBackToAddImage(): void {
     this.patchState({ imageFile: undefined, activeStep: CreatePostStep.ADD_IMAGE });
+  }
+
+  public stepToImageInfo($event: void) {
+    console.log('Step to Image Info ', $event);
+    this.patchState({ activeStep: CreatePostStep.IMAGE_INFO });
+  }
+
+  public stepBackToCropImage(): void {
+    console.log('Step back to crop image');
+    this.patchState({ activeStep: CreatePostStep.IMAGE_CROP });
   }
 
   public submit(): void {

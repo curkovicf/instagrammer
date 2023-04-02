@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  & > .container {
+    width: 100%;
+    height: 100%;
+
+    /* Ensure the size of the image fit the container perfectly */
+    & > img {
+      display: block;
+
+      /* This rule is very important, please don't ignore this */
+      max-width: 100%;
+    }
+  }
+
+}

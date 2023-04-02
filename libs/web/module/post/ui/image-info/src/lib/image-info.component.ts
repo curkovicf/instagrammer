@@ -13,7 +13,6 @@ import { PostCaptionComponent } from '../../../post-caption/src/lib/post-caption
 export class ImageInfoComponent {
   @Input()
   set imageFile(imageFile: File | undefined) {
-    console.log(imageFile);
     if (!imageFile) {
       throw new Error('Please provide image !');
     }
