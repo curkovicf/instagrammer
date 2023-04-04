@@ -22,6 +22,9 @@ export class StepWrapperComponent {
   @Input()
   public canStepNext = false;
 
+  @Input()
+  public hasSideBar = false;
+
   @Output()
   public stepNext: EventEmitter<void> = new EventEmitter();
 

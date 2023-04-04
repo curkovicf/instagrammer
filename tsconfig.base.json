@@ -101,6 +101,7 @@
       "@instagrammer/web/module/post/ui/post-location": [
         "libs/web/module/post/ui/post-location/src/index.ts"
       ],
+      "@instagrammer/web/module/post/ui/post-sidebar": ["libs/web/module/post/ui/post-sidebar/src/index.ts"],
       "@instagrammer/web/module/post/ui/step-wrapper": ["libs/web/module/post/ui/step-wrapper/src/index.ts"],
       "@instagrammer/web/shared/data/api": ["libs/web/shared/data/api/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],

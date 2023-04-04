@@ -13,5 +13,11 @@
 </div>
 
 <div class="content">
-  <ng-content></ng-content>
+  <div class="main">
+    <ng-content select="[slot=content]"></ng-content>
+  </div>
+
+  <div *ngIf="hasSideBar" class="sidebar">
+    <ng-content select="[slot=sidebar]"></ng-content>
+  </div>
 </div>
