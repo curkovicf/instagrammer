@@ -21,7 +21,10 @@
     (stepBack)="createPostViewModel.stepBackToAddImage()"
     (stepNext)="createPostViewModel.stepToImageInfo($event)"
   >
-    <ng-inst-image-crop [imageFile]="vm.imageFile"></ng-inst-image-crop>
+    <ng-inst-image-crop
+      [imageFile]="vm.imageFileOriginal"
+      (imageCropped)="createPostViewModel.saveCroppedImage($event)"
+    ></ng-inst-image-crop>
   </ng-inst-step-wrapper>
 
   <!-- ************** -->
@@ -36,6 +39,6 @@
     (stepBack)="createPostViewModel.stepBackToCropImage()"
     (stepNext)="createPostViewModel.submit()"
   >
-    <ng-inst-image-info [imageFile]="vm.imageFile"></ng-inst-image-info>
+    <ng-inst-image-info [imageURI]="vm.croppedImageFileURI"></ng-inst-image-info>
   </ng-inst-step-wrapper>
 </ng-inst-dialog-card>

@@ -12,7 +12,7 @@ export interface ICreatePostState {
   isDialogOpen: boolean;
   activeStep: CreatePostStep;
   imageFileOriginal?: File;
-  imageFile?: File;
+  croppedImageFileURI?: string;
 }
 
 @Injectable({
@@ -20,7 +20,7 @@ export interface ICreatePostState {
 })
 export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   public readonly vm$: Observable<ICreatePostState> = this.select(state => ({
-    imageFile: state.imageFile,
+    croppedImageFileURI: state.croppedImageFileURI,
     imageFileOriginal: state.imageFileOriginal,
     isDialogOpen: state.isDialogOpen,
     activeStep: state.activeStep,
@@ -40,11 +40,11 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   }
 
   public saveFile(imageFile: File): void {
-    this.patchState({ imageFile, activeStep: CreatePostStep.IMAGE_CROP });
+    this.patchState({ imageFileOriginal: imageFile, activeStep: CreatePostStep.IMAGE_CROP });
   }
 
   public stepBackToAddImage(): void {
-    this.patchState({ imageFile: undefined, activeStep: CreatePostStep.ADD_IMAGE });
+    this.patchState({ croppedImageFileURI: undefined, activeStep: CreatePostStep.ADD_IMAGE });
   }
 
   public stepToImageInfo($event: void) {
@@ -59,5 +59,9 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
 
   public submit(): void {
     console.log('Submit');
+  }
+
+  public saveCroppedImage(croppedImageFileURI: string): void {
+    this.patchState({ croppedImageFileURI });
   }
 }

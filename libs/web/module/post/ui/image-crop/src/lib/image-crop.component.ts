@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageInfoComponent } from '@instagrammer/web/module/post/ui/image-info';
 import Cropper from 'cropperjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'ng-inst-image-crop',
@@ -10,22 +10,39 @@ import Cropper from 'cropperjs';
   templateUrl: './image-crop.component.html',
   styleUrls: ['./image-crop.component.scss'],
 })
-export class ImageCropComponent extends ImageInfoComponent implements AfterViewInit {
+export class ImageCropComponent implements AfterViewInit {
+  @Input()
+  set imageFile(imageFile: File | undefined) {
+    if (!imageFile) {
+      throw new Error('Please provide image !');
+    }
+
+    this._imageUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(imageFile));
+  }
+
+  @Output()
+  imageCropped: EventEmitter<string> = new EventEmitter();
+
   @ViewChild('image')
-  image!: ElementRef<HTMLImageElement>;
+  imageElement!: ElementRef<HTMLImageElement>;
 
   public cropper!: Cropper;
 
   public imageDestinationUrl!: string;
+  _imageUrl!: SafeUrl;
+
+  constructor(private readonly sanitizer: DomSanitizer) {}
 
   public ngAfterViewInit(): void {
-    this.cropper = new Cropper(this.image.nativeElement, {
+    this.cropper = new Cropper(this.imageElement.nativeElement, {
       aspectRatio: 1,
       zoomable: true,
       scalable: true,
       crop: (event: Cropper.CropEvent<HTMLImageElement>) => {
         const canvas = this.cropper.getCroppedCanvas();
         this.imageDestinationUrl = canvas.toDataURL('image/png');
+
+        this.imageCropped.next(this.imageDestinationUrl);
       },
     });
   }

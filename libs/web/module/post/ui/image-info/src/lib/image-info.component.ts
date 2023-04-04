@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { PostCaptionComponent } from '../../../post-caption/src/lib/post-caption.component';
+import { PostCaptionComponent } from '@instagrammer/web/module/post/ui/post-caption';
 
 @Component({
   selector: 'ng-inst-image-info',
@@ -12,12 +12,12 @@ import { PostCaptionComponent } from '../../../post-caption/src/lib/post-caption
 })
 export class ImageInfoComponent {
   @Input()
-  set imageFile(imageFile: File | undefined) {
-    if (!imageFile) {
-      throw new Error('Please provide image !');
+  set imageURI(imageURI: string | undefined) {
+    if (!imageURI) {
+      throw new Error('Please provide image URI !');
     }
 
-    this._imageUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(imageFile));
+    this._imageUrl = this.sanitizer.bypassSecurityTrustUrl(imageURI);
   }
 
   constructor(private readonly sanitizer: DomSanitizer) {}
