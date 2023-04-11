@@ -1,0 +1,96 @@
+@import "ng-instagrammer-colors";
+@import "ng-instagrammer-fonts";
+@import "ng-instagrammer-mixins";
+
+:host {
+  display: block;
+  max-height: 2.5rem;
+  margin-bottom: 0.2rem;
+  text-align: left;
+
+  & > label {
+    display: block;
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid #dbdbdb;
+    height: 2.5rem;
+    background-color: $color--background-main;
+    @include center-flex-X();
+
+    & > .placeholder {
+      @include position(absolute, 0.7rem, null, null, 0.7rem);
+      font-size: 12px;
+      color: #a8a8a8;
+      font-weight: 400;
+      pointer-events: none;
+      transition: transform ease-out .1s;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: inline-block;
+      width: 90%;
+    }
+
+    & > input {
+      flex: 1;
+      width: 100%;
+      border-radius: 3px;
+      height: 2.5rem;
+      color: #262626;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      line-height: 18px;
+      letter-spacing: normal;
+      font-weight: 400;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      @include on-input-focus(default);
+    }
+
+    & > .response-wrapper {
+      @include center-flex-X();
+
+      & > .icon-wrapper {
+        margin-right: 0.4rem;
+        @include center-flex-X();
+
+        & > .valid-icon {
+          @include box(1.4rem, 1.4rem);
+        }
+
+        & > .invalid-icon {
+          @include box(1.6rem, 1.6rem);
+        }
+      }
+
+      & > .show-hide-password {
+        width: 3rem;
+
+        & > button {
+          appearance: none;
+          background-color: transparent;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          color: #262626;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.focus-input {
+  border: 1px solid #a8a8a8 !important;
+}
+
+.shrink-placeholder {
+  transform: scale(.83333) translate(-28px, -10px);
+}
+
+.shrink-input {
+  height: 2rem !important;
+  font-size: 12px !important;
+  margin-top: 10px;
+}
