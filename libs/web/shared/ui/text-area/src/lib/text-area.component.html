@@ -1,31 +1,12 @@
-<label #labelElement [class.focus-input]="isInputFocused">
-  <span
-    #placeholderElement
-    class="placeholder"
-    [class.shrink-placeholder]="inputElement.value && inputElement.value.length > 0"
-    >{{ placeholder }}</span
-  >
+<label [class.focus-input]="isInputFocused">
+  <span #placeholderElement>{{ placeholder }}</span>
 
-  <input
+  <textarea
     #inputElement
-    type="text"
-    [class.shrink-input]="inputElement.value && inputElement.value.length > 0"
     [value]="value"
     [disabled]="disabled"
+    [maxLength]="maxLetterCount"
     (input)="onInputChange($event)"
-    (blur)="onTouched()"
-    (focusin)="onFocusIn()"
-    (focusout)="onFocusOut()"
     (keydown)="onKeyDown($event)"
-  />
-
-  <div class="response-wrapper">
-    <div *ngIf="isValid && !isInputFocused && isTouched" class="icon-wrapper">
-      <img class="valid-icon" src="/assets/icons/ok-circle-svgrepo-com.svg" alt="" />
-    </div>
-
-    <div *ngIf="!isValid && !isInputFocused && isTouched" class="icon-wrapper">
-      <img class="invalid-icon" src="/assets/icons/close-circle-outline-svgrepo-com.svg" alt="" />
-    </div>
-  </div>
+  ></textarea>
 </label>

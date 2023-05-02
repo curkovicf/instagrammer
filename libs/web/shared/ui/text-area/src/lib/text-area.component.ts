@@ -34,6 +34,9 @@ export class TextAreaComponent implements ControlValueAccessor {
   @Input()
   placeholder: string | null = null;
 
+  @Input()
+  maxLetterCount = 200;
+
   @Output()
   onchange: EventEmitter<boolean> = new EventEmitter();
 
@@ -106,15 +109,6 @@ export class TextAreaComponent implements ControlValueAccessor {
     this.onChange($event.target.value);
   }
 
-  public onFocusIn(): void {
-    this.isTouched = true;
-    this.isInputFocused = true;
-  }
-
-  public onFocusOut(): void {
-    this.isInputFocused = false;
-  }
-
   public onKeyDown($event: KeyboardEvent): void {
     if ($event.key !== 'Enter') {
       return;
@@ -123,5 +117,9 @@ export class TextAreaComponent implements ControlValueAccessor {
     $event.preventDefault();
 
     this.onenterkeypress.emit();
+  }
+
+  onInputChange2($event: Event) {
+    console.log($event);
   }
 }
