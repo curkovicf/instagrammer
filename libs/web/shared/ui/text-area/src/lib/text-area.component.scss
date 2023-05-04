@@ -12,6 +12,8 @@
     display: block;
     position: relative;
     background-color: $color--background-main;
+    height: inherit;
+
     @include center-flex-X();
 
     & > .placeholder {
@@ -40,8 +42,19 @@
       line-height: 18px;
       letter-spacing: normal;
       font-weight: 400;
+      padding: 0.4rem !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
       @include on-input-focus(default);
+    }
+
+    & > .letter-count {
+      font-size: 0.8rem;
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      color: #a8a8a8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
   }
 }

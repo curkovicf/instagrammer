@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   Optional,
   Output,
@@ -32,10 +33,14 @@ export class TextAreaComponent implements ControlValueAccessor {
   disabled = false;
 
   @Input()
-  placeholder: string | null = null;
+  placeholder?: string;
 
   @Input()
   maxLetterCount = 200;
+
+  @Input()
+  @HostBinding('style.height.rem')
+  rowHeight = 5;
 
   @Output()
   onchange: EventEmitter<boolean> = new EventEmitter();
@@ -44,12 +49,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   onenterkeypress: EventEmitter<void> = new EventEmitter();
 
   value = '';
-
-  public isInputFocused = false;
-  public isPasswordHidden = true;
-  public isPasswordType = false;
-  public isValid = false;
-  public isTouched = false;
+  currentLetterCount = 0;
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -103,7 +103,9 @@ export class TextAreaComponent implements ControlValueAccessor {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onTouched() {}
 
-  onInputChange($event: Event) {
+  onInputChange($event: Event, currentLetterCount: number) {
+    this.currentLetterCount = currentLetterCount;
+
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange($event.target.value);
@@ -117,9 +119,5 @@ export class TextAreaComponent implements ControlValueAccessor {
     $event.preventDefault();
 
     this.onenterkeypress.emit();
-  }
-
-  onInputChange2($event: Event) {
-    console.log($event);
   }
 }

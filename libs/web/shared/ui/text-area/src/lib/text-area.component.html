@@ -1,4 +1,4 @@
-<label [class.focus-input]="isInputFocused">
+<label>
   <span #placeholderElement>{{ placeholder }}</span>
 
   <textarea
@@ -6,7 +6,9 @@
     [value]="value"
     [disabled]="disabled"
     [maxLength]="maxLetterCount"
-    (input)="onInputChange($event)"
+    (input)="onInputChange($event, inputElement.value.length)"
     (keydown)="onKeyDown($event)"
   ></textarea>
+
+  <span class="letter-count">{{ currentLetterCount }}/{{ maxLetterCount }}</span>
 </label>
