@@ -15,7 +15,8 @@
     padding: 4rem;
     background-color: #5c709b;
 
-    & > .text-area-wrapper {
+    & > .component-wrapper {
+      margin: 1rem;
       width: 15rem;
     }
   }

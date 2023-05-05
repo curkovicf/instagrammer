@@ -1,0 +1,21 @@
+@import 'ng-instagrammer-colors';
+@import 'ng-instagrammer-fonts';
+@import 'ng-instagrammer-mixins';
+
+:host {
+  & > .header {
+    display: block;
+    height: 3rem;
+    background-color: orangered;
+  }
+
+  & > ng-inst-text-area {
+    display: block;
+  }
+
+  & > .footer {
+    display: block;
+    height: 3rem;
+    background-color: orangered;
+  }
+}
