@@ -17,8 +17,8 @@
     @include center-flex-X();
 
     & > .placeholder {
-      @include position(absolute, 0.7rem, null, null, 0.7rem);
-      font-size: 12px;
+      @include position(absolute, 0.4rem, null, null, 0.4rem);
+      font-size: 14px;
       color: #a8a8a8;
       font-weight: 400;
       pointer-events: none;
