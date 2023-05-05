@@ -1,8 +1,0 @@
-@import "ng-instagrammer-colors";
-@import "ng-instagrammer-fonts";
-@import "ng-instagrammer-mixins";
-
-:host {
-  background-color: $color--background-main;
-  @include host-max();
-}

@@ -35,11 +35,15 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default"]
-  }
+  },
+  "defaultProject": "web-playground"
 }
