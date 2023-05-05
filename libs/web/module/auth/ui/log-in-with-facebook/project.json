@@ -1,0 +1,27 @@
+{
+  "name": "web-module-auth-ui-log-in-with-facebook",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/module/auth/ui/log-in-with-facebook/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/log-in-with-facebook"],
+      "options": {
+        "jestConfig": "libs/web/module/auth/ui/log-in-with-facebook/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/module/auth/ui/log-in-with-facebook/src/**/*.ts",
+          "libs/web/module/auth/ui/log-in-with-facebook/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:ui", "scope:web"]
+}

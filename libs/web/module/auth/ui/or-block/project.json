@@ -1,0 +1,27 @@
+{
+  "name": "web-module-auth-ui-or-block",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/module/auth/ui/or-block/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/or-block"],
+      "options": {
+        "jestConfig": "libs/web/module/auth/ui/or-block/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/module/auth/ui/or-block/src/**/*.ts",
+          "libs/web/module/auth/ui/or-block/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:ui", "scope:web"]
+}

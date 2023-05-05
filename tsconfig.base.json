@@ -41,49 +41,65 @@
       "@instagrammer/api/shell": ["libs/api/shell/src/index.ts"],
       "@instagrammer/shared/data/api": ["libs/shared/data/api/src/index.ts"],
       "@instagrammer/shared/util/validator": ["libs/shared/util/validator/src/index.ts"],
-      "@instagrammer/web-auth-feature-save-login-info": [
-        "libs/web/auth/feature/save-login-info/src/index.ts"
-      ],
-      "@instagrammer/web-auth-ui-text-with-link-in-card": [
-        "libs/web/auth/ui/text-with-link-in-card/src/index.ts"
-      ],
-      "@instagrammer/web/auth/data": ["libs/web/auth/data/src/index.ts"],
       "@instagrammer/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
-      "@instagrammer/web/auth/feature/login": ["libs/web/auth/feature/login/src/index.ts"],
-      "@instagrammer/web/auth/feature/register": ["libs/web/auth/feature/register/src/index.ts"],
-      "@instagrammer/web/auth/feature/shell": ["libs/web/auth/feature/shell/src/index.ts"],
-      "@instagrammer/web/auth/middleware": ["libs/web/auth/middleware/src/index.ts"],
-      "@instagrammer/web/auth/ui/base-info-register-step": [
-        "libs/web/auth/ui/base-info-register-step/src/index.ts"
-      ],
-      "@instagrammer/web/auth/ui/confirmation-code": ["libs/web/auth/ui/confirmation-code/src/index.ts"],
-      "@instagrammer/web/auth/ui/dob-register-step": ["libs/web/auth/ui/dob-register-step/src/index.ts"],
-      "@instagrammer/web/auth/ui/footer": ["libs/web/auth/ui/footer/src/index.ts"],
-      "@instagrammer/web/auth/ui/log-in-with-facebook": [
-        "libs/web/auth/ui/log-in-with-facebook/src/index.ts"
-      ],
       "@instagrammer/web/auth/ui/login": ["libs/web/auth/ui/login/src/index.ts"],
-      "@instagrammer/web/auth/ui/or-block": ["libs/web/auth/ui/or-block/src/index.ts"],
-      "@instagrammer/web/auth/ui/phone-get-app": ["libs/web/auth/ui/phone-get-app/src/index.ts"],
       "@instagrammer/web/auth/ui/register": ["libs/web/auth/ui/register/src/index.ts"],
-      "@instagrammer/web/auth/ui/rotating-phones": ["libs/web/auth/ui/rotating-phones/src/index.ts"],
       "@instagrammer/web/core/env": ["libs/web/core/env/src/index.ts"],
       "@instagrammer/web/core/middleware": ["libs/web/core/middleware/src/index.ts"],
-      "@instagrammer/web/home/data": ["libs/web/home/data/src/index.ts"],
-      "@instagrammer/web/home/feature/feed": ["libs/web/home/feature/feed/src/index.ts"],
-      "@instagrammer/web/home/feature/shell": ["libs/web/home/feature/shell/src/index.ts"],
-      "@instagrammer/web/home/feature/story-toolbar": ["libs/web/home/feature/story-toolbar/src/index.ts"],
-      "@instagrammer/web/home/feature/suggestions": ["libs/web/home/feature/suggestions/src/index.ts"],
-      "@instagrammer/web/home/feature/toolbar": ["libs/web/home/feature/toolbar/src/index.ts"],
-      "@instagrammer/web/home/feature/toolbar-small": ["libs/web/home/feature/toolbar-small/src/index.ts"],
-      "@instagrammer/web/home/ui/feed-card": ["libs/web/home/ui/feed-card/src/index.ts"],
-      "@instagrammer/web/home/ui/sticky-sidenav-content-box": [
-        "libs/web/home/ui/sticky-sidenav-content-box/src/index.ts"
+      "@instagrammer/web/module/auth/data": ["libs/web/module/auth/data/src/index.ts"],
+      "@instagrammer/web/module/auth/feature/login": ["libs/web/module/auth/feature/login/src/index.ts"],
+      "@instagrammer/web/module/auth/feature/register": [
+        "libs/web/module/auth/feature/register/src/index.ts"
       ],
-      "@instagrammer/web/home/ui/story-item": ["libs/web/home/ui/story-item/src/index.ts"],
-      "@instagrammer/web/home/ui/svg-icon": ["libs/web/home/ui/svg-icon/src/index.ts"],
-      "@instagrammer/web/home/ui/toolbar-icon-wrapper": [
-        "libs/web/home/ui/toolbar-icon-wrapper/src/index.ts"
+      "@instagrammer/web/module/auth/feature/save-login-info": [
+        "libs/web/module/auth/feature/save-login-info/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/feature/shell": ["libs/web/module/auth/feature/shell/src/index.ts"],
+      "@instagrammer/web/module/auth/middleware": ["libs/web/module/auth/middleware/src/index.ts"],
+      "@instagrammer/web/module/auth/ui/base-info-register-step": [
+        "libs/web/module/auth/ui/base-info-register-step/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/confirmation-code": [
+        "libs/web/module/auth/ui/confirmation-code/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/dob-register-step": [
+        "libs/web/module/auth/ui/dob-register-step/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/footer": ["libs/web/module/auth/ui/footer/src/index.ts"],
+      "@instagrammer/web/module/auth/ui/log-in-with-facebook": [
+        "libs/web/module/auth/ui/log-in-with-facebook/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/or-block": ["libs/web/module/auth/ui/or-block/src/index.ts"],
+      "@instagrammer/web/module/auth/ui/phone-get-app": [
+        "libs/web/module/auth/ui/phone-get-app/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/rotating-phones": [
+        "libs/web/module/auth/ui/rotating-phones/src/index.ts"
+      ],
+      "@instagrammer/web/module/auth/ui/text-with-link-in-card": [
+        "libs/web/module/auth/ui/text-with-link-in-card/src/index.ts"
+      ],
+      "@instagrammer/web/module/home/data": ["libs/web/module/home/data/src/index.ts"],
+      "@instagrammer/web/module/home/feature/feed": ["libs/web/module/home/feature/feed/src/index.ts"],
+      "@instagrammer/web/module/home/feature/shell": ["libs/web/module/home/feature/shell/src/index.ts"],
+      "@instagrammer/web/module/home/feature/story-toolbar": [
+        "libs/web/module/home/feature/story-toolbar/src/index.ts"
+      ],
+      "@instagrammer/web/module/home/feature/suggestion": [
+        "libs/web/module/home/feature/suggestion/src/index.ts"
+      ],
+      "@instagrammer/web/module/home/feature/toolbar": ["libs/web/module/home/feature/toolbar/src/index.ts"],
+      "@instagrammer/web/module/home/feature/toolbar-small": [
+        "libs/web/module/home/feature/toolbar-small/src/index.ts"
+      ],
+      "@instagrammer/web/module/home/ui/feed-card": ["libs/web/module/home/ui/feed-card/src/index.ts"],
+      "@instagrammer/web/module/home/ui/sticky-sidenav-content-box": [
+        "libs/web/module/home/ui/sticky-sidenav-content-box/src/index.ts"
+      ],
+      "@instagrammer/web/module/home/ui/story-item": ["libs/web/module/home/ui/story-item/src/index.ts"],
+      "@instagrammer/web/module/home/ui/svg-icon": ["libs/web/module/home/ui/svg-icon/src/index.ts"],
+      "@instagrammer/web/module/home/ui/toolbar-icon-wrapper": [
+        "libs/web/module/home/ui/toolbar-icon-wrapper/src/index.ts"
       ],
       "@instagrammer/web/module/post/data": ["libs/web/module/post/data/src/index.ts"],
       "@instagrammer/web/module/post/feature/create": ["libs/web/module/post/feature/create/src/index.ts"],
@@ -103,6 +119,7 @@
       ],
       "@instagrammer/web/module/post/ui/post-sidebar": ["libs/web/module/post/ui/post-sidebar/src/index.ts"],
       "@instagrammer/web/module/post/ui/step-wrapper": ["libs/web/module/post/ui/step-wrapper/src/index.ts"],
+      "@instagrammer/web/module/shell": ["libs/web/module/shell/src/index.ts"],
       "@instagrammer/web/shared/data/api": ["libs/web/shared/data/api/src/index.ts"],
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
@@ -118,8 +135,7 @@
       "@instagrammer/web/shared/ui/not-found": ["libs/web/shared/ui/not-found/src/index.ts"],
       "@instagrammer/web/shared/ui/smooth-hover": ["libs/web/shared/ui/smooth-hover/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
-      "@instagrammer/web/shared/ui/text-area": ["libs/web/shared/ui/text-area/src/index.ts"],
-      "@instagrammer/web/shell": ["libs/web/shell/src/index.ts"]
+      "@instagrammer/web/shared/ui/text-area": ["libs/web/shared/ui/text-area/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

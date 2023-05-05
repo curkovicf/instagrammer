@@ -1,0 +1,27 @@
+{
+  "name": "web-module-auth-ui-dob-register-step",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/module/auth/ui/dob-register-step/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/dob-register-step"],
+      "options": {
+        "jestConfig": "libs/web/module/auth/ui/dob-register-step/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/module/auth/ui/dob-register-step/src/**/*.ts",
+          "libs/web/module/auth/ui/dob-register-step/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:ui", "scope:web"]
+}

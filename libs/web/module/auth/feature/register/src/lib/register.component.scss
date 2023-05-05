@@ -1,0 +1,35 @@
+@import 'ng-instagrammer-colors';
+@import 'ng-instagrammer-fonts';
+@import 'ng-instagrammer-mixins';
+
+:host {
+  @include center-flex-Y();
+  @include box-max();
+  min-height: 80vh;
+  padding-top: 2rem;
+
+  //  TODO: Delete this stuff
+  & > ng-insta-card {
+    width: 22rem;
+    height: 20rem;
+    margin-bottom: 2rem;
+
+    & > .card-content {
+    }
+  }
+
+  & > ng-insta-base-info-register-step {
+    width: 22rem;
+    margin-bottom: 1rem;
+  }
+
+  & > ng-insta-text-with-link-in-card {
+    @include box(22rem, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  & > ng-insta-phone-get-app {
+    @include box(22rem, 7rem);
+    margin-bottom: 1rem;
+  }
+}
