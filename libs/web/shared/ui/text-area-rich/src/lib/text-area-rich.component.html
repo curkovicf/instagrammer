@@ -1,17 +1,25 @@
 <div class="header">
-  <div class="avatar-wrapper">
+  <div class="avatar">
     <img [src]="imageSrc" [alt]="imageAlt" />
   </div>
 
-  <div class="username-wrapper">
+  <div class="username">
     <p>{{ username }}</p>
   </div>
 </div>
 
-<ng-inst-text-area [placeholder]="placeholder" [showLetterCount]="true"></ng-inst-text-area>
+<div class="text-area-wrapper">
+  <ng-inst-text-area
+    [placeholder]="placeholder"
+    [showLetterCount]="false"
+    (onlettercountupdate)="onWordCountUpdate($event)"
+  ></ng-inst-text-area>
+</div>
 
 <div class="footer">
   <div class="emoji-wrapper"></div>
 
-  <div class="letter-count-wrapper"></div>
+  <div class="letter-count-wrapper">
+    <span class="letter-count">{{ currentLetterCount }}/{{ maxLetterCount }}</span>
+  </div>
 </div>

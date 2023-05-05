@@ -21,7 +21,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/web/playground/src/favicon.ico",
-          "apps/web/playground/src/assets"
+          "apps/web/playground/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/web/shared/ui/assets/src/lib",
+            "output": "assets"
+          }
         ],
         "styles": [
           "apps/web/playground/src/styles.scss"

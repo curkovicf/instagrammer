@@ -18,7 +18,7 @@ export class TextAreaRichComponent implements ControlValueAccessor {
   placeholder = '';
 
   @Input()
-  username = '';
+  username = 'insta_dev_acc';
 
   @Input()
   maxLetterCount = 200;
@@ -27,7 +27,7 @@ export class TextAreaRichComponent implements ControlValueAccessor {
   rowHeight = 5;
 
   @Input()
-  imageSrc = '';
+  imageSrc = '/assets/images/no-profile-picture.svg';
 
   @Input()
   imageAlt = '';
@@ -92,5 +92,10 @@ export class TextAreaRichComponent implements ControlValueAccessor {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange($event.target.value);
+  }
+
+  public onWordCountUpdate(wordCount: { current: number; max: number }): void {
+    this.currentLetterCount = wordCount.current;
+    this.maxLetterCount = wordCount.max;
   }
 }
