@@ -135,7 +135,8 @@
       "@instagrammer/web/shared/ui/not-found": ["libs/web/shared/ui/not-found/src/index.ts"],
       "@instagrammer/web/shared/ui/smooth-hover": ["libs/web/shared/ui/smooth-hover/src/index.ts"],
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
-      "@instagrammer/web/shared/ui/text-area": ["libs/web/shared/ui/text-area/src/index.ts"]
+      "@instagrammer/web/shared/ui/text-area": ["libs/web/shared/ui/text-area/src/index.ts"],
+      "@instagrammer/web/shared/ui/text-area-rich": ["libs/web/shared/ui/text-area-rich/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

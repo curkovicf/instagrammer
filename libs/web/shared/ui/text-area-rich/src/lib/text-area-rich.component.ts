@@ -1,58 +1,39 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Optional,
-  Output,
-  Renderer2,
-  Self,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { TextAreaComponent } from '@instagrammer/web/shared/ui/text-area';
 
 @Component({
-  selector: 'ng-inst-text-area',
+  selector: 'inst-s-text-area-rich',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './text-area.component.html',
-  styleUrls: ['./text-area.component.scss'],
+  imports: [CommonModule, TextAreaComponent],
+  templateUrl: './text-area-rich.component.html',
+  styleUrls: ['./text-area-rich.component.scss'],
 })
-export class TextAreaComponent implements ControlValueAccessor {
-  @ViewChild('placeholderElement')
-  placeholderElement: ElementRef | undefined;
-
-  @ViewChild('inputElement')
-  inputElement: ElementRef | undefined;
-
+export class TextAreaRichComponent implements ControlValueAccessor {
   @Input()
   disabled = false;
 
   @Input()
-  placeholder?: string;
+  placeholder = '';
+
+  @Input()
+  username = '';
 
   @Input()
   maxLetterCount = 200;
 
   @Input()
-  showLetterCount = true;
-
-  @Input()
-  @HostBinding('style.height.rem')
   rowHeight = 5;
 
-  @Output()
-  onvaluechange: EventEmitter<string> = new EventEmitter();
+  @Input()
+  imageSrc = '';
+
+  @Input()
+  imageAlt = '';
 
   @Output()
-  onenterkeypress: EventEmitter<void> = new EventEmitter();
-
-  @Output()
-  onlettercountupdate: EventEmitter<{ current: number; max: number }> = new EventEmitter();
+  onchange: EventEmitter<boolean> = new EventEmitter();
 
   value = '';
   currentLetterCount = 0;
@@ -65,8 +46,6 @@ export class TextAreaComponent implements ControlValueAccessor {
     // so we mark the dependency as optional.
     @Optional()
     private ngControl: NgControl,
-    private elementRef: ElementRef,
-    private readonly renderer2: Renderer2,
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -76,10 +55,8 @@ export class TextAreaComponent implements ControlValueAccessor {
   /**
    * Write form value to the DOM element (model => view)
    */
-  public writeValue(value: any): void {
+  writeValue(value: any): void {
     this.value = value;
-
-    this.onvaluechange.emit(this.value);
   }
 
   /**
@@ -106,27 +83,14 @@ export class TextAreaComponent implements ControlValueAccessor {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public onChange() {}
+  public onChange(): void {}
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public onTouched() {}
+  public onTouched(): void {}
 
-  onInputChange($event: Event, currentLetterCount: number) {
-    this.currentLetterCount = currentLetterCount;
-    this.onlettercountupdate.emit({ current: this.currentLetterCount, max: this.maxLetterCount });
-
+  public onInputChange($event: Event): void {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange($event.target.value);
-  }
-
-  public onKeyDown($event: KeyboardEvent): void {
-    if ($event.key !== 'Enter') {
-      return;
-    }
-
-    $event.preventDefault();
-
-    this.onenterkeypress.emit();
   }
 }
