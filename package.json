@@ -6,7 +6,7 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start:ng-client": "nx serve --project web-instagrammer",
-    "start:playground": "nx serve --project web-playground",
+    "start:playground": "nx serve --project web-playground --port 4201",
     "start:api": "cross-env STAGE=dev && docker-compose up -d && STAGE=dev nx serve --project api --watch",
     "build": "nx build",
     "test": "STAGE=dev nx test",
