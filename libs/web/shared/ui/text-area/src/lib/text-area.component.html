@@ -1,5 +1,5 @@
 <label>
-  <span #placeholderElement>{{ placeholder }}</span>
+  <span *ngIf="!currentLetterCount" #placeholderElement class="placeholder">{{ placeholder }}</span>
 
   <textarea
     #inputElement
@@ -10,5 +10,5 @@
     (keydown)="onKeyDown($event)"
   ></textarea>
 
-  <span class="letter-count">{{ currentLetterCount }}/{{ maxLetterCount }}</span>
+  <span *ngIf="showLetterCount" class="letter-count">{{ currentLetterCount }}/{{ maxLetterCount }}</span>
 </label>

@@ -1,0 +1,27 @@
+{
+  "name": "web-module-auth-feature-save-login-info",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/web/module/auth/feature/save-login-info/src",
+  "prefix": "instagrammer",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/feature/save-login-info"],
+      "options": {
+        "jestConfig": "libs/web/module/auth/feature/save-login-info/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/module/auth/feature/save-login-info/src/**/*.ts",
+          "libs/web/module/auth/feature/save-login-info/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:feature", "scope:web"]
+}

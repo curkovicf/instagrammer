@@ -4,7 +4,6 @@
 
 :host {
   display: block;
-  margin-bottom: 0.2rem;
   text-align: left;
   height: inherit;
 
@@ -17,8 +16,8 @@
     @include center-flex-X();
 
     & > .placeholder {
-      @include position(absolute, 0.7rem, null, null, 0.7rem);
-      font-size: 12px;
+      @include position(absolute, 0, null, null, 1rem);
+      font-size: 15px;
       color: #a8a8a8;
       font-weight: 400;
       pointer-events: none;
@@ -42,7 +41,7 @@
       line-height: 18px;
       letter-spacing: normal;
       font-weight: 400;
-      padding: 0.4rem !important;
+      padding: 0 1rem !important;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
       @include on-input-focus(default);

@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+
+  & > .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 4rem;
+    background-color: #5c709b;
+
+    & > .component-wrapper {
+      margin: 1rem;
+      width: 15rem;
+    }
+  }
+
+  .hazard-border {
+    border: 1rem solid pink;
+    overflow-y: scroll;
+
+    border-image: repeating-linear-gradient(
+        -45deg,
+        #f2a417,
+        #f2a417 15px,
+        #141617 15px,
+        #141617 30px
+    ) 10;
+  }
+}

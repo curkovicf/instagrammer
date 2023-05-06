@@ -39,14 +39,20 @@ export class TextAreaComponent implements ControlValueAccessor {
   maxLetterCount = 200;
 
   @Input()
+  showLetterCount = true;
+
+  @Input()
   @HostBinding('style.height.rem')
   rowHeight = 5;
 
   @Output()
-  onchange: EventEmitter<boolean> = new EventEmitter();
+  onvaluechange: EventEmitter<string> = new EventEmitter();
 
   @Output()
   onenterkeypress: EventEmitter<void> = new EventEmitter();
+
+  @Output()
+  onlettercountupdate: EventEmitter<number> = new EventEmitter();
 
   value = '';
   currentLetterCount = 0;
@@ -70,8 +76,10 @@ export class TextAreaComponent implements ControlValueAccessor {
   /**
    * Write form value to the DOM element (model => view)
    */
-  writeValue(value: any): void {
+  public writeValue(value: any): void {
     this.value = value;
+
+    this.onvaluechange.emit(this.value);
   }
 
   /**
@@ -105,6 +113,7 @@ export class TextAreaComponent implements ControlValueAccessor {
 
   onInputChange($event: Event, currentLetterCount: number) {
     this.currentLetterCount = currentLetterCount;
+    this.onlettercountupdate.emit(this.currentLetterCount);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
