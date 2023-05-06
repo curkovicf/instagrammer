@@ -88,14 +88,9 @@ export class TextAreaRichComponent implements ControlValueAccessor {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onTouched(): void {}
 
-  public onInputChange($event: Event): void {
+  public onInputChange(value: string): void {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    this.onChange($event.target.value);
-  }
-
-  public onWordCountUpdate(wordCount: { current: number; max: number }): void {
-    this.currentLetterCount = wordCount.current;
-    this.maxLetterCount = wordCount.max;
+    this.onChange(value);
   }
 }

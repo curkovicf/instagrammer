@@ -12,7 +12,9 @@
   <ng-inst-text-area
     [placeholder]="placeholder"
     [showLetterCount]="false"
-    (onlettercountupdate)="onWordCountUpdate($event)"
+    [maxLetterCount]="maxLetterCount"
+    (onlettercountupdate)="currentLetterCount = $event"
+    (onvaluechange)="onInputChange($event)"
   ></ng-inst-text-area>
 </div>
 
@@ -20,6 +22,6 @@
   <div class="emoji-wrapper"></div>
 
   <div class="letter-count-wrapper">
-    <span class="letter-count">{{ currentLetterCount }}/{{ maxLetterCount }}</span>
+    <span class="letter-count">{{ currentLetterCount | number }}/{{ maxLetterCount | number }}</span>
   </div>
 </div>
