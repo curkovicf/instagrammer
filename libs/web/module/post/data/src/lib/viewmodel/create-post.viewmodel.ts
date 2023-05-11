@@ -6,6 +6,7 @@ export enum CreatePostStep {
   ADD_IMAGE = 'ADD_IMAGE',
   IMAGE_INFO = 'IMAGE_INFO',
   IMAGE_CROP = 'IMAGE_CROP',
+  SUCCESS = 'SUCCESS',
 }
 
 export interface ICreatePostState {
@@ -59,6 +60,9 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
 
   public submit(): void {
     console.log('Submit');
+    console.log('Stepping to Success');
+
+    this.patchState({ activeStep: CreatePostStep.SUCCESS });
   }
 
   public saveCroppedImage(croppedImageFileURI: string): void {

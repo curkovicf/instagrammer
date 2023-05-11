@@ -7,6 +7,7 @@ import { StepWrapperComponent } from '@instagrammer/web/module/post/ui/step-wrap
 import { ImageInfoComponent } from '@instagrammer/web/module/post/ui/image-info';
 import { ImageCropComponent } from '@instagrammer/web/module/post/ui/image-crop';
 import { PostSidebarComponent } from '@instagrammer/web/module/post/ui/post-sidebar';
+import { SuccessComponent } from '@instagrammer/web/module/post/ui/success';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { PostSidebarComponent } from '@instagrammer/web/module/post/ui/post-side
     ImageInfoComponent,
     ImageCropComponent,
     PostSidebarComponent,
+    SuccessComponent,
   ],
   declarations: [CreateComponent],
   exports: [CreateComponent],

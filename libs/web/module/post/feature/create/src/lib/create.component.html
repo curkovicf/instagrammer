@@ -44,4 +44,11 @@
     <ng-inst-image-info slot="content" [imageURI]="vm.croppedImageFileURI"></ng-inst-image-info>
     <ng-inst-post-sidebar slot="sidebar"></ng-inst-post-sidebar>
   </ng-inst-step-wrapper>
+
+  <!-- ************** -->
+  <!-- SUCCESS        -->
+  <!-- ************** -->
+  <ng-inst-step-wrapper *ngIf="createPostStep.SUCCESS === vm.activeStep" title="Post shared">
+    <inst-success slot="content"></inst-success>
+  </ng-inst-step-wrapper>
 </ng-inst-dialog-card>
