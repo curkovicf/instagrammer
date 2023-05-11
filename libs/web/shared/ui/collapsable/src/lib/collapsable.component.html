@@ -1,9 +1,16 @@
-<button type="button" class="collapsible">Open Collapsible</button>
+<div
+  class="collapsible {{ isOpen ? 'open' : '' }} {{ hasBottomBorder && !isOpen ? 'bottom-border' : '' }}"
+  (click)="toggleCollapsable()"
+>
+  <div class="title-wrapper">
+    <p>{{ title }}</p>
+  </div>
 
-<div class="content">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-    ea commodo consequat.
-  </p>
+  <div class="icon-wrapper">
+    <i-feather [name]="icon"></i-feather>
+  </div>
+</div>
+
+<div class="content" [style.display]="isOpen ? 'block' : 'none'">
+  <ng-content select="[slot=content]"></ng-content>
 </div>
