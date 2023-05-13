@@ -1,0 +1,9 @@
+<label>
+  <span *ngIf="!inputEl.value || inputEl.value.length === 0" class="placeholder">{{ placeholder }}</span>
+
+  <input #inputEl type="text" (input)="onInput($event, inputEl.value)" />
+
+  <span class="icon-wrapper">
+    <i-feather name="map-pin"></i-feather>
+  </span>
+</label>
