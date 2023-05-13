@@ -14,7 +14,7 @@
     align-items: flex-start;
 
     & > ng-insta-rotating-phones {
-      @include box(47%, 100%);
+      @include box(auto, 100%);
     }
 
     & > .login-form {
