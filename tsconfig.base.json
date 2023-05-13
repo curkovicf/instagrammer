@@ -125,6 +125,7 @@
       "@instagrammer/web/shared/ui/apple-spinner": ["libs/web/shared/ui/apple-spinner/src/index.ts"],
       "@instagrammer/web/shared/ui/assets": ["libs/web/shared/ui/assets/src/index.ts"],
       "@instagrammer/web/shared/ui/card": ["libs/web/shared/ui/card/src/index.ts"],
+      "@instagrammer/web/shared/ui/checkbox": ["libs/web/shared/ui/checkbox/src/index.ts"],
       "@instagrammer/web/shared/ui/closable-overlay": ["libs/web/shared/ui/closable-overlay/src/index.ts"],
       "@instagrammer/web/shared/ui/collapsable": ["libs/web/shared/ui/collapsable/src/index.ts"],
       "@instagrammer/web/shared/ui/cta-button": ["libs/web/shared/ui/cta-button/src/index.ts"],
