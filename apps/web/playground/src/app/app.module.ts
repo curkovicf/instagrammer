@@ -8,6 +8,7 @@ import { TextAreaComponent } from '@instagrammer/web/shared/ui/text-area';
 import { TextAreaRichComponent } from '@instagrammer/web/shared/ui/text-area-rich';
 import { CollapsableComponent } from '@instagrammer/web/shared/ui/collapsable';
 import { SharedFeatherModule } from '@instagrammer/web/shared/ui/feather';
+import { InputLocationComponent } from '@instagrammer/web/shared/ui/input-location';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { SharedFeatherModule } from '@instagrammer/web/shared/ui/feather';
     TextAreaRichComponent,
     CollapsableComponent,
     SharedFeatherModule,
+    InputLocationComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

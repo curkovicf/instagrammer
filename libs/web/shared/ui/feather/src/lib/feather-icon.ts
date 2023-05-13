@@ -1,1 +1,1 @@
-export type FeatherIcon = 'arrow-left' | 'chevron-down' | 'check';
+export type FeatherIcon = 'arrow-left' | 'chevron-down' | 'check' | 'map-pin';
