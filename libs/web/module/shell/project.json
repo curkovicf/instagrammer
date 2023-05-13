@@ -6,7 +6,7 @@
   "prefix": "ng-inst",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/shell"],
       "options": {
         "jestConfig": "libs/web/module/shell/jest.config.js",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/web/module/shell/src/**/*.ts", "libs/web/module/shell/src/**/*.html"]
       }

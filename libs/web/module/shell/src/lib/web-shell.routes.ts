@@ -19,7 +19,7 @@ export const shellRoutes: Routes = [
   },
   {
     path: 'auth',
-    // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+    // eslint-disable-next-line @nx/enforce-module-boundaries
     loadChildren: async () =>
       (await import('@instagrammer/web/module/auth/feature/shell')).WebAuthShellModule,
   },
