@@ -1,4 +1,8 @@
-<inst-s-text-area-rich placeholder="Write a caption..." [maxLetterCount]="2000"></inst-s-text-area-rich>
+<inst-s-text-area-rich
+  placeholder="Write a caption..."
+  [maxLetterCount]="2000"
+  (onchange)="oncaptionchange.emit($event)"
+></inst-s-text-area-rich>
 
 <inst-s-input-location></inst-s-input-location>
 

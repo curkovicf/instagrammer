@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TextAreaComponent } from '@instagrammer/web/shared/ui/text-area';
 import { TextAreaRichComponent } from '@instagrammer/web/shared/ui/text-area-rich';
@@ -18,4 +18,7 @@ import { CollapsableComponent } from '@instagrammer/web/shared/ui/collapsable';
   templateUrl: './post-sidebar.component.html',
   styleUrls: ['./post-sidebar.component.scss'],
 })
-export class PostSidebarComponent {}
+export class PostSidebarComponent {
+  @Output()
+  public oncaptionchange: EventEmitter<string> = new EventEmitter();
+}

@@ -14,6 +14,8 @@ export interface ICreatePostState {
   activeStep: CreatePostStep;
   imageFileOriginal?: File;
   croppedImageFileURI?: string;
+  caption: string;
+  location: string;
 }
 
 @Injectable({
@@ -25,12 +27,16 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
     imageFileOriginal: state.imageFileOriginal,
     isDialogOpen: state.isDialogOpen,
     activeStep: state.activeStep,
+    caption: state.caption,
+    location: state.location,
   }));
 
   constructor() {
     super({
       isDialogOpen: true,
       activeStep: CreatePostStep.ADD_IMAGE,
+      caption: '',
+      location: '',
     });
   }
 
@@ -62,10 +68,16 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
     console.log('Submit');
     console.log('Stepping to Success');
 
+    console.log('State ', this.get());
+
     this.patchState({ activeStep: CreatePostStep.SUCCESS });
   }
 
   public saveCroppedImage(croppedImageFileURI: string): void {
     this.patchState({ croppedImageFileURI });
+  }
+
+  public saveCaption(description: string): void {
+    this.patchState({ caption: description });
   }
 }

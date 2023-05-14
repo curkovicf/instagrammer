@@ -33,7 +33,7 @@ export class TextAreaRichComponent implements ControlValueAccessor {
   imageAlt = '';
 
   @Output()
-  onchange: EventEmitter<boolean> = new EventEmitter();
+  onchange: EventEmitter<string> = new EventEmitter();
 
   value = '';
   currentLetterCount = 0;
@@ -89,6 +89,7 @@ export class TextAreaRichComponent implements ControlValueAccessor {
   public onTouched(): void {}
 
   public onInputChange(value: string): void {
+    this.onchange.emit(value);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.onChange(value);
