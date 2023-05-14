@@ -3,10 +3,12 @@
 @import 'ng-instagrammer-mixins';
 
 :host {
+  display: flex;
+  flex-direction: column;
+
   & > .header {
     display: block;
     height: 3.5rem;
-    background-color: $color--background-main;
     padding: .3rem 1rem;
 
     @include center-flex-X();
@@ -31,14 +33,17 @@
     }
   }
 
-  & > ng-inst-text-area {
-    display: block;
+  & > .text-area-wrapper {
+    flex: 1;
+
+    & > ng-inst-text-area {
+      display: block;
+    }
   }
 
   & > .footer {
     display: block;
     height: 3rem;
-    background-color: $color--background-main;
 
     @include center-flex-X();
 
