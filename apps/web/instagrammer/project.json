@@ -82,13 +82,13 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["apps/web/instagrammer/src/**/*.ts", "apps/web/instagrammer/src/**/*.html"]
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/web/instagrammer"],
       "options": {
         "jestConfig": "apps/web/instagrammer/jest.config.js",

@@ -4,20 +4,29 @@
   "sourceRoot": "libs/api/shell/src",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/api/shell/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/api/shell/**/*.ts"
+        ]
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/shell"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/api/shell"
+      ],
       "options": {
         "jestConfig": "libs/api/shell/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["type:shell", "scope:api"]
+  "tags": [
+    "type:shell",
+    "scope:api"
+  ]
 }

@@ -6,15 +6,17 @@
   "prefix": "instagrammer",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/cta-button"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/web/shared/ui/cta-button"
+      ],
       "options": {
         "jestConfig": "libs/web/shared/ui/cta-button/jest.config.js",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/web/shared/ui/cta-button/src/**/*.ts",
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:ui", "scope:web"]
+  "tags": [
+    "type:ui",
+    "scope:web"
+  ]
 }

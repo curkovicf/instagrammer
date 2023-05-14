@@ -5,7 +5,7 @@
     {
       "files": ["*.entity.ts", "*.repository.ts"],
       "rules": {
-        "@nx/enforce-module-boundaries": "off"
+        "@nrwl/nx/enforce-module-boundaries": "off"
       }
     },
     {

@@ -6,7 +6,7 @@
   "prefix": "instagrammer",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/text-with-link-in-card"],
       "options": {
         "jestConfig": "libs/web/module/auth/ui/text-with-link-in-card/jest.config.js",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/web/module/auth/ui/text-with-link-in-card/src/**/*.ts",

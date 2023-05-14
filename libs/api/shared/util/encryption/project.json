@@ -6,15 +6,17 @@
   "prefix": "instagrammer",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/shared/util/encryption"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/api/shared/util/encryption"
+      ],
       "options": {
         "jestConfig": "libs/api/shared/util/encryption/jest.config.js",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/api/shared/util/encryption/src/**/*.ts",
@@ -23,5 +25,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:api"]
+  "tags": [
+    "type:util",
+    "scope:api"
+  ]
 }

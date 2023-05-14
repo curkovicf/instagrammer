@@ -4,20 +4,29 @@
   "sourceRoot": "libs/api/module/user/data/src",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/api/module/user/data/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/api/module/user/data/**/*.ts"
+        ]
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/module/user/data"],
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/api/module/user/data"
+      ],
       "options": {
         "jestConfig": "libs/api/module/user/data/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["type:data", "scope:api"]
+  "tags": [
+    "type:data",
+    "scope:api"
+  ]
 }

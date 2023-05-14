@@ -6,7 +6,7 @@
   "prefix": "ng-inst",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/footer"],
       "options": {
         "jestConfig": "libs/web/module/auth/ui/footer/jest.config.js",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/web/module/auth/ui/footer/src/**/*.ts",
