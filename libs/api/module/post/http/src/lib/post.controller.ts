@@ -1,9 +1,11 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { CreatePostDto, PostEntity } from '@instagrammer/api/module/post/data';
 import { PostService } from '@instagrammer/api/module/post/logic';
-import { UserId } from '@instagrammer/api/module/user/logic';
+import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('feed')
+import 'multer';
+
+@Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
@@ -12,8 +14,15 @@ export class PostController {
     return this.postService.getPosts(userId);
   }
 
-  @Post(':userId')
-  public createPost(@Param('userId') userId: string, @Body() createPostDto: CreatePostDto): Promise<void> {
-    return this.postService.createPost(userId, createPostDto);
+  @Post()
+  // @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(FileInterceptor('file'))
+  public createPost(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() createPostDto: CreatePostDto,
+  ): Promise<void> {
+    const userId = '3060af02-6358-41f8-8140-b6825164eb4f';
+
+    return this.postService.createPost(userId, createPostDto, file);
   }
 }
