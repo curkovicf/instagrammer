@@ -14,6 +14,22 @@ export class PostApiService {
     this.url = `${this.environmentService.baseUrl}/post`;
   }
 
+  /**
+   *
+   * @param userId
+   */
+  public getAll(userId: string): Observable<PostApi.Post[]> {
+    return this.http.get<PostApi.Post[]>(`${this.url}`, {
+      params: {
+        userId,
+      },
+    });
+  }
+
+  /**
+   *
+   * @param post
+   */
   public uploadPost(post: PostApi.Post): Observable<PostApi.Post> {
     const formData = new FormData();
 

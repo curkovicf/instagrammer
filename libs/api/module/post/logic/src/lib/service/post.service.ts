@@ -16,8 +16,8 @@ export class PostService {
     @InjectRepository(PhotoRepository) private readonly photoRepository: PhotoRepository,
   ) {}
 
-  public async getPosts(userId: string): Promise<PostEntity[]> {
-    return await this.postRepository.getPosts(userId);
+  public getPosts(userId: string): Promise<PostEntity[]> {
+    return this.postRepository.getPosts(userId);
   }
 
   public async createPost(
