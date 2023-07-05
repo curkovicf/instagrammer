@@ -21,7 +21,7 @@ export class CollapsableComponent {
   icon: FeatherIcon = 'chevron-down';
 
   @Input()
-  hasBottomBorder = true;
+  hasBottomBorder = false;
 
   public toggleCollapsable(): void {
     this.isOpen = !this.isOpen;

@@ -5,34 +5,34 @@
   <!-- ************** -->
   <!-- ADD IMAGE STEP -->
   <!-- ************** -->
-  <!--  <ng-inst-step-wrapper *ngIf="createPostStep.ADD_IMAGE === vm.activeStep" title="Create new post">-->
-  <!--    <ng-inst-image-add slot="content" (fileLoad)="createPostViewModel.saveFile($event)"></ng-inst-image-add>-->
-  <!--  </ng-inst-step-wrapper>-->
+  <ng-inst-step-wrapper *ngIf="createPostStep.ADD_IMAGE === vm.activeStep" title="Create new post">
+    <ng-inst-image-add slot="content" (fileLoad)="createPostViewModel.saveFile($event)"></ng-inst-image-add>
+  </ng-inst-step-wrapper>
 
   <!-- ************** -->
-  <!-- CROP IMAGE -->
+  <!-- CROP IMAGE     -->
   <!-- ************** -->
-  <!--  <ng-inst-step-wrapper-->
-  <!--    *ngIf="createPostStep.IMAGE_CROP === vm.activeStep"-->
-  <!--    title="Crop"-->
-  <!--    stepNextTitle="Next"-->
-  <!--    [canStepBack]="true"-->
-  <!--    [canStepNext]="true"-->
-  <!--    (stepBack)="createPostViewModel.stepBackToAddImage()"-->
-  <!--    (stepNext)="createPostViewModel.stepToImageInfo($event)"-->
-  <!--  >-->
-  <!--    <ng-inst-image-crop-->
-  <!--      slot="content"-->
-  <!--      [imageFile]="vm.imageFileOriginal"-->
-  <!--      (imageCropped)="createPostViewModel.saveCroppedImage($event)"-->
-  <!--    ></ng-inst-image-crop>-->
-  <!--  </ng-inst-step-wrapper>-->
+  <ng-inst-step-wrapper
+    *ngIf="createPostStep.IMAGE_CROP === vm.activeStep"
+    title="Crop"
+    stepNextTitle="Next"
+    [canStepBack]="true"
+    [canStepNext]="true"
+    (stepBack)="createPostViewModel.stepBackToAddImage()"
+    (stepNext)="createPostViewModel.stepToImageInfo()"
+  >
+    <ng-inst-image-crop
+      slot="content"
+      [imageFile]="vm.imageFileOriginal"
+      (imageCropped)="createPostViewModel.saveCroppedImage($event)"
+    ></ng-inst-image-crop>
+  </ng-inst-step-wrapper>
 
   <!-- ************** -->
   <!-- ADD IMAGE INFO -->
   <!-- ************** -->
   <ng-inst-step-wrapper
-    *ngIf="createPostStep.ADD_IMAGE === vm.activeStep"
+    *ngIf="createPostStep.IMAGE_INFO === vm.activeStep"
     title="Create new post"
     stepNextTitle="Share"
     [canStepBack]="true"
@@ -42,7 +42,10 @@
     (stepNext)="createPostViewModel.submit()"
   >
     <ng-inst-image-info slot="content" [imageURI]="vm.croppedImageFileURI"></ng-inst-image-info>
-    <ng-inst-post-sidebar slot="sidebar"></ng-inst-post-sidebar>
+    <ng-inst-post-sidebar
+      slot="sidebar"
+      (oncaptionchange)="createPostViewModel.saveCaption($event)"
+    ></ng-inst-post-sidebar>
   </ng-inst-step-wrapper>
 
   <!-- ************** -->

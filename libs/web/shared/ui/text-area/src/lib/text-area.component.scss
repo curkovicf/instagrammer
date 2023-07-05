@@ -10,7 +10,6 @@
   & > label {
     display: block;
     position: relative;
-    background-color: $color--background-main;
     height: inherit;
 
     @include center-flex-X();

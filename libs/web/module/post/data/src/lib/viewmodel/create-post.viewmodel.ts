@@ -1,6 +1,8 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { first, Observable, tap } from 'rxjs';
+import { PostApiService } from '@instagrammer/web/shared/data/api';
+import { PostApi } from '@instagrammer/shared/data/api';
 
 export enum CreatePostStep {
   ADD_IMAGE = 'ADD_IMAGE',
@@ -14,6 +16,8 @@ export interface ICreatePostState {
   activeStep: CreatePostStep;
   imageFileOriginal?: File;
   croppedImageFileURI?: string;
+  caption: string;
+  location: string;
 }
 
 @Injectable({
@@ -25,12 +29,16 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
     imageFileOriginal: state.imageFileOriginal,
     isDialogOpen: state.isDialogOpen,
     activeStep: state.activeStep,
+    caption: state.caption,
+    location: state.location,
   }));
 
-  constructor() {
+  constructor(private readonly postApiService: PostApiService) {
     super({
       isDialogOpen: true,
       activeStep: CreatePostStep.ADD_IMAGE,
+      caption: '',
+      location: '',
     });
   }
 
@@ -48,24 +56,36 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
     this.patchState({ croppedImageFileURI: undefined, activeStep: CreatePostStep.ADD_IMAGE });
   }
 
-  public stepToImageInfo($event: void) {
-    console.log('Step to Image Info ', $event);
+  public stepToImageInfo() {
     this.patchState({ activeStep: CreatePostStep.IMAGE_INFO });
   }
 
   public stepBackToCropImage(): void {
-    console.log('Step back to crop image');
     this.patchState({ activeStep: CreatePostStep.IMAGE_CROP });
   }
 
   public submit(): void {
-    console.log('Submit');
-    console.log('Stepping to Success');
+    const storeData = this.get();
 
-    this.patchState({ activeStep: CreatePostStep.SUCCESS });
+    const post: PostApi.Post = {
+      caption: storeData.caption,
+      image: <File>storeData.imageFileOriginal,
+    };
+
+    this.postApiService
+      .uploadPost(post)
+      .pipe(
+        first(),
+        tap(() => this.patchState({ activeStep: CreatePostStep.SUCCESS })),
+      )
+      .subscribe();
   }
 
   public saveCroppedImage(croppedImageFileURI: string): void {
     this.patchState({ croppedImageFileURI });
+  }
+
+  public saveCaption(description: string): void {
+    this.patchState({ caption: description });
   }
 }

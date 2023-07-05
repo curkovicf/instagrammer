@@ -1,5 +1,13 @@
 :host {
   display: block;
   height: 100%;
-  background-color: orange;
+
+  & > inst-s-text-area-rich {
+    border-bottom: 1px solid rgb(219, 219, 219);
+    height: 17rem;
+  }
+
+  & > inst-s-input-location {
+    height: 2.9rem;
+  }
 }

@@ -1,20 +1,39 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { PostApiService } from '@instagrammer/web/shared/data/api';
+import { first, Observable, tap } from 'rxjs';
+import { PostApi } from '@instagrammer/shared/data/api';
 
 export interface IFeedState {
-  items: any[];
+  posts: PostApi.Post[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class FeedViewModel extends ComponentStore<IFeedState> {
-  // public vm$: Observable<IFeedState> = this.select(state => ({}));
+  public vm$: Observable<IFeedState> = this.select(state => ({
+    posts: state.posts,
+  }));
 
-  constructor() {
+  constructor(private readonly postApiService: PostApiService) {
     super({
-      items: [],
+      posts: [],
     });
+  }
+
+  public getAll(): void {
+    const user = '3060af02-6358-41f8-8140-b6825164eb4f';
+
+    this.postApiService
+      .getAll(user)
+      .pipe(
+        first(),
+        tap(posts => {
+          console.log(posts);
+          this.patchState({ posts });
+        }),
+      )
+      .subscribe();
   }
 }

@@ -1,11 +1,13 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PhotoEntity } from './photo.entity';
@@ -18,9 +20,6 @@ export class PostEntity {
 
   @Column({ nullable: true })
   public description?: string;
-
-  @Column()
-  public createdAt!: Date;
 
   @ManyToOne(() => UserEntity, user => user.posts)
   @JoinColumn()
@@ -37,4 +36,10 @@ export class PostEntity {
   @OneToMany(() => CommentEntity, user => user.post, { cascade: true })
   @JoinColumn()
   public comments!: CommentEntity[];
+
+  @CreateDateColumn()
+  public createdAt!: Date;
+
+  @UpdateDateColumn()
+  public updatedAt!: Date;
 }

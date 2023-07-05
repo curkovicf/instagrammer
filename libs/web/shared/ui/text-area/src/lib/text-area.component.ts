@@ -46,7 +46,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   rowHeight = 5;
 
   @Output()
-  onvaluechange: EventEmitter<string> = new EventEmitter();
+  onchange: EventEmitter<string> = new EventEmitter();
 
   @Output()
   onenterkeypress: EventEmitter<void> = new EventEmitter();
@@ -79,7 +79,7 @@ export class TextAreaComponent implements ControlValueAccessor {
   public writeValue(value: any): void {
     this.value = value;
 
-    this.onvaluechange.emit(this.value);
+    this.onchange.emit(this.value);
   }
 
   /**
@@ -111,9 +111,11 @@ export class TextAreaComponent implements ControlValueAccessor {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public onTouched() {}
 
-  onInputChange($event: Event, currentLetterCount: number) {
-    this.currentLetterCount = currentLetterCount;
+  onInputChange($event: Event, value: string) {
+    this.currentLetterCount = value.length;
+
     this.onlettercountupdate.emit(this.currentLetterCount);
+    this.onchange.emit(value);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

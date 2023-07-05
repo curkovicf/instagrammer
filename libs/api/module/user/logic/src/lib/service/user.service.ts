@@ -22,7 +22,6 @@ export class UserService {
     private readonly userRepository: UserRepository,
     private readonly jwtUtilService: JwtUtilService,
     private readonly encryptionService: BaseEncryptionService,
-
     private readonly refreshTokenService: RefreshTokenService,
   ) {}
 
