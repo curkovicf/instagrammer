@@ -23,9 +23,9 @@ export class UserController {
 
   @Post('/register')
   public async register(@Body() registerDto: UserApi.RegisterRequestDto): Promise<void> {
-    this.logger.debug(`Trying to register new user, data: ${registerDto}`);
+    this.logger.debug(`Registering new user, data: ${registerDto}`);
 
-    return await this.authService.register(registerDto);
+    return await this.authService.signUp(registerDto);
   }
 
   @Post('/username-exists')
@@ -43,9 +43,9 @@ export class UserController {
     @Res({ passthrough: true }) res: Response,
     @Body() loginDto: UserApi.LoginRequestDto,
   ): Promise<UserApi.LoginResponseDto> {
-    this.logger.debug(`Trying to login user, data: ${loginDto}`);
+    this.logger.debug(`Sign in user, data: ${loginDto}`);
 
-    const { loginResponseDto, refreshToken } = await this.authService.login(loginDto);
+    const { loginResponseDto, refreshToken } = await this.authService.signIn(loginDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
 
     res.setHeader('Set-Cookie', newCookie);
@@ -59,7 +59,7 @@ export class UserController {
     @Res({ passthrough: true }) res: Response,
     @Body() refreshJwtDto: UserApi.RefreshJwtRequestDto,
   ): Promise<UserApi.JwtDto> {
-    this.logger.debug(`Trying to sign in via refresh token, data: ${refreshJwtDto}`);
+    this.logger.debug(`Sign in user via refresh token, data: ${refreshJwtDto}`);
 
     const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
     const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken.value);
@@ -75,7 +75,7 @@ export class UserController {
     @Res({ passthrough: true }) res: Response,
     @RefreshTokenFromCookie() refreshToken: string,
   ): Promise<UserApi.LoginResponseDto | boolean> {
-    this.logger.debug(`Trying to get new access token}`);
+    this.logger.debug(`Get new access token`);
 
     try {
       return await this.authService.generateNewAccessToken(refreshToken);
@@ -96,7 +96,7 @@ export class UserController {
     @Res({ passthrough: true }) res: Response,
     @Body() logoutDto: UserApi.LogoutRequestDto,
   ): Promise<void> {
-    this.logger.debug(`Trying to logout, data: ${logoutDto}`);
+    this.logger.debug(`Logging out user, data: ${logoutDto}`);
 
     res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
 

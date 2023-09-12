@@ -29,7 +29,7 @@ export class UserService {
    * Attempts to create/register new user
    * @param registerDto
    */
-  public async register(registerDto: UserApi.RegisterRequestDto): Promise<void> {
+  public async signUp(registerDto: UserApi.RegisterRequestDto): Promise<void> {
     try {
       await this.userRepository.createUser({
         ...registerDto,
@@ -48,36 +48,45 @@ export class UserService {
    * Attempts to log-in/sign-in user
    * @param loginDto
    */
-  public async login(
+  public async signIn(
     loginDto: UserApi.LoginRequestDto,
   ): Promise<{ loginResponseDto: UserApi.LoginResponseDto; refreshToken: string }> {
+    //  1. Extract data from DTO
     const { username, password, email } = loginDto;
 
+    //  2. Find user via email or username
     const user = await this.userRepository.findOneByUsernameOrEmail(username ?? email);
 
+    //  3. If not user throw exception
     if (!user) {
       throw new NotFoundException(
         "The username you entered doesn't belong to an account. Please check your username and try again.",
       );
     }
 
+    //  4. If invalid password, throw invalid password
     if (!(await this.encryptionService.compare(password, user.password))) {
       throw new UnauthorizedException(
         'Sorry, your password was incorrect. Please double-check your password.',
       );
     }
 
+    //  5. Generate access & refresh token pairs
     const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, false);
 
+    //  6. Delete existing refresh token
     await this.deleteCurrentRefreshToken(user);
 
+    //  7. Create new refresh token and attach it to the user
     user.refreshToken = await this.refreshTokenService.createNewRefreshToken({
       ...refreshToken,
       value: await this.encryptionService.hash(refreshToken.value),
     });
 
+    //  8. Save user with updated refresh token data
     await this.userRepository.save(user);
 
+    //  9. Map data and return needed results to the frontend part
     return {
       loginResponseDto: {
         username,
@@ -224,9 +233,5 @@ export class UserService {
 
     await this.userRepository.save(userEntity);
     await this.refreshTokenService.delete(refreshTokenId);
-  }
-
-  async findOne(username: string): Promise<UserEntity | null> {
-    return this.userRepository.findOne({ where: { username } });
   }
 }
