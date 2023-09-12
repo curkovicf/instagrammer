@@ -6,17 +6,15 @@
   "prefix": "instagrammer",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/api/module/post/http"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/api/module/post/http"],
       "options": {
         "jestConfig": "libs/api/module/post/http/jest.config.js",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/api/module/post/http/src/**/*.ts",
@@ -25,8 +23,5 @@
       }
     }
   },
-  "tags": [
-    "type:http",
-    "scope:api"
-  ]
+  "tags": ["type:http", "scope:api"]
 }

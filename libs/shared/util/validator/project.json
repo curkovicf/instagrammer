@@ -4,29 +4,20 @@
   "sourceRoot": "libs/shared/util/validator/src",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/shared/util/validator/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/shared/util/validator/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/shared/util/validator"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/util/validator"],
       "options": {
         "jestConfig": "libs/shared/util/validator/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [
-    "type:util",
-    "scope:shared"
-  ]
+  "tags": ["type:util", "scope:shared"]
 }

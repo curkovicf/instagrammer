@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "prettier"],
+  "plugins": ["@nx", "prettier"],
   "rules": {
     "prettier/prettier": "warn"
   },
@@ -9,7 +9,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
@@ -29,7 +29,14 @@
               },
               {
                 "sourceTag": "type:feature",
-                "onlyDependOnLibsWithTags": ["type:feature", "type:core", "type:ui", "type:data", "type:util", "type:middleware"]
+                "onlyDependOnLibsWithTags": [
+                  "type:feature",
+                  "type:core",
+                  "type:ui",
+                  "type:data",
+                  "type:util",
+                  "type:middleware"
+                ]
               },
               {
                 "sourceTag": "type:http",
@@ -45,7 +52,17 @@
               },
               {
                 "sourceTag": "type:shell",
-                "onlyDependOnLibsWithTags": ["type:shell", "type:data", "type:core", "type:feature", "type:util", "type:ui", "type:http", "type:config", "type:middleware"]
+                "onlyDependOnLibsWithTags": [
+                  "type:shell",
+                  "type:data",
+                  "type:core",
+                  "type:feature",
+                  "type:util",
+                  "type:ui",
+                  "type:http",
+                  "type:config",
+                  "type:middleware"
+                ]
               },
               {
                 "sourceTag": "type:config",
@@ -71,8 +88,8 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": [
-        "plugin:@nrwl/nx/typescript",
-        "plugin:@nrwl/nx/angular",
+        "plugin:@nx/typescript",
+        "plugin:@nx/angular",
         "plugin:prettier/recommended",
         "plugin:ngrx/recommended"
       ],
@@ -80,10 +97,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": [
-        "plugin:@nrwl/nx/angular-template",
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "extends": ["plugin:@nx/angular-template", "plugin:@angular-eslint/template/recommended"],
       "rules": {
         "@angular-eslint/template/i18n": [
           "off",
