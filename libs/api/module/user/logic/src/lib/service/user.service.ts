@@ -50,6 +50,7 @@ export class UserService {
    */
   public async signIn(
     loginDto: UserApi.LoginRequestDto,
+    isLongSession?: boolean,
   ): Promise<{ loginResponseDto: UserApi.LoginResponseDto; refreshToken: string }> {
     //  1. Extract data from DTO
     const { username, password, email } = loginDto;
@@ -72,7 +73,7 @@ export class UserService {
     }
 
     //  5. Generate access & refresh token pairs
-    const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, false);
+    const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, isLongSession);
 
     //  6. Delete existing refresh token
     await this.deleteCurrentRefreshToken(user);

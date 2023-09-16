@@ -1,4 +1,13 @@
-import { IsBoolean, IsDate, IsEmail, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsDate,
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Matches,
+  MinLength,
+} from 'class-validator';
 import { IsFieldDefined } from '@instagrammer/shared/util/validator';
 
 export namespace UserApi {
@@ -11,6 +20,10 @@ export namespace UserApi {
     @IsEmail()
     @IsFieldDefined('username')
     email?: string;
+
+    @IsBoolean()
+    @IsOptional()
+    isLongSession?: boolean;
 
     /**
      * About regex

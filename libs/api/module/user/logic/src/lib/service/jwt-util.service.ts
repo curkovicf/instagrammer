@@ -6,6 +6,7 @@ import { JwtPayload } from '@instagrammer/api/shared/data';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/env';
+import { AuthTokenPairDto } from '@instagrammer/api/module/post/data';
 
 @Injectable()
 export class JwtUtilService {
@@ -19,7 +20,11 @@ export class JwtUtilService {
     };
   }
 
-  public generateTokenPair(username: string, isLongSession: boolean): UserApi.JwtPairDto {
+  public generateTokenNew(username: string, jwtExpiresStr: JwtExpires): string {
+    return this.createJwt(username, jwtExpiresStr);
+  }
+
+  public generateTokenPair(username: string, isLongSession?: boolean): UserApi.JwtPairDto {
     const accessToken: UserApi.JwtDto = this.generateToken(username, JwtExpires.ACCESS_JWT);
 
     const refreshTokenExpires = isLongSession
@@ -40,6 +45,23 @@ export class JwtUtilService {
       expiresIn: jwtExpires,
       secret: this.configService.get<string>(EnvironmentVariable.PASSPORT_SECRET),
     });
+  }
+
+  /**
+   * Generates access & refresh token pair, it defaults to short session
+   *
+   * @param username
+   * @param accessTokenExpires
+   */
+  public generateAuthTokenPair(
+    username: string,
+    accessTokenExpires: JwtExpires,
+    refreshTokenExpires: JwtExpires = JwtExpires.REFRESH_JWT_EXPIRES_SHORT,
+  ): AuthTokenPairDto {
+    return {
+      accessToken: this.createJwt(username, accessTokenExpires),
+      refreshToken: this.createJwt(username, refreshTokenExpires),
+    };
   }
 
   public decode(
