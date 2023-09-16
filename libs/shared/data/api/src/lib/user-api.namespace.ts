@@ -113,6 +113,16 @@ export namespace UserApi {
     expiresAt: number;
   }
 
+  export interface LoginResponseWrapperDto {
+    accessToken: string;
+    refreshToken: string;
+    loginResponseDto: LoginResponseDtoV2;
+  }
+
+  export interface LoginResponseDtoV2 {
+    username: string;
+  }
+
   export type RegisterResponseDto = LoginResponseDto;
 
   export interface UsernameExistsResponseDto {

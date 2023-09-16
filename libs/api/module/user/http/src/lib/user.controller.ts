@@ -22,10 +22,22 @@ export class UserController {
   constructor(private readonly authService: UserService) {}
 
   @Post('/register')
-  public async register(@Body() registerDto: UserApi.RegisterRequestDto): Promise<void> {
+  public async register(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+    @Body() registerDto: UserApi.RegisterRequestDto,
+  ): Promise<UserApi.LoginResponseDtoV2> {
     this.logger.debug(`Registering new user, data: ${registerDto}`);
 
-    return await this.authService.signUp(registerDto);
+    const { loginResponseDto, refreshToken, accessToken } = await this.authService.signUpV2(registerDto);
+
+    const refreshTokenCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
+    const accessTokenCookie = this.authService.createNewHttpHeaderWithCookie(accessToken);
+
+    res.setHeader('Set-Cookie', newCookie);
+
+
+    return loginResponse.loginResponseDto;
   }
 
   @Post('/username-exists')
