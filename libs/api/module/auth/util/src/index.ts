@@ -1,1 +1,1 @@
-export * from './lib/auth-cookie-builder.function';
+export * from './lib/service/cookie.service';
