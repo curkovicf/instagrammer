@@ -31,6 +31,7 @@
       "@instagrammer/api/module/auth/data": ["libs/api/module/auth/data/src/index.ts"],
       "@instagrammer/api/module/auth/http": ["libs/api/module/auth/http/src/index.ts"],
       "@instagrammer/api/module/auth/logic": ["libs/api/module/auth/logic/src/index.ts"],
+      "@instagrammer/api/module/auth/util": ["libs/api/module/auth/util/src/index.ts"],
       "@instagrammer/api/module/post/data": ["libs/api/module/post/data/src/index.ts"],
       "@instagrammer/api/module/post/http": ["libs/api/module/post/http/src/index.ts"],
       "@instagrammer/api/module/post/logic": ["libs/api/module/post/logic/src/index.ts"],
