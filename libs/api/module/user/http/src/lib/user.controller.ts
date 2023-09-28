@@ -13,7 +13,7 @@ import { Request, Response } from 'express';
 import { UserService } from '@instagrammer/api/module/user/logic';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
-import { RefreshTokenFromCookie } from '@instagrammer/api/core/middleware/decorator';
+import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/shared/decorator';
 
 @Controller('auth')
 export class UserController {
@@ -35,7 +35,6 @@ export class UserController {
     const accessTokenCookie = this.authService.createNewHttpHeaderWithCookie(accessToken);
 
     res.setHeader('Set-Cookie', newCookie);
-
 
     return loginResponse.loginResponseDto;
   }

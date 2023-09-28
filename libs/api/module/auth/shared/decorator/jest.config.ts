@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'api-core-middleware-decorator',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'api-module-auth-shared-decorator',
+  preset: '../../../../../../jest.preset.js',
   globals: {},
   testEnvironment: 'node',
   transform: {
@@ -13,5 +13,5 @@ export default {
     ],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../../coverage/libs/api/core/middleware/decorator',
+  coverageDirectory: '../../../../../../coverage/libs/api/module/auth/shared/decorator',
 };
