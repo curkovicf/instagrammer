@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Global, Module } from '@nestjs/common';
 
-@NgModule({
-  imports: [CommonModule],
-})
+@Global()
+@Module({})
 export class ApiModuleAuthLogicModule {}

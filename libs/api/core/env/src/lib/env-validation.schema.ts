@@ -10,10 +10,7 @@ export const envFileValidationSchema = Joi.object({
   PASSPORT_TOKEN_EXPIRES: Joi.number().required(),
   PASSPORT_STRATEGY: Joi.string().required(),
   PASSPORT_DEFAULT_STRATEGY: Joi.string().required(),
-  AUTH_ACCESS_TOKEN_EXPIRES_STRING: Joi.string().required(),
-  AUTH_ACCESS_TOKEN_EXPIRES_NUMBER: Joi.number().required(),
-  AUTH_REFRESH_TOKEN_SHORT_EXPIRES_STRING: Joi.string().required(),
-  AUTH_REFRESH_TOKEN_SHORT_EXPIRES_NUMBER: Joi.number().required(),
-  AUTH_REFRESH_TOKEN_LONG_EXPIRES_STRING: Joi.string().required(),
-  AUTH_REFRESH_TOKEN_LONG_EXPIRES_NUMBER: Joi.number().required(),
+  ACCESS_TOKEN_EXPIRES_IN_SECONDS: Joi.number().required(),
+  REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS: Joi.number().required(),
+  REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS: Joi.number().required(),
 });

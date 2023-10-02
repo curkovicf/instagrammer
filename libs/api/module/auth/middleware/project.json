@@ -1,21 +1,21 @@
 {
-  "name": "api-module-auth-shared-decorator",
-  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/module/auth/shared/decorator/src",
+  "name": "api-module-auth-middleware",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api/module/auth/middleware/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/api/module/auth/shared/decorator/**/*.ts"]
+        "lintFilePatterns": ["libs/api/module/auth/middleware/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/api/module/auth/shared/decorator/jest.config.ts",
+        "jestConfig": "libs/api/module/auth/middleware/jest.config.ts",
         "passWithNoTests": true
       }
     }

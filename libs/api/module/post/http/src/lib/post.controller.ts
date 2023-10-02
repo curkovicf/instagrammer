@@ -4,7 +4,7 @@ import { PostService } from '@instagrammer/api/module/post/logic';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { AuthGuard } from '@nestjs/passport';
-import { User } from '@instagrammer/api/module/auth/shared/decorator';
+import { User } from '@instagrammer/api/module/auth/middleware';
 import { UserEntity } from '@instagrammer/api/module/user/data';
 
 import 'multer';

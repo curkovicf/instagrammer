@@ -13,7 +13,7 @@ import { Request, Response } from 'express';
 import { UserService } from '@instagrammer/api/module/user/logic';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
-import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/shared/decorator';
+import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/middleware';
 
 @Controller('auth')
 export class UserController {
