@@ -9,14 +9,14 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
-import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
+// import { DecodedJwtDto, UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { RefreshTokenService } from './refresh-token.service';
 import { JwtUtilService } from './jwt-util.service';
 import { JwtExpires } from '../interface/jwt-expires.enum';
 import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable()
-export class UserService {
+export class AuthService {
   constructor(
     @InjectRepository(UserRepository)
     private readonly userRepository: UserRepository,

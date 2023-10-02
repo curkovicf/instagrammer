@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RefreshTokenEntity, RefreshTokenRepository } from '@instagrammer/api/module/user/data';
+// import { RefreshTokenEntity, RefreshTokenRepository } from '@instagrammer/api/module/user/data';
 import { UserApi } from '@instagrammer/shared/data/api';
 
 @Injectable()

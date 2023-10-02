@@ -5,8 +5,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '@instagrammer/api/module/auth/middleware';
-import { UserEntity } from '@instagrammer/api/module/user/data';
-
+// import { UserEntity } from '@instagrammer/api/module/user/data';
 import 'multer';
 
 @Controller('post')

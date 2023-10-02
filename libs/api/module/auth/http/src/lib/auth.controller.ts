@@ -10,14 +10,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { UserService } from '@instagrammer/api/module/user/logic';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
 import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/middleware';
 
 @Controller('auth')
-export class UserController {
-  private readonly logger = new Logger(UserController.name);
+export class AuthController {
+  private readonly logger = new Logger(AuthController.name);
 
   constructor(private readonly authService: UserService) {}
 

@@ -1,1 +1,2 @@
-export * from './lib/api-module-auth-http.module';
+export * from './lib/auth.controller.module';
+export * from './lib/auth.controller';

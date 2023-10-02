@@ -2,6 +2,7 @@
   "name": "api-module-user-data",
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/api/module/user/data/src",
+  "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
@@ -12,12 +13,18 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/api/module/user/data"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/api/module/user/data/jest.config.js",
+        "jestConfig": "libs/api/module/user/data/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },
-  "tags": ["type:data", "scope:api"]
+  "tags": []
 }
