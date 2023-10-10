@@ -14,9 +14,6 @@ export class AccountEntity {
   @Column({ unique: true })
   public email!: string;
 
-  @Column({ nullable: true })
-  public fullName?: string;
-
   @Exclude()
   @Column()
   public password!: string;

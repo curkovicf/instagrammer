@@ -1,7 +1,7 @@
 import { DataSource, Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { UserEntity } from '../entity/user.entity';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { SignUpDto } from '@instagrammer/api/module/auth/logic';
 
 @Injectable()
 export class UserRepository extends Repository<UserEntity> {
@@ -9,8 +9,8 @@ export class UserRepository extends Repository<UserEntity> {
     super(UserEntity, dataSource.createEntityManager());
   }
 
-  public async createUser(registerDto: UserApi.RegisterRequestDto): Promise<void> {
-    const { username, password, email, fullName, dob } = registerDto;
+  public async createUser(signUpDto: SignUpDto): Promise<void> {
+    const { username, password, email, fullName, dob } = signUpDto;
 
     const newUser = this.create({
       username,
