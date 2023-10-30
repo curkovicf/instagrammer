@@ -20,6 +20,7 @@ export class AccountEntity {
 
   @Column({
     nullable: true,
+    unique: true,
   })
-  public refreshToken?: string;
+  public refreshToken?: string | null;
 }

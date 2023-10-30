@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { JwtExpires } from '../interface/jwt-expires.enum';
 import * as jwt from 'jsonwebtoken';
 import { JwtPayload } from '@instagrammer/api/shared/data';
 import { UserApi } from '@instagrammer/shared/data/api';

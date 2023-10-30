@@ -1,7 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AccountRepository } from './repository/account.repository';
+import { Module } from '@nestjs/common';
 
-@NgModule({
+@Module({
   imports: [CommonModule],
+  providers: [AccountRepository],
+  exports: [AccountRepository],
 })
 export class ApiModuleAuthDataModule {}
