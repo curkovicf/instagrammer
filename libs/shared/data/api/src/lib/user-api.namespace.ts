@@ -5,25 +5,13 @@ export namespace UserApi {
     issuedAt: number;
   }
 
-  export interface JwtPairDto {
-    accessToken: JwtDto;
-    refreshToken: JwtDto;
-  }
-
-  export interface LoginResponseDto {
-    username: string;
-    jwt: string;
-    issuedAt: number;
-    expiresAt: number;
-  }
-
   export interface LoginResponseWrapperDto {
     accessToken: string;
     refreshToken: string;
-    loginResponseDto: LoginResponseDtoV2;
+    loginResponseDto: LoginResponseDto;
   }
 
-  export interface LoginResponseDtoV2 {
+  export interface LoginResponseDto {
     username: string;
   }
 

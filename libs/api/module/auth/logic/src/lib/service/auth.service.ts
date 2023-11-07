@@ -24,7 +24,7 @@ export class AuthService {
     private readonly userRepository: UserRepository,
     @InjectRepository(AccountRepository)
     private readonly accountRepository: AccountRepository,
-    private readonly jwtUtilService: JwtAuthService,
+    private readonly jwtAuthService: JwtAuthService,
     private readonly encryptionService: BaseEncryptionService,
   ) {}
 
@@ -32,14 +32,12 @@ export class AuthService {
    * Attempts to create/register new user
    * @param signUpDto
    */
-  public async signUp(signUpDto: SignUpDto): Promise<UserApi.LoginResponseWrapperDto> {
+  public async signUp(signUpDto: SignUpDto): Promise<void> {
     try {
       await this.accountRepository.createUser({
         ...signUpDto,
         password: await this.encryptionService.hash(signUpDto.password),
       });
-
-      return this.signIn(signUpDto);
     } catch (err) {
       if (err instanceof QueryFailedError && Number(err.driverError.code) === 23505) {
         throw new ConflictException('Username already taken');
@@ -75,17 +73,10 @@ export class AuthService {
     }
 
     //  5. Generate access & refresh token pairs
-    const { accessToken, refreshToken } = this.jwtUtilService.generateTokenPair(username, isLongSession);
+    const { accessToken, refreshToken } = this.jwtAuthService.generateAuthTokenPair(isLongSession);
 
-    //  6. Delete existing refresh token
-    user.refreshToken = null;
-
-    //  7. Create new refresh token and attach it to the user
-    user.refreshToken = await this.jwtUtilService.generateToken();
-    user.refreshToken = await this.refreshTokenService.createNewRefreshToken({
-      ...refreshToken,
-      value: await this.encryptionService.hash(refreshToken.value),
-    });
+    //  6. Hash and store new refresh token to the DB
+    user.refreshToken = await this.encryptionService.hash(refreshToken);
 
     //  8. Save user with updated refresh token data
     await this.userRepository.save(user);
@@ -95,8 +86,8 @@ export class AuthService {
       loginResponseDto: {
         username,
       },
-      accessToken: accessToken.value,
-      refreshToken: refreshToken.value,
+      accessToken: accessToken,
+      refreshToken: refreshToken,
     };
   }
 
@@ -104,8 +95,7 @@ export class AuthService {
    * Checks if username is being used in the database
    * @param usernameDto
    */
-  public async checkIfUsernameExists(usernameDto: UsernameDto): Promise<UserApi.UsernameExistsResponseDto> {
-    const { username } = usernameDto;
+  public async checkIfUsernameExists({ username }: UsernameDto): Promise<UserApi.UsernameExistsResponseDto> {
     const responseDto: UserApi.UsernameExistsResponseDto = { username, isUsernameAvailable: false };
 
     const usernameExists = await this.accountRepository.findOne({ where: { username } });
@@ -123,9 +113,7 @@ export class AuthService {
    * Attempts to log-out user
    * @param signOutDto
    */
-  async signOut(signOutDto: SignOutDto): Promise<void> {
-    const { usernameOrEmail } = signOutDto;
-
+  async signOut({ usernameOrEmail }: SignOutDto): Promise<void> {
     const user = await this.accountRepository.findOneByUsernameOrEmail(usernameOrEmail);
 
     if (!user) {
@@ -135,5 +123,15 @@ export class AuthService {
     user.refreshToken = null;
 
     await this.userRepository.save(user);
+  }
+
+  public signInViaRefreshToken(refreshToken: string): {
+    accessToken: string;
+    refreshToken: string;
+  } {
+    return {
+      accessToken: '',
+      refreshToken: '',
+    };
   }
 }

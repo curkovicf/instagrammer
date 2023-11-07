@@ -28,19 +28,14 @@ export class JwtAuthService {
     accessToken: string;
     refreshToken: string;
   } {
-    const refreshTokenSignOptions = isLongSession ? this.refreshTokenLongSignOptions : this.refreshTokenShortSignOptions
+    const refreshTokenSignOptions = isLongSession
+      ? this.refreshTokenLongSignOptions
+      : this.refreshTokenShortSignOptions;
 
     return {
       accessToken: this.jwtService.sign(this.accessTokenSignOptions),
       refreshToken: this.jwtService.sign(refreshTokenSignOptions),
     };
-  }
-
-  /**
-   *
-   */
-  public generateAccessToken(): string {
-    return this.jwtService.sign(this.accessTokenSignOptions);
   }
 
   /**

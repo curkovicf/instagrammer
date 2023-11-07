@@ -1,143 +1,124 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Inject,
-  Logger,
-  MethodNotAllowedException,
-  Post,
-  Req,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
-import {
-  ACCESS_TOKEN_EXPIRES_IN_SECONDS, REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS, REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS,
-  RefreshTokenFromCookie,
-} from '@instagrammer/api/module/auth/middleware';
-import { AuthService, SignUpDto } from '@instagrammer/api/module/auth/logic';
+import { AuthService, SignInDto, SignOutDto, SignUpDto } from '@instagrammer/api/module/auth/logic';
 import { CookieService } from '@instagrammer/api/module/auth/util';
-import { JwtSignOptions } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-import { EnvironmentVariable } from '@instagrammer/api/core/env';
+import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/middleware';
 
 @Controller('auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name);
 
-  constructor(
-    private readonly authService: AuthService,
-    private readonly cookieService: CookieService,
-    @Inject(ACCESS_TOKEN_EXPIRES_IN_SECONDS) private readonly accessTokenSignOptions: JwtSignOptions,
-    @Inject(REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS) private readonly refreshTokenLongSignOptions: JwtSignOptions,
-    @Inject(REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS) private readonly refreshTokenShortSignOptions: JwtSignOptions,
-    private readonly configService: ConfigService,
-  ) {}
+  constructor(private readonly authService: AuthService, private readonly cookieService: CookieService) {}
 
+  /**
+   * Signs up & in new user with short session
+   *
+   * @param req
+   * @param res
+   * @param signUpDto
+   */
   @Post('/sign-up')
   public async register(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @Body() signUpDto: SignUpDto,
-  ): Promise<UserApi.LoginResponseDtoV2> {
+  ): Promise<UserApi.LoginResponseDto> {
     this.logger.debug(`Signing up new user, data: ${signUpDto}`);
 
-    const { loginResponseDto, refreshToken, accessToken } = await this.authService.signUp(signUpDto);
+    //  1. Create account
+    await this.authService.signUp(signUpDto);
 
-    const refreshTokenCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
-    const accessTokenCookie = this.authService.createNewHttpHeaderWithCookie(accessToken);
+    //  2. Sign in new user
+    const { accessToken, refreshToken, loginResponseDto } = await this.authService.signIn({
+      ...signUpDto,
+      isLongSession: false,
+    });
 
-    const accessTokenExpiresMs = this.configService.get(EnvironmentVariable.ACCESS_TOKEN_EXPIRES_IN_SECONDS);
-    const refreshTokenShortMs = this.configService.get(
-      EnvironmentVariable.REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS,
-    );
+    //  3. Attach cookies to headers
+    res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
+    res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
 
-    res.setHeader(
-      'Set-Cookie',
-      this.cookieService.createCookie({
-        title: 'Refresh-Token',
-        token: '',
-        expiresInMillis: 0,
-      }),
-    );
-
-    return loginResponse.loginResponseDto;
+    //  4. Return login response
+    return loginResponseDto;
   }
 
+  /**
+   * Signs user in
+   *
+   * @param req
+   * @param res
+   * @param signInDto
+   */
+  @Post('/sign-in')
+  public async login(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+    @Body() signInDto: SignInDto,
+  ): Promise<UserApi.LoginResponseDto> {
+    this.logger.debug(`Sign in user, data: ${signInDto}`);
+
+    const { loginResponseDto, accessToken, refreshToken } = await this.authService.signIn(signInDto);
+
+    res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
+    res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
+
+    return loginResponseDto;
+  }
+
+  /**
+   * Checks if username exists in the database
+   *
+   * @param usernameExistsDto
+   */
   @Post('/username-exists')
   public async checkUsernameExists(
-    @Body() usernameExistsDto: UserApi.UsernameExistsRequestDto,
-  ): Promise<UserApi.UsernameExistsRequestDto> {
+    @Body() usernameExistsDto: UserApi.UsernameExistsResponseDto,
+  ): Promise<UserApi.UsernameExistsResponseDto> {
     this.logger.debug(`Checking if username exists, data: ${usernameExistsDto}`);
 
     return await this.authService.checkIfUsernameExists(usernameExistsDto);
   }
 
-  @Post('/login')
-  public async login(
-    @Req() req: Request,
-    @Res({ passthrough: true }) res: Response,
-    @Body() loginDto: UserApi.LoginRequestDto,
-  ): Promise<UserApi.LoginResponseDto> {
-    this.logger.debug(`Sign in user, data: ${loginDto}`);
-
-    const { loginResponseDto, refreshToken } = await this.authService.signIn(loginDto);
-    const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
-
-    res.setHeader('Set-Cookie', newCookie);
-
-    return loginResponseDto;
-  }
-
+  /**
+   * Attempts to create new access & refresh token pairs and authenticate user
+   *
+   * @param req
+   * @param res
+   * @param refreshTokenFromCookie
+   */
   @Post('/refresh-jwt')
   public async signInViaRefreshToken(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() refreshJwtDto: UserApi.RefreshJwtRequestDto,
-  ): Promise<UserApi.JwtDto> {
-    this.logger.debug(`Sign in user via refresh token, data: ${refreshJwtDto}`);
+    @RefreshTokenFromCookie() refreshTokenFromCookie: string,
+  ): Promise<void> {
+    this.logger.debug(`Signing in user via refresh token, refresh token: ${refreshTokenFromCookie}`);
 
-    const { accessToken, refreshToken } = await this.authService.generateNewRefreshJwt(refreshJwtDto);
-    const newCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken.value);
+    const { accessToken, refreshToken } = this.authService.signInViaRefreshToken(refreshTokenFromCookie);
 
-    res.setHeader('Set-Cookie', newCookie);
-
-    return accessToken;
+    //  3. Attach cookies to headers
+    res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
+    res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
   }
 
-  @Get('/access-jwt')
-  public async getAccessJwt(
-    @Req() req: Request,
-    @Res({ passthrough: true }) res: Response,
-    @RefreshTokenFromCookie() refreshToken: string,
-  ): Promise<UserApi.LoginResponseDto | boolean> {
-    this.logger.debug(`Get new access token`);
-
-    try {
-      return await this.authService.generateNewAccessToken(refreshToken);
-    } catch (err) {
-      if (!(err instanceof MethodNotAllowedException)) {
-        throw err;
-      }
-
-      res.clearCookie('Authentication', { path: '/auth', httpOnly: true, sameSite: 'strict' });
-
-      return false;
-    }
-  }
-
-  @Post('/logout')
+  /**
+   * Attempts to sign out user
+   *
+   * @param res
+   * @param signOutDto
+   */
+  @Post('/sign-out')
   @UseGuards(AuthGuard('jwt'))
   public async logout(
     @Res({ passthrough: true }) res: Response,
-    @Body() logoutDto: UserApi.LogoutRequestDto,
+    @Body() signOutDto: SignOutDto,
   ): Promise<void> {
-    this.logger.debug(`Logging out user, data: ${logoutDto}`);
+    this.logger.debug(`Logging out user, data: ${signOutDto}`);
 
     res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
 
-    return await this.authService.logout(logoutDto);
+    return await this.authService.signOut(signOutDto);
   }
 }
