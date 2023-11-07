@@ -10,7 +10,7 @@ import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AccountRepository } from '@instagrammer/api/module/auth/data';
-import { JwtUtilService } from './jwt-util.service';
+import { JwtAuthService } from './jwt-auth.service';
 import { UserRepository } from '@instagrammer/api/module/user/data';
 import { SignUpDto } from '../dto/sign-up.dto';
 import { UsernameDto } from '../dto/username.dto';
@@ -24,7 +24,7 @@ export class AuthService {
     private readonly userRepository: UserRepository,
     @InjectRepository(AccountRepository)
     private readonly accountRepository: AccountRepository,
-    private readonly jwtUtilService: JwtUtilService,
+    private readonly jwtUtilService: JwtAuthService,
     private readonly encryptionService: BaseEncryptionService,
   ) {}
 
@@ -32,7 +32,7 @@ export class AuthService {
    * Attempts to create/register new user
    * @param signUpDto
    */
-  public async signUpV2(signUpDto: SignUpDto): Promise<UserApi.LoginResponseWrapperDto> {
+  public async signUp(signUpDto: SignUpDto): Promise<UserApi.LoginResponseWrapperDto> {
     try {
       await this.accountRepository.createUser({
         ...signUpDto,

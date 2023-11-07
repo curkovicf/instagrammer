@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Inject,
   Logger,
   MethodNotAllowedException,
   Post,
@@ -12,28 +13,55 @@ import {
 import { Request, Response } from 'express';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
-import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/middleware';
+import {
+  ACCESS_TOKEN_EXPIRES_IN_SECONDS, REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS, REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS,
+  RefreshTokenFromCookie,
+} from '@instagrammer/api/module/auth/middleware';
+import { AuthService, SignUpDto } from '@instagrammer/api/module/auth/logic';
+import { CookieService } from '@instagrammer/api/module/auth/util';
+import { JwtSignOptions } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
+import { EnvironmentVariable } from '@instagrammer/api/core/env';
 
 @Controller('auth')
 export class AuthController {
   private readonly logger = new Logger(AuthController.name);
 
-  constructor(private readonly authService: UserService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly cookieService: CookieService,
+    @Inject(ACCESS_TOKEN_EXPIRES_IN_SECONDS) private readonly accessTokenSignOptions: JwtSignOptions,
+    @Inject(REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS) private readonly refreshTokenLongSignOptions: JwtSignOptions,
+    @Inject(REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS) private readonly refreshTokenShortSignOptions: JwtSignOptions,
+    private readonly configService: ConfigService,
+  ) {}
 
-  @Post('/register')
+  @Post('/sign-up')
   public async register(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-    @Body() registerDto: UserApi.RegisterRequestDto,
+    @Body() signUpDto: SignUpDto,
   ): Promise<UserApi.LoginResponseDtoV2> {
-    this.logger.debug(`Registering new user, data: ${registerDto}`);
+    this.logger.debug(`Signing up new user, data: ${signUpDto}`);
 
-    const { loginResponseDto, refreshToken, accessToken } = await this.authService.signUpV2(registerDto);
+    const { loginResponseDto, refreshToken, accessToken } = await this.authService.signUp(signUpDto);
 
     const refreshTokenCookie = this.authService.createNewHttpHeaderWithCookie(refreshToken);
     const accessTokenCookie = this.authService.createNewHttpHeaderWithCookie(accessToken);
 
-    res.setHeader('Set-Cookie', newCookie);
+    const accessTokenExpiresMs = this.configService.get(EnvironmentVariable.ACCESS_TOKEN_EXPIRES_IN_SECONDS);
+    const refreshTokenShortMs = this.configService.get(
+      EnvironmentVariable.REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS,
+    );
+
+    res.setHeader(
+      'Set-Cookie',
+      this.cookieService.createCookie({
+        title: 'Refresh-Token',
+        token: '',
+        expiresInMillis: 0,
+      }),
+    );
 
     return loginResponse.loginResponseDto;
   }
