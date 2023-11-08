@@ -1,9 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { EnvironmentVariable } from '@instagrammer/api/core/env';
-import { AccountSettingsEntity } from '@instagrammer/api/module/settings/data';
-import { CommentEntity, PhotoEntity, PostEntity } from '@instagrammer/api/module/post/data';
+import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 
 @Global()
 @Module({
@@ -23,10 +21,10 @@ import { CommentEntity, PhotoEntity, PostEntity } from '@instagrammer/api/module
           // UserEntity,
           // RefreshTokenEntity,
           // FollowerEntity,
-          AccountSettingsEntity,
-          CommentEntity,
-          PhotoEntity,
-          PostEntity,
+          // AccountSettingsEntity,
+          // CommentEntity,
+          // PhotoEntity,
+          // PostEntity,
         ],
       }),
     }),

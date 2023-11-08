@@ -1,7 +1,7 @@
 import { PassportJwtStrategyService } from './service/passport-jwt-strategy.service';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { EnvironmentVariable } from '@instagrammer/api/core/env';
+import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { Global, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { accessTokenExpiresProvider } from './token/access-token.provider';

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EnvironmentVariable } from '@instagrammer/api/core/env';
+import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { ConfigService } from '@nestjs/config';
 
 export interface CookieOptions {

@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 // import { UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { ConfigService } from '@nestjs/config';
-import { EnvironmentVariable } from '@instagrammer/api/core/env';
+import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { JwtPayload } from '@instagrammer/api/shared/data';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '@instagrammer/api/module/user/data';
