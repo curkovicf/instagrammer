@@ -6,7 +6,6 @@ import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { JwtPayload } from '@instagrammer/api/shared/data';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from '@instagrammer/api/module/user/data';
 import { AccountRepository } from '@instagrammer/api/module/auth/data';
 
 @Injectable()
@@ -21,15 +20,15 @@ export class PassportJwtStrategyService extends PassportStrategy(Strategy) {
     });
   }
 
-  public async validate(payload: JwtPayload): Promise<UserEntity> {
+  public async validate(payload: JwtPayload): Promise<null> {
     const { username } = payload;
 
-    const account = await this.accountRepository.findOne({ where: { username }, relations: { user: true } });
+    const account = await this.accountRepository.findOne({ where: { username } });
 
     if (!account) {
       throw new UnauthorizedException();
     }
 
-    return account.user;
+    return null;
   }
 }

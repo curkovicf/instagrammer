@@ -2,10 +2,15 @@
   "name": "api-module-auth-logic",
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/api/module/auth/logic/src",
-  "prefix": "instagrammer",
-  "tags": [],
   "projectType": "library",
   "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/module/auth/logic/**/*.ts"]
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -19,13 +24,7 @@
           "codeCoverage": true
         }
       }
-    },
-    "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/api/module/auth/logic/**/*.ts", "libs/api/module/auth/logic/**/*.html"]
-      }
     }
-  }
+  },
+  "tags": []
 }

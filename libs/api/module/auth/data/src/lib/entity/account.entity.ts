@@ -1,6 +1,6 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { UserEntity } from '@instagrammer/api/module/user/data';
+// import { UserEntity } from '@instagrammer/api/module/user/data';
 
 // https://security.stackexchange.com/questions/266399/should-user-credentials-and-user-info-be-stored-in-seperate-tables
 
@@ -25,7 +25,7 @@ export class AccountEntity {
   })
   public refreshToken?: string | null;
 
-  @OneToOne(() => UserEntity, user => user.account)
-  @JoinColumn()
-  public user!: UserEntity;
+  // @OneToOne(() => UserEntity, user => user.account)
+  // @JoinColumn()
+  // public user!: UserEntity;
 }

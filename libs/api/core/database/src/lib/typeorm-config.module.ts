@@ -25,6 +25,7 @@ import { EnvironmentVariable } from '@instagrammer/api/core/environment';
           // CommentEntity,
           // PhotoEntity,
           // PostEntity,
+          // AccountEntity,
         ],
       }),
     }),

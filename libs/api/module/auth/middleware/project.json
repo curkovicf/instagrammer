@@ -17,8 +17,14 @@
       "options": {
         "jestConfig": "libs/api/module/auth/middleware/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },
-  "tags": ["type:core", "scope:api"]
+  "tags": []
 }
