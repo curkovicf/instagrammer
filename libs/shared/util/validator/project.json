@@ -4,7 +4,7 @@
   "sourceRoot": "libs/shared/util/validator/src",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/shared/util/validator/**/*.ts"]

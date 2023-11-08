@@ -82,7 +82,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/web/instagrammer/src/**/*.ts", "apps/web/instagrammer/src/**/*.html"]
       }
