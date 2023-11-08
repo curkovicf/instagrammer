@@ -9,9 +9,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-// import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PhotoEntity } from './photo.entity';
 import { CommentEntity } from './comment.entity';
+import { UserEntity } from '@instagrammer/api/module/user/data';
 
 @Entity('post')
 export class PostEntity {

@@ -10,9 +10,9 @@ export class PostRepository extends Repository<PostEntity> {
     super(PostEntity, dataSource.createEntityManager());
   }
 
-  public async getPosts(userId: string): Promise<PostEntity[]> {
-    return await this.createQueryBuilder('post')
-      .innerJoin(FollowerEntity, 'follower', 'follower.followerId = :userId', { userId })
-      .getMany();
-  }
+  // public async getPosts(userId: string): Promise<PostEntity[]> {
+  //   return await this.createQueryBuilder('post')
+  //     .innerJoin(FollowerEntity, 'follower', 'follower.followerId = :userId', { userId })
+  //     .getMany();
+  // }
 }

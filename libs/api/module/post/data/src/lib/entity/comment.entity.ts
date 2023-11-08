@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-// import { UserEntity } from '@instagrammer/api/module/user/data';
 import { PostEntity } from './post.entity';
+import { UserEntity } from '@instagrammer/api/module/user/data';
 
 @Entity('comment')
 export class CommentEntity {

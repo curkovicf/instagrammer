@@ -1,4 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UserEntity } from '@instagrammer/api/module/user/data';
 
 @Entity('account_settings')
 export class AccountSettingsEntity {
