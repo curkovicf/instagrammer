@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { JwtSignOptions } from '@nestjs/jwt';
-import { EnvironmentVariable } from '@instagrammer/api/core/environment';
+import { EnvironmentVariable } from '../environment-variable.enum';
 
 export const REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS = 'REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS_TOKEN';
 

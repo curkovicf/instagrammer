@@ -4,9 +4,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { Global, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
-import { accessTokenExpiresProvider } from './token/access-token.provider';
-import { refreshTokenShortExpiresProvider } from './token/refresh-token-short.provider';
-import { refreshTokenLongExpiresProvider } from './token/refresh-token-long.provider';
 
 @Global()
 @Module({
@@ -31,11 +28,6 @@ import { refreshTokenLongExpiresProvider } from './token/refresh-token-long.prov
       }),
     }),
   ],
-  providers: [
-    PassportJwtStrategyService,
-    accessTokenExpiresProvider,
-    refreshTokenShortExpiresProvider,
-    refreshTokenLongExpiresProvider,
-  ],
+  providers: [PassportJwtStrategyService],
 })
 export class ApiModuleAuthLogicModule {}

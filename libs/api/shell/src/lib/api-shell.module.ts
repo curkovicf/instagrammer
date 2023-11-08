@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-// import { EnvironmentModule } from '@instagrammer/api/core/env';
-// import { PostControllerModule } from '@instagrammer/api/module/post/http';
-// import { ApiModuleAuthLogicModule } from '@instagrammer/api/module/auth/middleware';
+import { EnvironmentModule } from '@instagrammer/api/core/environment';
 import { TypeormConfigModule } from '@instagrammer/api/core/database';
+import { AuthControllerModule } from '@instagrammer/api/module/auth/http';
 
 @Module({
-  imports: [TypeormConfigModule],
+  imports: [TypeormConfigModule, EnvironmentModule, AuthControllerModule],
 })
 export class ApiShellModule {}

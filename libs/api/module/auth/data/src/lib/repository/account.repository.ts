@@ -1,7 +1,10 @@
 import { DataSource, Repository } from 'typeorm';
 import { AccountEntity } from '../entity/account.entity';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { SignUpDto } from '@instagrammer/api/module/auth/logic';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class AccountRepository extends Repository<AccountEntity> {
   constructor(readonly dataSource: DataSource) {
     super(AccountEntity, dataSource.createEntityManager());

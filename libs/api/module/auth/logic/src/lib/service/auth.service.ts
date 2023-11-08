@@ -5,16 +5,16 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { QueryFailedError } from 'typeorm';
 import { BaseEncryptionService } from '@instagrammer/api/shared/util/encryption';
-import { UserApi } from '@instagrammer/shared/data/api';
-import { AccountRepository } from '@instagrammer/api/module/auth/data';
 import { JwtAuthService } from './jwt-auth.service';
+import { AccountRepository } from '@instagrammer/api/module/auth/data';
+import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from '@instagrammer/api/module/user/data';
 import { SignUpDto } from '../dto/sign-up.dto';
-import { UsernameDto } from '../dto/username.dto';
+import { QueryFailedError } from 'typeorm';
 import { SignInDto } from '../dto/sign-in.dto';
+import { UserApi } from '@instagrammer/shared/data/api';
+import { UsernameDto } from '../dto/username.dto';
 import { SignOutDto } from '../dto/sign-out.dto';
 
 @Injectable()
