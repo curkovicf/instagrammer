@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   public login(credentials: UserApi.LoginRequestDto): Observable<boolean> {
-    return this.authApiService.login(credentials).pipe(
+    return this.authApiService.signIn(credentials).pipe(
       map(loginResponseDto => {
         if (!loginResponseDto) {
           return false;
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   public register(registerDto: UserApi.RegisterRequestDto): Observable<boolean> {
-    return this.authApiService.register(registerDto).pipe(
+    return this.authApiService.signUp(registerDto).pipe(
       map(registerResponseDto => {
         if (!registerResponseDto) {
           return false;
@@ -52,7 +52,7 @@ export class AuthService {
 
   public logout(): void {
     this.authApiService
-      .logout({ usernameOrEmail: this.jwtStorageService.getUsername() })
+      .signOut({ usernameOrEmail: this.jwtStorageService.getUsername() })
       .pipe(
         take(1),
         finalize(() => {
@@ -66,7 +66,7 @@ export class AuthService {
 
   public saveLogin(refreshJwtDto: UserApi.RefreshJwtRequestDto): void {
     this.authApiService
-      .saveLoginInfo(refreshJwtDto)
+      .saveLoginInfo()
       .pipe(
         take(1),
         tap(jwtTokenDto => {
