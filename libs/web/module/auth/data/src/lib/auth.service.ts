@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { finalize, map, Observable, take, tap } from 'rxjs';
+import { finalize, first, map, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthApiService } from '@instagrammer/web/shared/data/api';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthService {
     private readonly jwtStorageService: JwtStorageService,
   ) {}
 
-  public login(credentials: UserApi.LoginRequestDto): Observable<boolean> {
+  public signIn(credentials: AuthApi.SignInDto): Observable<boolean> {
     return this.authApiService.signIn(credentials).pipe(
       map(loginResponseDto => {
         if (!loginResponseDto) {
@@ -29,14 +29,14 @@ export class AuthService {
     );
   }
 
-  public register(registerDto: UserApi.RegisterRequestDto): Observable<boolean> {
+  public signUp(registerDto: AuthApi.SignUpDto): Observable<boolean> {
     return this.authApiService.signUp(registerDto).pipe(
-      map(registerResponseDto => {
-        if (!registerResponseDto) {
+      map(loginResponseDto => {
+        if (!loginResponseDto) {
           return false;
         }
 
-        return this.handleSuccessfulLogin(registerResponseDto);
+        return this.handleSuccessfulLogin(loginResponseDto);
       }),
     );
   }
@@ -52,9 +52,9 @@ export class AuthService {
 
   public logout(): void {
     this.authApiService
-      .signOut({ usernameOrEmail: this.jwtStorageService.getUsername() })
+      .signOut()
       .pipe(
-        take(1),
+        first(),
         finalize(() => {
           this.authFacadeService.logout();
           this.jwtStorageService.clearStorage();
@@ -64,41 +64,23 @@ export class AuthService {
       .subscribe();
   }
 
-  public saveLogin(refreshJwtDto: UserApi.RefreshJwtRequestDto): void {
+  public signInForLongSession(): void {
     this.authApiService
       .saveLoginInfo()
       .pipe(
-        take(1),
+        first(),
         tap(jwtTokenDto => {
-          const loginResponseDto: UserApi.LoginResponseDto = {
-            ...jwtTokenDto,
-            jwt: jwtTokenDto.value,
-            username: this.jwtStorageService.getUsername(),
-          };
+          // const loginResponseDto: UserApi.LoginResponseDto = {
+          //   ...jwtTokenDto,
+          //   jwt: jwtTokenDto.value,
+          //   username: this.jwtStorageService.getUsername(),
+          // };
 
           this.authFacadeService.disableOneTapRouter();
-          this.authFacadeService.updateAuthState(loginResponseDto);
-          this.jwtStorageService.saveAuthState(loginResponseDto);
+          // this.authFacadeService.updateAuthState(loginResponseDto);
+          // this.jwtStorageService.saveAuthState(loginResponseDto);
         }),
         finalize(() => this.router.navigate([''])),
-      )
-      .subscribe();
-  }
-
-  public getAccessToken(): void {
-    this.authApiService
-      .getAccessJwt()
-      .pipe(
-        take(1),
-        tap((loginResponseDto: UserApi.LoginResponseDto) => {
-          if (!loginResponseDto) {
-            return;
-          }
-
-          this.authFacadeService.updateAuthState(loginResponseDto);
-          this.jwtStorageService.saveAuthState(loginResponseDto);
-          this.router.navigate(['']);
-        }),
       )
       .subscribe();
   }

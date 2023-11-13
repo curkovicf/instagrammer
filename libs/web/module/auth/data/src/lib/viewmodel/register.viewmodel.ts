@@ -73,9 +73,9 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
 
           return (
             this.authService
-              .register(registerDto)
+              .signUp(registerDto)
               //
-              .pipe(switchMap(() => this.authService.login({ username, password })))
+              .pipe(switchMap(() => this.authService.signIn({ username, password })))
           );
         }),
       )

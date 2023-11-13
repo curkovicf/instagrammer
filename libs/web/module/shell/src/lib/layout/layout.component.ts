@@ -14,12 +14,6 @@ export class LayoutComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    const isJwtValid = this.jwtStorageService.init();
-
-    if (!isJwtValid) {
-      setTimeout(() => this.authService.getAccessToken(), 1);
-    }
-
     // if (isJwtValid) {
     //   const refreshJwtDto: RefreshJwtRequestDto = {
     //     username: this.jwtStorageService.getUsername(),

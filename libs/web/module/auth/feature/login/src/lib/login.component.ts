@@ -3,7 +3,7 @@ import { catchError, finalize, of, take, takeWhile, tap } from 'rxjs';
 import { AuthService } from '@instagrammer/web/module/auth/data';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi } from '@instagrammer/shared/data/api';
 
 @Component({
   selector: 'ng-inst-login',
@@ -47,7 +47,7 @@ export class LoginComponent implements OnDestroy {
     const phoneOrUsernameOrEmail = this.formGroup.get('phoneOrUsernameOrEmail')?.value;
     const password = this.formGroup.get('password')?.value;
 
-    const loginRequestDto: UserApi.LoginRequestDto = {
+    const loginRequestDto: AuthApi.SignInDto = {
       username: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? null : phoneOrUsernameOrEmail,
       email: phoneOrUsernameOrEmail.match(/^\S+@\S+\.\S+$/) ? phoneOrUsernameOrEmail : null,
       password,
@@ -55,7 +55,7 @@ export class LoginComponent implements OnDestroy {
 
     setTimeout(() => {
       this.authService
-        .login(loginRequestDto)
+        .signIn(loginRequestDto)
         .pipe(
           take(1),
           catchError((err: HttpErrorResponse) => {
