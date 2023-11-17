@@ -11,7 +11,6 @@ import * as AuthActions from './auth.actions';
 })
 export class AuthFacadeService {
   public readonly authState$ = this.store.select(AuthSelectors.selectAuthState);
-  public readonly jwtToken$ = this.store.select(AuthSelectors.selectJwtToken);
   public readonly isOneTapRouterEnabled$ = this.store.select(AuthSelectors.selectIsOneTapRouterEnabled);
 
   constructor(private readonly store: Store) {}

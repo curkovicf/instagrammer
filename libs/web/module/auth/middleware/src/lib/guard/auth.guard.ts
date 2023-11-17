@@ -1,4 +1,4 @@
-import { map, Observable, take } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthFacadeService } from '@instagrammer/web/module/auth/data';
 import { Injectable } from '@angular/core';
@@ -13,15 +13,18 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> {
-    return this.authFacadeService.jwtToken$.pipe(
-      take(1),
-      map(jwtToken => {
-        if (jwtToken) {
-          return true;
-        }
+    // return this.authFacadeService.jwtToken$.pipe(
+    //   take(1),
+    //   map(jwtToken => {
+    //     if (jwtToken) {
+    //       return true;
+    //     }
+    //
+    //     return this.router.createUrlTree(['/auth']);
+    //   }),
+    // );
 
-        return this.router.createUrlTree(['/auth']);
-      }),
-    );
+    //  FIXME
+    return of(true);
   }
 }

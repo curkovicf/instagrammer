@@ -7,9 +7,6 @@ export const AUTH_FEATURE_KEY = 'AUTH_FEATURE';
 
 const initialAuthState: AuthState = {
   username: null,
-  jwt: null,
-  issuedAt: null,
-  expiresAt: null,
   isOneTapRouterEnabled: false,
 };
 
@@ -25,15 +22,6 @@ export const authReducer = createReducer(
   })),
   on(AuthActions.logoutAction, state => ({
     username: null,
-    jwt: null,
-    expiresAt: null,
-    issuedAt: null,
     isOneTapRouterEnabled: false,
-  })),
-  on(AuthActions.updateAccessJwtAction, (state, { accessJwtDto }) => ({
-    ...state,
-    jwt: accessJwtDto.value,
-    issuedAt: accessJwtDto.issuedAt,
-    expiresAt: accessJwtDto.expiresAt,
   })),
 );
