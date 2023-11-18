@@ -23,7 +23,7 @@ export class AccountEntity {
     nullable: true,
     unique: true,
   })
-  public refreshToken?: string | null;
+  public refreshToken?: string;
 
   // @OneToOne(() => UserEntity, user => user.account)
   // @JoinColumn()

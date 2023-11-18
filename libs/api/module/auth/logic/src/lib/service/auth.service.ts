@@ -120,7 +120,7 @@ export class AuthService {
       throw new NotFoundException('User not found');
     }
 
-    user.refreshToken = null;
+    user.refreshToken = undefined;
 
     await this.userRepository.save(user);
   }
