@@ -15,7 +15,7 @@ export class AuthApiService {
   }
 
   public signIn(signInDto: AuthApi.SignInDto): Observable<AuthApi.SignInResponseDto> {
-    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/login`, signInDto);
+    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/sign-in`, signInDto);
   }
 
   public checkIfUsernameExists(
@@ -24,8 +24,8 @@ export class AuthApiService {
     return this.http.post<AuthApi.UsernameExistsDto>(`${this.url}/username-exists`, usernameExistsDto);
   }
 
-  public signUp(registerDto: AuthApi.SignUpDto): Observable<AuthApi.SignInResponseDto> {
-    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/register`, registerDto);
+  public signUp(signUpDto: AuthApi.SignUpDto): Observable<AuthApi.SignInResponseDto> {
+    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/sign-up`, signUpDto);
   }
 
   public saveLoginInfo(): Observable<AuthApi.SignInResponseDto> {

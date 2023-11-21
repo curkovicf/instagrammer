@@ -39,7 +39,8 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
   @Output()
   next: EventEmitter<AuthApi.SignUpDto> = new EventEmitter();
 
-  @ViewChildren(InputComponent) inputComponents!: QueryList<InputComponent>;
+  @ViewChildren(InputComponent)
+  inputComponents!: QueryList<InputComponent>;
 
   public readonly isFormDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
@@ -78,6 +79,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
 
   public ngOnDestroy(): void {
     this.isAlive = false;
+    this.isFormDisabled$.complete();
   }
 
   private setInitialFormData(): void {

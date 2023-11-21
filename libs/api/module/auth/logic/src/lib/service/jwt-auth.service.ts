@@ -30,6 +30,8 @@ export class JwtAuthService {
       ? this.refreshTokenLongSignOptions
       : this.refreshTokenShortSignOptions;
 
+    console.log(refreshTokenSignOptions, refreshTokenSignOptions.secret);
+
     return {
       accessToken: this.jwtService.sign(this.accessTokenSignOptions),
       refreshToken: this.jwtService.sign(refreshTokenSignOptions),

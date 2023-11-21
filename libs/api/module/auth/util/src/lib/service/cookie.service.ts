@@ -20,9 +20,11 @@ export class CookieService {
   public createCookie(cookieOptions: CookieOptions): string {
     const { title, token, expiresInMillis } = cookieOptions;
 
-    return `${title}=${token}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
-      new Date().getTime() + expiresInMillis
-    }`;
+    // return `${title}=${token}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
+    //   new Date().getTime() + expiresInMillis
+    // }`;
+
+    return `${title}=${token}; Path=/; SameSite=Strict; Max-Age=${new Date().getTime() + expiresInMillis}`;
   }
 
   /**
