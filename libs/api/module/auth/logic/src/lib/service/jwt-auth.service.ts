@@ -22,10 +22,10 @@ export class JwtAuthService {
   /**
    *
    */
-  public generateAuthTokenPair(isLongSession = false): {
-    accessToken: string;
-    refreshToken: string;
-  } {
+  public generateAuthTokenPair(
+    isLongSession: boolean | undefined,
+    username: string,
+  ): { accessToken: string; refreshToken: string } {
     const refreshTokenSignOptions = isLongSession
       ? this.refreshTokenLongSignOptions
       : this.refreshTokenShortSignOptions;
@@ -33,8 +33,8 @@ export class JwtAuthService {
     console.log(refreshTokenSignOptions, refreshTokenSignOptions.secret);
 
     return {
-      accessToken: this.jwtService.sign(this.accessTokenSignOptions),
-      refreshToken: this.jwtService.sign(refreshTokenSignOptions),
+      accessToken: this.jwtService.sign({ username }, this.accessTokenSignOptions),
+      refreshToken: this.jwtService.sign({ username }, refreshTokenSignOptions),
     };
   }
 

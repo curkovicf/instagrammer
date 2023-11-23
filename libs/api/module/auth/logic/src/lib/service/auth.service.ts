@@ -34,10 +34,12 @@ export class AuthService {
    */
   public async signUp(signUpDto: SignUpDto): Promise<void> {
     try {
-      await this.accountRepository.createUser({
+      const account = await this.accountRepository.createUser({
         ...signUpDto,
         password: await this.encryptionService.hash(signUpDto.password),
       });
+
+      await this.userRepository.save({ dob: new Date(signUpDto.dob), fullName: signUpDto.fullName, account });
     } catch (err) {
       if (err instanceof QueryFailedError && Number(err.driverError.code) === 23505) {
         throw new ConflictException('Username already taken');
@@ -56,30 +58,30 @@ export class AuthService {
     const { username, password, email, isLongSession } = signInDto;
 
     //  2. Find user via email or username
-    const user = await this.accountRepository.findOneByUsernameOrEmail(username ?? email);
+    const userAccount = await this.accountRepository.findOneByUsernameOrEmail(username ?? email);
 
     //  3. If not user throw exception
-    if (!user) {
+    if (!userAccount) {
       throw new NotFoundException(
         "The username you entered doesn't belong to an account. Please check your username and try again.",
       );
     }
 
     //  4. If invalid password, throw invalid password
-    if (!(await this.encryptionService.compare(password, user.password))) {
+    if (!(await this.encryptionService.compare(password, userAccount.password))) {
       throw new UnauthorizedException(
         'Sorry, your password was incorrect. Please double-check your password.',
       );
     }
 
     //  5. Generate access & refresh token pairs
-    const { accessToken, refreshToken } = this.jwtAuthService.generateAuthTokenPair(isLongSession);
+    const { accessToken, refreshToken } = this.jwtAuthService.generateAuthTokenPair(isLongSession, username);
 
     //  6. Hash and store new refresh token to the DB
-    user.refreshToken = await this.encryptionService.hash(refreshToken);
+    userAccount.refreshToken = await this.encryptionService.hash(refreshToken);
 
     //  8. Save user with updated refresh token data
-    await this.userRepository.save(user);
+    await this.accountRepository.save(userAccount);
 
     //  9. Map data and return needed results to the frontend part
     return {
