@@ -16,6 +16,7 @@ import { SignInDto } from '../dto/sign-in.dto';
 import { UserApi } from '@instagrammer/shared/data/api';
 import { UsernameDto } from '../dto/username.dto';
 import { SignOutDto } from '../dto/sign-out.dto';
+import LoginResponseWrapperDto = UserApi.LoginResponseWrapperDto;
 
 @Injectable()
 export class AuthService {
@@ -136,6 +137,34 @@ export class AuthService {
     return {
       accessToken: '',
       refreshToken: '',
+    };
+  }
+
+  public async signInLongSession(refreshTokenFromCookie: string): Promise<LoginResponseWrapperDto> {
+    const { username } = this.jwtAuthService.decode(refreshTokenFromCookie) as { username: string };
+
+    const account = await this.accountRepository.findOneByUsernameOrEmail(username);
+
+    if (!account) {
+      throw new NotFoundException('User not found');
+    }
+
+    //  1. Generate access & refresh token pairs
+    const { accessToken, refreshToken } = this.jwtAuthService.generateAuthTokenPair(true, username);
+
+    //  2. Hash and store new refresh token to the DB
+    account.refreshToken = await this.encryptionService.hash(refreshToken);
+
+    //  3. Save user with updated refresh token data
+    await this.accountRepository.save(account);
+
+    //  4. Map data and return needed results to the frontend part
+    return {
+      loginResponseDto: {
+        username: username,
+      },
+      accessToken: accessToken,
+      refreshToken: refreshToken,
     };
   }
 }

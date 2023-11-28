@@ -3,13 +3,15 @@ import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { ConfigService } from '@nestjs/config';
 
 export interface CookieOptions {
-  title: string;
   token: string;
   expiresInMillis: number;
 }
 
 @Injectable()
 export class CookieService {
+  public readonly ACCESS_TOKEN_KEY = 'Access-Token';
+  public readonly REFRESH_TOKEN_KEY = 'Refresh-Token';
+
   constructor(private readonly configService: ConfigService) {}
 
   /**
@@ -18,13 +20,13 @@ export class CookieService {
    * @param cookieOptions
    */
   public createCookie(cookieOptions: CookieOptions): string {
-    const { title, token, expiresInMillis } = cookieOptions;
+    const { token, expiresInMillis } = cookieOptions;
 
     // return `${title}=${token}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
     //   new Date().getTime() + expiresInMillis
     // }`;
 
-    return `${title}=${token}; Path=/; SameSite=Strict; Max-Age=${new Date().getTime() + expiresInMillis}`;
+    return `${token}; Path=/; SameSite=Strict; Max-Age=${new Date().getTime() + expiresInMillis}`;
   }
 
   /**
@@ -35,7 +37,6 @@ export class CookieService {
   public createAccessTokenCookie(token: string): string {
     return this.createCookie({
       token,
-      title: 'Access-Token',
       expiresInMillis: this.configService.get(EnvironmentVariable.ACCESS_TOKEN_EXPIRES_IN_SECONDS) * 1000,
     });
   }
@@ -49,7 +50,6 @@ export class CookieService {
   public createRefreshTokenCookie(token: string, isLongSession: boolean): string {
     return this.createCookie({
       token,
-      title: 'Refresh-Token',
       expiresInMillis: isLongSession
         ? this.configService.get(EnvironmentVariable.REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS) * 1000
         : this.configService.get(EnvironmentVariable.REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS) * 1000,

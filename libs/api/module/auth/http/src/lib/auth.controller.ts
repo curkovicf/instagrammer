@@ -61,8 +61,43 @@ export class AuthController {
 
     const { loginResponseDto, accessToken, refreshToken } = await this.authService.signIn(signInDto);
 
-    res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
-    res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
+    res.setHeader('Set-Cookie', [
+      `${this.cookieService.ACCESS_TOKEN_KEY}=${this.cookieService.createAccessTokenCookie(accessToken)}`,
+      `${this.cookieService.REFRESH_TOKEN_KEY}=${this.cookieService.createRefreshTokenCookie(
+        refreshToken,
+        false,
+      )}`,
+    ]);
+
+    return loginResponseDto;
+  }
+
+  /**
+   * Signs user in
+   *
+   * @param req
+   * @param res
+   * @param refreshTokenFromCookie
+   */
+  @Post('/sign-in-long-session')
+  public async saveSignInInfo(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+    @RefreshTokenFromCookie() refreshTokenFromCookie: string,
+  ): Promise<UserApi.LoginResponseDto> {
+    this.logger.debug(`Saving long session sing in`);
+
+    const { loginResponseDto, accessToken, refreshToken } = await this.authService.signInLongSession(
+      refreshTokenFromCookie,
+    );
+
+    res.setHeader('Set-Cookie', [
+      `${this.cookieService.ACCESS_TOKEN_KEY}=${this.cookieService.createAccessTokenCookie(accessToken)}`,
+      `${this.cookieService.REFRESH_TOKEN_KEY}=${this.cookieService.createRefreshTokenCookie(
+        refreshToken,
+        true,
+      )}`,
+    ]);
 
     return loginResponseDto;
   }

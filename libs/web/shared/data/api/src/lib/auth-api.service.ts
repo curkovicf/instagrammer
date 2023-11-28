@@ -30,7 +30,7 @@ export class AuthApiService {
 
   public saveLoginInfo(): Observable<AuthApi.SignInResponseDto> {
     return this.http.post<AuthApi.SignInResponseDto>(
-      `${this.url}/refresh-jwt`,
+      `${this.url}/sign-in-long-session`,
       {},
       { withCredentials: true },
     );

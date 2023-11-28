@@ -23,7 +23,7 @@
     padding-top: 0.5rem;
     flex-grow: 1;
     @include center-flex-Y();
-    justify-content: start;
+    justify-content: flex-start;
 
     & > ng-inst-svg-home-icon {
       margin-bottom: 0.5rem;
