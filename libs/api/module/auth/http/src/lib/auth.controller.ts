@@ -1,10 +1,11 @@
-import { Body, Controller, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService, SignInDto, SignOutDto, SignUpDto } from '@instagrammer/api/module/auth/logic';
 import { CookieService } from '@instagrammer/api/module/auth/util';
 import { RefreshTokenFromCookie } from '@instagrammer/api/module/auth/middleware';
+import SignInResponseDto = AuthApi.SignInResponseDto;
 
 @Controller('auth')
 export class AuthController {
@@ -136,6 +137,20 @@ export class AuthController {
     //  3. Attach cookies to headers
     res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
     res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
+  }
+
+  /**
+   * Attempts to validate access token
+   *
+   */
+  @Get('/authenticate-tokens')
+  @UseGuards(AuthGuard('jwt'))
+  public async authenticateTokens(): Promise<SignInResponseDto> {
+    this.logger.debug(`Access token validity check`);
+
+    return {
+      username: 'coffee_lord_fake',
+    };
   }
 
   /**

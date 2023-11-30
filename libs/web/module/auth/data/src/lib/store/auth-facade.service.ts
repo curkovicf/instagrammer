@@ -15,12 +15,13 @@ export class AuthFacadeService {
 
   constructor(private readonly store: Store) {}
 
-  public updateAuthState(loginResponseDto: UserApi.LoginResponseDto): void {
-    this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
+  public successSignIn(loginResponseDto: UserApi.LoginResponseDto): void {
+    console.log(loginResponseDto);
+    this.store.dispatch(AuthActions.signInActionSuccess({ loginResponseDto }));
   }
 
-  public updateAccessJwtState(accessJwtDto: UserApi.JwtDto): void {
-    this.store.dispatch(AuthActions.updateAccessJwtAction({ accessJwtDto }));
+  public failedSignIn(): void {
+    this.store.dispatch(AuthActions.signInActionFailed());
   }
 
   public disableOneTapRouter(): void {

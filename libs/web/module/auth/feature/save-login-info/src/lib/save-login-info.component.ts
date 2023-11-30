@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, JwtStorageService } from '@instagrammer/web/module/auth/data';
+import { AuthService } from '@instagrammer/web/module/auth/data';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,11 +10,7 @@ import { Router } from '@angular/router';
 export class SaveLoginInfoComponent {
   public isSpinnerActive = false;
 
-  constructor(
-    public readonly authService: AuthService,
-    public readonly router: Router,
-    private readonly jwtStorageService: JwtStorageService,
-  ) {}
+  constructor(public readonly authService: AuthService, public readonly router: Router) {}
 
   public onSaveInfoClick(): void {
     this.isSpinnerActive = true;

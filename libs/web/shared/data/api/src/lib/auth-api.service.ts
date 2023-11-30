@@ -39,4 +39,8 @@ export class AuthApiService {
   public signOut(): Observable<void> {
     return this.http.post<void>(`${this.url}/logout`, {});
   }
+
+  public authenticateTokens(): Observable<AuthApi.SignInResponseDto> {
+    return this.http.get<AuthApi.SignInResponseDto>(`${this.url}/authenticate-tokens`);
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { delay, of, switchMap, take } from 'rxjs';
+import { delay, first, of, switchMap, take } from 'rxjs';
 import { ComponentStore } from '@ngrx/component-store';
 import { AuthApi } from '@instagrammer/shared/data/api';
 
@@ -71,11 +71,9 @@ export class RegisterViewModel extends ComponentStore<RegisterState> {
             fullName,
           };
 
-          return (
-            this.authService
-              .signUp(registerDto)
-              //
-              .pipe(switchMap(() => this.authService.signIn({ username, password })))
+          return this.authService.signUp(registerDto).pipe(
+            first(),
+            switchMap(() => this.authService.signIn({ username, password })),
           );
         }),
       )

@@ -12,9 +12,13 @@ const initialAuthState: AuthState = {
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(AuthActions.loginAction, (state, { loginResponseDto }) => ({
+  on(AuthActions.signInActionSuccess, (state, { loginResponseDto }) => ({
     ...loginResponseDto,
     isOneTapRouterEnabled: true,
+  })),
+  on(AuthActions.signInActionFailed, state => ({
+    username: null,
+    isOneTapRouterEnabled: false,
   })),
   on(AuthActions.disableOneTapRouterAction, state => ({
     ...state,
