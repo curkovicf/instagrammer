@@ -103,8 +103,6 @@ export class AuthService {
 
     const usernameExists = await this.accountRepository.findOne({ where: { username } });
 
-    console.log(await this.accountRepository.findOne({ where: { username } }));
-
     if (usernameExists) {
       return responseDto;
     }

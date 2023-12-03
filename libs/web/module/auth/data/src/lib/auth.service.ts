@@ -134,8 +134,6 @@ export class AuthService {
             return;
           }
 
-          console.log('Here ', loginResponseDto);
-
           this.authFacadeService.disableOneTapRouter();
           this.authFacadeService.successSignIn(loginResponseDto);
         }),
