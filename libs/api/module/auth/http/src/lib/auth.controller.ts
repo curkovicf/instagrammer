@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, ForbiddenException, Get, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
@@ -143,13 +143,21 @@ export class AuthController {
    * Attempts to validate access token
    *
    */
-  @Get('/authenticate-tokens')
-  @UseGuards(AuthGuard('jwt'))
-  public async authenticateTokens(): Promise<SignInResponseDto> {
-    this.logger.debug(`Access token validity check`);
+  @Get('/verify-token')
+  public async authenticateTokens(
+    @Res({ passthrough: true }) response: Response,
+    @RefreshTokenFromCookie() refreshTokenFromCookie: string,
+  ): Promise<SignInResponseDto> {
+    this.logger.debug(`Refresh token validity check`);
+
+    const username = this.authService.isRefreshTokenValid(refreshTokenFromCookie);
+
+    if (!username) {
+      throw new ForbiddenException();
+    }
 
     return {
-      username: 'coffee_lord_fake',
+      username,
     };
   }
 

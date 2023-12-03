@@ -30,8 +30,6 @@ export class JwtAuthService {
       ? this.refreshTokenLongSignOptions
       : this.refreshTokenShortSignOptions;
 
-    console.log(refreshTokenSignOptions, refreshTokenSignOptions.secret);
-
     return {
       accessToken: this.jwtService.sign({ username }, this.accessTokenSignOptions),
       refreshToken: this.jwtService.sign({ username }, refreshTokenSignOptions),
@@ -54,5 +52,26 @@ export class JwtAuthService {
       }
     | string {
     return this.jwtService.decode(token, options);
+  }
+
+  /**
+   * Checks if the refresh token is valid, it can be either long or short session
+   *
+   * @param refreshToken
+   */
+  public isValid(refreshToken: string):
+    | null
+    | {
+        [key: string]: any;
+      }
+    | string {
+    const isLongSession = this.jwtService.verify(refreshToken, this.refreshTokenLongSignOptions);
+    const isShortSession = this.jwtService.verify(refreshToken, this.refreshTokenShortSignOptions);
+
+    if (isShortSession || isLongSession) {
+      return this.decode(refreshToken);
+    }
+
+    return null;
   }
 }

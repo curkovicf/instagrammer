@@ -130,6 +130,20 @@ export class AuthService {
     await this.userRepository.save(user);
   }
 
+  /**
+   *
+   * @param refreshToken
+   */
+  public isRefreshTokenValid(refreshToken: string): string | null {
+    const { username } = this.jwtAuthService.isValid(refreshToken) as { username: string };
+
+    return username ? username : null;
+  }
+
+  /**
+   *
+   * @param refreshToken
+   */
   public signInViaRefreshToken(refreshToken: string): {
     accessToken: string;
     refreshToken: string;
@@ -140,6 +154,10 @@ export class AuthService {
     };
   }
 
+  /**
+   *
+   * @param refreshTokenFromCookie
+   */
   public async signInLongSession(refreshTokenFromCookie: string): Promise<LoginResponseWrapperDto> {
     const { username } = this.jwtAuthService.decode(refreshTokenFromCookie) as { username: string };
 

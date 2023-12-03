@@ -41,6 +41,6 @@ export class AuthApiService {
   }
 
   public authenticateTokens(): Observable<AuthApi.SignInResponseDto> {
-    return this.http.get<AuthApi.SignInResponseDto>(`${this.url}/authenticate-tokens`);
+    return this.http.get<AuthApi.SignInResponseDto>(`${this.url}/verify-token`, { withCredentials: true });
   }
 }

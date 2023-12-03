@@ -1,19 +1,18 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-// import { UserEntity, UserRepository } from '@instagrammer/api/module/user/data';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { JwtPayload } from '@instagrammer/api/shared/data';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AccountRepository } from '@instagrammer/api/module/auth/data';
+import { AccountEntity, AccountRepository } from '@instagrammer/api/module/auth/data';
 import { CookieService } from '@instagrammer/api/module/auth/util';
 
 @Injectable()
 export class PassportJwtStrategyService extends PassportStrategy(Strategy) {
   constructor(
     @InjectRepository(AccountRepository) private readonly accountRepository: AccountRepository,
-    private readonly configService: ConfigService,
+    readonly configService: ConfigService,
     private readonly cookieService: CookieService,
   ) {
     super({
@@ -26,7 +25,7 @@ export class PassportJwtStrategyService extends PassportStrategy(Strategy) {
     });
   }
 
-  public async validate(payload: JwtPayload): Promise<null> {
+  public async validate(payload: JwtPayload): Promise<AccountEntity> {
     const { username } = payload;
 
     const account = await this.accountRepository.findOne({ where: { username } });
@@ -35,6 +34,6 @@ export class PassportJwtStrategyService extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    return null;
+    return account;
   }
 }
