@@ -111,13 +111,15 @@ export class AuthService {
       .signOut()
       .pipe(
         first(),
-        finalize(() => {
-          this.authFacadeService.logout();
-          this.jwtStorageService.clearStorage();
-          this.router.navigate(['/auth/login']);
-        }),
+        finalize(() => this.cleanupAfterFailedAuth()),
       )
       .subscribe();
+  }
+
+  public cleanupAfterFailedAuth(): void {
+    this.authFacadeService.logout();
+    this.jwtStorageService.clearStorage();
+    this.router.navigate(['/auth/login']);
   }
 
   public signInForLongSession(): void {

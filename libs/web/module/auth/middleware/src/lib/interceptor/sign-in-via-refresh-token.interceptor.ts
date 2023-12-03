@@ -22,6 +22,12 @@ export class SignInViaRefreshTokenInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError(error => {
+        if (request.url.includes('auth/verify-token')) {
+          this.authService.cleanupAfterFailedAuth();
+
+          return throwError(() => error);
+        }
+
         if (
           error instanceof HttpErrorResponse &&
           !request.url.includes('auth/sign-in') &&
