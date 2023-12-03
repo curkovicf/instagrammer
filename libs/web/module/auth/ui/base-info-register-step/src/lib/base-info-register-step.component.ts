@@ -21,7 +21,7 @@ import {
 import { BehaviorSubject, distinctUntilChanged, first, map, Observable, takeWhile, tap } from 'rxjs';
 import { RegisterNoDobDto } from '@instagrammer/web/module/auth/data';
 import { InputComponent } from '@instagrammer/web/shared/ui/input';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi } from '@instagrammer/shared/data/api';
 import { AuthApiService } from '@instagrammer/web/shared/data/api';
 
 @Component({
@@ -37,9 +37,10 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
   formData: RegisterNoDobDto | null = null;
 
   @Output()
-  next: EventEmitter<UserApi.RegisterRequestDto> = new EventEmitter();
+  next: EventEmitter<AuthApi.SignUpDto> = new EventEmitter();
 
-  @ViewChildren(InputComponent) inputComponents!: QueryList<InputComponent>;
+  @ViewChildren(InputComponent)
+  inputComponents!: QueryList<InputComponent>;
 
   public readonly isFormDisabled$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
@@ -78,6 +79,7 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
 
   public ngOnDestroy(): void {
     this.isAlive = false;
+    this.isFormDisabled$.complete();
   }
 
   private setInitialFormData(): void {
@@ -99,12 +101,14 @@ export class BaseInfoRegisterStepComponent implements OnDestroy, OnInit {
 
   private checkIfUsernameIsAvailable(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.authApiService.checkIfUsernameExists({ username: control.value }).pipe(
-        first(),
-        distinctUntilChanged(),
-        map(result => (!result.isUsernameAvailable ? { invalid: true } : null)),
-        tap(() => setTimeout(() => this.validateRegisterForm())),
-      );
+      return this.authApiService
+        .checkIfUsernameExists({ username: control.value, isUsernameAvailable: false })
+        .pipe(
+          first(),
+          distinctUntilChanged(),
+          map(result => (!result.isUsernameAvailable ? { invalid: true } : null)),
+          tap(() => setTimeout(() => this.validateRegisterForm())),
+        );
     };
   }
 

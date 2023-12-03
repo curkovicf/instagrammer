@@ -1,1 +1,1 @@
-export * from './lib/user.controller.module';
+export * from './lib/api-module-user-http.module';

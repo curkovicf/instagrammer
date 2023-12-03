@@ -11,26 +11,6 @@ export class JwtStorageService {
 
   constructor(private readonly authFacadeService: AuthFacadeService) {}
 
-  public init(): boolean {
-    const authState = localStorage.getItem(this.authKey);
-
-    if (!authState) {
-      return false;
-    }
-
-    const parsedAuthState: UserApi.LoginResponseDto = JSON.parse(authState);
-
-    if (!this.isTokenFromStorageValid(parsedAuthState.expiresAt)) {
-      this.clearStorage();
-
-      return false;
-    }
-
-    this.authFacadeService.updateAuthState(parsedAuthState);
-
-    return true;
-  }
-
   private isTokenFromStorageValid(expiresAt: number): boolean {
     return new Date().getTime() < expiresAt;
   }

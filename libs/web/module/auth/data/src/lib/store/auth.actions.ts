@@ -1,10 +1,12 @@
 import { createAction, props } from '@ngrx/store';
 import { UserApi } from '@instagrammer/shared/data/api';
 
-export const loginAction = createAction(
-  '[Auth] Login',
+export const signInActionSuccess = createAction(
+  '[Auth] Sign in success',
   props<{ loginResponseDto: UserApi.LoginResponseDto }>(),
 );
+
+export const signInActionFailed = createAction('[Auth] Sign in failed');
 
 export const disableOneTapRouterAction = createAction('[Auth] Disable one-tap router navigation');
 

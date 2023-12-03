@@ -5,7 +5,7 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/api/module/post/logic/**/*.ts"]
@@ -17,6 +17,12 @@
       "options": {
         "jestConfig": "libs/api/module/post/logic/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     }
   },

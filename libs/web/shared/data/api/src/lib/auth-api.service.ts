@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EnvironmentService } from '@instagrammer/web/core/env';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
+import LoginResponseDto = UserApi.LoginResponseDto;
 
 @Injectable({
   providedIn: 'root',
@@ -14,29 +15,37 @@ export class AuthApiService {
     this.url = `${this.environmentService.baseUrl}/auth`;
   }
 
-  public login(loginDto: UserApi.LoginRequestDto): Observable<UserApi.LoginResponseDto> {
-    return this.http.post<UserApi.LoginResponseDto>(`${this.url}/login`, loginDto);
+  public signUp(signUpDto: AuthApi.SignUpDto): Observable<AuthApi.SignInResponseDto> {
+    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/sign-up`, signUpDto);
+  }
+
+  public signIn(signInDto: AuthApi.SignInDto): Observable<AuthApi.SignInResponseDto> {
+    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/sign-in`, signInDto);
+  }
+
+  public signInViaRefreshToken(): Observable<LoginResponseDto> {
+    return this.http.post<AuthApi.SignInResponseDto>(`${this.url}/sign-in-via-refresh-token`, {});
   }
 
   public checkIfUsernameExists(
-    usernameExistsDto: UserApi.UsernameExistsRequestDto,
-  ): Observable<UserApi.UsernameExistsResponseDto> {
-    return this.http.post<UserApi.UsernameExistsResponseDto>(`${this.url}/username-exists`, usernameExistsDto);
+    usernameExistsDto: AuthApi.UsernameExistsDto,
+  ): Observable<AuthApi.UsernameExistsDto> {
+    return this.http.post<AuthApi.UsernameExistsDto>(`${this.url}/username-exists`, usernameExistsDto);
   }
 
-  public register(registerDto: UserApi.RegisterRequestDto): Observable<UserApi.RegisterResponseDto> {
-    return this.http.post<UserApi.RegisterResponseDto>(`${this.url}/register`, registerDto);
+  public saveLoginInfo(): Observable<AuthApi.SignInResponseDto> {
+    return this.http.post<AuthApi.SignInResponseDto>(
+      `${this.url}/sign-in-long-session`,
+      {},
+      { withCredentials: true },
+    );
   }
 
-  public saveLoginInfo(refreshJwtDto: UserApi.RefreshJwtRequestDto): Observable<UserApi.JwtDto> {
-    return this.http.post<UserApi.JwtDto>(`${this.url}/refresh-jwt`, refreshJwtDto);
+  public signOut(): Observable<void> {
+    return this.http.post<void>(`${this.url}/sign-out`, {});
   }
 
-  public getAccessJwt(): Observable<UserApi.LoginResponseDto> {
-    return this.http.get<UserApi.LoginResponseDto>(`${this.url}/access-jwt`);
-  }
-
-  public logout(logoutDto: UserApi.LogoutRequestDto): Observable<void> {
-    return this.http.post<void>(`${this.url}/logout`, logoutDto);
+  public authenticateTokens(): Observable<AuthApi.SignInResponseDto> {
+    return this.http.get<AuthApi.SignInResponseDto>(`${this.url}/verify-token`, { withCredentials: true });
   }
 }

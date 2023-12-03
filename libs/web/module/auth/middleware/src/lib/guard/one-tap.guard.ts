@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class OneTapGuard  {
+export class OneTapGuard {
   constructor(private readonly router: Router, private readonly authFacadeService: AuthFacadeService) {}
 
   public canActivate(

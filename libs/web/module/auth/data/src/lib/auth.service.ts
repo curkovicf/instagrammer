@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { finalize, map, Observable, take, tap } from 'rxjs';
+import { catchError, finalize, first, map, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthFacadeService } from './store/auth-facade.service';
 import { JwtStorageService } from './jwt-storage.service';
-import { UserApi } from '@instagrammer/shared/data/api';
+import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthApiService } from '@instagrammer/web/shared/data/api';
+import { HttpErrorResponse } from '@angular/common/http';
+import LoginResponseDto = UserApi.LoginResponseDto;
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +19,58 @@ export class AuthService {
     private readonly jwtStorageService: JwtStorageService,
   ) {}
 
-  public login(credentials: UserApi.LoginRequestDto): Observable<boolean> {
-    return this.authApiService.login(credentials).pipe(
+  public authenticateTokens(): void {
+    if (!this.isAuthDataInLocalStorage()) {
+      return;
+    }
+
+    this.authApiService
+      .authenticateTokens()
+      .pipe(
+        first(),
+        catchError(error => {
+          this.authFacadeService.failedSignIn();
+
+          return of(error);
+        }),
+        tap((loginResponseDto: AuthApi.SignInResponseDto | HttpErrorResponse) => {
+          if (loginResponseDto instanceof HttpErrorResponse) {
+            return;
+          }
+
+          this.authFacadeService.successSignIn(loginResponseDto);
+          this.jwtStorageService.saveAuthState(loginResponseDto);
+
+          this.router.navigate(['/']);
+        }),
+      )
+      .subscribe();
+  }
+
+  public isAuthDataInLocalStorage(): boolean {
+    try {
+      const username = this.jwtStorageService.getUsername();
+
+      if (!username) {
+        return false;
+      }
+    } catch (err) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public signIn(credentials: AuthApi.SignInDto): Observable<boolean> {
+    return this.authApiService.signIn(credentials).pipe(
+      first(),
+      catchError(error => {
+        this.authFacadeService.failedSignIn();
+
+        return of(error);
+      }),
       map(loginResponseDto => {
-        if (!loginResponseDto) {
+        if (loginResponseDto instanceof HttpErrorResponse) {
           return false;
         }
 
@@ -29,20 +79,26 @@ export class AuthService {
     );
   }
 
-  public register(registerDto: UserApi.RegisterRequestDto): Observable<boolean> {
-    return this.authApiService.register(registerDto).pipe(
-      map(registerResponseDto => {
-        if (!registerResponseDto) {
+  public signUp(registerDto: AuthApi.SignUpDto): Observable<boolean> {
+    return this.authApiService.signUp(registerDto).pipe(
+      first(),
+      catchError(error => {
+        this.authFacadeService.failedSignIn();
+
+        return of(error);
+      }),
+      map(loginResponseDto => {
+        if (loginResponseDto instanceof HttpErrorResponse) {
           return false;
         }
 
-        return this.handleSuccessfulLogin(registerResponseDto);
+        return this.handleSuccessfulLogin(loginResponseDto);
       }),
     );
   }
 
   private handleSuccessfulLogin(loginResponseDto: UserApi.LoginResponseDto): boolean {
-    this.authFacadeService.updateAuthState(loginResponseDto);
+    this.authFacadeService.successSignIn(loginResponseDto);
     this.jwtStorageService.saveAuthState(loginResponseDto);
 
     this.router.navigate(['/auth/onetap']);
@@ -50,56 +106,46 @@ export class AuthService {
     return true;
   }
 
-  public logout(): void {
+  public signOut(): void {
     this.authApiService
-      .logout({ usernameOrEmail: this.jwtStorageService.getUsername() })
+      .signOut()
       .pipe(
-        take(1),
-        finalize(() => {
-          this.authFacadeService.logout();
-          this.jwtStorageService.clearStorage();
-          this.router.navigate(['/auth/login']);
-        }),
+        first(),
+        finalize(() => this.cleanupAfterFailedAuth()),
       )
       .subscribe();
   }
 
-  public saveLogin(refreshJwtDto: UserApi.RefreshJwtRequestDto): void {
+  public cleanupAfterFailedAuth(): void {
+    this.authFacadeService.logout();
+    this.jwtStorageService.clearStorage();
+    this.router.navigate(['/auth/login']);
+  }
+
+  public signInForLongSession(): void {
     this.authApiService
-      .saveLoginInfo(refreshJwtDto)
+      .saveLoginInfo()
       .pipe(
-        take(1),
-        tap(jwtTokenDto => {
-          const loginResponseDto: UserApi.LoginResponseDto = {
-            ...jwtTokenDto,
-            jwt: jwtTokenDto.value,
-            username: this.jwtStorageService.getUsername(),
-          };
+        first(),
+        catchError(error => {
+          this.authFacadeService.failedSignIn();
+
+          return of(error);
+        }),
+        tap(loginResponseDto => {
+          if (loginResponseDto instanceof HttpErrorResponse) {
+            return;
+          }
 
           this.authFacadeService.disableOneTapRouter();
-          this.authFacadeService.updateAuthState(loginResponseDto);
-          this.jwtStorageService.saveAuthState(loginResponseDto);
+          this.authFacadeService.successSignIn(loginResponseDto);
         }),
         finalize(() => this.router.navigate([''])),
       )
       .subscribe();
   }
 
-  public getAccessToken(): void {
-    this.authApiService
-      .getAccessJwt()
-      .pipe(
-        take(1),
-        tap((loginResponseDto: UserApi.LoginResponseDto) => {
-          if (!loginResponseDto) {
-            return;
-          }
-
-          this.authFacadeService.updateAuthState(loginResponseDto);
-          this.jwtStorageService.saveAuthState(loginResponseDto);
-          this.router.navigate(['']);
-        }),
-      )
-      .subscribe();
+  public signInViaRefreshToken(): Observable<LoginResponseDto> {
+    return this.authApiService.signInViaRefreshToken();
   }
 }

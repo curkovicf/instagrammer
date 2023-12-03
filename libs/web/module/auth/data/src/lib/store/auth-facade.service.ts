@@ -11,17 +11,16 @@ import * as AuthActions from './auth.actions';
 })
 export class AuthFacadeService {
   public readonly authState$ = this.store.select(AuthSelectors.selectAuthState);
-  public readonly jwtToken$ = this.store.select(AuthSelectors.selectJwtToken);
   public readonly isOneTapRouterEnabled$ = this.store.select(AuthSelectors.selectIsOneTapRouterEnabled);
 
   constructor(private readonly store: Store) {}
 
-  public updateAuthState(loginResponseDto: UserApi.LoginResponseDto): void {
-    this.store.dispatch(AuthActions.loginAction({ loginResponseDto }));
+  public successSignIn(loginResponseDto: UserApi.LoginResponseDto): void {
+    this.store.dispatch(AuthActions.signInActionSuccess({ loginResponseDto }));
   }
 
-  public updateAccessJwtState(accessJwtDto: UserApi.JwtDto): void {
-    this.store.dispatch(AuthActions.updateAccessJwtAction({ accessJwtDto }));
+  public failedSignIn(): void {
+    this.store.dispatch(AuthActions.signInActionFailed());
   }
 
   public disableOneTapRouter(): void {

@@ -1,11 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  CreatePostDto,
-  PhotoRepository,
-  PostEntity,
-  PostRepository,
-} from '@instagrammer/api/module/post/data';
+import { CreatePostDto, PhotoRepository, PostRepository } from '@instagrammer/api/module/post/data';
 
 import 'multer';
 
@@ -16,9 +11,9 @@ export class PostService {
     @InjectRepository(PhotoRepository) private readonly photoRepository: PhotoRepository,
   ) {}
 
-  public getPosts(userId: string): Promise<PostEntity[]> {
-    return this.postRepository.getPosts(userId);
-  }
+  // public getPosts(userId: string): Promise<PostEntity[]> {
+  // return this.postRepository.getPosts(userId);
+  // }
 
   public async createPost(
     userId: string,

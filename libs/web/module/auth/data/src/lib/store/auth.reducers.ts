@@ -7,17 +7,18 @@ export const AUTH_FEATURE_KEY = 'AUTH_FEATURE';
 
 const initialAuthState: AuthState = {
   username: null,
-  jwt: null,
-  issuedAt: null,
-  expiresAt: null,
   isOneTapRouterEnabled: false,
 };
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(AuthActions.loginAction, (state, { loginResponseDto }) => ({
+  on(AuthActions.signInActionSuccess, (state, { loginResponseDto }) => ({
     ...loginResponseDto,
     isOneTapRouterEnabled: true,
+  })),
+  on(AuthActions.signInActionFailed, state => ({
+    username: null,
+    isOneTapRouterEnabled: false,
   })),
   on(AuthActions.disableOneTapRouterAction, state => ({
     ...state,
@@ -25,15 +26,6 @@ export const authReducer = createReducer(
   })),
   on(AuthActions.logoutAction, state => ({
     username: null,
-    jwt: null,
-    expiresAt: null,
-    issuedAt: null,
     isOneTapRouterEnabled: false,
-  })),
-  on(AuthActions.updateAccessJwtAction, (state, { accessJwtDto }) => ({
-    ...state,
-    jwt: accessJwtDto.value,
-    issuedAt: accessJwtDto.issuedAt,
-    expiresAt: accessJwtDto.expiresAt,
   })),
 );

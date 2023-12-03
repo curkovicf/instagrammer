@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["libs/web/shared/ui/checkbox/**/*.ts", "libs/web/shared/ui/checkbox/**/*.html"]
       }
