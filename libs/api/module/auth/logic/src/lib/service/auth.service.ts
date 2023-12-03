@@ -133,22 +133,49 @@ export class AuthService {
    * @param refreshToken
    */
   public isRefreshTokenValid(refreshToken: string): string | null {
-    const { username } = this.jwtAuthService.isValid(refreshToken) as { username: string };
+    try {
+      const { username } = this.jwtAuthService.isValid(refreshToken) as { username: string };
 
-    return username ? username : null;
+      return username;
+    } catch (error) {
+      return null;
+    }
   }
 
   /**
+   * Check refresh token validity & sign in user via refresh token
    *
    * @param refreshToken
    */
-  public signInViaRefreshToken(refreshToken: string): {
+  public async signInViaRefreshToken(refreshToken: string): Promise<{
+    username: string;
     accessToken: string;
-    refreshToken: string;
-  } {
+  }> {
+    const username: string | null = this.isRefreshTokenValid(refreshToken);
+
+    if (!username) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    const account = await this.accountRepository.findOneByUsernameOrEmail(username);
+
+    if (!account) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    if (!account.refreshToken) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    if (!(await this.encryptionService.compare(account.refreshToken, refreshToken))) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    const accessToken = this.jwtAuthService.generateAccessToken(username);
+
     return {
-      accessToken: '',
-      refreshToken: '',
+      username,
+      accessToken,
     };
   }
 

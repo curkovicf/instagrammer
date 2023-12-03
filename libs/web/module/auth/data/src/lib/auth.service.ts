@@ -6,6 +6,7 @@ import { JwtStorageService } from './jwt-storage.service';
 import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthApiService } from '@instagrammer/web/shared/data/api';
 import { HttpErrorResponse } from '@angular/common/http';
+import LoginResponseDto = UserApi.LoginResponseDto;
 
 @Injectable({
   providedIn: 'root',
@@ -140,5 +141,9 @@ export class AuthService {
         finalize(() => this.router.navigate([''])),
       )
       .subscribe();
+  }
+
+  public signInViaRefreshToken(): Observable<LoginResponseDto> {
+    return this.authApiService.signInViaRefreshToken();
   }
 }

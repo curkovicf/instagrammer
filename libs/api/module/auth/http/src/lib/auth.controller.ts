@@ -1,4 +1,14 @@
-import { Body, Controller, ForbiddenException, Get, Logger, Post, Req, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Post,
+  Req,
+  Res,
+  UnauthorizedException,
+  UseGuards,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AuthApi, UserApi } from '@instagrammer/shared/data/api';
 import { AuthGuard } from '@nestjs/passport';
@@ -124,19 +134,24 @@ export class AuthController {
    * @param res
    * @param refreshTokenFromCookie
    */
-  @Post('/refresh-jwt')
+  @Post('/sign-in-via-refresh-token')
   public async signInViaRefreshToken(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
     @RefreshTokenFromCookie() refreshTokenFromCookie: string,
-  ): Promise<void> {
+  ): Promise<AuthApi.SignInResponseDto> {
     this.logger.debug(`Signing in user via refresh token, refresh token: ${refreshTokenFromCookie}`);
 
-    const { accessToken, refreshToken } = this.authService.signInViaRefreshToken(refreshTokenFromCookie);
+    const { username, accessToken } = await this.authService.signInViaRefreshToken(refreshTokenFromCookie);
 
     //  3. Attach cookies to headers
-    res.setHeader('Set-Cookie', this.cookieService.createAccessTokenCookie(accessToken));
-    res.setHeader('Set-Cookie', this.cookieService.createRefreshTokenCookie(refreshToken, false));
+    res.setHeader('Set-Cookie', [
+      `${this.cookieService.ACCESS_TOKEN_KEY}=${this.cookieService.createAccessTokenCookie(accessToken)}`,
+    ]);
+
+    return {
+      username,
+    };
   }
 
   /**
@@ -153,7 +168,7 @@ export class AuthController {
     const username = this.authService.isRefreshTokenValid(refreshTokenFromCookie);
 
     if (!username) {
-      throw new ForbiddenException();
+      throw new UnauthorizedException();
     }
 
     return {

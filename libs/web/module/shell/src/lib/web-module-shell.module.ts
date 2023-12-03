@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ENVIRONMENT_TOKEN, environmentDev } from '@instagrammer/web/core/env';
 import { WithCredentialsInterceptor } from '@instagrammer/web/core/middleware';
 import { SharedFeatherModule } from '@instagrammer/web/shared/ui/feather';
+import { SignInViaRefreshTokenInterceptor } from '@instagrammer/web/module/auth/middleware';
 
 @NgModule({
   imports: [
@@ -44,6 +45,11 @@ import { SharedFeatherModule } from '@instagrammer/web/shared/ui/feather';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: WithCredentialsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SignInViaRefreshTokenInterceptor,
       multi: true,
     },
   ],

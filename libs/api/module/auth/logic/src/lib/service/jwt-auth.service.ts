@@ -37,6 +37,15 @@ export class JwtAuthService {
   }
 
   /**
+   * Generate access token
+   *
+   * @param username
+   */
+  public generateAccessToken(username: string): string {
+    return this.jwtService.sign({ username }, this.accessTokenSignOptions);
+  }
+
+  /**
    * Decodes JWT token
    *
    * @param token
