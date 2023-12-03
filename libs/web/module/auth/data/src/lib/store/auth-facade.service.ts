@@ -16,7 +16,6 @@ export class AuthFacadeService {
   constructor(private readonly store: Store) {}
 
   public successSignIn(loginResponseDto: UserApi.LoginResponseDto): void {
-    console.log(loginResponseDto);
     this.store.dispatch(AuthActions.signInActionSuccess({ loginResponseDto }));
   }
 

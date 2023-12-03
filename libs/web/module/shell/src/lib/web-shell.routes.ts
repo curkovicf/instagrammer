@@ -4,7 +4,7 @@
 import { Router, Routes } from '@angular/router';
 import { NotFoundComponent } from '@instagrammer/web/shared/ui/not-found';
 import { inject } from '@angular/core';
-import { AuthFacadeService } from '@instagrammer/web/module/auth/data';
+import { AuthFacadeService, AuthService } from '@instagrammer/web/module/auth/data';
 import { first, map } from 'rxjs';
 
 export const shellRoutes: Routes = [
@@ -40,6 +40,7 @@ export const shellRoutes: Routes = [
     // eslint-disable-next-line @nx/enforce-module-boundaries
     loadChildren: async () =>
       (await import('@instagrammer/web/module/auth/feature/shell')).WebAuthShellModule,
+    canActivate: [() => !inject(AuthService).isAuthDataInLocalStorage()],
   },
   {
     path: '**',

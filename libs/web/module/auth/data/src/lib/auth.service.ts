@@ -19,6 +19,10 @@ export class AuthService {
   ) {}
 
   public authenticateTokens(): void {
+    if (!this.isAuthDataInLocalStorage()) {
+      return;
+    }
+
     this.authApiService
       .authenticateTokens()
       .pipe(
@@ -33,12 +37,27 @@ export class AuthService {
             return;
           }
 
-          console.log('Err ', loginResponseDto);
-
           this.authFacadeService.successSignIn(loginResponseDto);
+          this.jwtStorageService.saveAuthState(loginResponseDto);
+
+          this.router.navigate(['/']);
         }),
       )
       .subscribe();
+  }
+
+  public isAuthDataInLocalStorage(): boolean {
+    try {
+      const username = this.jwtStorageService.getUsername();
+
+      if (!username) {
+        return false;
+      }
+    } catch (err) {
+      return false;
+    }
+
+    return true;
   }
 
   public signIn(credentials: AuthApi.SignInDto): Observable<boolean> {
@@ -79,13 +98,14 @@ export class AuthService {
 
   private handleSuccessfulLogin(loginResponseDto: UserApi.LoginResponseDto): boolean {
     this.authFacadeService.successSignIn(loginResponseDto);
+    this.jwtStorageService.saveAuthState(loginResponseDto);
 
     this.router.navigate(['/auth/onetap']);
 
     return true;
   }
 
-  public logout(): void {
+  public signOut(): void {
     this.authApiService
       .signOut()
       .pipe(
