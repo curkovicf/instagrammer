@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { CreatePostDto } from '@instagrammer/api/module/post/data';
 import { PostService } from '@instagrammer/api/module/post/logic';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -13,10 +13,11 @@ import 'multer';
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
-  // @Get()
-  // public getPosts(@User() user: UserEntity): Promise<PostEntity[]> {
-  //   return this.postService.getPosts(user.id);
-  // }
+  @Get()
+  @UseGuards(AuthGuard('jwt'))
+  public getPosts(@User() user: UserEntity): any[] {
+    return ['success'];
+  }
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))

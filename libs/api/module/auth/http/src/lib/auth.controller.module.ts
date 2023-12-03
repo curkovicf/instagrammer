@@ -7,5 +7,6 @@ import { CookieService } from '@instagrammer/api/module/auth/util';
   imports: [ApiModuleAuthLogicModule],
   providers: [CookieService],
   controllers: [AuthController],
+  exports: [ApiModuleAuthLogicModule],
 })
 export class AuthControllerModule {}

@@ -4,17 +4,20 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EnvironmentVariable } from '@instagrammer/api/core/environment';
 import { Global, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
+import { CookieService } from '@instagrammer/api/module/auth/util';
+import { ApiModuleAuthDataModule } from '@instagrammer/api/module/auth/data';
 
 @Global()
 @Module({
   imports: [
+    ApiModuleAuthDataModule,
     PassportModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get(EnvironmentVariable.PASSPORT_SECRET),
         strategy: configService.get(EnvironmentVariable.PASSPORT_STRATEGY),
-        defaultStrategy: configService.get(EnvironmentVariable.PASSPORT_DEFAULT_STRATEGY),
+        defaultStrategy: 'jwt',
       }),
     }),
     JwtModule.registerAsync({
@@ -28,6 +31,7 @@ import { PassportModule } from '@nestjs/passport';
       }),
     }),
   ],
-  providers: [PassportJwtStrategyService],
+  providers: [PassportJwtStrategyService, CookieService],
+  exports: [PassportModule, JwtModule, PassportJwtStrategyService],
 })
-export class ApiModuleAuthLogicModule {}
+export class ApiModuleAuthMiddlewareModule {}
