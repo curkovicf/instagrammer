@@ -190,7 +190,8 @@ export class AuthController {
   ): Promise<void> {
     this.logger.debug(`Logging out user, data: ${signOutDto}`);
 
-    res.clearCookie('Authentication', { path: '/', httpOnly: true, sameSite: 'strict' });
+    res.clearCookie(this.cookieService.ACCESS_TOKEN_KEY, { path: '/' });
+    res.clearCookie(this.cookieService.REFRESH_TOKEN_KEY, { path: '/' });
 
     return await this.authService.signOut(signOutDto);
   }

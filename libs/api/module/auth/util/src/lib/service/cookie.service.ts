@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 
 export interface CookieOptions {
   token: string;
-  expiresInMillis: number;
+  expiresInSeconds: number;
 }
 
 @Injectable()
@@ -20,13 +20,9 @@ export class CookieService {
    * @param cookieOptions
    */
   public createCookie(cookieOptions: CookieOptions): string {
-    const { token, expiresInMillis } = cookieOptions;
+    const { token, expiresInSeconds } = cookieOptions;
 
-    // return `${title}=${token}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${
-    //   new Date().getTime() + expiresInMillis
-    // }`;
-
-    return `${token}; Path=/; SameSite=Strict; Max-Age=${new Date().getTime() + expiresInMillis}`;
+    return `${token}; Path=/; SameSite=Strict; Path=/; HttpOnly; SameSite=Strict; Secure; Max-Age=${expiresInSeconds}`;
   }
 
   /**
@@ -37,7 +33,7 @@ export class CookieService {
   public createAccessTokenCookie(token: string): string {
     return this.createCookie({
       token,
-      expiresInMillis: this.configService.get(EnvironmentVariable.ACCESS_TOKEN_EXPIRES_IN_SECONDS) * 1000,
+      expiresInSeconds: Number(this.configService.get(EnvironmentVariable.ACCESS_TOKEN_EXPIRES_IN_SECONDS)),
     });
   }
 
@@ -50,9 +46,9 @@ export class CookieService {
   public createRefreshTokenCookie(token: string, isLongSession: boolean): string {
     return this.createCookie({
       token,
-      expiresInMillis: isLongSession
-        ? this.configService.get(EnvironmentVariable.REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS) * 1000
-        : this.configService.get(EnvironmentVariable.REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS) * 1000,
+      expiresInSeconds: isLongSession
+        ? Number(this.configService.get(EnvironmentVariable.REFRESH_TOKEN_LONG_EXPIRES_IN_SECONDS))
+        : Number(this.configService.get(EnvironmentVariable.REFRESH_TOKEN_SHORT_EXPIRES_IN_SECONDS)),
     });
   }
 }
