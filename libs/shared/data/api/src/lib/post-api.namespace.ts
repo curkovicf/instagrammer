@@ -1,7 +1,6 @@
 export namespace PostApi {
-  export interface Post {
-    //  TODO: add collection of images
-    image: File;
+  export interface Post<T> {
+    images: T[];
     caption: string;
   }
 }

@@ -18,8 +18,8 @@ export class PostApiService {
    *
    * @param userId
    */
-  public getAll(userId: string): Observable<PostApi.Post[]> {
-    return this.http.get<PostApi.Post[]>(`${this.url}`, {
+  public getMany(userId: string): Observable<PostApi.Post<string>[]> {
+    return this.http.get<PostApi.Post<string>[]>(`${this.url}`, {
       params: {
         userId,
       },
@@ -30,12 +30,13 @@ export class PostApiService {
    *
    * @param post
    */
-  public uploadPost(post: PostApi.Post): Observable<PostApi.Post> {
+  public uploadPost(post: PostApi.Post<File>): Observable<PostApi.Post<string>> {
     const formData = new FormData();
 
-    formData.append('file', post.image);
+    post.images.forEach(image => formData.append('files', image, image.name));
+
     formData.append('caption', post.caption);
 
-    return this.http.post<PostApi.Post>(`${this.url}`, formData);
+    return this.http.post<PostApi.Post<string>>(`${this.url}`, formData);
   }
 }

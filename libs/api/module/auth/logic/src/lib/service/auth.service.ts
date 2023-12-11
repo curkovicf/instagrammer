@@ -167,7 +167,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    if (!(await this.encryptionService.compare(account.refreshToken, refreshToken))) {
+    if (!(await this.encryptionService.compare(refreshToken, account.refreshToken))) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
