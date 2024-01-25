@@ -5,7 +5,7 @@ import { first, Observable, tap } from 'rxjs';
 import { PostApi } from '@instagrammer/shared/data/api';
 
 export interface IFeedState {
-  posts: PostApi.Post[];
+  posts: PostApi.Post<string>[];
 }
 
 @Injectable({
@@ -26,7 +26,7 @@ export class FeedViewModel extends ComponentStore<IFeedState> {
     const user = '3060af02-6358-41f8-8140-b6825164eb4f';
 
     this.postApiService
-      .getAll(user)
+      .getMany(user)
       .pipe(
         first(),
         tap(posts => {

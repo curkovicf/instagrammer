@@ -3,12 +3,15 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { PhotoEntity } from './photo.entity';
 import { CommentEntity } from './comment.entity';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { UserEntity } from '@instagrammer/api/module/user/data';
 
 @Entity('post')
 export class PostEntity {
@@ -18,20 +21,17 @@ export class PostEntity {
   @Column({ nullable: true })
   public description?: string;
 
-  // @ManyToOne(() => UserEntity, user => user.posts)
-  // @JoinColumn()
-  // public user!: UserEntity;
-
-  @OneToMany(() => PhotoEntity, photo => photo.imagePath, { cascade: true, nullable: false })
+  @ManyToOne(() => UserEntity, user => user.posts)
   @JoinColumn()
+  public user!: UserEntity;
+
+  @OneToMany(() => PhotoEntity, photo => photo.post, { cascade: true, nullable: false })
   public photos!: PhotoEntity[];
 
   // @ManyToMany(() => UserEntity, user => user.postsLiked)
-  // @JoinColumn()
   // public likes?: UserEntity[];
 
   @OneToMany(() => CommentEntity, user => user.post, { cascade: true })
-  @JoinColumn()
   public comments!: CommentEntity[];
 
   @CreateDateColumn()

@@ -67,9 +67,10 @@ export class CreatePostViewModel extends ComponentStore<ICreatePostState> {
   public submit(): void {
     const storeData = this.get();
 
-    const post: PostApi.Post = {
+    const post: PostApi.Post<File> = {
       caption: storeData.caption,
-      image: <File>storeData.imageFileOriginal,
+      //  TODO: Add multiple image creation support
+      images: [<File>storeData.imageFileOriginal],
     };
 
     this.postApiService

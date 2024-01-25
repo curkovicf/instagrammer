@@ -21,9 +21,9 @@
     "baseUrl": ".",
     "paths": {
       "@instagrammer/api-core-config-database": ["libs/api/core/config-database/src/index.ts"],
-      "@instagrammer/api/core/database": ["libs/api/core/database/src/index.ts"],
       "@instagrammer/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@instagrammer/api/auth/config": ["libs/api/auth/config/src/index.ts"],
+      "@instagrammer/api/core/database": ["libs/api/core/database/src/index.ts"],
       "@instagrammer/api/core/environment": ["libs/api/core/environment/src/index.ts"],
       "@instagrammer/api/core/feature": ["libs/api/core/feature/src/index.ts"],
       "@instagrammer/api/module/auth/data": ["libs/api/module/auth/data/src/index.ts"],
@@ -94,7 +94,6 @@
       "@instagrammer/web/module/home/feature/toolbar-small": [
         "libs/web/module/home/feature/toolbar-small/src/index.ts"
       ],
-      "@instagrammer/web/module/home/ui/feed-card": ["libs/web/module/home/ui/feed-card/src/index.ts"],
       "@instagrammer/web/module/home/ui/sticky-sidenav-content-box": [
         "libs/web/module/home/ui/sticky-sidenav-content-box/src/index.ts"
       ],
@@ -143,7 +142,8 @@
       "@instagrammer/web/shared/ui/styles": ["libs/web/shared/ui/styles/src/index.ts"],
       "@instagrammer/web/shared/ui/text-area": ["libs/web/shared/ui/text-area/src/index.ts"],
       "@instagrammer/web/shared/ui/text-area-rich": ["libs/web/shared/ui/text-area-rich/src/index.ts"],
-      "api/module/user/http": ["libs/api/module/user/http/src/index.ts"]
+      "api/module/user/http": ["libs/api/module/user/http/src/index.ts"],
+      "web/module/post/ui/post-card": ["libs/web/module/post/ui/post-card/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

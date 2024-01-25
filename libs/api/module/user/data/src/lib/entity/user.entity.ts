@@ -1,5 +1,6 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { AccountEntity } from '@instagrammer/api/module/auth/data';
+import { PostEntity } from '@instagrammer/api/module/post/data';
 
 @Entity('user')
 export class UserEntity {
@@ -18,8 +19,8 @@ export class UserEntity {
   // @OneToMany(() => FollowerEntity, follower => follower.following)
   // public followers!: FollowerEntity[];
 
-  // @OneToMany(() => PostEntity, post => post.user)
-  // public posts?: PostEntity[];
+  @OneToMany(() => PostEntity, post => post.user)
+  public posts?: PostEntity[];
 
   // @ManyToMany(() => PostEntity, post => post.likes)
   // @JoinColumn()
