@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'web-module-home-ui-feed-card',
+  displayName: 'web-module-post-ui-post-card',
   preset: '../../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../../../../coverage/libs/web/module/home/ui/feed-card',
+  coverageDirectory: '../../../../../../coverage/libs/web/module/post/ui/post-card',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
