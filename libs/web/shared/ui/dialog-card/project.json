@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/web/shared/ui/dialog-card/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/shared/ui/dialog-card/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/dialog-card/**/*.ts",
-          "libs/web/shared/ui/dialog-card/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:ui", "scope:web"]

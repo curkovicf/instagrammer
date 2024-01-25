@@ -9,15 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/shell"],
       "options": {
-        "jestConfig": "libs/web/module/shell/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/module/shell/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["libs/web/module/shell/src/**/*.ts", "libs/web/module/shell/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:shell", "scope:web"]

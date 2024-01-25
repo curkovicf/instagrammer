@@ -5,17 +5,13 @@
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/shared/util/validator/**/*.ts"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/shared/util/validator"],
       "options": {
-        "jestConfig": "libs/shared/util/validator/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/shared/util/validator/jest.config.js"
       }
     }
   },

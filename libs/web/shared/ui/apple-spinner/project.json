@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/apple-spinner"],
       "options": {
-        "jestConfig": "libs/web/shared/ui/apple-spinner/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/shared/ui/apple-spinner/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/apple-spinner/src/**/*.ts",
-          "libs/web/shared/ui/apple-spinner/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:ui", "scope:web"]

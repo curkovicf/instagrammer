@@ -9,15 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/shared/data/api"],
       "options": {
-        "jestConfig": "libs/shared/data/api/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/shared/data/api/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["libs/shared/data/api/src/**/*.ts", "libs/shared/data/api/src/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:data", "scope:shared"]

@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/shared/ui/styles"],
       "options": {
-        "jestConfig": "libs/web/shared/ui/styles/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/shared/ui/styles/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/shared/ui/styles/src/**/*.ts",
-          "libs/web/shared/ui/styles/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:ui", "scope:web"]
