@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/web/module/home/feature/toolbar-small/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/module/home/feature/toolbar-small/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/module/home/feature/toolbar-small/**/*.ts",
-          "libs/web/module/home/feature/toolbar-small/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:feature", "scope:web"]

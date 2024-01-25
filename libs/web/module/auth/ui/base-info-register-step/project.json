@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/base-info-register-step"],
       "options": {
-        "jestConfig": "libs/web/module/auth/ui/base-info-register-step/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/module/auth/ui/base-info-register-step/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/module/auth/ui/base-info-register-step/src/**/*.ts",
-          "libs/web/module/auth/ui/base-info-register-step/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:ui", "scope:web"]

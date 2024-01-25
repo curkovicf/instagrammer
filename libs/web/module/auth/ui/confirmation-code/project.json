@@ -9,18 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/web/module/auth/ui/confirmation-code"],
       "options": {
-        "jestConfig": "libs/web/module/auth/ui/confirmation-code/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/web/module/auth/ui/confirmation-code/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/web/module/auth/ui/confirmation-code/src/**/*.ts",
-          "libs/web/module/auth/ui/confirmation-code/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   },
   "tags": ["type:ui", "scope:web"]

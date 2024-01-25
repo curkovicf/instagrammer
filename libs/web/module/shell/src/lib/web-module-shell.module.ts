@@ -31,7 +31,7 @@ import { SignInViaRefreshTokenInterceptor } from '@instagrammer/web/module/auth/
       },
     ),
     EffectsModule.forRoot([]),
-    !environmentDev.production ? StoreDevtoolsModule.instrument() : [],
+    !environmentDev.production ? StoreDevtoolsModule.instrument({connectInZone: true}) : [],
     WebModuleAuthDataAccessModule,
     SharedFeatherModule,
   ],
