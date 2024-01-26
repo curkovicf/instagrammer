@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PostApi } from '@instagrammer/shared/data/api';
 
 @Component({
   selector: 'ng-inst-post-card',
@@ -8,4 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './post-card.component.html',
   styleUrls: ['./post-card.component.scss'],
 })
-export class PostCardComponent {}
+export class PostCardComponent {
+  @Input({
+    required: true,
+  })
+  public post!: PostApi.Post<string>;
+}

@@ -1,1 +1,5 @@
-<p>post-card works!</p>
+<p>{{ post.caption }}</p>
+
+@for (image of post.images; track image) {
+  <img [src]="image" alt="" />
+}

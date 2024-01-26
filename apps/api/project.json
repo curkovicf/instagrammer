@@ -6,12 +6,17 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
+        "isolatedConfig": false,
         "outputPath": "dist/apps/api",
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
-        "assets": ["apps/api/src/assets"],
+        "assets": [
+          "apps/api/src/assets"
+        ],
         "compiler": "tsc",
         "target": "node"
       },
@@ -37,15 +42,21 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/api"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/api"
+      ],
       "options": {
         "jestConfig": "apps/api/jest.config.js"
       }
     }
   },
-  "tags": ["type:app"]
+  "tags": [
+    "type:app"
+  ]
 }

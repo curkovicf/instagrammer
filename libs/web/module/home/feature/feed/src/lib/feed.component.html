@@ -1,8 +1,8 @@
 <!--<pre>{{ (feedViewModel.vm$ | async)?.posts | json }}</pre>-->
 @if (feedViewModel.vm$ | async; as vm) {
-  @for () {
+  @for (post of vm.posts; track post) {
     <ng-inst-post-card />
   }
 }
 
-<button (click)='signOut()'>Sign out !</button>
+<button (click)="signOut()">Sign out !</button>
